@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetExternalFeedByUUIDHeaders
+# BrevoRuby::GetExternalFeedByUUIDHeaders
 
 ## Properties
 Name | Type | Description | Notes

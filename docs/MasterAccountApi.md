@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::MasterAccountApi
+# BrevoRuby::MasterAccountApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -25,9 +25,9 @@ This endpoint will provide the details of the master account.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -39,13 +39,13 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
 begin
   #Get the details of requested master account
   result = api_instance.corporate_master_account_get
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->corporate_master_account_get: #{e}"
 end
 ```
@@ -78,9 +78,9 @@ This endpoint will provide the list all the sub-accounts of the master account.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -92,7 +92,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
 offset = 56 # Integer | Index of the first sub-account in the page
 
@@ -103,7 +103,7 @@ begin
   #Get the list of all the sub-accounts of the master account.
   result = api_instance.corporate_sub_account_get(offset, limit)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->corporate_sub_account_get: #{e}"
 end
 ```
@@ -138,9 +138,9 @@ Delete a sub-account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -152,7 +152,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
 id = 789 # Integer | Id of the sub-account organization to be deleted
 
@@ -160,7 +160,7 @@ id = 789 # Integer | Id of the sub-account organization to be deleted
 begin
   #Delete a sub-account
   api_instance.corporate_sub_account_id_delete(id)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->corporate_sub_account_id_delete: #{e}"
 end
 ```
@@ -196,9 +196,9 @@ This endpoint will provide the details for the specified sub-account company
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -210,7 +210,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
 id = 789 # Integer | Id of the sub-account organization
 
@@ -219,7 +219,7 @@ begin
   #Get sub-account details
   result = api_instance.corporate_sub_account_id_get(id)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->corporate_sub_account_id_get: #{e}"
 end
 ```
@@ -255,9 +255,9 @@ This endpoint will update the sub-account plan
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -269,17 +269,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
 id = 789 # Integer | Id of the sub-account organization
 
-update_plan_details = BrevoApiV3Sdk::SubAccountUpdatePlanRequest.new # SubAccountUpdatePlanRequest | Values to update a sub-account plan
+update_plan_details = BrevoRuby::SubAccountUpdatePlanRequest.new # SubAccountUpdatePlanRequest | Values to update a sub-account plan
 
 
 begin
   #Update sub-account plan
   api_instance.corporate_sub_account_id_plan_put(id, update_plan_details)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->corporate_sub_account_id_plan_put: #{e}"
 end
 ```
@@ -316,9 +316,9 @@ This endpoint will generate an API v3 key for a sub account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -330,16 +330,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
-create_api_key_request = BrevoApiV3Sdk::CreateApiKeyRequest.new # CreateApiKeyRequest | Values to generate API key for sub-account
+create_api_key_request = BrevoRuby::CreateApiKeyRequest.new # CreateApiKeyRequest | Values to generate API key for sub-account
 
 
 begin
   #Create an API key for a sub-account
   result = api_instance.corporate_sub_account_key_post(create_api_key_request)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->corporate_sub_account_key_post: #{e}"
 end
 ```
@@ -375,9 +375,9 @@ This endpoint will create a new sub-account under a master account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -389,16 +389,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
-sub_account_create = BrevoApiV3Sdk::CreateSubAccount.new # CreateSubAccount | values to create new sub-account
+sub_account_create = BrevoRuby::CreateSubAccount.new # CreateSubAccount | values to create new sub-account
 
 
 begin
   #Create a new sub-account under a master account.
   result = api_instance.corporate_sub_account_post(sub_account_create)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->corporate_sub_account_post: #{e}"
 end
 ```
@@ -434,9 +434,9 @@ This endpoint generates an sso token to authenticate and access a sub-account of
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -448,16 +448,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
-sso_token_request = BrevoApiV3Sdk::SsoTokenRequest.new # SsoTokenRequest | Values to generate SSO token for sub-account
+sso_token_request = BrevoRuby::SsoTokenRequest.new # SsoTokenRequest | Values to generate SSO token for sub-account
 
 
 begin
   #Generate SSO token to access Brevo
   result = api_instance.corporate_sub_account_sso_token_post(sso_token_request)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->corporate_sub_account_sso_token_post: #{e}"
 end
 ```
@@ -491,9 +491,9 @@ Get user activity logs
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -505,7 +505,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::MasterAccountApi.new
+api_instance = BrevoRuby::MasterAccountApi.new
 
 opts = { 
   start_date: 'start_date_example', # String | Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search.
@@ -518,7 +518,7 @@ begin
   #Get user activity logs
   result = api_instance.get_account_activity(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling MasterAccountApi->get_account_activity: #{e}"
 end
 ```

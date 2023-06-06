@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetExtendedContactDetailsStatisticsOpened
+# BrevoRuby::GetExtendedContactDetailsStatisticsOpened
 
 ## Properties
 Name | Type | Description | Notes

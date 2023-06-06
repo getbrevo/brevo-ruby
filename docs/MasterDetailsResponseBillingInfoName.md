@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::MasterDetailsResponseBillingInfoName
+# BrevoRuby::MasterDetailsResponseBillingInfoName
 
 ## Properties
 Name | Type | Description | Notes

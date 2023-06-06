@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetIpsFromSender
+# BrevoRuby::GetIpsFromSender
 
 ## Properties
 Name | Type | Description | Notes

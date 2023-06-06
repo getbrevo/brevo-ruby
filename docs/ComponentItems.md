@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ComponentItems
+# BrevoRuby::ComponentItems
 
 ## Properties
 Name | Type | Description | Notes

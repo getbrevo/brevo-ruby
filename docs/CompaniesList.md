@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CompaniesList
+# BrevoRuby::CompaniesList
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateAttributeEnumeration
+# BrevoRuby::CreateAttributeEnumeration
 
 ## Properties
 Name | Type | Description | Notes

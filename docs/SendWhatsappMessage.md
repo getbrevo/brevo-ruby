@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::SendWhatsappMessage
+# BrevoRuby::SendWhatsappMessage
 
 ## Properties
 Name | Type | Description | Notes

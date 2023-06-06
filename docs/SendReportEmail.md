@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::SendReportEmail
+# BrevoRuby::SendReportEmail
 
 ## Properties
 Name | Type | Description | Notes

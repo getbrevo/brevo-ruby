@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetDomainsList
+# BrevoRuby::GetDomainsList
 
 ## Properties
 Name | Type | Description | Notes

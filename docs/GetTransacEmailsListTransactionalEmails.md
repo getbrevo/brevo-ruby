@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetTransacEmailsListTransactionalEmails
+# BrevoRuby::GetTransacEmailsListTransactionalEmails
 
 ## Properties
 Name | Type | Description | Notes

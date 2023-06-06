@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateDomainModelDnsRecordsDkimRecord
+# BrevoRuby::CreateDomainModelDnsRecordsDkimRecord
 
 ## Properties
 Name | Type | Description | Notes

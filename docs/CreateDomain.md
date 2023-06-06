@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateDomain
+# BrevoRuby::CreateDomain
 
 ## Properties
 Name | Type | Description | Notes

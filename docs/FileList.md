@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::FileList
+# BrevoRuby::FileList
 
 ## Properties
 Name | Type | Description | Notes

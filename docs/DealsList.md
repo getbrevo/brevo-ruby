@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::DealsList
+# BrevoRuby::DealsList
 
 ## Properties
 Name | Type | Description | Notes

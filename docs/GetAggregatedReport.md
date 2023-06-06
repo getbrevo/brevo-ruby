@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetAggregatedReport
+# BrevoRuby::GetAggregatedReport
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetCategories
+# BrevoRuby::GetCategories
 
 ## Properties
 Name | Type | Description | Notes

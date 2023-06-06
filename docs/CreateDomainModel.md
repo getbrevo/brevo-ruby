@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateDomainModel
+# BrevoRuby::CreateDomainModel
 
 ## Properties
 Name | Type | Description | Notes

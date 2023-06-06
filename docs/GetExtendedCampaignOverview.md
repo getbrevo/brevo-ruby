@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetExtendedCampaignOverview
+# BrevoRuby::GetExtendedCampaignOverview
 
 ## Properties
 Name | Type | Description | Notes

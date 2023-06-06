@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetWebhook
+# BrevoRuby::GetWebhook
 
 ## Properties
 Name | Type | Description | Notes

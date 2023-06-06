@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::PostSendSmsTestFailed
+# BrevoRuby::PostSendSmsTestFailed
 
 ## Properties
 Name | Type | Description | Notes

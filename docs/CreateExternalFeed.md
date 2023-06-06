@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateExternalFeed
+# BrevoRuby::CreateExternalFeed
 
 ## Properties
 Name | Type | Description | Notes

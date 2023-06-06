@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetStatsByBrowser
+# BrevoRuby::GetStatsByBrowser
 
 ## Properties
 Name | Type | Description | Notes

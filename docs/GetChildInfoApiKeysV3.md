@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetChildInfoApiKeysV3
+# BrevoRuby::GetChildInfoApiKeysV3
 
 ## Properties
 Name | Type | Description | Notes

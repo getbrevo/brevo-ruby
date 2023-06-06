@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::MasterDetailsResponsePlanInfo
+# BrevoRuby::MasterDetailsResponsePlanInfo
 
 ## Properties
 Name | Type | Description | Notes

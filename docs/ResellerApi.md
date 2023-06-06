@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ResellerApi
+# BrevoRuby::ResellerApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -30,9 +30,9 @@ Add Email and/or SMS credits to a specific child account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -44,18 +44,18 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
-add_credits = BrevoApiV3Sdk::AddCredits.new # AddCredits | Values to post to add credit to a specific child account
+add_credits = BrevoRuby::AddCredits.new # AddCredits | Values to post to add credit to a specific child account
 
 
 begin
   #Add Email and/or SMS credits to a specific child account
   result = api_instance.add_credits(child_identifier, add_credits)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->add_credits: #{e}"
 end
 ```
@@ -90,9 +90,9 @@ Associate a dedicated IP to the child
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -104,17 +104,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
-ip = BrevoApiV3Sdk::ManageIp.new # ManageIp | IP to associate
+ip = BrevoRuby::ManageIp.new # ManageIp | IP to associate
 
 
 begin
   #Associate a dedicated IP to the child
   api_instance.associate_ip_to_child(child_identifier, ip)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->associate_ip_to_child: #{e}"
 end
 ```
@@ -149,9 +149,9 @@ Create a domain for a child account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -163,17 +163,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
-add_child_domain = BrevoApiV3Sdk::AddChildDomain.new # AddChildDomain | Sender domain to add for a specific child account. This will not be displayed to the parent account.
+add_child_domain = BrevoRuby::AddChildDomain.new # AddChildDomain | Sender domain to add for a specific child account. This will not be displayed to the parent account.
 
 
 begin
   #Create a domain for a child account
   api_instance.create_child_domain(child_identifier, add_child_domain)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->create_child_domain: #{e}"
 end
 ```
@@ -208,9 +208,9 @@ Creates a reseller child
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -222,17 +222,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 opts = { 
-  reseller_child: BrevoApiV3Sdk::CreateChild.new # CreateChild | reseller child to add
+  reseller_child: BrevoRuby::CreateChild.new # CreateChild | reseller child to add
 }
 
 begin
   #Creates a reseller child
   result = api_instance.create_reseller_child(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->create_reseller_child: #{e}"
 end
 ```
@@ -266,9 +266,9 @@ Delete the sender domain of the reseller child based on the childIdentifier and 
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -280,7 +280,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
@@ -290,7 +290,7 @@ domain_name = 'domain_name_example' # String | Pass the existing domain that nee
 begin
   #Delete the sender domain of the reseller child based on the childIdentifier and domainName passed
   api_instance.delete_child_domain(child_identifier, domain_name)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->delete_child_domain: #{e}"
 end
 ```
@@ -325,9 +325,9 @@ Delete a single reseller child based on the child identifier supplied
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -339,7 +339,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or child id of reseller's child
 
@@ -347,7 +347,7 @@ child_identifier = 'child_identifier_example' # String | Either auth key or chil
 begin
   #Delete a single reseller child based on the child identifier supplied
   api_instance.delete_reseller_child(child_identifier)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->delete_reseller_child: #{e}"
 end
 ```
@@ -381,9 +381,9 @@ Dissociate a dedicated IP to the child
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -395,17 +395,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
-ip = BrevoApiV3Sdk::ManageIp.new # ManageIp | IP to dissociate
+ip = BrevoRuby::ManageIp.new # ManageIp | IP to dissociate
 
 
 begin
   #Dissociate a dedicated IP to the child
   api_instance.dissociate_ip_from_child(child_identifier, ip)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->dissociate_ip_from_child: #{e}"
 end
 ```
@@ -440,9 +440,9 @@ Get the status of a reseller's child account creation, whether it is successfull
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -454,7 +454,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
@@ -463,7 +463,7 @@ begin
   #Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the identifier supplied
   result = api_instance.get_child_account_creation_status(child_identifier)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->get_child_account_creation_status: #{e}"
 end
 ```
@@ -497,9 +497,9 @@ Get all sender domains for a specific child account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -511,7 +511,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
@@ -520,7 +520,7 @@ begin
   #Get all sender domains for a specific child account
   result = api_instance.get_child_domains(child_identifier)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->get_child_domains: #{e}"
 end
 ```
@@ -554,9 +554,9 @@ Get a child account's details
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -568,7 +568,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
@@ -577,7 +577,7 @@ begin
   #Get a child account's details
   result = api_instance.get_child_info(child_identifier)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->get_child_info: #{e}"
 end
 ```
@@ -611,9 +611,9 @@ Get the list of all children accounts
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -625,7 +625,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 opts = { 
   limit: 10, # Integer | Number of documents for child accounts information per page
@@ -636,7 +636,7 @@ begin
   #Get the list of all children accounts
   result = api_instance.get_reseller_childs(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->get_reseller_childs: #{e}"
 end
 ```
@@ -673,9 +673,9 @@ It returns a session [token] which will remain valid for a short period of time.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -687,7 +687,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
@@ -696,7 +696,7 @@ begin
   #Get session token to access Brevo (SSO)
   result = api_instance.get_sso_token(child_identifier)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->get_sso_token: #{e}"
 end
 ```
@@ -730,9 +730,9 @@ Remove Email and/or SMS credits from a specific child account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -744,18 +744,18 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
-remove_credits = BrevoApiV3Sdk::RemoveCredits.new # RemoveCredits | Values to post to remove email or SMS credits from a specific child account
+remove_credits = BrevoRuby::RemoveCredits.new # RemoveCredits | Values to post to remove email or SMS credits from a specific child account
 
 
 begin
   #Remove Email and/or SMS credits from a specific child account
   result = api_instance.remove_credits(child_identifier, remove_credits)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->remove_credits: #{e}"
 end
 ```
@@ -790,9 +790,9 @@ Update info of reseller's child account status based on the childIdentifier supp
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -804,17 +804,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
-update_child_account_status = BrevoApiV3Sdk::UpdateChildAccountStatus.new # UpdateChildAccountStatus | values to update in child account status
+update_child_account_status = BrevoRuby::UpdateChildAccountStatus.new # UpdateChildAccountStatus | values to update in child account status
 
 
 begin
   #Update info of reseller's child account status based on the childIdentifier supplied
   api_instance.update_child_account_status(child_identifier, update_child_account_status)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->update_child_account_status: #{e}"
 end
 ```
@@ -849,9 +849,9 @@ Update the sender domain of reseller's child based on the childIdentifier and do
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -863,19 +863,19 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
 domain_name = 'domain_name_example' # String | Pass the existing domain that needs to be updated
 
-update_child_domain = BrevoApiV3Sdk::UpdateChildDomain.new # UpdateChildDomain | value to update for sender domain
+update_child_domain = BrevoRuby::UpdateChildDomain.new # UpdateChildDomain | value to update for sender domain
 
 
 begin
   #Update the sender domain of reseller's child based on the childIdentifier and domainName passed
   api_instance.update_child_domain(child_identifier, domain_name, update_child_domain)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->update_child_domain: #{e}"
 end
 ```
@@ -911,9 +911,9 @@ Update info of reseller's child based on the child identifier supplied
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -925,17 +925,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ResellerApi.new
+api_instance = BrevoRuby::ResellerApi.new
 
 child_identifier = 'child_identifier_example' # String | Either auth key or id of reseller's child
 
-reseller_child = BrevoApiV3Sdk::UpdateChild.new # UpdateChild | values to update in child profile
+reseller_child = BrevoRuby::UpdateChild.new # UpdateChild | values to update in child profile
 
 
 begin
   #Update info of reseller's child based on the child identifier supplied
   api_instance.update_reseller_child(child_identifier, reseller_child)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ResellerApi->update_reseller_child: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateContact
+# BrevoRuby::UpdateContact
 
 ## Properties
 Name | Type | Description | Notes

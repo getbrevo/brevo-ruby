@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::RemoveContactFromList
+# BrevoRuby::RemoveContactFromList
 
 ## Properties
 Name | Type | Description | Notes

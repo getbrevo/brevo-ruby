@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::OrderBatch
+# BrevoRuby::OrderBatch
 
 ## Properties
 Name | Type | Description | Notes

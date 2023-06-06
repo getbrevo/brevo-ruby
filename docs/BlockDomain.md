@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::BlockDomain
+# BrevoRuby::BlockDomain
 
 ## Properties
 Name | Type | Description | Notes

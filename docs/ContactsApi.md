@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ContactsApi
+# BrevoRuby::ContactsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -43,9 +43,9 @@ Add existing contacts to a list
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -57,18 +57,18 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
-contact_emails = BrevoApiV3Sdk::AddContactToList.new # AddContactToList | Emails addresses OR IDs of the contacts
+contact_emails = BrevoRuby::AddContactToList.new # AddContactToList | Emails addresses OR IDs of the contacts
 
 
 begin
   #Add existing contacts to a list
   result = api_instance.add_contact_to_list(list_id, contact_emails)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->add_contact_to_list: #{e}"
 end
 ```
@@ -103,9 +103,9 @@ Create contact attribute
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -117,19 +117,19 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 attribute_category = 'attribute_category_example' # String | Category of the attribute
 
 attribute_name = 'attribute_name_example' # String | Name of the attribute
 
-create_attribute = BrevoApiV3Sdk::CreateAttribute.new # CreateAttribute | Values to create an attribute
+create_attribute = BrevoRuby::CreateAttribute.new # CreateAttribute | Values to create an attribute
 
 
 begin
   #Create contact attribute
   api_instance.create_attribute(attribute_category, attribute_name, create_attribute)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->create_attribute: #{e}"
 end
 ```
@@ -165,9 +165,9 @@ Create a contact
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -179,16 +179,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
-create_contact = BrevoApiV3Sdk::CreateContact.new # CreateContact | Values to create a contact
+create_contact = BrevoRuby::CreateContact.new # CreateContact | Values to create a contact
 
 
 begin
   #Create a contact
   result = api_instance.create_contact(create_contact)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->create_contact: #{e}"
 end
 ```
@@ -222,9 +222,9 @@ Create Contact via DOI (Double-Opt-In) Flow
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -236,15 +236,15 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
-create_doi_contact = BrevoApiV3Sdk::CreateDoiContact.new # CreateDoiContact | Values to create the Double opt-in (DOI) contact
+create_doi_contact = BrevoRuby::CreateDoiContact.new # CreateDoiContact | Values to create the Double opt-in (DOI) contact
 
 
 begin
   #Create Contact via DOI (Double-Opt-In) Flow
   api_instance.create_doi_contact(create_doi_contact)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->create_doi_contact: #{e}"
 end
 ```
@@ -278,9 +278,9 @@ Create a folder
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -292,16 +292,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
-create_folder = BrevoApiV3Sdk::CreateUpdateFolder.new # CreateUpdateFolder | Name of the folder
+create_folder = BrevoRuby::CreateUpdateFolder.new # CreateUpdateFolder | Name of the folder
 
 
 begin
   #Create a folder
   result = api_instance.create_folder(create_folder)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->create_folder: #{e}"
 end
 ```
@@ -335,9 +335,9 @@ Create a list
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -349,16 +349,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
-create_list = BrevoApiV3Sdk::CreateList.new # CreateList | Values to create a list
+create_list = BrevoRuby::CreateList.new # CreateList | Values to create a list
 
 
 begin
   #Create a list
   result = api_instance.create_list(create_list)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->create_list: #{e}"
 end
 ```
@@ -392,9 +392,9 @@ Delete an attribute
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -406,7 +406,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 attribute_category = 'attribute_category_example' # String | Category of the attribute
 
@@ -416,7 +416,7 @@ attribute_name = 'attribute_name_example' # String | Name of the existing attrib
 begin
   #Delete an attribute
   api_instance.delete_attribute(attribute_category, attribute_name)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->delete_attribute: #{e}"
 end
 ```
@@ -451,9 +451,9 @@ Delete a contact
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -465,7 +465,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact
 
@@ -473,7 +473,7 @@ identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the con
 begin
   #Delete a contact
   api_instance.delete_contact(identifier)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->delete_contact: #{e}"
 end
 ```
@@ -507,9 +507,9 @@ Delete a folder (and all its lists)
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -521,7 +521,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 folder_id = 789 # Integer | Id of the folder
 
@@ -529,7 +529,7 @@ folder_id = 789 # Integer | Id of the folder
 begin
   #Delete a folder (and all its lists)
   api_instance.delete_folder(folder_id)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->delete_folder: #{e}"
 end
 ```
@@ -563,9 +563,9 @@ Delete a list
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -577,7 +577,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
@@ -585,7 +585,7 @@ list_id = 789 # Integer | Id of the list
 begin
   #Delete a list
   api_instance.delete_list(list_id)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->delete_list: #{e}"
 end
 ```
@@ -619,9 +619,9 @@ List all attributes
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -633,13 +633,13 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 begin
   #List all attributes
   result = api_instance.get_attributes
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_attributes: #{e}"
 end
 ```
@@ -672,9 +672,9 @@ Along with the contact details, this endpoint will show the statistics of contac
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -686,7 +686,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact OR its SMS attribute value
 
@@ -699,7 +699,7 @@ begin
   #Get a contact's details
   result = api_instance.get_contact_info(identifier, opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_contact_info: #{e}"
 end
 ```
@@ -735,9 +735,9 @@ Get email campaigns' statistics for a contact
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -749,7 +749,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact
 
@@ -762,7 +762,7 @@ begin
   #Get email campaigns' statistics for a contact
   result = api_instance.get_contact_stats(identifier, opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_contact_stats: #{e}"
 end
 ```
@@ -798,9 +798,9 @@ Get all the contacts
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -812,7 +812,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 opts = { 
   limit: 50, # Integer | Number of documents per page
@@ -826,7 +826,7 @@ begin
   #Get all the contacts
   result = api_instance.get_contacts(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_contacts: #{e}"
 end
 ```
@@ -864,9 +864,9 @@ Get contacts in a list
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -878,7 +878,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
@@ -893,7 +893,7 @@ begin
   #Get contacts in a list
   result = api_instance.get_contacts_from_list(list_id, opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_contacts_from_list: #{e}"
 end
 ```
@@ -931,9 +931,9 @@ Returns a folder's details
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -945,7 +945,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 folder_id = 789 # Integer | id of the folder
 
@@ -954,7 +954,7 @@ begin
   #Returns a folder's details
   result = api_instance.get_folder(folder_id)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_folder: #{e}"
 end
 ```
@@ -988,9 +988,9 @@ Get lists in a folder
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1002,7 +1002,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 folder_id = 789 # Integer | Id of the folder
 
@@ -1016,7 +1016,7 @@ begin
   #Get lists in a folder
   result = api_instance.get_folder_lists(folder_id, opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_folder_lists: #{e}"
 end
 ```
@@ -1053,9 +1053,9 @@ Get all folders
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1067,7 +1067,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 limit = 10 # Integer | Number of documents per page
 
@@ -1081,7 +1081,7 @@ begin
   #Get all folders
   result = api_instance.get_folders(limit, offset, opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_folders: #{e}"
 end
 ```
@@ -1117,9 +1117,9 @@ Get a list's details
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1131,7 +1131,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
@@ -1140,7 +1140,7 @@ begin
   #Get a list's details
   result = api_instance.get_list(list_id)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_list: #{e}"
 end
 ```
@@ -1174,9 +1174,9 @@ Get all the lists
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1188,7 +1188,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 opts = { 
   limit: 10, # Integer | Number of documents per page
@@ -1200,7 +1200,7 @@ begin
   #Get all the lists
   result = api_instance.get_lists(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_lists: #{e}"
 end
 ```
@@ -1236,9 +1236,9 @@ Get all the Segments
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1250,7 +1250,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 limit = 10 # Integer | Number of documents per page
 
@@ -1264,7 +1264,7 @@ begin
   #Get all the Segments
   result = api_instance.get_segments(limit, offset, opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->get_segments: #{e}"
 end
 ```
@@ -1302,9 +1302,9 @@ It returns the background process ID which on completion calls the notify URL th
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1316,16 +1316,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
-request_contact_import = BrevoApiV3Sdk::RequestContactImport.new # RequestContactImport | Values to import contacts in Brevo. To know more about the expected format, please have a look at ``https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns``
+request_contact_import = BrevoRuby::RequestContactImport.new # RequestContactImport | Values to import contacts in Brevo. To know more about the expected format, please have a look at ``https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns``
 
 
 begin
   #Import contacts
   result = api_instance.import_contacts(request_contact_import)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->import_contacts: #{e}"
 end
 ```
@@ -1359,9 +1359,9 @@ Delete a contact from a list
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1373,18 +1373,18 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
-contact_emails = BrevoApiV3Sdk::RemoveContactFromList.new # RemoveContactFromList | Emails addresses OR IDs of the contacts
+contact_emails = BrevoRuby::RemoveContactFromList.new # RemoveContactFromList | Emails addresses OR IDs of the contacts
 
 
 begin
   #Delete a contact from a list
   result = api_instance.remove_contact_from_list(list_id, contact_emails)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->remove_contact_from_list: #{e}"
 end
 ```
@@ -1421,9 +1421,9 @@ It returns the background process ID which on completion calls the notify URL th
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1435,16 +1435,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
-request_contact_export = BrevoApiV3Sdk::RequestContactExport.new # RequestContactExport | Values to request a contact export
+request_contact_export = BrevoRuby::RequestContactExport.new # RequestContactExport | Values to request a contact export
 
 
 begin
   #Export contacts
   result = api_instance.request_contact_export(request_contact_export)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->request_contact_export: #{e}"
 end
 ```
@@ -1478,9 +1478,9 @@ Update contact attribute
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1492,19 +1492,19 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 attribute_category = 'attribute_category_example' # String | Category of the attribute
 
 attribute_name = 'attribute_name_example' # String | Name of the existing attribute
 
-update_attribute = BrevoApiV3Sdk::UpdateAttribute.new # UpdateAttribute | Values to update an attribute
+update_attribute = BrevoRuby::UpdateAttribute.new # UpdateAttribute | Values to update an attribute
 
 
 begin
   #Update contact attribute
   api_instance.update_attribute(attribute_category, attribute_name, update_attribute)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->update_attribute: #{e}"
 end
 ```
@@ -1540,9 +1540,9 @@ Update multiple contacts
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1554,15 +1554,15 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
-update_batch_contacts = BrevoApiV3Sdk::UpdateBatchContacts.new # UpdateBatchContacts | Values to update multiple contacts
+update_batch_contacts = BrevoRuby::UpdateBatchContacts.new # UpdateBatchContacts | Values to update multiple contacts
 
 
 begin
   #Update multiple contacts
   api_instance.update_batch_contacts(update_batch_contacts)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->update_batch_contacts: #{e}"
 end
 ```
@@ -1596,9 +1596,9 @@ Update a contact
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1610,17 +1610,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact
 
-update_contact = BrevoApiV3Sdk::UpdateContact.new # UpdateContact | Values to update a contact
+update_contact = BrevoRuby::UpdateContact.new # UpdateContact | Values to update a contact
 
 
 begin
   #Update a contact
   api_instance.update_contact(identifier, update_contact)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->update_contact: #{e}"
 end
 ```
@@ -1655,9 +1655,9 @@ Update a folder
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1669,17 +1669,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 folder_id = 789 # Integer | Id of the folder
 
-update_folder = BrevoApiV3Sdk::CreateUpdateFolder.new # CreateUpdateFolder | Name of the folder
+update_folder = BrevoRuby::CreateUpdateFolder.new # CreateUpdateFolder | Name of the folder
 
 
 begin
   #Update a folder
   api_instance.update_folder(folder_id, update_folder)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->update_folder: #{e}"
 end
 ```
@@ -1714,9 +1714,9 @@ Update a list
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1728,17 +1728,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ContactsApi.new
+api_instance = BrevoRuby::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
-update_list = BrevoApiV3Sdk::UpdateList.new # UpdateList | Values to update a list
+update_list = BrevoRuby::UpdateList.new # UpdateList | Values to update a list
 
 
 begin
   #Update a list
   api_instance.update_list(list_id, update_list)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ContactsApi->update_list: #{e}"
 end
 ```

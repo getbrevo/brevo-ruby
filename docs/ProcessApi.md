@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ProcessApi
+# BrevoRuby::ProcessApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -16,9 +16,9 @@ Return the informations for a process
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -30,7 +30,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ProcessApi.new
+api_instance = BrevoRuby::ProcessApi.new
 
 process_id = 789 # Integer | Id of the process
 
@@ -39,7 +39,7 @@ begin
   #Return the informations for a process
   result = api_instance.get_process(process_id)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ProcessApi->get_process: #{e}"
 end
 ```
@@ -73,9 +73,9 @@ Return all the processes for your account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -87,7 +87,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::ProcessApi.new
+api_instance = BrevoRuby::ProcessApi.new
 
 opts = { 
   limit: 10, # Integer | Number limitation for the result returned
@@ -99,7 +99,7 @@ begin
   #Return all the processes for your account
   result = api_instance.get_processes(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling ProcessApi->get_processes: #{e}"
 end
 ```

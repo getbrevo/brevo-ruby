@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::WhatsappCampStats
+# BrevoRuby::WhatsappCampStats
 
 ## Properties
 Name | Type | Description | Notes

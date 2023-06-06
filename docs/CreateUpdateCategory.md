@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateUpdateCategory
+# BrevoRuby::CreateUpdateCategory
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::OrderBilling
+# BrevoRuby::OrderBilling
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ExportWebhooksHistory
+# BrevoRuby::ExportWebhooksHistory
 
 ## Properties
 Name | Type | Description | Notes

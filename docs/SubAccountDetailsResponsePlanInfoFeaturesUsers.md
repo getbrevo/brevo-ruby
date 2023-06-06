@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::SubAccountDetailsResponsePlanInfoFeaturesUsers
+# BrevoRuby::SubAccountDetailsResponsePlanInfoFeaturesUsers
 
 ## Properties
 Name | Type | Description | Notes

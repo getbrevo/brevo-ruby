@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UploadImageModel
+# BrevoRuby::UploadImageModel
 
 ## Properties
 Name | Type | Description | Notes

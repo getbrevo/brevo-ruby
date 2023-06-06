@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::Otp
+# BrevoRuby::Otp
 
 ## Properties
 Name | Type | Description | Notes

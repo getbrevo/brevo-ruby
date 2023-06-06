@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::Order
+# BrevoRuby::Order
 
 ## Properties
 Name | Type | Description | Notes

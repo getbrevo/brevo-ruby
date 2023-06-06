@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetProcess
+# BrevoRuby::GetProcess
 
 ## Properties
 Name | Type | Description | Notes

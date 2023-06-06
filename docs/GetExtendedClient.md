@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetExtendedClient
+# BrevoRuby::GetExtendedClient
 
 ## Properties
 Name | Type | Description | Notes

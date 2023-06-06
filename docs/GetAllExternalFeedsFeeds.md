@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetAllExternalFeedsFeeds
+# BrevoRuby::GetAllExternalFeedsFeeds
 
 ## Properties
 Name | Type | Description | Notes

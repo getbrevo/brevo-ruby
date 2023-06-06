@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetSsoToken
+# BrevoRuby::GetSsoToken
 
 ## Properties
 Name | Type | Description | Notes

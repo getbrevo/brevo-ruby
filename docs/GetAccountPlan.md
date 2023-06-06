@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetAccountPlan
+# BrevoRuby::GetAccountPlan
 
 ## Properties
 Name | Type | Description | Notes

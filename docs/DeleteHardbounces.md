@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::DeleteHardbounces
+# BrevoRuby::DeleteHardbounces
 
 ## Properties
 Name | Type | Description | Notes

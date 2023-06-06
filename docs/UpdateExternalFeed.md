@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateExternalFeed
+# BrevoRuby::UpdateExternalFeed
 
 ## Properties
 Name | Type | Description | Notes

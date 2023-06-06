@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateUpdateProducts
+# BrevoRuby::CreateUpdateProducts
 
 ## Properties
 Name | Type | Description | Notes

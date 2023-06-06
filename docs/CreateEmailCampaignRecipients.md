@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateEmailCampaignRecipients
+# BrevoRuby::CreateEmailCampaignRecipients
 
 ## Properties
 Name | Type | Description | Notes

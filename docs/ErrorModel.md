@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ErrorModel
+# BrevoRuby::ErrorModel
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::PipelineStage
+# BrevoRuby::PipelineStage
 
 ## Properties
 Name | Type | Description | Notes

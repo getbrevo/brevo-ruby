@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateCampaignStatus
+# BrevoRuby::UpdateCampaignStatus
 
 ## Properties
 Name | Type | Description | Notes

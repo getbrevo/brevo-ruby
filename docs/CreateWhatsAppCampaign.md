@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateWhatsAppCampaign
+# BrevoRuby::CreateWhatsAppCampaign
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::SendTransacSms
+# BrevoRuby::SendTransacSms
 
 ## Properties
 Name | Type | Description | Notes

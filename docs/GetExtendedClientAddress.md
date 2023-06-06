@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetExtendedClientAddress
+# BrevoRuby::GetExtendedClientAddress
 
 ## Properties
 Name | Type | Description | Notes

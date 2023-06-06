@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetTransacAggregatedSmsReport
+# BrevoRuby::GetTransacAggregatedSmsReport
 
 ## Properties
 Name | Type | Description | Notes

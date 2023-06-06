@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateCategoryModel
+# BrevoRuby::CreateCategoryModel
 
 ## Properties
 Name | Type | Description | Notes

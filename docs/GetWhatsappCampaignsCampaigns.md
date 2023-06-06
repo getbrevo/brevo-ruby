@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetWhatsappCampaignsCampaigns
+# BrevoRuby::GetWhatsappCampaignsCampaigns
 
 ## Properties
 Name | Type | Description | Notes

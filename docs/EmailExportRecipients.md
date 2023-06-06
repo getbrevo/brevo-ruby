@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::EmailExportRecipients
+# BrevoRuby::EmailExportRecipients
 
 ## Properties
 Name | Type | Description | Notes

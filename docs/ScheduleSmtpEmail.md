@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ScheduleSmtpEmail
+# BrevoRuby::ScheduleSmtpEmail
 
 ## Properties
 Name | Type | Description | Notes

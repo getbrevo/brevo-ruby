@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateProductModel
+# BrevoRuby::CreateProductModel
 
 ## Properties
 Name | Type | Description | Notes

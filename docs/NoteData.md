@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::NoteData
+# BrevoRuby::NoteData
 
 ## Properties
 Name | Type | Description | Notes

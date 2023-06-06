@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::TransactionalWhatsAppApi
+# BrevoRuby::TransactionalWhatsAppApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -18,9 +18,9 @@ This endpoint will show the unaggregated statistics for WhatsApp activity (30 da
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -32,7 +32,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::TransactionalWhatsAppApi.new
+api_instance = BrevoRuby::TransactionalWhatsAppApi.new
 
 opts = { 
   limit: 2500, # Integer | Number limitation for the result returned
@@ -49,7 +49,7 @@ begin
   #Get all your WhatsApp activity (unaggregated events)
   result = api_instance.get_whatsapp_event_report(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling TransactionalWhatsAppApi->get_whatsapp_event_report: #{e}"
 end
 ```
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 
 # **send_whatsapp_message**
-> InlineResponse2012 send_whatsapp_message(send_whatsapp_message)
+> InlineResponse2013 send_whatsapp_message(send_whatsapp_message)
 
 Send a WhatsApp message
 
@@ -92,9 +92,9 @@ This endpoint is used to send a WhatsApp message. <br/>(**The first message you 
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -106,16 +106,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::TransactionalWhatsAppApi.new
+api_instance = BrevoRuby::TransactionalWhatsAppApi.new
 
-send_whatsapp_message = BrevoApiV3Sdk::SendWhatsappMessage.new # SendWhatsappMessage | Values to send WhatsApp message
+send_whatsapp_message = BrevoRuby::SendWhatsappMessage.new # SendWhatsappMessage | Values to send WhatsApp message
 
 
 begin
   #Send a WhatsApp message
   result = api_instance.send_whatsapp_message(send_whatsapp_message)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling TransactionalWhatsAppApi->send_whatsapp_message: #{e}"
 end
 ```
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2012**](InlineResponse2012.md)
+[**InlineResponse2013**](InlineResponse2013.md)
 
 ### Authorization
 

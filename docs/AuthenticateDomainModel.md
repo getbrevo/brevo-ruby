@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::AuthenticateDomainModel
+# BrevoRuby::AuthenticateDomainModel
 
 ## Properties
 Name | Type | Description | Notes

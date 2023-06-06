@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::TaskList
+# BrevoRuby::TaskList
 
 ## Properties
 Name | Type | Description | Notes

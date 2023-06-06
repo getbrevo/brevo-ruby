@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetTransacEmailContent
+# BrevoRuby::GetTransacEmailContent
 
 ## Properties
 Name | Type | Description | Notes

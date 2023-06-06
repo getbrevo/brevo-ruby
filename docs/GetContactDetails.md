@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetContactDetails
+# BrevoRuby::GetContactDetails
 
 ## Properties
 Name | Type | Description | Notes

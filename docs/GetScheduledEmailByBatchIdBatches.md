@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetScheduledEmailByBatchIdBatches
+# BrevoRuby::GetScheduledEmailByBatchIdBatches
 
 ## Properties
 Name | Type | Description | Notes

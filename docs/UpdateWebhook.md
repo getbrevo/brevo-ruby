@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateWebhook
+# BrevoRuby::UpdateWebhook
 
 ## Properties
 Name | Type | Description | Notes

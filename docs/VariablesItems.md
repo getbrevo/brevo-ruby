@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::VariablesItems
+# BrevoRuby::VariablesItems
 
 ## Properties
 Name | Type | Description | Notes

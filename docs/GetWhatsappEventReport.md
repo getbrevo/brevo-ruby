@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetWhatsappEventReport
+# BrevoRuby::GetWhatsappEventReport
 
 ## Properties
 Name | Type | Description | Notes

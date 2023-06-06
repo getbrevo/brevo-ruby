@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetReportsReports
+# BrevoRuby::GetReportsReports
 
 ## Properties
 Name | Type | Description | Notes

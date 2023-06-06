@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateDomainModelDnsRecords
+# BrevoRuby::CreateDomainModelDnsRecords
 
 ## Properties
 Name | Type | Description | Notes

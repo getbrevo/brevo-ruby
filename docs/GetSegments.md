@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetSegments
+# BrevoRuby::GetSegments
 
 ## Properties
 Name | Type | Description | Notes

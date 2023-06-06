@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::OrderProducts
+# BrevoRuby::OrderProducts
 
 ## Properties
 Name | Type | Description | Notes

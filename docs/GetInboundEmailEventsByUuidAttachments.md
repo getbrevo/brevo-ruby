@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetInboundEmailEventsByUuidAttachments
+# BrevoRuby::GetInboundEmailEventsByUuidAttachments
 
 ## Properties
 Name | Type | Description | Notes

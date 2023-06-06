@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::AddCredits
+# BrevoRuby::AddCredits
 
 ## Properties
 Name | Type | Description | Notes

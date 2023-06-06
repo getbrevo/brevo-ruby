@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UploadImageToGallery
+# BrevoRuby::UploadImageToGallery
 
 ## Properties
 Name | Type | Description | Notes

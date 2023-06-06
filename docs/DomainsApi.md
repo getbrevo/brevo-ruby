@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::DomainsApi
+# BrevoRuby::DomainsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**authenticate_domain**](DomainsApi.md#authenticate_domain) | **PUT** /senders/domains/{domainName}/authenticate | Authenticate a domain
 [**create_domain**](DomainsApi.md#create_domain) | **POST** /senders/domains | Create a new domain
 [**delete_domain**](DomainsApi.md#delete_domain) | **DELETE** /senders/domains/{domainName} | Delete a domain
-[**get_domainonfiguration**](DomainsApi.md#get_domainonfiguration) | **GET** /senders/domains/{domainName} | Validate domain configuration
+[**get_domain_configuration**](DomainsApi.md#get_domain_configuration) | **GET** /senders/domains/{domainName} | Validate domain configuration
 [**get_domains**](DomainsApi.md#get_domains) | **GET** /senders/domains | Get the list of all your domains
 
 
@@ -19,9 +19,9 @@ Authenticate a domain
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -33,7 +33,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::DomainsApi.new
+api_instance = BrevoRuby::DomainsApi.new
 
 domain_name = 'domain_name_example' # String | Domain name
 
@@ -42,7 +42,7 @@ begin
   #Authenticate a domain
   result = api_instance.authenticate_domain(domain_name)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling DomainsApi->authenticate_domain: #{e}"
 end
 ```
@@ -76,9 +76,9 @@ Create a new domain
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -90,17 +90,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::DomainsApi.new
+api_instance = BrevoRuby::DomainsApi.new
 
 opts = { 
-  domain_name: BrevoApiV3Sdk::CreateDomain.new # CreateDomain | domain's name
+  domain_name: BrevoRuby::CreateDomain.new # CreateDomain | domain's name
 }
 
 begin
   #Create a new domain
   result = api_instance.create_domain(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling DomainsApi->create_domain: #{e}"
 end
 ```
@@ -134,9 +134,9 @@ Delete a domain
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -148,7 +148,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::DomainsApi.new
+api_instance = BrevoRuby::DomainsApi.new
 
 domain_name = 'domain_name_example' # String | Domain name
 
@@ -156,7 +156,7 @@ domain_name = 'domain_name_example' # String | Domain name
 begin
   #Delete a domain
   api_instance.delete_domain(domain_name)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling DomainsApi->delete_domain: #{e}"
 end
 ```
@@ -182,17 +182,17 @@ nil (empty response body)
 
 
 
-# **get_domainonfiguration**
-> GetDomainonfigurationModel get_domainonfiguration(domain_name)
+# **get_domain_configuration**
+> GetDomainConfigurationModel get_domain_configuration(domain_name)
 
 Validate domain configuration
 
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -204,17 +204,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::DomainsApi.new
+api_instance = BrevoRuby::DomainsApi.new
 
 domain_name = 'domain_name_example' # String | Domain name
 
 
 begin
   #Validate domain configuration
-  result = api_instance.get_domainonfiguration(domain_name)
+  result = api_instance.get_domain_configuration(domain_name)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
-  puts "Exception when calling DomainsApi->get_domainonfiguration: #{e}"
+rescue BrevoRuby::ApiError => e
+  puts "Exception when calling DomainsApi->get_domain_configuration: #{e}"
 end
 ```
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetDomainonfigurationModel**](GetDomainonfigurationModel.md)
+[**GetDomainConfigurationModel**](GetDomainConfigurationModel.md)
 
 ### Authorization
 
@@ -247,9 +247,9 @@ Get the list of all your domains
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -261,13 +261,13 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::DomainsApi.new
+api_instance = BrevoRuby::DomainsApi.new
 
 begin
   #Get the list of all your domains
   result = api_instance.get_domains
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling DomainsApi->get_domains: #{e}"
 end
 ```

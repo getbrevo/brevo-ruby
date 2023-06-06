@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateReseller
+# BrevoRuby::CreateReseller
 
 ## Properties
 Name | Type | Description | Notes

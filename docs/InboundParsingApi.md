@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::InboundParsingApi
+# BrevoRuby::InboundParsingApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -19,9 +19,9 @@ This endpoint will retrieve inbound attachment with download token.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -33,7 +33,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::InboundParsingApi.new
+api_instance = BrevoRuby::InboundParsingApi.new
 
 download_token = 'download_token_example' # String | Token to fetch a particular attachment
 
@@ -42,7 +42,7 @@ begin
   #Retrieve inbound attachment with download token.
   result = api_instance.get_inbound_email_attachment(download_token)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling InboundParsingApi->get_inbound_email_attachment: #{e}"
 end
 ```
@@ -78,9 +78,9 @@ This endpoint will show the list of all the events for the received emails.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -92,7 +92,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::InboundParsingApi.new
+api_instance = BrevoRuby::InboundParsingApi.new
 
 opts = { 
   sender: 'sender_example', # String | Email address of the sender.
@@ -107,7 +107,7 @@ begin
   #Get the list of all the events for the received emails.
   result = api_instance.get_inbound_email_events(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling InboundParsingApi->get_inbound_email_events: #{e}"
 end
 ```
@@ -148,9 +148,9 @@ This endpoint will show the list of all events history for one particular receiv
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -162,7 +162,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::InboundParsingApi.new
+api_instance = BrevoRuby::InboundParsingApi.new
 
 uuid = 'uuid_example' # String | UUID to fetch events specific to recieved email
 
@@ -171,7 +171,7 @@ begin
   #Fetch all events history for one particular received email.
   result = api_instance.get_inbound_email_events_by_uuid(uuid)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling InboundParsingApi->get_inbound_email_events_by_uuid: #{e}"
 end
 ```

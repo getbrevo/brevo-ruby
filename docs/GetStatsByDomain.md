@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetStatsByDomain
+# BrevoRuby::GetStatsByDomain
 
 ## Properties
 Name | Type | Description | Notes

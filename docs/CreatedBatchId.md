@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreatedBatchId
+# BrevoRuby::CreatedBatchId
 
 ## Properties
 Name | Type | Description | Notes

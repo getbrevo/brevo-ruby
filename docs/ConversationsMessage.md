@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ConversationsMessage
+# BrevoRuby::ConversationsMessage
 
 ## Properties
 Name | Type | Description | Notes

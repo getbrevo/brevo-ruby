@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateWhatsAppTemplate
+# BrevoRuby::CreateWhatsAppTemplate
 
 ## Properties
 Name | Type | Description | Notes

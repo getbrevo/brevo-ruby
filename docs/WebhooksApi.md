@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::WebhooksApi
+# BrevoRuby::WebhooksApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -20,9 +20,9 @@ Create a webhook
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -34,16 +34,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::WebhooksApi.new
+api_instance = BrevoRuby::WebhooksApi.new
 
-create_webhook = BrevoApiV3Sdk::CreateWebhook.new # CreateWebhook | Values to create a webhook
+create_webhook = BrevoRuby::CreateWebhook.new # CreateWebhook | Values to create a webhook
 
 
 begin
   #Create a webhook
   result = api_instance.create_webhook(create_webhook)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling WebhooksApi->create_webhook: #{e}"
 end
 ```
@@ -77,9 +77,9 @@ Delete a webhook
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -91,7 +91,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::WebhooksApi.new
+api_instance = BrevoRuby::WebhooksApi.new
 
 webhook_id = 789 # Integer | Id of the webhook
 
@@ -99,7 +99,7 @@ webhook_id = 789 # Integer | Id of the webhook
 begin
   #Delete a webhook
   api_instance.delete_webhook(webhook_id)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling WebhooksApi->delete_webhook: #{e}"
 end
 ```
@@ -135,9 +135,9 @@ This endpoint will submit a request to get the history of webhooks in the CSV fi
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -149,16 +149,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::WebhooksApi.new
+api_instance = BrevoRuby::WebhooksApi.new
 
-export_webhook_history = BrevoApiV3Sdk::ExportWebhooksHistory.new # ExportWebhooksHistory | Values to submit for webhooks history
+export_webhook_history = BrevoRuby::ExportWebhooksHistory.new # ExportWebhooksHistory | Values to submit for webhooks history
 
 
 begin
   #Export all transactional events
   result = api_instance.export_webhooks_history(export_webhook_history)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling WebhooksApi->export_webhooks_history: #{e}"
 end
 ```
@@ -192,9 +192,9 @@ Get a webhook details
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -206,7 +206,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::WebhooksApi.new
+api_instance = BrevoRuby::WebhooksApi.new
 
 webhook_id = 789 # Integer | Id of the webhook
 
@@ -215,7 +215,7 @@ begin
   #Get a webhook details
   result = api_instance.get_webhook(webhook_id)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling WebhooksApi->get_webhook: #{e}"
 end
 ```
@@ -249,9 +249,9 @@ Get all webhooks
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -263,7 +263,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::WebhooksApi.new
+api_instance = BrevoRuby::WebhooksApi.new
 
 opts = { 
   type: 'transactional', # String | Filter on webhook type
@@ -274,7 +274,7 @@ begin
   #Get all webhooks
   result = api_instance.get_webhooks(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling WebhooksApi->get_webhooks: #{e}"
 end
 ```
@@ -309,9 +309,9 @@ Update a webhook
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -323,17 +323,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::WebhooksApi.new
+api_instance = BrevoRuby::WebhooksApi.new
 
 webhook_id = 789 # Integer | Id of the webhook
 
-update_webhook = BrevoApiV3Sdk::UpdateWebhook.new # UpdateWebhook | Values to update a webhook
+update_webhook = BrevoRuby::UpdateWebhook.new # UpdateWebhook | Values to update a webhook
 
 
 begin
   #Update a webhook
   api_instance.update_webhook(webhook_id, update_webhook)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling WebhooksApi->update_webhook: #{e}"
 end
 ```

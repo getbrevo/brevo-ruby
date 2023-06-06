@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetTransacBlockedContactsContacts
+# BrevoRuby::GetTransacBlockedContactsContacts
 
 ## Properties
 Name | Type | Description | Notes

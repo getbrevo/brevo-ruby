@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetFolder
+# BrevoRuby::GetFolder
 
 ## Properties
 Name | Type | Description | Notes

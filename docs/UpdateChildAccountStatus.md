@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateChildAccountStatus
+# BrevoRuby::UpdateChildAccountStatus
 
 ## Properties
 Name | Type | Description | Notes

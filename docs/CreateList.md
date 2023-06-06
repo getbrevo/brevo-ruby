@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateList
+# BrevoRuby::CreateList
 
 ## Properties
 Name | Type | Description | Notes

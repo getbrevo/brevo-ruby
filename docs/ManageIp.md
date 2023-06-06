@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ManageIp
+# BrevoRuby::ManageIp
 
 ## Properties
 Name | Type | Description | Notes

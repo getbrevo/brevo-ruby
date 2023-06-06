@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetChildAccountCreationStatus
+# BrevoRuby::GetChildAccountCreationStatus
 
 ## Properties
 Name | Type | Description | Notes

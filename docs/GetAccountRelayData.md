@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetAccountRelayData
+# BrevoRuby::GetAccountRelayData
 
 ## Properties
 Name | Type | Description | Notes

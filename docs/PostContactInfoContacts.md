@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::PostContactInfoContacts
+# BrevoRuby::PostContactInfoContacts
 
 ## Properties
 Name | Type | Description | Notes

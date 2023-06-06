@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::TransactionalSMSApi
+# BrevoRuby::TransactionalSMSApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -18,9 +18,9 @@ Get all your SMS activity (unaggregated events)
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -32,7 +32,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::TransactionalSMSApi.new
+api_instance = BrevoRuby::TransactionalSMSApi.new
 
 opts = { 
   limit: 50, # Integer | Number of documents per page
@@ -50,7 +50,7 @@ begin
   #Get all your SMS activity (unaggregated events)
   result = api_instance.get_sms_events(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling TransactionalSMSApi->get_sms_events: #{e}"
 end
 ```
@@ -92,9 +92,9 @@ Get your SMS activity aggregated over a period of time
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -106,7 +106,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::TransactionalSMSApi.new
+api_instance = BrevoRuby::TransactionalSMSApi.new
 
 opts = { 
   start_date: 'start_date_example', # String | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report
@@ -119,7 +119,7 @@ begin
   #Get your SMS activity aggregated over a period of time
   result = api_instance.get_transac_aggregated_sms_report(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling TransactionalSMSApi->get_transac_aggregated_sms_report: #{e}"
 end
 ```
@@ -156,9 +156,9 @@ Get your SMS activity aggregated per day
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -170,7 +170,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::TransactionalSMSApi.new
+api_instance = BrevoRuby::TransactionalSMSApi.new
 
 opts = { 
   start_date: 'start_date_example', # String | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report
@@ -184,7 +184,7 @@ begin
   #Get your SMS activity aggregated per day
   result = api_instance.get_transac_sms_report(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling TransactionalSMSApi->get_transac_sms_report: #{e}"
 end
 ```
@@ -222,9 +222,9 @@ Send SMS message to a mobile number
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -236,16 +236,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::TransactionalSMSApi.new
+api_instance = BrevoRuby::TransactionalSMSApi.new
 
-send_transac_sms = BrevoApiV3Sdk::SendTransacSms.new # SendTransacSms | Values to send a transactional SMS
+send_transac_sms = BrevoRuby::SendTransacSms.new # SendTransacSms | Values to send a transactional SMS
 
 
 begin
   #Send SMS message to a mobile number
   result = api_instance.send_transac_sms(send_transac_sms)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling TransactionalSMSApi->send_transac_sms: #{e}"
 end
 ```

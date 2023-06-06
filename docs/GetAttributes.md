@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetAttributes
+# BrevoRuby::GetAttributes
 
 ## Properties
 Name | Type | Description | Notes

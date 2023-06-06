@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateAttribute
+# BrevoRuby::UpdateAttribute
 
 ## Properties
 Name | Type | Description | Notes

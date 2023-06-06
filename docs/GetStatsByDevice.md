@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetStatsByDevice
+# BrevoRuby::GetStatsByDevice
 
 ## Properties
 Name | Type | Description | Notes

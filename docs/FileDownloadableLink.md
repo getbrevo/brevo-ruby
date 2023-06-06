@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::FileDownloadableLink
+# BrevoRuby::FileDownloadableLink
 
 ## Properties
 Name | Type | Description | Notes

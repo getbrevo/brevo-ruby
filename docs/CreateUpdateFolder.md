@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateUpdateFolder
+# BrevoRuby::CreateUpdateFolder
 
 ## Properties
 Name | Type | Description | Notes

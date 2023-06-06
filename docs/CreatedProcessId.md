@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreatedProcessId
+# BrevoRuby::CreatedProcessId
 
 ## Properties
 Name | Type | Description | Notes

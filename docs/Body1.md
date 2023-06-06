@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::Body1
+# BrevoRuby::Body1
 
 ## Properties
 Name | Type | Description | Notes

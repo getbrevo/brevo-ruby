@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::AbTestVersionStats
+# BrevoRuby::AbTestVersionStats
 
 ## Properties
 Name | Type | Description | Notes

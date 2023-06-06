@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::RemainingCreditModelChild
+# BrevoRuby::RemainingCreditModelChild
 
 ## Properties
 Name | Type | Description | Notes

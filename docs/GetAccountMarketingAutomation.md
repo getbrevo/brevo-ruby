@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetAccountMarketingAutomation
+# BrevoRuby::GetAccountMarketingAutomation
 
 ## Properties
 Name | Type | Description | Notes

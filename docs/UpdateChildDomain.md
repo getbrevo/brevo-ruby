@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateChildDomain
+# BrevoRuby::UpdateChildDomain
 
 ## Properties
 Name | Type | Description | Notes

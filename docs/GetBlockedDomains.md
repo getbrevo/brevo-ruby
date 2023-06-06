@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetBlockedDomains
+# BrevoRuby::GetBlockedDomains
 
 ## Properties
 Name | Type | Description | Notes

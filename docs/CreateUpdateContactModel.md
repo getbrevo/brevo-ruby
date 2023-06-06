@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateUpdateContactModel
+# BrevoRuby::CreateUpdateContactModel
 
 ## Properties
 Name | Type | Description | Notes

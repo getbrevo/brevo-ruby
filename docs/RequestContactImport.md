@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::RequestContactImport
+# BrevoRuby::RequestContactImport
 
 ## Properties
 Name | Type | Description | Notes

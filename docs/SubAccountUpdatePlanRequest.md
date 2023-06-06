@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::SubAccountUpdatePlanRequest
+# BrevoRuby::SubAccountUpdatePlanRequest
 
 ## Properties
 Name | Type | Description | Notes

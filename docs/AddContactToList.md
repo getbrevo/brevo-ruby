@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::AddContactToList
+# BrevoRuby::AddContactToList
 
 ## Properties
 Name | Type | Description | Notes

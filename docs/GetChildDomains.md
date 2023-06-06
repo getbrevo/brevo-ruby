@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetChildDomains
+# BrevoRuby::GetChildDomains
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetContactCampaignStats
+# BrevoRuby::GetContactCampaignStats
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetProductDetails
+# BrevoRuby::GetProductDetails
 
 ## Properties
 Name | Type | Description | Notes

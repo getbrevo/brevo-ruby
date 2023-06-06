@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateBatchContacts
+# BrevoRuby::UpdateBatchContacts
 
 ## Properties
 Name | Type | Description | Notes

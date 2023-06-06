@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::UpdateSmtpTemplate
+# BrevoRuby::UpdateSmtpTemplate
 
 ## Properties
 Name | Type | Description | Notes

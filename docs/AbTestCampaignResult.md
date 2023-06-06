@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::AbTestCampaignResult
+# BrevoRuby::AbTestCampaignResult
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetInboundEmailEvents
+# BrevoRuby::GetInboundEmailEvents
 
 ## Properties
 Name | Type | Description | Notes

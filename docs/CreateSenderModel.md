@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateSenderModel
+# BrevoRuby::CreateSenderModel
 
 ## Properties
 Name | Type | Description | Notes

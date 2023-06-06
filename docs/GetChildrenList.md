@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetChildrenList
+# BrevoRuby::GetChildrenList
 
 ## Properties
 Name | Type | Description | Notes

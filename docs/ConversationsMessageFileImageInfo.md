@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::ConversationsMessageFileImageInfo
+# BrevoRuby::ConversationsMessageFileImageInfo
 
 ## Properties
 Name | Type | Description | Notes

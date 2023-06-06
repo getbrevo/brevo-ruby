@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateApiKeyRequest
+# BrevoRuby::CreateApiKeyRequest
 
 ## Properties
 Name | Type | Description | Notes

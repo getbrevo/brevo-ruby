@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateAttribute
+# BrevoRuby::CreateAttribute
 
 ## Properties
 Name | Type | Description | Notes

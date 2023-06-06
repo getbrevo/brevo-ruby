@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::SendSmtpEmailTo
+# BrevoRuby::SendSmtpEmailTo
 
 ## Properties
 Name | Type | Description | Notes

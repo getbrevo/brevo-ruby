@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateUpdateBatchProductsModel
+# BrevoRuby::CreateUpdateBatchProductsModel
 
 ## Properties
 Name | Type | Description | Notes

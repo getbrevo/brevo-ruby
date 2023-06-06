@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetExtendedCampaignStatsGlobalStats
+# BrevoRuby::GetExtendedCampaignStatsGlobalStats
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateDoiContact
+# BrevoRuby::CreateDoiContact
 
 ## Properties
 Name | Type | Description | Notes

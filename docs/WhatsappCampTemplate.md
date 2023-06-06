@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::WhatsappCampTemplate
+# BrevoRuby::WhatsappCampTemplate
 
 ## Properties
 Name | Type | Description | Notes

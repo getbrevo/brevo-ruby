@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateChild
+# BrevoRuby::CreateChild
 
 ## Properties
 Name | Type | Description | Notes

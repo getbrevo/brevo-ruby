@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateSubAccountResponse
+# BrevoRuby::CreateSubAccountResponse
 
 ## Properties
 Name | Type | Description | Notes

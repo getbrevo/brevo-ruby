@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::SMSCampaignsApi
+# BrevoRuby::SMSCampaignsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -24,9 +24,9 @@ Creates an SMS campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -38,16 +38,16 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
-create_sms_campaign = BrevoApiV3Sdk::CreateSmsCampaign.new # CreateSmsCampaign | Values to create an SMS Campaign
+create_sms_campaign = BrevoRuby::CreateSmsCampaign.new # CreateSmsCampaign | Values to create an SMS Campaign
 
 
 begin
   #Creates an SMS campaign
   result = api_instance.create_sms_campaign(create_sms_campaign)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->create_sms_campaign: #{e}"
 end
 ```
@@ -81,9 +81,9 @@ Delete an SMS campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -95,7 +95,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 campaign_id = 789 # Integer | id of the SMS campaign
 
@@ -103,7 +103,7 @@ campaign_id = 789 # Integer | id of the SMS campaign
 begin
   #Delete an SMS campaign
   api_instance.delete_sms_campaign(campaign_id)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->delete_sms_campaign: #{e}"
 end
 ```
@@ -137,9 +137,9 @@ Get an SMS campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -151,7 +151,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 campaign_id = 789 # Integer | id of the SMS campaign
 
@@ -160,7 +160,7 @@ begin
   #Get an SMS campaign
   result = api_instance.get_sms_campaign(campaign_id)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->get_sms_campaign: #{e}"
 end
 ```
@@ -194,9 +194,9 @@ Returns the information for all your created SMS campaigns
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -208,7 +208,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 opts = { 
   status: 'status_example', # String | Status of campaign.
@@ -223,7 +223,7 @@ begin
   #Returns the information for all your created SMS campaigns
   result = api_instance.get_sms_campaigns(opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->get_sms_campaigns: #{e}"
 end
 ```
@@ -264,9 +264,9 @@ It returns the background process ID which on completion calls the notify URL th
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -278,19 +278,19 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 campaign_id = 789 # Integer | id of the campaign
 
 opts = { 
-  recipient_export: BrevoApiV3Sdk::RequestSmsRecipientExport.new # RequestSmsRecipientExport | Values to send for a recipient export request
+  recipient_export: BrevoRuby::RequestSmsRecipientExport.new # RequestSmsRecipientExport | Values to send for a recipient export request
 }
 
 begin
   #Export an SMS campaign's recipients
   result = api_instance.request_sms_recipient_export(campaign_id, opts)
   p result
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->request_sms_recipient_export: #{e}"
 end
 ```
@@ -325,9 +325,9 @@ Send your SMS campaign immediately
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -339,7 +339,7 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 campaign_id = 789 # Integer | id of the campaign
 
@@ -347,7 +347,7 @@ campaign_id = 789 # Integer | id of the campaign
 begin
   #Send your SMS campaign immediately
   api_instance.send_sms_campaign_now(campaign_id)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->send_sms_campaign_now: #{e}"
 end
 ```
@@ -383,9 +383,9 @@ Send report of Sent and Archived campaign, to the specified email addresses, wit
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -397,17 +397,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 campaign_id = 789 # Integer | id of the campaign
 
-send_report = BrevoApiV3Sdk::SendReport.new # SendReport | Values for send a report
+send_report = BrevoRuby::SendReport.new # SendReport | Values for send a report
 
 
 begin
   #Send an SMS campaign's report
   api_instance.send_sms_report(campaign_id, send_report)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->send_sms_report: #{e}"
 end
 ```
@@ -442,9 +442,9 @@ Send a test SMS campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -456,17 +456,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the SMS campaign
 
-phone_number = BrevoApiV3Sdk::SendTestSms.new # SendTestSms | Mobile number of the recipient with the country code. This number must belong to one of your contacts in Brevo account and must not be blacklisted
+phone_number = BrevoRuby::SendTestSms.new # SendTestSms | Mobile number of the recipient with the country code. This number must belong to one of your contacts in Brevo account and must not be blacklisted
 
 
 begin
   #Send a test SMS campaign
   api_instance.send_test_sms(campaign_id, phone_number)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->send_test_sms: #{e}"
 end
 ```
@@ -501,9 +501,9 @@ Update an SMS campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -515,17 +515,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 campaign_id = 789 # Integer | id of the SMS campaign
 
-update_sms_campaign = BrevoApiV3Sdk::UpdateSmsCampaign.new # UpdateSmsCampaign | Values to update an SMS Campaign
+update_sms_campaign = BrevoRuby::UpdateSmsCampaign.new # UpdateSmsCampaign | Values to update an SMS Campaign
 
 
 begin
   #Update an SMS campaign
   api_instance.update_sms_campaign(campaign_id, update_sms_campaign)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->update_sms_campaign: #{e}"
 end
 ```
@@ -560,9 +560,9 @@ Update a campaign's status
 ### Example
 ```ruby
 # load the gem
-require 'brevo-api-v3-sdk'
+require 'brevo-ruby'
 # setup authorization
-BrevoApiV3Sdk.configure do |config|
+BrevoRuby.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -574,17 +574,17 @@ BrevoApiV3Sdk.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoApiV3Sdk::SMSCampaignsApi.new
+api_instance = BrevoRuby::SMSCampaignsApi.new
 
 campaign_id = 789 # Integer | id of the campaign
 
-status = BrevoApiV3Sdk::UpdateCampaignStatus.new # UpdateCampaignStatus | Status of the campaign.
+status = BrevoRuby::UpdateCampaignStatus.new # UpdateCampaignStatus | Status of the campaign.
 
 
 begin
   #Update a campaign's status
   api_instance.update_sms_campaign_status(campaign_id, status)
-rescue BrevoApiV3Sdk::ApiError => e
+rescue BrevoRuby::ApiError => e
   puts "Exception when calling SMSCampaignsApi->update_sms_campaign_status: #{e}"
 end
 ```

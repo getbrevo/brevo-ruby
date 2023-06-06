@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::RemoveCredits
+# BrevoRuby::RemoveCredits
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::CreateUpdateBatchCategoryModel
+# BrevoRuby::CreateUpdateBatchCategoryModel
 
 ## Properties
 Name | Type | Description | Notes

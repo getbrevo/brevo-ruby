@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::GetSharedTemplateUrl
+# BrevoRuby::GetSharedTemplateUrl
 
 ## Properties
 Name | Type | Description | Notes

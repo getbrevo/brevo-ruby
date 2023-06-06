@@ -1,4 +1,4 @@
-# BrevoApiV3Sdk::InlineResponse201
+# BrevoRuby::InlineResponse201
 
 ## Properties
 Name | Type | Description | Notes

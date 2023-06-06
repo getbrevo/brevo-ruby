@@ -35,7 +35,7 @@ module BrevoApiV3Sdk
     # List of attachments of the email. This will be present only after the processing is done.
     attr_accessor :attachments
 
-    # List of events/logs that describe the lifecycle of the email on SIB platform
+    # List of events/logs that describe the lifecycle of the email on Brevo platform
     attr_accessor :logs
 
     # Attribute mapping from ruby-style variable name to JSON key.

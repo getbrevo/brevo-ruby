@@ -1,4 +1,4 @@
-# BrevoRuby::GetSharedTemplateUrl
+# Brevo::GetSharedTemplateUrl
 
 ## Properties
 Name | Type | Description | Notes

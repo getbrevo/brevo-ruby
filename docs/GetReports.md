@@ -1,4 +1,4 @@
-# BrevoRuby::GetReports
+# Brevo::GetReports
 
 ## Properties
 Name | Type | Description | Notes

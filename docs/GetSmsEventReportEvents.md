@@ -1,4 +1,4 @@
-# BrevoRuby::GetSmsEventReportEvents
+# Brevo::GetSmsEventReportEvents
 
 ## Properties
 Name | Type | Description | Notes

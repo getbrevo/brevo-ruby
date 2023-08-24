@@ -1,4 +1,4 @@
-# BrevoRuby::GetAttributesEnumeration
+# Brevo::GetAttributesEnumeration
 
 ## Properties
 Name | Type | Description | Notes

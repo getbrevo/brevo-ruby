@@ -1,4 +1,4 @@
-# BrevoRuby::FilesApi
+# Brevo::FilesApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -19,9 +19,9 @@ Get all files
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -33,7 +33,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::FilesApi.new
+api_instance = Brevo::FilesApi.new
 
 opts = { 
   entity: 'entity_example', # String | Filter by file entity type
@@ -49,7 +49,7 @@ begin
   #Get all files
   result = api_instance.crm_files_get(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling FilesApi->crm_files_get: #{e}"
 end
 ```
@@ -89,9 +89,9 @@ Get file details
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -103,7 +103,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::FilesApi.new
+api_instance = Brevo::FilesApi.new
 
 id = 'id_example' # String | File id to get file data.
 
@@ -112,7 +112,7 @@ begin
   #Get file details
   result = api_instance.crm_files_id_data_get(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling FilesApi->crm_files_id_data_get: #{e}"
 end
 ```
@@ -146,9 +146,9 @@ Delete a file
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -160,7 +160,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::FilesApi.new
+api_instance = Brevo::FilesApi.new
 
 id = 'id_example' # String | File id to delete.
 
@@ -168,7 +168,7 @@ id = 'id_example' # String | File id to delete.
 begin
   #Delete a file
   api_instance.crm_files_id_delete(id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling FilesApi->crm_files_id_delete: #{e}"
 end
 ```
@@ -202,9 +202,9 @@ Download a file
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -216,7 +216,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::FilesApi.new
+api_instance = Brevo::FilesApi.new
 
 id = 'id_example' # String | File id to download.
 
@@ -225,7 +225,7 @@ begin
   #Download a file
   result = api_instance.crm_files_id_get(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling FilesApi->crm_files_id_get: #{e}"
 end
 ```
@@ -259,9 +259,9 @@ Upload a file
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -273,7 +273,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::FilesApi.new
+api_instance = Brevo::FilesApi.new
 
 file = File.new('/path/to/file.txt') # File | File data to create a file.
 
@@ -287,7 +287,7 @@ begin
   #Upload a file
   result = api_instance.crm_files_post(file, opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling FilesApi->crm_files_post: #{e}"
 end
 ```

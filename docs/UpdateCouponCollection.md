@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateCouponCollection
+# Brevo::UpdateCouponCollection
 
 ## Properties
 Name | Type | Description | Notes

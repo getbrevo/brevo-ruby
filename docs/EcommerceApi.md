@@ -1,4 +1,4 @@
-# BrevoRuby::EcommerceApi
+# Brevo::EcommerceApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -27,9 +27,9 @@ Create multiple orders at one time instead of one order at a time
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -41,15 +41,15 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
-order_batch = BrevoRuby::OrderBatch.new # OrderBatch | 
+order_batch = Brevo::OrderBatch.new # OrderBatch | 
 
 
 begin
   #Create orders in batch
   api_instance.create_batch_order(order_batch)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->create_batch_order: #{e}"
 end
 ```
@@ -85,9 +85,9 @@ Manages the transactional status of the order
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -99,15 +99,15 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
-order = BrevoRuby::Order.new # Order | 
+order = Brevo::Order.new # Order | 
 
 
 begin
   #Managing the status of the order
   api_instance.create_order(order)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->create_order: #{e}"
 end
 ```
@@ -141,9 +141,9 @@ Create categories in batch
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -155,16 +155,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
-create_update_batch_category = BrevoRuby::CreateUpdateBatchCategory.new # CreateUpdateBatchCategory | Values to create a batch of categories
+create_update_batch_category = Brevo::CreateUpdateBatchCategory.new # CreateUpdateBatchCategory | Values to create a batch of categories
 
 
 begin
   #Create categories in batch
   result = api_instance.create_update_batch_category(create_update_batch_category)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->create_update_batch_category: #{e}"
 end
 ```
@@ -198,9 +198,9 @@ Create products in batch
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -212,16 +212,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
-create_update_batch_products = BrevoRuby::CreateUpdateBatchProducts.new # CreateUpdateBatchProducts | Values to create a batch of products
+create_update_batch_products = Brevo::CreateUpdateBatchProducts.new # CreateUpdateBatchProducts | Values to create a batch of products
 
 
 begin
   #Create products in batch
   result = api_instance.create_update_batch_products(create_update_batch_products)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->create_update_batch_products: #{e}"
 end
 ```
@@ -255,9 +255,9 @@ Create/Update a category
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -269,16 +269,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
-create_update_category = BrevoRuby::CreateUpdateCategory.new # CreateUpdateCategory | Values to create/update a category
+create_update_category = Brevo::CreateUpdateCategory.new # CreateUpdateCategory | Values to create/update a category
 
 
 begin
   #Create/Update a category
   result = api_instance.create_update_category(create_update_category)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->create_update_category: #{e}"
 end
 ```
@@ -312,9 +312,9 @@ Create/Update a product
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -326,16 +326,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
-create_update_product = BrevoRuby::CreateUpdateProduct.new # CreateUpdateProduct | Values to create/update a product
+create_update_product = Brevo::CreateUpdateProduct.new # CreateUpdateProduct | Values to create/update a product
 
 
 begin
   #Create/Update a product
   result = api_instance.create_update_product(create_update_product)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->create_update_product: #{e}"
 end
 ```
@@ -371,9 +371,9 @@ Getting access to Brevo eCommerce.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -385,12 +385,12 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
 begin
   #Activate the eCommerce app
   api_instance.ecommerce_activate_post
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->ecommerce_activate_post: #{e}"
 end
 ```
@@ -421,9 +421,9 @@ Return all your categories
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -435,7 +435,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
 opts = { 
   limit: 50, # Integer | Number of documents per page
@@ -449,7 +449,7 @@ begin
   #Return all your categories
   result = api_instance.get_categories(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->get_categories: #{e}"
 end
 ```
@@ -487,9 +487,9 @@ Get a category details
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -501,7 +501,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
 id = 'id_example' # String | Category ID
 
@@ -510,7 +510,7 @@ begin
   #Get a category details
   result = api_instance.get_category_info(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->get_category_info: #{e}"
 end
 ```
@@ -544,9 +544,9 @@ Get a product's details
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -558,7 +558,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
 id = 'id_example' # String | Product ID
 
@@ -567,7 +567,7 @@ begin
   #Get a product's details
   result = api_instance.get_product_info(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->get_product_info: #{e}"
 end
 ```
@@ -601,9 +601,9 @@ Return all your products
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -615,7 +615,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EcommerceApi.new
+api_instance = Brevo::EcommerceApi.new
 
 opts = { 
   limit: 50, # Integer | Number of documents per page
@@ -636,7 +636,7 @@ begin
   #Return all your products
   result = api_instance.get_products(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->get_products: #{e}"
 end
 ```

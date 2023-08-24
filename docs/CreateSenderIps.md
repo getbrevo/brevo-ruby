@@ -1,4 +1,4 @@
-# BrevoRuby::CreateSenderIps
+# Brevo::CreateSenderIps
 
 ## Properties
 Name | Type | Description | Notes

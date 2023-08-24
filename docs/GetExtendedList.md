@@ -1,4 +1,4 @@
-# BrevoRuby::GetExtendedList
+# Brevo::GetExtendedList
 
 ## Properties
 Name | Type | Description | Notes

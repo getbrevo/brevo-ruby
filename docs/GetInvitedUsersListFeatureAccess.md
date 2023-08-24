@@ -1,4 +1,4 @@
-# BrevoRuby::GetInvitedUsersListFeatureAccess
+# Brevo::GetInvitedUsersListFeatureAccess
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::GetContactCampaignStatsUnsubscriptions
+# Brevo::GetContactCampaignStatsUnsubscriptions
 
 ## Properties
 Name | Type | Description | Notes

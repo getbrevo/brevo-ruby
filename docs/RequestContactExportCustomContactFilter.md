@@ -1,4 +1,4 @@
-# BrevoRuby::RequestContactExportCustomContactFilter
+# Brevo::RequestContactExportCustomContactFilter
 
 ## Properties
 Name | Type | Description | Notes

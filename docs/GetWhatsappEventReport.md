@@ -1,4 +1,4 @@
-# BrevoRuby::GetWhatsappEventReport
+# Brevo::GetWhatsappEventReport
 
 ## Properties
 Name | Type | Description | Notes

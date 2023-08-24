@@ -1,4 +1,4 @@
-# BrevoRuby::CreateDomain
+# Brevo::CreateDomain
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::TaskTypes
+# Brevo::TaskTypes
 
 ## Properties
 Name | Type | Description | Notes

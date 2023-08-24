@@ -1,4 +1,4 @@
-# BrevoRuby::GetAccountRelay
+# Brevo::GetAccountRelay
 
 ## Properties
 Name | Type | Description | Notes

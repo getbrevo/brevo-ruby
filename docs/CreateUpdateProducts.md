@@ -1,4 +1,4 @@
-# BrevoRuby::CreateUpdateProducts
+# Brevo::CreateUpdateProducts
 
 ## Properties
 Name | Type | Description | Notes

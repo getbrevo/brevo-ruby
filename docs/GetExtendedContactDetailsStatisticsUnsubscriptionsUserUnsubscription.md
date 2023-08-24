@@ -1,4 +1,4 @@
-# BrevoRuby::GetExtendedContactDetailsStatisticsUnsubscriptionsUserUnsubscription
+# Brevo::GetExtendedContactDetailsStatisticsUnsubscriptionsUserUnsubscription
 
 ## Properties
 Name | Type | Description | Notes

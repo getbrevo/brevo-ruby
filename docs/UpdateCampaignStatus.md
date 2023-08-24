@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateCampaignStatus
+# Brevo::UpdateCampaignStatus
 
 ## Properties
 Name | Type | Description | Notes

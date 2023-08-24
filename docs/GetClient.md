@@ -1,4 +1,4 @@
-# BrevoRuby::GetClient
+# Brevo::GetClient
 
 ## Properties
 Name | Type | Description | Notes

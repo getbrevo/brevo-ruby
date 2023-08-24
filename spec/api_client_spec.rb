@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/getbrevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -12,51 +12,51 @@ Swagger Codegen version: 2.4.19
 
 require 'spec_helper'
 
-describe BrevoRuby::ApiClient do
+describe Brevo::ApiClient do
   context 'initialization' do
     context 'URL stuff' do
       context 'host' do
         it 'removes http from host' do
-          BrevoRuby.configure { |c| c.host = 'http://example.com' }
-          expect(BrevoRuby::Configuration.default.host).to eq('example.com')
+          Brevo.configure { |c| c.host = 'http://example.com' }
+          expect(Brevo::Configuration.default.host).to eq('example.com')
         end
 
         it 'removes https from host' do
-          BrevoRuby.configure { |c| c.host = 'https://wookiee.com' }
-          expect(BrevoRuby::ApiClient.default.config.host).to eq('wookiee.com')
+          Brevo.configure { |c| c.host = 'https://wookiee.com' }
+          expect(Brevo::ApiClient.default.config.host).to eq('wookiee.com')
         end
 
         it 'removes trailing path from host' do
-          BrevoRuby.configure { |c| c.host = 'hobo.com/v4' }
-          expect(BrevoRuby::Configuration.default.host).to eq('hobo.com')
+          Brevo.configure { |c| c.host = 'hobo.com/v4' }
+          expect(Brevo::Configuration.default.host).to eq('hobo.com')
         end
       end
 
       context 'base_path' do
         it "prepends a slash to base_path" do
-          BrevoRuby.configure { |c| c.base_path = 'v4/dog' }
-          expect(BrevoRuby::Configuration.default.base_path).to eq('/v4/dog')
+          Brevo.configure { |c| c.base_path = 'v4/dog' }
+          expect(Brevo::Configuration.default.base_path).to eq('/v4/dog')
         end
 
         it "doesn't prepend a slash if one is already there" do
-          BrevoRuby.configure { |c| c.base_path = '/v4/dog' }
-          expect(BrevoRuby::Configuration.default.base_path).to eq('/v4/dog')
+          Brevo.configure { |c| c.base_path = '/v4/dog' }
+          expect(Brevo::Configuration.default.base_path).to eq('/v4/dog')
         end
 
         it "ends up as a blank string if nil" do
-          BrevoRuby.configure { |c| c.base_path = nil }
-          expect(BrevoRuby::Configuration.default.base_path).to eq('')
+          Brevo.configure { |c| c.base_path = nil }
+          expect(Brevo::Configuration.default.base_path).to eq('')
         end
       end
     end
   end
 
   describe 'params_encoding in #build_request' do
-    let(:config) { BrevoRuby::Configuration.new }
-    let(:api_client) { BrevoRuby::ApiClient.new(config) }
+    let(:config) { Brevo::Configuration.new }
+    let(:api_client) { Brevo::ApiClient.new(config) }
 
     it 'defaults to nil' do
-      expect(BrevoRuby::Configuration.default.params_encoding).to eq(nil)
+      expect(Brevo::Configuration.default.params_encoding).to eq(nil)
       expect(config.params_encoding).to eq(nil)
 
       request = api_client.build_request(:get, '/test')
@@ -71,11 +71,11 @@ describe BrevoRuby::ApiClient do
   end
 
   describe 'timeout in #build_request' do
-    let(:config) { BrevoRuby::Configuration.new }
-    let(:api_client) { BrevoRuby::ApiClient.new(config) }
+    let(:config) { Brevo::Configuration.new }
+    let(:api_client) { Brevo::ApiClient.new(config) }
 
     it 'defaults to 0' do
-      expect(BrevoRuby::Configuration.default.timeout).to eq(0)
+      expect(Brevo::Configuration.default.timeout).to eq(0)
       expect(config.timeout).to eq(0)
 
       request = api_client.build_request(:get, '/test')
@@ -90,8 +90,8 @@ describe BrevoRuby::ApiClient do
   end
 
   describe '#build_request' do
-    let(:config) { BrevoRuby::Configuration.new }
-    let(:api_client) { BrevoRuby::ApiClient.new(config) }
+    let(:config) { Brevo::Configuration.new }
+    let(:api_client) { Brevo::ApiClient.new(config) }
 
     it 'does not send multipart to request' do
       expect(Typhoeus::Request).to receive(:new).with(anything, hash_not_including(:multipart))
@@ -108,7 +108,7 @@ describe BrevoRuby::ApiClient do
 
   describe '#deserialize' do
     it "handles Array<Integer>" do
-      api_client = BrevoRuby::ApiClient.new
+      api_client = Brevo::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '[12, 34]')
       data = api_client.deserialize(response, 'Array<Integer>')
@@ -117,7 +117,7 @@ describe BrevoRuby::ApiClient do
     end
 
     it 'handles Array<Array<Integer>>' do
-      api_client = BrevoRuby::ApiClient.new
+      api_client = Brevo::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '[[12, 34], [56]]')
       data = api_client.deserialize(response, 'Array<Array<Integer>>')
@@ -126,7 +126,7 @@ describe BrevoRuby::ApiClient do
     end
 
     it 'handles Hash<String, String>' do
-      api_client = BrevoRuby::ApiClient.new
+      api_client = Brevo::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '{"message": "Hello"}')
       data = api_client.deserialize(response, 'Hash<String, String>')
@@ -138,8 +138,8 @@ describe BrevoRuby::ApiClient do
   describe "#object_to_hash" do
     it 'ignores nils and includes empty arrays' do
       # uncomment below to test object_to_hash for model
-      # api_client = BrevoRuby::ApiClient.new
-      # _model = BrevoRuby::ModelName.new
+      # api_client = Brevo::ApiClient.new
+      # _model = Brevo::ModelName.new
       # update the model attribute below
       # _model.id = 1
       # update the expected value (hash) below
@@ -150,7 +150,7 @@ describe BrevoRuby::ApiClient do
 
   describe '#build_collection_param' do
     let(:param) { ['aa', 'bb', 'cc'] }
-    let(:api_client) { BrevoRuby::ApiClient.new }
+    let(:api_client) { Brevo::ApiClient.new }
 
     it 'works for csv' do
       expect(api_client.build_collection_param(param, :csv)).to eq('aa,bb,cc')
@@ -178,7 +178,7 @@ describe BrevoRuby::ApiClient do
   end
 
   describe '#json_mime?' do
-    let(:api_client) { BrevoRuby::ApiClient.new }
+    let(:api_client) { Brevo::ApiClient.new }
 
     it 'works' do
       expect(api_client.json_mime?(nil)).to eq false
@@ -195,7 +195,7 @@ describe BrevoRuby::ApiClient do
   end
 
   describe '#select_header_accept' do
-    let(:api_client) { BrevoRuby::ApiClient.new }
+    let(:api_client) { Brevo::ApiClient.new }
 
     it 'works' do
       expect(api_client.select_header_accept(nil)).to be_nil
@@ -211,7 +211,7 @@ describe BrevoRuby::ApiClient do
   end
 
   describe '#select_header_content_type' do
-    let(:api_client) { BrevoRuby::ApiClient.new }
+    let(:api_client) { Brevo::ApiClient.new }
 
     it 'works' do
       expect(api_client.select_header_content_type(nil)).to eq('application/json')
@@ -226,7 +226,7 @@ describe BrevoRuby::ApiClient do
   end
 
   describe '#sanitize_filename' do
-    let(:api_client) { BrevoRuby::ApiClient.new }
+    let(:api_client) { Brevo::ApiClient.new }
 
     it 'works' do
       expect(api_client.sanitize_filename('sun')).to eq('sun')

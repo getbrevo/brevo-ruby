@@ -1,4 +1,4 @@
-# BrevoRuby::CreateUpdateBatchProducts
+# Brevo::CreateUpdateBatchProducts
 
 ## Properties
 Name | Type | Description | Notes

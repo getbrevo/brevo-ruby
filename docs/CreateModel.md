@@ -1,4 +1,4 @@
-# BrevoRuby::CreateModel
+# Brevo::CreateModel
 
 ## Properties
 Name | Type | Description | Notes

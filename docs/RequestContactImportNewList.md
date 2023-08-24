@@ -1,4 +1,4 @@
-# BrevoRuby::RequestContactImportNewList
+# Brevo::RequestContactImportNewList
 
 ## Properties
 Name | Type | Description | Notes

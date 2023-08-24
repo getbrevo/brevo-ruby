@@ -1,4 +1,4 @@
-# BrevoRuby::GetProductDetails
+# Brevo::GetProductDetails
 
 ## Properties
 Name | Type | Description | Notes

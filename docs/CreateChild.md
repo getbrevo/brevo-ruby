@@ -1,4 +1,4 @@
-# BrevoRuby::CreateChild
+# Brevo::CreateChild
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::GetExtendedCampaignOverviewSender
+# Brevo::GetExtendedCampaignOverviewSender
 
 ## Properties
 Name | Type | Description | Notes

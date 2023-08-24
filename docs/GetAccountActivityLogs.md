@@ -1,4 +1,4 @@
-# BrevoRuby::GetAccountActivityLogs
+# Brevo::GetAccountActivityLogs
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::Task
+# Brevo::Task
 
 ## Properties
 Name | Type | Description | Notes

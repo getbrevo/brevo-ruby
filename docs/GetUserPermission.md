@@ -1,4 +1,4 @@
-# BrevoRuby::GetUserPermission
+# Brevo::GetUserPermission
 
 ## Properties
 Name | Type | Description | Notes

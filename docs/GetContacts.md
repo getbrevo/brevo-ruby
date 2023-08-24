@@ -1,4 +1,4 @@
-# BrevoRuby::GetContacts
+# Brevo::GetContacts
 
 ## Properties
 Name | Type | Description | Notes

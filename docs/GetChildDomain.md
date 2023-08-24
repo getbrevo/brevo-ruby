@@ -1,4 +1,4 @@
-# BrevoRuby::GetChildDomain
+# Brevo::GetChildDomain
 
 ## Properties
 Name | Type | Description | Notes

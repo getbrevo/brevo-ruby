@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateWhatsAppCampaign
+# Brevo::UpdateWhatsAppCampaign
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::CompanyAttributes
+# Brevo::CompanyAttributes
 
 ## Properties
 Name | Type | Description | Notes

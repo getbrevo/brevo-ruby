@@ -1,4 +1,4 @@
-# BrevoRuby::SendSmtpEmailCc
+# Brevo::SendSmtpEmailCc
 
 ## Properties
 Name | Type | Description | Notes

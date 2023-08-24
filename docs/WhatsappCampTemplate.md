@@ -1,4 +1,4 @@
-# BrevoRuby::WhatsappCampTemplate
+# Brevo::WhatsappCampTemplate
 
 ## Properties
 Name | Type | Description | Notes

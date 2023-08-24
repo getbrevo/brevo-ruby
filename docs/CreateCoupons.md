@@ -1,4 +1,4 @@
-# BrevoRuby::CreateCoupons
+# Brevo::CreateCoupons
 
 ## Properties
 Name | Type | Description | Notes

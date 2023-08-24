@@ -1,4 +1,4 @@
-# BrevoRuby::GetFolder
+# Brevo::GetFolder
 
 ## Properties
 Name | Type | Description | Notes

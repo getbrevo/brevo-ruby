@@ -1,4 +1,4 @@
-# BrevoRuby::GetCategories
+# Brevo::GetCategories
 
 ## Properties
 Name | Type | Description | Notes

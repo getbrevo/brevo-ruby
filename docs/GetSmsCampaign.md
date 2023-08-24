@@ -1,4 +1,4 @@
-# BrevoRuby::GetSmsCampaign
+# Brevo::GetSmsCampaign
 
 ## Properties
 Name | Type | Description | Notes

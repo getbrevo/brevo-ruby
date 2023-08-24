@@ -1,4 +1,4 @@
-# BrevoRuby::RemainingCreditModel
+# Brevo::RemainingCreditModel
 
 ## Properties
 Name | Type | Description | Notes

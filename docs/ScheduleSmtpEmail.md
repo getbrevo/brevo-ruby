@@ -1,4 +1,4 @@
-# BrevoRuby::ScheduleSmtpEmail
+# Brevo::ScheduleSmtpEmail
 
 ## Properties
 Name | Type | Description | Notes

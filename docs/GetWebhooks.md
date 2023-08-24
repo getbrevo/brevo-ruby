@@ -1,4 +1,4 @@
-# BrevoRuby::GetWebhooks
+# Brevo::GetWebhooks
 
 ## Properties
 Name | Type | Description | Notes

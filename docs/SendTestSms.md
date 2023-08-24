@@ -1,4 +1,4 @@
-# BrevoRuby::SendTestSms
+# Brevo::SendTestSms
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::NoteId
+# Brevo::NoteId
 
 ## Properties
 Name | Type | Description | Notes

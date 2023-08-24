@@ -1,4 +1,4 @@
-# BrevoRuby::MasterDetailsResponseBillingInfoName
+# Brevo::MasterDetailsResponseBillingInfoName
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::EmailCampaignsApi
+# Brevo::EmailCampaignsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -27,9 +27,9 @@ Create an email campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -41,16 +41,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
-email_campaigns = BrevoRuby::CreateEmailCampaign.new # CreateEmailCampaign | Values to create a campaign
+email_campaigns = Brevo::CreateEmailCampaign.new # CreateEmailCampaign | Values to create a campaign
 
 
 begin
   #Create an email campaign
   result = api_instance.create_email_campaign(email_campaigns)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->create_email_campaign: #{e}"
 end
 ```
@@ -84,9 +84,9 @@ Delete an email campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -98,7 +98,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | id of the campaign
 
@@ -106,7 +106,7 @@ campaign_id = 789 # Integer | id of the campaign
 begin
   #Delete an email campaign
   api_instance.delete_email_campaign(campaign_id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->delete_email_campaign: #{e}"
 end
 ```
@@ -140,9 +140,9 @@ Export the recipients of an email campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -154,19 +154,19 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the campaign
 
 opts = { 
-  recipient_export: BrevoRuby::EmailExportRecipients.new # EmailExportRecipients | Values to send for a recipient export request
+  recipient_export: Brevo::EmailExportRecipients.new # EmailExportRecipients | Values to send for a recipient export request
 }
 
 begin
   #Export the recipients of an email campaign
   result = api_instance.email_export_recipients(campaign_id, opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->email_export_recipients: #{e}"
 end
 ```
@@ -203,9 +203,9 @@ Obtain winning version of an A/B test email campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -217,7 +217,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the A/B test campaign
 
@@ -226,7 +226,7 @@ begin
   #Get an A/B test email campaign results
   result = api_instance.get_ab_test_campaign_result(campaign_id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->get_ab_test_campaign_result: #{e}"
 end
 ```
@@ -260,9 +260,9 @@ Get an email campaign report
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -274,19 +274,20 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the campaign
 
 opts = { 
-  statistics: 'statistics_example' # String | Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.
+  statistics: 'statistics_example', # String | Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.
+  utm_value: 'utm_value_example' # String | Get email campaign report on the basis of custom UTM Value.**You can use either campaignId or utmValue to fetch campaign report.To use utmValue filter pass campaignId as empty.**
 }
 
 begin
   #Get an email campaign report
   result = api_instance.get_email_campaign(campaign_id, opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->get_email_campaign: #{e}"
 end
 ```
@@ -297,6 +298,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **campaign_id** | **Integer**| Id of the campaign | 
  **statistics** | **String**| Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. | [optional] 
+ **utm_value** | **String**| Get email campaign report on the basis of custom UTM Value.**You can use either campaignId or utmValue to fetch campaign report.To use utmValue filter pass campaignId as empty.** | [optional] 
 
 ### Return type
 
@@ -321,9 +323,9 @@ Return all your created email campaigns
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -335,7 +337,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 opts = { 
   type: 'type_example', # String | Filter on the type of the campaigns
@@ -353,7 +355,7 @@ begin
   #Return all your created email campaigns
   result = api_instance.get_email_campaigns(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->get_email_campaigns: #{e}"
 end
 ```
@@ -397,9 +399,9 @@ Get a unique URL to share & import an email template from one Brevo account to a
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -411,7 +413,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the campaign or template
 
@@ -420,7 +422,7 @@ begin
   #Get a shared template url
   result = api_instance.get_shared_template_url(campaign_id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->get_shared_template_url: #{e}"
 end
 ```
@@ -454,9 +456,9 @@ Send an email campaign immediately, based on campaignId
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -468,7 +470,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the campaign
 
@@ -476,7 +478,7 @@ campaign_id = 789 # Integer | Id of the campaign
 begin
   #Send an email campaign immediately, based on campaignId
   api_instance.send_email_campaign_now(campaign_id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->send_email_campaign_now: #{e}"
 end
 ```
@@ -512,9 +514,9 @@ A PDF will be sent to the specified email addresses
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -526,17 +528,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the campaign
 
-send_report = BrevoRuby::SendReport.new # SendReport | Values for send a report
+send_report = Brevo::SendReport.new # SendReport | Values for send a report
 
 
 begin
   #Send the report of a campaign
   api_instance.send_report(campaign_id, send_report)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->send_report: #{e}"
 end
 ```
@@ -571,9 +573,9 @@ Send an email campaign to your test list
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -585,17 +587,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the campaign
 
-email_to = BrevoRuby::SendTestEmail.new # SendTestEmail | 
+email_to = Brevo::SendTestEmail.new # SendTestEmail | 
 
 
 begin
   #Send an email campaign to your test list
   api_instance.send_test_email(campaign_id, email_to)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->send_test_email: #{e}"
 end
 ```
@@ -630,9 +632,9 @@ Update an email campaign status
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -644,17 +646,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the campaign
 
-status = BrevoRuby::UpdateCampaignStatus.new # UpdateCampaignStatus | Status of the campaign
+status = Brevo::UpdateCampaignStatus.new # UpdateCampaignStatus | Status of the campaign
 
 
 begin
   #Update an email campaign status
   api_instance.update_campaign_status(campaign_id, status)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->update_campaign_status: #{e}"
 end
 ```
@@ -689,9 +691,9 @@ Update an email campaign
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -703,17 +705,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
 campaign_id = 789 # Integer | Id of the campaign
 
-email_campaign = BrevoRuby::UpdateEmailCampaign.new # UpdateEmailCampaign | Values to update a campaign
+email_campaign = Brevo::UpdateEmailCampaign.new # UpdateEmailCampaign | Values to update a campaign
 
 
 begin
   #Update an email campaign
   api_instance.update_email_campaign(campaign_id, email_campaign)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->update_email_campaign: #{e}"
 end
 ```
@@ -748,9 +750,9 @@ Upload an image to your account's image gallery
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -762,16 +764,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::EmailCampaignsApi.new
+api_instance = Brevo::EmailCampaignsApi.new
 
-upload_image = BrevoRuby::UploadImageToGallery.new # UploadImageToGallery | Parameters to upload an image
+upload_image = Brevo::UploadImageToGallery.new # UploadImageToGallery | Parameters to upload an image
 
 
 begin
   #Upload an image to your account's image gallery
   result = api_instance.upload_image_to_gallery(upload_image)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling EmailCampaignsApi->upload_image_to_gallery: #{e}"
 end
 ```

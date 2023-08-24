@@ -1,4 +1,4 @@
-# BrevoRuby::TaskReminder
+# Brevo::TaskReminder
 
 ## Properties
 Name | Type | Description | Notes

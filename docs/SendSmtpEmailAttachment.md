@@ -1,4 +1,4 @@
-# BrevoRuby::SendSmtpEmailAttachment
+# Brevo::SendSmtpEmailAttachment
 
 ## Properties
 Name | Type | Description | Notes

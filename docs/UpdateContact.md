@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateContact
+# Brevo::UpdateContact
 
 ## Properties
 Name | Type | Description | Notes

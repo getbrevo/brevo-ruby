@@ -1,4 +1,4 @@
-# BrevoRuby::DeleteHardbounces
+# Brevo::DeleteHardbounces
 
 ## Properties
 Name | Type | Description | Notes

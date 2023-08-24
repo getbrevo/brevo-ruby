@@ -1,4 +1,4 @@
-# BrevoRuby::GetChildInfoStatistics
+# Brevo::GetChildInfoStatistics
 
 ## Properties
 Name | Type | Description | Notes

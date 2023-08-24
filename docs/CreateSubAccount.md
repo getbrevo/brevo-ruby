@@ -1,4 +1,4 @@
-# BrevoRuby::CreateSubAccount
+# Brevo::CreateSubAccount
 
 ## Properties
 Name | Type | Description | Notes

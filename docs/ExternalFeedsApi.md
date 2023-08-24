@@ -1,4 +1,4 @@
-# BrevoRuby::ExternalFeedsApi
+# Brevo::ExternalFeedsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -21,9 +21,9 @@ This endpoint will create an external feed.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -35,16 +35,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ExternalFeedsApi.new
+api_instance = Brevo::ExternalFeedsApi.new
 
-create_external_feed = BrevoRuby::CreateExternalFeed.new # CreateExternalFeed | Values to create a feed
+create_external_feed = Brevo::CreateExternalFeed.new # CreateExternalFeed | Values to create a feed
 
 
 begin
   #Create an external feed
   result = api_instance.create_external_feed(create_external_feed)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ExternalFeedsApi->create_external_feed: #{e}"
 end
 ```
@@ -80,9 +80,9 @@ This endpoint will delete an external feed.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -94,7 +94,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ExternalFeedsApi.new
+api_instance = Brevo::ExternalFeedsApi.new
 
 uuid = 'uuid_example' # String | UUID of the feed to delete
 
@@ -102,7 +102,7 @@ uuid = 'uuid_example' # String | UUID of the feed to delete
 begin
   #Delete an external feed
   api_instance.delete_external_feed(uuid)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ExternalFeedsApi->delete_external_feed: #{e}"
 end
 ```
@@ -138,9 +138,9 @@ This endpoint can fetch all created external feeds.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -152,7 +152,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ExternalFeedsApi.new
+api_instance = Brevo::ExternalFeedsApi.new
 
 opts = { 
   search: 'search_example', # String | Can be used to filter records by search keyword on feed name
@@ -168,7 +168,7 @@ begin
   #Fetch all external feeds
   result = api_instance.get_all_external_feeds(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ExternalFeedsApi->get_all_external_feeds: #{e}"
 end
 ```
@@ -210,9 +210,9 @@ This endpoint will update an external feed.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -224,7 +224,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ExternalFeedsApi.new
+api_instance = Brevo::ExternalFeedsApi.new
 
 uuid = 'uuid_example' # String | UUID of the feed to fetch
 
@@ -233,7 +233,7 @@ begin
   #Get an external feed by UUID
   result = api_instance.get_external_feed_by_uuid(uuid)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ExternalFeedsApi->get_external_feed_by_uuid: #{e}"
 end
 ```
@@ -269,9 +269,9 @@ This endpoint will update an external feed.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -283,17 +283,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ExternalFeedsApi.new
+api_instance = Brevo::ExternalFeedsApi.new
 
 uuid = 'uuid_example' # String | UUID of the feed to update
 
-update_external_feed = BrevoRuby::UpdateExternalFeed.new # UpdateExternalFeed | Values to update a feed
+update_external_feed = Brevo::UpdateExternalFeed.new # UpdateExternalFeed | Values to update a feed
 
 
 begin
   #Update an external feed
   api_instance.update_external_feed(uuid, update_external_feed)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ExternalFeedsApi->update_external_feed: #{e}"
 end
 ```

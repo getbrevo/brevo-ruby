@@ -1,4 +1,4 @@
-# BrevoRuby::CreateCouponCollection
+# Brevo::CreateCouponCollection
 
 ## Properties
 Name | Type | Description | Notes

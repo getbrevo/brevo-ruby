@@ -1,4 +1,4 @@
-# BrevoRuby::SendWhatsappMessage
+# Brevo::SendWhatsappMessage
 
 ## Properties
 Name | Type | Description | Notes

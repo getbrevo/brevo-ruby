@@ -1,4 +1,4 @@
-# BrevoRuby::InlineResponse2013
+# Brevo::InlineResponse2013
 
 ## Properties
 Name | Type | Description | Notes

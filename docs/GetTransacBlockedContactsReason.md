@@ -1,4 +1,4 @@
-# BrevoRuby::GetTransacBlockedContactsReason
+# Brevo::GetTransacBlockedContactsReason
 
 ## Properties
 Name | Type | Description | Notes

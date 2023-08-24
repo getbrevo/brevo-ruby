@@ -1,4 +1,4 @@
-# BrevoRuby::SendersApi
+# Brevo::SendersApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -21,9 +21,9 @@ Create a new sender
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -35,17 +35,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::SendersApi.new
+api_instance = Brevo::SendersApi.new
 
 opts = { 
-  sender: BrevoRuby::CreateSender.new # CreateSender | sender's name
+  sender: Brevo::CreateSender.new # CreateSender | sender's name
 }
 
 begin
   #Create a new sender
   result = api_instance.create_sender(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling SendersApi->create_sender: #{e}"
 end
 ```
@@ -79,9 +79,9 @@ Delete a sender
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -93,7 +93,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::SendersApi.new
+api_instance = Brevo::SendersApi.new
 
 sender_id = 789 # Integer | Id of the sender
 
@@ -101,7 +101,7 @@ sender_id = 789 # Integer | Id of the sender
 begin
   #Delete a sender
   api_instance.delete_sender(sender_id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling SendersApi->delete_sender: #{e}"
 end
 ```
@@ -135,9 +135,9 @@ Get all the dedicated IPs for your account
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -149,13 +149,13 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::SendersApi.new
+api_instance = Brevo::SendersApi.new
 
 begin
   #Get all the dedicated IPs for your account
   result = api_instance.get_ips
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling SendersApi->get_ips: #{e}"
 end
 ```
@@ -186,9 +186,9 @@ Get all the dedicated IPs for a sender
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -200,7 +200,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::SendersApi.new
+api_instance = Brevo::SendersApi.new
 
 sender_id = 789 # Integer | Id of the sender
 
@@ -209,7 +209,7 @@ begin
   #Get all the dedicated IPs for a sender
   result = api_instance.get_ips_from_sender(sender_id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling SendersApi->get_ips_from_sender: #{e}"
 end
 ```
@@ -243,9 +243,9 @@ Get the list of all your senders
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -257,7 +257,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::SendersApi.new
+api_instance = Brevo::SendersApi.new
 
 opts = { 
   ip: 'ip_example', # String | Filter your senders for a specific ip (available for dedicated IP usage only)
@@ -268,7 +268,7 @@ begin
   #Get the list of all your senders
   result = api_instance.get_senders(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling SendersApi->get_senders: #{e}"
 end
 ```
@@ -303,9 +303,9 @@ Update a sender
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -317,18 +317,18 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::SendersApi.new
+api_instance = Brevo::SendersApi.new
 
 sender_id = 789 # Integer | Id of the sender
 
 opts = { 
-  sender: BrevoRuby::UpdateSender.new # UpdateSender | sender's name
+  sender: Brevo::UpdateSender.new # UpdateSender | sender's name
 }
 
 begin
   #Update a sender
   api_instance.update_sender(sender_id, opts)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling SendersApi->update_sender: #{e}"
 end
 ```
@@ -363,9 +363,9 @@ Update a sender
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -377,18 +377,18 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::SendersApi.new
+api_instance = Brevo::SendersApi.new
 
 sender_id = 789 # Integer | Id of the sender
 
 opts = { 
-  otp: BrevoRuby::Otp.new # Otp | otp
+  otp: Brevo::Otp.new # Otp | otp
 }
 
 begin
   #Update a sender
   api_instance.validate_sender_by_otp(sender_id, opts)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling SendersApi->validate_sender_by_otp: #{e}"
 end
 ```

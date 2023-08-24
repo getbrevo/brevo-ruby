@@ -1,4 +1,4 @@
-# BrevoRuby::GetEmailEventReportEvents
+# Brevo::GetEmailEventReportEvents
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::AbTestCampaignResult
+# Brevo::AbTestCampaignResult
 
 ## Properties
 Name | Type | Description | Notes

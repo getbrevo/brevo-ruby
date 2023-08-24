@@ -1,4 +1,4 @@
-# BrevoRuby::AbTestVersionClicksInner
+# Brevo::AbTestVersionClicksInner
 
 ## Properties
 Name | Type | Description | Notes

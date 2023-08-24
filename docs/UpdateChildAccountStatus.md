@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateChildAccountStatus
+# Brevo::UpdateChildAccountStatus
 
 ## Properties
 Name | Type | Description | Notes

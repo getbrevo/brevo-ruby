@@ -1,4 +1,4 @@
-# BrevoRuby::AccountApi
+# Brevo::AccountApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -16,9 +16,9 @@ Get your account information, plan and credits details
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -30,13 +30,13 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::AccountApi.new
+api_instance = Brevo::AccountApi.new
 
 begin
   #Get your account information, plan and credits details
   result = api_instance.get_account
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling AccountApi->get_account: #{e}"
 end
 ```
@@ -67,9 +67,9 @@ Get user activity logs
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -81,7 +81,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::AccountApi.new
+api_instance = Brevo::AccountApi.new
 
 opts = { 
   start_date: 'start_date_example', # String | Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search.
@@ -94,7 +94,7 @@ begin
   #Get user activity logs
   result = api_instance.get_account_activity(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling AccountApi->get_account_activity: #{e}"
 end
 ```

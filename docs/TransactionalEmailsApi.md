@@ -1,4 +1,4 @@
-# BrevoRuby::TransactionalEmailsApi
+# Brevo::TransactionalEmailsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -38,9 +38,9 @@ Blocks a new domain in order to avoid messages being sent to the same
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -52,15 +52,15 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
-block_domain = BrevoRuby::BlockDomain.new # BlockDomain | 
+block_domain = Brevo::BlockDomain.new # BlockDomain | 
 
 
 begin
   #Add a new domain to the list of blocked domains
   api_instance.block_new_domain(block_domain)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->block_new_domain: #{e}"
 end
 ```
@@ -94,9 +94,9 @@ Create an email template
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -108,16 +108,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
-smtp_template = BrevoRuby::CreateSmtpTemplate.new # CreateSmtpTemplate | values to update in transactional email template
+smtp_template = Brevo::CreateSmtpTemplate.new # CreateSmtpTemplate | values to update in transactional email template
 
 
 begin
   #Create an email template
   result = api_instance.create_smtp_template(smtp_template)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->create_smtp_template: #{e}"
 end
 ```
@@ -153,9 +153,9 @@ Unblocks an existing domain from the list of blocked domains
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -167,7 +167,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 domain = 'domain_example' # String | The name of the domain to be deleted
 
@@ -175,7 +175,7 @@ domain = 'domain_example' # String | The name of the domain to be deleted
 begin
   #Unblock an existing domain from the list of blocked domains
   api_instance.delete_blocked_domain(domain)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->delete_blocked_domain: #{e}"
 end
 ```
@@ -211,9 +211,9 @@ Delete hardbounces. To use carefully (e.g. in case of temporary ISP failures)
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -225,16 +225,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 opts = { 
-  delete_hardbounces: BrevoRuby::DeleteHardbounces.new # DeleteHardbounces | values to delete hardbounces
+  delete_hardbounces: Brevo::DeleteHardbounces.new # DeleteHardbounces | values to delete hardbounces
 }
 
 begin
   #Delete hardbounces
   api_instance.delete_hardbounces(opts)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->delete_hardbounces: #{e}"
 end
 ```
@@ -270,9 +270,9 @@ Delete scheduled batch of emails by batchId or single scheduled email by message
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -284,7 +284,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 identifier = 'identifier_example' # String | The `batchId` of scheduled emails batch (Should be a valid UUIDv4) or the `messageId` of scheduled email.
 
@@ -292,7 +292,7 @@ identifier = 'identifier_example' # String | The `batchId` of scheduled emails b
 begin
   #Delete scheduled emails by batchId or messageId
   api_instance.delete_scheduled_email_by_id(identifier)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->delete_scheduled_email_by_id: #{e}"
 end
 ```
@@ -326,9 +326,9 @@ Delete an inactive email template
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -340,7 +340,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 template_id = 789 # Integer | id of the template
 
@@ -348,7 +348,7 @@ template_id = 789 # Integer | id of the template
 begin
   #Delete an inactive email template
   api_instance.delete_smtp_template(template_id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->delete_smtp_template: #{e}"
 end
 ```
@@ -384,9 +384,9 @@ This endpoint will show the aggregated stats for past 90 days by default if `sta
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -398,7 +398,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 opts = { 
   start_date: 'start_date_example', # String | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate
@@ -411,7 +411,7 @@ begin
   #Get your transactional email activity aggregated over a period of time
   result = api_instance.get_aggregated_smtp_report(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_aggregated_smtp_report: #{e}"
 end
 ```
@@ -450,9 +450,9 @@ Get the list of blocked domains
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -464,13 +464,13 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 begin
   #Get the list of blocked domains
   result = api_instance.get_blocked_domains
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_blocked_domains: #{e}"
 end
 ```
@@ -503,9 +503,9 @@ This endpoint will show the aggregated stats for past 30 days by default if `sta
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -517,7 +517,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 opts = { 
   limit: 2500, # Integer | Number limitation for the result returned
@@ -537,7 +537,7 @@ begin
   #Get all your transactional email activity (unaggregated events)
   result = api_instance.get_email_event_report(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_email_event_report: #{e}"
 end
 ```
@@ -583,9 +583,9 @@ Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -597,7 +597,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 batch_id = 'batch_id_example' # String | The batchId of scheduled emails batch (Should be a valid UUIDv4)
 
@@ -614,7 +614,7 @@ begin
   #Fetch scheduled emails by batchId
   result = api_instance.get_scheduled_email_by_batch_id(batch_id, opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_scheduled_email_by_batch_id: #{e}"
 end
 ```
@@ -656,9 +656,9 @@ Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -670,7 +670,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 message_id = 'message_id_example' # String | The messageId of scheduled email
 
@@ -683,7 +683,7 @@ begin
   #Fetch scheduled email by messageId
   result = api_instance.get_scheduled_email_by_message_id(message_id, opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_scheduled_email_by_message_id: #{e}"
 end
 ```
@@ -719,9 +719,9 @@ Get your transactional email activity aggregated per day
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -733,7 +733,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 opts = { 
   limit: 10, # Integer | Number of documents returned per page
@@ -749,7 +749,7 @@ begin
   #Get your transactional email activity aggregated per day
   result = api_instance.get_smtp_report(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_smtp_report: #{e}"
 end
 ```
@@ -789,9 +789,9 @@ Returns the template information
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -803,7 +803,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 template_id = 789 # Integer | id of the template
 
@@ -812,7 +812,7 @@ begin
   #Returns the template information
   result = api_instance.get_smtp_template(template_id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_smtp_template: #{e}"
 end
 ```
@@ -846,9 +846,9 @@ Get the list of email templates
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -860,7 +860,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 opts = { 
   template_status: true, # BOOLEAN | Filter on the status of the template. Active = true, inactive = false
@@ -873,7 +873,7 @@ begin
   #Get the list of email templates
   result = api_instance.get_smtp_templates(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_smtp_templates: #{e}"
 end
 ```
@@ -910,9 +910,9 @@ Get the list of blocked or unsubscribed transactional contacts
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -924,7 +924,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 opts = { 
   start_date: 'start_date_example', # String | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts
@@ -939,7 +939,7 @@ begin
   #Get the list of blocked or unsubscribed transactional contacts
   result = api_instance.get_transac_blocked_contacts(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_transac_blocked_contacts: #{e}"
 end
 ```
@@ -978,9 +978,9 @@ Get the personalized content of a sent transactional email
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -992,7 +992,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 uuid = 'uuid_example' # String | Unique id of the transactional email that has been sent to a particular contact
 
@@ -1001,7 +1001,7 @@ begin
   #Get the personalized content of a sent transactional email
   result = api_instance.get_transac_email_content(uuid)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_transac_email_content: #{e}"
 end
 ```
@@ -1037,9 +1037,9 @@ This endpoint will show the list of emails for past 30 days by default. To retri
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1051,7 +1051,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 opts = { 
   email: 'email_example', # String | Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent.
@@ -1068,7 +1068,7 @@ begin
   #Get the list of transactional emails on the basis of allowed filters
   result = api_instance.get_transac_emails_list(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->get_transac_emails_list: #{e}"
 end
 ```
@@ -1109,9 +1109,9 @@ Send a template to your test list
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1123,17 +1123,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 template_id = 789 # Integer | Id of the template
 
-send_test_email = BrevoRuby::SendTestEmail.new # SendTestEmail | 
+send_test_email = Brevo::SendTestEmail.new # SendTestEmail | 
 
 
 begin
   #Send a template to your test list
   api_instance.send_test_template(template_id, send_test_email)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->send_test_template: #{e}"
 end
 ```
@@ -1168,9 +1168,9 @@ Send a transactional email
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1182,16 +1182,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
-send_smtp_email = BrevoRuby::SendSmtpEmail.new # SendSmtpEmail | Values to send a transactional email
+send_smtp_email = Brevo::SendSmtpEmail.new # SendSmtpEmail | Values to send a transactional email
 
 
 begin
   #Send a transactional email
   result = api_instance.send_transac_email(send_smtp_email)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->send_transac_email: #{e}"
 end
 ```
@@ -1225,9 +1225,9 @@ Unblock or resubscribe a transactional contact
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1239,7 +1239,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 email = 'email_example' # String | contact email (urlencoded) to unblock.
 
@@ -1247,7 +1247,7 @@ email = 'email_example' # String | contact email (urlencoded) to unblock.
 begin
   #Unblock or resubscribe a transactional contact
   api_instance.smtp_blocked_contacts_email_delete(email)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->smtp_blocked_contacts_email_delete: #{e}"
 end
 ```
@@ -1281,9 +1281,9 @@ Delete an SMTP transactional log
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1295,7 +1295,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 message_id = 'message_id_example' # String | MessageId of the transactional log to delete
 
@@ -1303,7 +1303,7 @@ message_id = 'message_id_example' # String | MessageId of the transactional log 
 begin
   #Delete an SMTP transactional log
   api_instance.smtp_log_message_id_delete(message_id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->smtp_log_message_id_delete: #{e}"
 end
 ```
@@ -1337,9 +1337,9 @@ Update an email template
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1351,17 +1351,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TransactionalEmailsApi.new
+api_instance = Brevo::TransactionalEmailsApi.new
 
 template_id = 789 # Integer | id of the template
 
-smtp_template = BrevoRuby::UpdateSmtpTemplate.new # UpdateSmtpTemplate | values to update in transactional email template
+smtp_template = Brevo::UpdateSmtpTemplate.new # UpdateSmtpTemplate | values to update in transactional email template
 
 
 begin
   #Update an email template
   api_instance.update_smtp_template(template_id, smtp_template)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TransactionalEmailsApi->update_smtp_template: #{e}"
 end
 ```

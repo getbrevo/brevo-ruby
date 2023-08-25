@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateWebhook
+# Brevo::UpdateWebhook
 
 ## Properties
 Name | Type | Description | Notes

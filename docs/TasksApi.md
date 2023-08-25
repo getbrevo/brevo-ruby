@@ -1,4 +1,4 @@
-# BrevoRuby::TasksApi
+# Brevo::TasksApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -20,9 +20,9 @@ Get all tasks
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -34,7 +34,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TasksApi.new
+api_instance = Brevo::TasksApi.new
 
 opts = { 
   filter_type: 'filter_type_example', # String | Filter by task type (ID)
@@ -56,7 +56,7 @@ begin
   #Get all tasks
   result = api_instance.crm_tasks_get(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TasksApi->crm_tasks_get: #{e}"
 end
 ```
@@ -102,9 +102,9 @@ Delete a task
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -116,7 +116,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TasksApi.new
+api_instance = Brevo::TasksApi.new
 
 id = 'id_example' # String | 
 
@@ -124,7 +124,7 @@ id = 'id_example' # String |
 begin
   #Delete a task
   api_instance.crm_tasks_id_delete(id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TasksApi->crm_tasks_id_delete: #{e}"
 end
 ```
@@ -158,9 +158,9 @@ Get a task
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -172,7 +172,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TasksApi.new
+api_instance = Brevo::TasksApi.new
 
 id = 'id_example' # String | 
 
@@ -181,7 +181,7 @@ begin
   #Get a task
   result = api_instance.crm_tasks_id_get(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TasksApi->crm_tasks_id_get: #{e}"
 end
 ```
@@ -215,9 +215,9 @@ Update a task
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -229,17 +229,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TasksApi.new
+api_instance = Brevo::TasksApi.new
 
 id = 'id_example' # String | 
 
-body = BrevoRuby::Body7.new # Body7 | Updated task details.
+body = Brevo::Body7.new # Body7 | Updated task details.
 
 
 begin
   #Update a task
   api_instance.crm_tasks_id_patch(id, body)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TasksApi->crm_tasks_id_patch: #{e}"
 end
 ```
@@ -274,9 +274,9 @@ Create a task
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -288,16 +288,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TasksApi.new
+api_instance = Brevo::TasksApi.new
 
-body = BrevoRuby::Body6.new # Body6 | Task name.
+body = Brevo::Body6.new # Body6 | Task name.
 
 
 begin
   #Create a task
   result = api_instance.crm_tasks_post(body)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TasksApi->crm_tasks_post: #{e}"
 end
 ```
@@ -331,9 +331,9 @@ Get all task types
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -345,13 +345,13 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::TasksApi.new
+api_instance = Brevo::TasksApi.new
 
 begin
   #Get all task types
   result = api_instance.crm_tasktypes_get
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling TasksApi->crm_tasktypes_get: #{e}"
 end
 ```

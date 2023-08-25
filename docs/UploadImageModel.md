@@ -1,4 +1,4 @@
-# BrevoRuby::UploadImageModel
+# Brevo::UploadImageModel
 
 ## Properties
 Name | Type | Description | Notes

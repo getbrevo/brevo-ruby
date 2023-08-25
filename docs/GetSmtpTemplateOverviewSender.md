@@ -1,4 +1,4 @@
-# BrevoRuby::GetSmtpTemplateOverviewSender
+# Brevo::GetSmtpTemplateOverviewSender
 
 ## Properties
 Name | Type | Description | Notes

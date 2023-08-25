@@ -1,4 +1,4 @@
-# BrevoRuby::GetWhatsAppConfig
+# Brevo::GetWhatsAppConfig
 
 ## Properties
 Name | Type | Description | Notes

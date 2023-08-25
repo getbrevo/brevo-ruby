@@ -1,4 +1,4 @@
-# BrevoRuby::AbTestCampaignResultClickedLinks
+# Brevo::AbTestCampaignResultClickedLinks
 
 ## Properties
 Name | Type | Description | Notes

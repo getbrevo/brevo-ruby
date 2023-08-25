@@ -1,4 +1,4 @@
-# BrevoRuby::Pipelines
+# Brevo::Pipelines
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::RequestSmsRecipientExport
+# Brevo::RequestSmsRecipientExport
 
 ## Properties
 Name | Type | Description | Notes

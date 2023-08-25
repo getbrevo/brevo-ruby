@@ -1,4 +1,4 @@
-# BrevoRuby::RemainingCreditModelReseller
+# Brevo::RemainingCreditModelReseller
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateAttributeEnumeration
+# Brevo::UpdateAttributeEnumeration
 
 ## Properties
 Name | Type | Description | Notes

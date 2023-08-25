@@ -1,4 +1,4 @@
-# BrevoRuby::GetContactCampaignStatsClicked
+# Brevo::GetContactCampaignStatsClicked
 
 ## Properties
 Name | Type | Description | Notes

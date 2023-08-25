@@ -1,4 +1,4 @@
-# BrevoRuby::UserApi
+# Brevo::UserApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -16,9 +16,9 @@ Get the list of all your users
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -30,13 +30,13 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::UserApi.new
+api_instance = Brevo::UserApi.new
 
 begin
   #Get the list of all your users
   result = api_instance.get_invited_users_list
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling UserApi->get_invited_users_list: #{e}"
 end
 ```
@@ -67,9 +67,9 @@ Check user permission
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -81,7 +81,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::UserApi.new
+api_instance = Brevo::UserApi.new
 
 email = 'email_example' # String | Email of the invited user.
 
@@ -90,7 +90,7 @@ begin
   #Check user permission
   result = api_instance.get_user_permission(email)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling UserApi->get_user_permission: #{e}"
 end
 ```

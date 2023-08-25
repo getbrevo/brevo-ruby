@@ -1,4 +1,4 @@
-# BrevoRuby::RemoveContactFromList
+# Brevo::RemoveContactFromList
 
 ## Properties
 Name | Type | Description | Notes

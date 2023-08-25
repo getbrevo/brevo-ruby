@@ -1,4 +1,4 @@
-# BrevoRuby::Body10
+# Brevo::Body10
 
 ## Properties
 Name | Type | Description | Notes

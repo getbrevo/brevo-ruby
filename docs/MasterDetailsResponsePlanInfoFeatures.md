@@ -1,4 +1,4 @@
-# BrevoRuby::MasterDetailsResponsePlanInfoFeatures
+# Brevo::MasterDetailsResponsePlanInfoFeatures
 
 ## Properties
 Name | Type | Description | Notes

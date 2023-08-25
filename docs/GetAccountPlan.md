@@ -1,4 +1,4 @@
-# BrevoRuby::GetAccountPlan
+# Brevo::GetAccountPlan
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::DealsList
+# Brevo::DealsList
 
 ## Properties
 Name | Type | Description | Notes

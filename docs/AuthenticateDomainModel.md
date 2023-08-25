@@ -1,4 +1,4 @@
-# BrevoRuby::AuthenticateDomainModel
+# Brevo::AuthenticateDomainModel
 
 ## Properties
 Name | Type | Description | Notes

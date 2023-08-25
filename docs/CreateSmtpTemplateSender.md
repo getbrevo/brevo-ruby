@@ -1,4 +1,4 @@
-# BrevoRuby::CreateSmtpTemplateSender
+# Brevo::CreateSmtpTemplateSender
 
 ## Properties
 Name | Type | Description | Notes

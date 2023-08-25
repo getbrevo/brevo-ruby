@@ -1,4 +1,4 @@
-# BrevoRuby::OrderBilling
+# Brevo::OrderBilling
 
 ## Properties
 Name | Type | Description | Notes

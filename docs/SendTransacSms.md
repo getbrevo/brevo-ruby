@@ -1,4 +1,4 @@
-# BrevoRuby::SendTransacSms
+# Brevo::SendTransacSms
 
 ## Properties
 Name | Type | Description | Notes

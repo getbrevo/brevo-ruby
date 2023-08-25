@@ -1,4 +1,4 @@
-# BrevoRuby::GetSendersList
+# Brevo::GetSendersList
 
 ## Properties
 Name | Type | Description | Notes

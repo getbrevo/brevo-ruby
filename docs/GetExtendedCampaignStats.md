@@ -1,4 +1,4 @@
-# BrevoRuby::GetExtendedCampaignStats
+# Brevo::GetExtendedCampaignStats
 
 ## Properties
 Name | Type | Description | Notes

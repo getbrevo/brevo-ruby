@@ -1,4 +1,4 @@
-# BrevoRuby::GetExtendedContactDetailsStatisticsClicked
+# Brevo::GetExtendedContactDetailsStatisticsClicked
 
 ## Properties
 Name | Type | Description | Notes

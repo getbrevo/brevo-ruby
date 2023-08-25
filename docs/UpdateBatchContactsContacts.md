@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateBatchContactsContacts
+# Brevo::UpdateBatchContactsContacts
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::OrderBatch
+# Brevo::OrderBatch
 
 ## Properties
 Name | Type | Description | Notes

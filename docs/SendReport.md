@@ -1,4 +1,4 @@
-# BrevoRuby::SendReport
+# Brevo::SendReport
 
 ## Properties
 Name | Type | Description | Notes

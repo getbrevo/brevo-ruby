@@ -1,4 +1,4 @@
-# BrevoRuby::GetScheduledEmailByBatchIdBatches
+# Brevo::GetScheduledEmailByBatchIdBatches
 
 ## Properties
 Name | Type | Description | Notes

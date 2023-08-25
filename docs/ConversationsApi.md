@@ -1,4 +1,4 @@
-# BrevoRuby::ConversationsApi
+# Brevo::ConversationsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -25,9 +25,9 @@ We recommend pinging this endpoint every minute for as long as the agent has to 
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -39,15 +39,15 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
-body = BrevoRuby::Body12.new # Body12 | Agent fields.
+body = Brevo::Body12.new # Body12 | Agent fields.
 
 
 begin
   #Sets agent’s status to online for 2-3 minutes
   api_instance.conversations_agent_online_ping_post(body)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_agent_online_ping_post: #{e}"
 end
 ```
@@ -83,9 +83,9 @@ Only agents’ messages can be deleted.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -97,7 +97,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
 id = 'id_example' # String | ID of the message
 
@@ -105,7 +105,7 @@ id = 'id_example' # String | ID of the message
 begin
   #Delete a message sent by an agent
   api_instance.conversations_messages_id_delete(id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_messages_id_delete: #{e}"
 end
 ```
@@ -139,9 +139,9 @@ Get a message
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -153,7 +153,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
 id = 'id_example' # String | ID of the message
 
@@ -162,7 +162,7 @@ begin
   #Get a message
   result = api_instance.conversations_messages_id_get(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_messages_id_get: #{e}"
 end
 ```
@@ -198,9 +198,9 @@ Only agents’ messages can be edited.
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -212,19 +212,19 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
 id = 'id_example' # String | ID of the message
 
 opts = { 
-  body: BrevoRuby::Body9.new # Body9 | 
+  body: Brevo::Body9.new # Body9 | 
 }
 
 begin
   #Update a message sent by an agent
   result = api_instance.conversations_messages_id_put(id, opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_messages_id_put: #{e}"
 end
 ```
@@ -259,9 +259,9 @@ Send a message as an agent
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -273,16 +273,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
-body = BrevoRuby::Body8.new # Body8 | Message fields.
+body = Brevo::Body8.new # Body8 | Message fields.
 
 
 begin
   #Send a message as an agent
   result = api_instance.conversations_messages_post(body)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_messages_post: #{e}"
 end
 ```
@@ -316,9 +316,9 @@ Delete an automated message
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -330,7 +330,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
 id = 'id_example' # String | ID of the message
 
@@ -338,7 +338,7 @@ id = 'id_example' # String | ID of the message
 begin
   #Delete an automated message
   api_instance.conversations_pushed_messages_id_delete(id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_pushed_messages_id_delete: #{e}"
 end
 ```
@@ -372,9 +372,9 @@ Get an automated message
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -386,7 +386,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
 id = 'id_example' # String | ID of the message sent previously
 
@@ -395,7 +395,7 @@ begin
   #Get an automated message
   result = api_instance.conversations_pushed_messages_id_get(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_pushed_messages_id_get: #{e}"
 end
 ```
@@ -429,9 +429,9 @@ Update an automated message
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -443,18 +443,18 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
 id = 'id_example' # String | ID of the message
 
-body = BrevoRuby::Body11.new # Body11 | 
+body = Brevo::Body11.new # Body11 | 
 
 
 begin
   #Update an automated message
   result = api_instance.conversations_pushed_messages_id_put(id, body)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_pushed_messages_id_put: #{e}"
 end
 ```
@@ -491,9 +491,9 @@ Example of automated messages: order status, announce new features in your web a
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -505,16 +505,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::ConversationsApi.new
+api_instance = Brevo::ConversationsApi.new
 
-body = BrevoRuby::Body10.new # Body10 | 
+body = Brevo::Body10.new # Body10 | 
 
 
 begin
   #Send an automated message to a visitor
   result = api_instance.conversations_pushed_messages_post(body)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling ConversationsApi->conversations_pushed_messages_post: #{e}"
 end
 ```

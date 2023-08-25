@@ -1,4 +1,4 @@
-# BrevoRuby::OrderProducts
+# Brevo::OrderProducts
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::CreateSenderModel
+# Brevo::CreateSenderModel
 
 ## Properties
 Name | Type | Description | Notes

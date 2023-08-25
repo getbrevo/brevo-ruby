@@ -1,4 +1,4 @@
-# BrevoRuby::CouponsApi
+# Brevo::CouponsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -19,9 +19,9 @@ Create а coupon collection
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -33,16 +33,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CouponsApi.new
+api_instance = Brevo::CouponsApi.new
 
-create_coupon_collection = BrevoRuby::CreateCouponCollection.new # CreateCouponCollection | Values to create a coupon collection
+create_coupon_collection = Brevo::CreateCouponCollection.new # CreateCouponCollection | Values to create a coupon collection
 
 
 begin
   #Create а coupon collection
   result = api_instance.create_coupon_collection(create_coupon_collection)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CouponsApi->create_coupon_collection: #{e}"
 end
 ```
@@ -76,9 +76,9 @@ Create coupons for a coupon collection
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -90,15 +90,15 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CouponsApi.new
+api_instance = Brevo::CouponsApi.new
 
-create_coupons = BrevoRuby::CreateCoupons.new # CreateCoupons | Values to create coupons
+create_coupons = Brevo::CreateCoupons.new # CreateCoupons | Values to create coupons
 
 
 begin
   #Create coupons for a coupon collection
   api_instance.create_coupons(create_coupons)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CouponsApi->create_coupons: #{e}"
 end
 ```
@@ -132,9 +132,9 @@ Get a coupon collection by id
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -146,7 +146,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CouponsApi.new
+api_instance = Brevo::CouponsApi.new
 
 id = 'id_example' # String | Id of the collection to return
 
@@ -155,7 +155,7 @@ begin
   #Get a coupon collection by id
   result = api_instance.get_coupon_collection(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CouponsApi->get_coupon_collection: #{e}"
 end
 ```
@@ -189,9 +189,9 @@ Get all your coupon collections
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -203,7 +203,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CouponsApi.new
+api_instance = Brevo::CouponsApi.new
 
 opts = { 
   limit: 50, # Integer | Number of documents returned per page
@@ -215,7 +215,7 @@ begin
   #Get all your coupon collections
   result = api_instance.get_coupon_collections(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CouponsApi->get_coupon_collections: #{e}"
 end
 ```
@@ -251,9 +251,9 @@ Update a coupon collection by id
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -265,18 +265,18 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CouponsApi.new
+api_instance = Brevo::CouponsApi.new
 
 id = 'id_example' # String | Id of the collection to update
 
-update_coupon_collection = BrevoRuby::UpdateCouponCollection.new # UpdateCouponCollection | Values to update the coupon collection
+update_coupon_collection = Brevo::UpdateCouponCollection.new # UpdateCouponCollection | Values to update the coupon collection
 
 
 begin
   #Update a coupon collection by id
   result = api_instance.update_coupon_collection(id, update_coupon_collection)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CouponsApi->update_coupon_collection: #{e}"
 end
 ```

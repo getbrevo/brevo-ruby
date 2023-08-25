@@ -1,4 +1,4 @@
-# BrevoRuby::CompaniesApi
+# Brevo::CompaniesApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -21,9 +21,9 @@ Get company attributes
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -35,13 +35,13 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CompaniesApi.new
+api_instance = Brevo::CompaniesApi.new
 
 begin
   #Get company attributes
   result = api_instance.companies_attributes_get
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CompaniesApi->companies_attributes_get: #{e}"
 end
 ```
@@ -72,9 +72,9 @@ Get all companies
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -86,7 +86,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CompaniesApi.new
+api_instance = Brevo::CompaniesApi.new
 
 opts = { 
   filters: 'filters_example', # String | Filter by attrbutes. If you have filter for owner on your side please send it as {\"attributes.owner\":\"5b1a17d914b73d35a76ca0c7\"}
@@ -102,7 +102,7 @@ begin
   #Get all companies
   result = api_instance.companies_get(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CompaniesApi->companies_get: #{e}"
 end
 ```
@@ -142,9 +142,9 @@ Delete a company
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -156,7 +156,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CompaniesApi.new
+api_instance = Brevo::CompaniesApi.new
 
 id = 'id_example' # String | 
 
@@ -164,7 +164,7 @@ id = 'id_example' # String |
 begin
   #Delete a company
   api_instance.companies_id_delete(id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CompaniesApi->companies_id_delete: #{e}"
 end
 ```
@@ -198,9 +198,9 @@ Get a company
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -212,7 +212,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CompaniesApi.new
+api_instance = Brevo::CompaniesApi.new
 
 id = 'id_example' # String | 
 
@@ -221,7 +221,7 @@ begin
   #Get a company
   result = api_instance.companies_id_get(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CompaniesApi->companies_id_get: #{e}"
 end
 ```
@@ -255,9 +255,9 @@ Update a company
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -269,18 +269,18 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CompaniesApi.new
+api_instance = Brevo::CompaniesApi.new
 
 id = 'id_example' # String | 
 
-body = BrevoRuby::Body1.new # Body1 | Updated company details.
+body = Brevo::Body1.new # Body1 | Updated company details.
 
 
 begin
   #Update a company
   result = api_instance.companies_id_patch(id, body)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CompaniesApi->companies_id_patch: #{e}"
 end
 ```
@@ -315,9 +315,9 @@ Link and Unlink company with contacts and deals
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -329,17 +329,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CompaniesApi.new
+api_instance = Brevo::CompaniesApi.new
 
 id = 'id_example' # String | 
 
-body = BrevoRuby::Body2.new # Body2 | Linked / Unlinked contacts and deals ids.
+body = Brevo::Body2.new # Body2 | Linked / Unlinked contacts and deals ids.
 
 
 begin
   #Link and Unlink company with contacts and deals
   api_instance.companies_link_unlink_id_patch(id, body)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CompaniesApi->companies_link_unlink_id_patch: #{e}"
 end
 ```
@@ -374,9 +374,9 @@ Create a company
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -388,16 +388,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::CompaniesApi.new
+api_instance = Brevo::CompaniesApi.new
 
-body = BrevoRuby::Body.new # Body | Company create data.
+body = Brevo::Body.new # Body | Company create data.
 
 
 begin
   #Create a company
   result = api_instance.companies_post(body)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling CompaniesApi->companies_post: #{e}"
 end
 ```

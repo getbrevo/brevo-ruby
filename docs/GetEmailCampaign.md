@@ -1,4 +1,4 @@
-# BrevoRuby::GetEmailCampaign
+# Brevo::GetEmailCampaign
 
 ## Properties
 Name | Type | Description | Notes
@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **Integer** | ID of the campaign | 
 **name** | **String** | Name of the campaign | 
 **subject** | **String** | Subject of the campaign. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;false&#x60; | [optional] 
+**preview_text** | **String** | Preview text or preheader of the email campaign | [optional] 
 **type** | **String** | Type of campaign | 
 **status** | **String** | Status of the campaign | 
 **scheduled_at** | **String** | UTC date-time on which campaign is scheduled (YYYY-MM-DDTHH:mm:ss.SSSZ) | [optional] 

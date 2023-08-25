@@ -1,4 +1,4 @@
-# BrevoRuby::NotesApi
+# Brevo::NotesApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -19,9 +19,9 @@ Get all notes
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -33,7 +33,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::NotesApi.new
+api_instance = Brevo::NotesApi.new
 
 opts = { 
   entity: 'entity_example', # String | Filter by note entity type
@@ -49,7 +49,7 @@ begin
   #Get all notes
   result = api_instance.crm_notes_get(opts)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling NotesApi->crm_notes_get: #{e}"
 end
 ```
@@ -89,9 +89,9 @@ Delete a note
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -103,7 +103,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::NotesApi.new
+api_instance = Brevo::NotesApi.new
 
 id = 'id_example' # String | Note ID to delete
 
@@ -111,7 +111,7 @@ id = 'id_example' # String | Note ID to delete
 begin
   #Delete a note
   api_instance.crm_notes_id_delete(id)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling NotesApi->crm_notes_id_delete: #{e}"
 end
 ```
@@ -145,9 +145,9 @@ Get a note
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -159,7 +159,7 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::NotesApi.new
+api_instance = Brevo::NotesApi.new
 
 id = 'id_example' # String | Note ID to get
 
@@ -168,7 +168,7 @@ begin
   #Get a note
   result = api_instance.crm_notes_id_get(id)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling NotesApi->crm_notes_id_get: #{e}"
 end
 ```
@@ -202,9 +202,9 @@ Update a note
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -216,17 +216,17 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::NotesApi.new
+api_instance = Brevo::NotesApi.new
 
 id = 'id_example' # String | Note ID to update
 
-body = BrevoRuby::NoteData.new # NoteData | Note data to update a note
+body = Brevo::NoteData.new # NoteData | Note data to update a note
 
 
 begin
   #Update a note
   api_instance.crm_notes_id_patch(id, body)
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling NotesApi->crm_notes_id_patch: #{e}"
 end
 ```
@@ -261,9 +261,9 @@ Create a note
 ### Example
 ```ruby
 # load the gem
-require 'brevo-ruby'
+require 'brevo'
 # setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -275,16 +275,16 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::NotesApi.new
+api_instance = Brevo::NotesApi.new
 
-body = BrevoRuby::NoteData.new # NoteData | Note data to create a note.
+body = Brevo::NoteData.new # NoteData | Note data to create a note.
 
 
 begin
   #Create a note
   result = api_instance.crm_notes_post(body)
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling NotesApi->crm_notes_post: #{e}"
 end
 ```

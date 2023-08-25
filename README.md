@@ -18,7 +18,7 @@ For more information, please visit [https://account.brevo.com/support](https://a
 
 Add this line to your application's Gemfile:
 ```shell
-gem 'brevo-ruby'
+gem 'brevo'
 ```
 
 And then execute:
@@ -28,14 +28,14 @@ $ bundle
 
 Or install it yourself as:
 ```shell
-$ ( sudo ) gem install brevo-ruby
+$ ( sudo ) gem install brevo
 ```
 
 ### Install from Git
 
 If the Ruby gem is hosted at a git repository: https://github.com/GIT_USER_ID/GIT_REPO_ID, then add the following in the Gemfile:
 
-    gem 'brevo-ruby', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
+    gem 'brevo', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
 
 ### Include the Ruby code directly
 
@@ -50,10 +50,10 @@ ruby -Ilib script.rb
 Please follow the [installation](#installation) procedure and then run the following code:
 ```ruby
 # Load the gem
-require 'brevo-ruby'
+require 'brevo'
 
 # Setup authorization
-BrevoRuby.configure do |config|
+Brevo.configure do |config|
   # Configure API key authorization: api-key
   config.api_key['api-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -65,13 +65,13 @@ BrevoRuby.configure do |config|
   #config.api_key_prefix['partner-key'] = 'Bearer'
 end
 
-api_instance = BrevoRuby::AccountApi.new
+api_instance = Brevo::AccountApi.new
 
 begin
   #Get your account information, plan and credits details
   result = api_instance.get_account
   p result
-rescue BrevoRuby::ApiError => e
+rescue Brevo::ApiError => e
   puts "Exception when calling AccountApi->get_account: #{e}"
 end
 
@@ -83,542 +83,546 @@ All URIs are relative to *https://api.brevo.com/v3*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BrevoRuby::AccountApi* | [**get_account**](docs/AccountApi.md#get_account) | **GET** /account | Get your account information, plan and credits details
-*BrevoRuby::AccountApi* | [**get_account_activity**](docs/AccountApi.md#get_account_activity) | **GET** /organization/activities | Get user activity logs
-*BrevoRuby::CompaniesApi* | [**companies_attributes_get**](docs/CompaniesApi.md#companies_attributes_get) | **GET** /companies/attributes | Get company attributes
-*BrevoRuby::CompaniesApi* | [**companies_get**](docs/CompaniesApi.md#companies_get) | **GET** /companies | Get all companies
-*BrevoRuby::CompaniesApi* | [**companies_id_delete**](docs/CompaniesApi.md#companies_id_delete) | **DELETE** /companies/{id} | Delete a company
-*BrevoRuby::CompaniesApi* | [**companies_id_get**](docs/CompaniesApi.md#companies_id_get) | **GET** /companies/{id} | Get a company
-*BrevoRuby::CompaniesApi* | [**companies_id_patch**](docs/CompaniesApi.md#companies_id_patch) | **PATCH** /companies/{id} | Update a company
-*BrevoRuby::CompaniesApi* | [**companies_link_unlink_id_patch**](docs/CompaniesApi.md#companies_link_unlink_id_patch) | **PATCH** /companies/link-unlink/{id} | Link and Unlink company with contacts and deals
-*BrevoRuby::CompaniesApi* | [**companies_post**](docs/CompaniesApi.md#companies_post) | **POST** /companies | Create a company
-*BrevoRuby::ContactsApi* | [**add_contact_to_list**](docs/ContactsApi.md#add_contact_to_list) | **POST** /contacts/lists/{listId}/contacts/add | Add existing contacts to a list
-*BrevoRuby::ContactsApi* | [**create_attribute**](docs/ContactsApi.md#create_attribute) | **POST** /contacts/attributes/{attributeCategory}/{attributeName} | Create contact attribute
-*BrevoRuby::ContactsApi* | [**create_contact**](docs/ContactsApi.md#create_contact) | **POST** /contacts | Create a contact
-*BrevoRuby::ContactsApi* | [**create_doi_contact**](docs/ContactsApi.md#create_doi_contact) | **POST** /contacts/doubleOptinConfirmation | Create Contact via DOI (Double-Opt-In) Flow
-*BrevoRuby::ContactsApi* | [**create_folder**](docs/ContactsApi.md#create_folder) | **POST** /contacts/folders | Create a folder
-*BrevoRuby::ContactsApi* | [**create_list**](docs/ContactsApi.md#create_list) | **POST** /contacts/lists | Create a list
-*BrevoRuby::ContactsApi* | [**delete_attribute**](docs/ContactsApi.md#delete_attribute) | **DELETE** /contacts/attributes/{attributeCategory}/{attributeName} | Delete an attribute
-*BrevoRuby::ContactsApi* | [**delete_contact**](docs/ContactsApi.md#delete_contact) | **DELETE** /contacts/{identifier} | Delete a contact
-*BrevoRuby::ContactsApi* | [**delete_folder**](docs/ContactsApi.md#delete_folder) | **DELETE** /contacts/folders/{folderId} | Delete a folder (and all its lists)
-*BrevoRuby::ContactsApi* | [**delete_list**](docs/ContactsApi.md#delete_list) | **DELETE** /contacts/lists/{listId} | Delete a list
-*BrevoRuby::ContactsApi* | [**get_attributes**](docs/ContactsApi.md#get_attributes) | **GET** /contacts/attributes | List all attributes
-*BrevoRuby::ContactsApi* | [**get_contact_info**](docs/ContactsApi.md#get_contact_info) | **GET** /contacts/{identifier} | Get a contact's details
-*BrevoRuby::ContactsApi* | [**get_contact_stats**](docs/ContactsApi.md#get_contact_stats) | **GET** /contacts/{identifier}/campaignStats | Get email campaigns' statistics for a contact
-*BrevoRuby::ContactsApi* | [**get_contacts**](docs/ContactsApi.md#get_contacts) | **GET** /contacts | Get all the contacts
-*BrevoRuby::ContactsApi* | [**get_contacts_from_list**](docs/ContactsApi.md#get_contacts_from_list) | **GET** /contacts/lists/{listId}/contacts | Get contacts in a list
-*BrevoRuby::ContactsApi* | [**get_folder**](docs/ContactsApi.md#get_folder) | **GET** /contacts/folders/{folderId} | Returns a folder's details
-*BrevoRuby::ContactsApi* | [**get_folder_lists**](docs/ContactsApi.md#get_folder_lists) | **GET** /contacts/folders/{folderId}/lists | Get lists in a folder
-*BrevoRuby::ContactsApi* | [**get_folders**](docs/ContactsApi.md#get_folders) | **GET** /contacts/folders | Get all folders
-*BrevoRuby::ContactsApi* | [**get_list**](docs/ContactsApi.md#get_list) | **GET** /contacts/lists/{listId} | Get a list's details
-*BrevoRuby::ContactsApi* | [**get_lists**](docs/ContactsApi.md#get_lists) | **GET** /contacts/lists | Get all the lists
-*BrevoRuby::ContactsApi* | [**get_segments**](docs/ContactsApi.md#get_segments) | **GET** /contacts/segments | Get all the Segments
-*BrevoRuby::ContactsApi* | [**import_contacts**](docs/ContactsApi.md#import_contacts) | **POST** /contacts/import | Import contacts
-*BrevoRuby::ContactsApi* | [**remove_contact_from_list**](docs/ContactsApi.md#remove_contact_from_list) | **POST** /contacts/lists/{listId}/contacts/remove | Delete a contact from a list
-*BrevoRuby::ContactsApi* | [**request_contact_export**](docs/ContactsApi.md#request_contact_export) | **POST** /contacts/export | Export contacts
-*BrevoRuby::ContactsApi* | [**update_attribute**](docs/ContactsApi.md#update_attribute) | **PUT** /contacts/attributes/{attributeCategory}/{attributeName} | Update contact attribute
-*BrevoRuby::ContactsApi* | [**update_batch_contacts**](docs/ContactsApi.md#update_batch_contacts) | **POST** /contacts/batch | Update multiple contacts
-*BrevoRuby::ContactsApi* | [**update_contact**](docs/ContactsApi.md#update_contact) | **PUT** /contacts/{identifier} | Update a contact
-*BrevoRuby::ContactsApi* | [**update_folder**](docs/ContactsApi.md#update_folder) | **PUT** /contacts/folders/{folderId} | Update a folder
-*BrevoRuby::ContactsApi* | [**update_list**](docs/ContactsApi.md#update_list) | **PUT** /contacts/lists/{listId} | Update a list
-*BrevoRuby::ConversationsApi* | [**conversations_agent_online_ping_post**](docs/ConversationsApi.md#conversations_agent_online_ping_post) | **POST** /conversations/agentOnlinePing | Sets agent’s status to online for 2-3 minutes
-*BrevoRuby::ConversationsApi* | [**conversations_messages_id_delete**](docs/ConversationsApi.md#conversations_messages_id_delete) | **DELETE** /conversations/messages/{id} | Delete a message sent by an agent
-*BrevoRuby::ConversationsApi* | [**conversations_messages_id_get**](docs/ConversationsApi.md#conversations_messages_id_get) | **GET** /conversations/messages/{id} | Get a message
-*BrevoRuby::ConversationsApi* | [**conversations_messages_id_put**](docs/ConversationsApi.md#conversations_messages_id_put) | **PUT** /conversations/messages/{id} | Update a message sent by an agent
-*BrevoRuby::ConversationsApi* | [**conversations_messages_post**](docs/ConversationsApi.md#conversations_messages_post) | **POST** /conversations/messages | Send a message as an agent
-*BrevoRuby::ConversationsApi* | [**conversations_pushed_messages_id_delete**](docs/ConversationsApi.md#conversations_pushed_messages_id_delete) | **DELETE** /conversations/pushedMessages/{id} | Delete an automated message
-*BrevoRuby::ConversationsApi* | [**conversations_pushed_messages_id_get**](docs/ConversationsApi.md#conversations_pushed_messages_id_get) | **GET** /conversations/pushedMessages/{id} | Get an automated message
-*BrevoRuby::ConversationsApi* | [**conversations_pushed_messages_id_put**](docs/ConversationsApi.md#conversations_pushed_messages_id_put) | **PUT** /conversations/pushedMessages/{id} | Update an automated message
-*BrevoRuby::ConversationsApi* | [**conversations_pushed_messages_post**](docs/ConversationsApi.md#conversations_pushed_messages_post) | **POST** /conversations/pushedMessages | Send an automated message to a visitor
-*BrevoRuby::CouponsApi* | [**create_coupon_collection**](docs/CouponsApi.md#create_coupon_collection) | **POST** /couponCollections | Create а coupon collection
-*BrevoRuby::CouponsApi* | [**create_coupons**](docs/CouponsApi.md#create_coupons) | **POST** /coupons | Create coupons for a coupon collection
-*BrevoRuby::CouponsApi* | [**get_coupon_collection**](docs/CouponsApi.md#get_coupon_collection) | **GET** /couponCollections/{id} | Get a coupon collection by id
-*BrevoRuby::CouponsApi* | [**get_coupon_collections**](docs/CouponsApi.md#get_coupon_collections) | **GET** /couponCollections | Get all your coupon collections
-*BrevoRuby::CouponsApi* | [**update_coupon_collection**](docs/CouponsApi.md#update_coupon_collection) | **PATCH** /couponCollections/{id} | Update a coupon collection by id
-*BrevoRuby::DealsApi* | [**crm_attributes_deals_get**](docs/DealsApi.md#crm_attributes_deals_get) | **GET** /crm/attributes/deals | Get deal attributes
-*BrevoRuby::DealsApi* | [**crm_deals_get**](docs/DealsApi.md#crm_deals_get) | **GET** /crm/deals | Get all deals
-*BrevoRuby::DealsApi* | [**crm_deals_id_delete**](docs/DealsApi.md#crm_deals_id_delete) | **DELETE** /crm/deals/{id} | Delete a deal
-*BrevoRuby::DealsApi* | [**crm_deals_id_get**](docs/DealsApi.md#crm_deals_id_get) | **GET** /crm/deals/{id} | Get a deal
-*BrevoRuby::DealsApi* | [**crm_deals_id_patch**](docs/DealsApi.md#crm_deals_id_patch) | **PATCH** /crm/deals/{id} | Update a deal
-*BrevoRuby::DealsApi* | [**crm_deals_link_unlink_id_patch**](docs/DealsApi.md#crm_deals_link_unlink_id_patch) | **PATCH** /crm/deals/link-unlink/{id} | Link and Unlink a deal with contacts and companies
-*BrevoRuby::DealsApi* | [**crm_deals_post**](docs/DealsApi.md#crm_deals_post) | **POST** /crm/deals | Create a deal
-*BrevoRuby::DealsApi* | [**crm_pipeline_details_get**](docs/DealsApi.md#crm_pipeline_details_get) | **GET** /crm/pipeline/details | Get pipeline stages
-*BrevoRuby::DealsApi* | [**crm_pipeline_details_pipeline_id_get**](docs/DealsApi.md#crm_pipeline_details_pipeline_id_get) | **GET** /crm/pipeline/details/{pipelineID} | Get pipelines and their details
-*BrevoRuby::DomainsApi* | [**authenticate_domain**](docs/DomainsApi.md#authenticate_domain) | **PUT** /senders/domains/{domainName}/authenticate | Authenticate a domain
-*BrevoRuby::DomainsApi* | [**create_domain**](docs/DomainsApi.md#create_domain) | **POST** /senders/domains | Create a new domain
-*BrevoRuby::DomainsApi* | [**delete_domain**](docs/DomainsApi.md#delete_domain) | **DELETE** /senders/domains/{domainName} | Delete a domain
-*BrevoRuby::DomainsApi* | [**get_domain_configuration**](docs/DomainsApi.md#get_domain_configuration) | **GET** /senders/domains/{domainName} | Validate domain configuration
-*BrevoRuby::DomainsApi* | [**get_domains**](docs/DomainsApi.md#get_domains) | **GET** /senders/domains | Get the list of all your domains
-*BrevoRuby::EcommerceApi* | [**create_batch_order**](docs/EcommerceApi.md#create_batch_order) | **POST** /orders/status/batch | Create orders in batch
-*BrevoRuby::EcommerceApi* | [**create_order**](docs/EcommerceApi.md#create_order) | **POST** /orders/status | Managing the status of the order
-*BrevoRuby::EcommerceApi* | [**create_update_batch_category**](docs/EcommerceApi.md#create_update_batch_category) | **POST** /categories/batch | Create categories in batch
-*BrevoRuby::EcommerceApi* | [**create_update_batch_products**](docs/EcommerceApi.md#create_update_batch_products) | **POST** /products/batch | Create products in batch
-*BrevoRuby::EcommerceApi* | [**create_update_category**](docs/EcommerceApi.md#create_update_category) | **POST** /categories | Create/Update a category
-*BrevoRuby::EcommerceApi* | [**create_update_product**](docs/EcommerceApi.md#create_update_product) | **POST** /products | Create/Update a product
-*BrevoRuby::EcommerceApi* | [**ecommerce_activate_post**](docs/EcommerceApi.md#ecommerce_activate_post) | **POST** /ecommerce/activate | Activate the eCommerce app
-*BrevoRuby::EcommerceApi* | [**get_categories**](docs/EcommerceApi.md#get_categories) | **GET** /categories | Return all your categories
-*BrevoRuby::EcommerceApi* | [**get_category_info**](docs/EcommerceApi.md#get_category_info) | **GET** /categories/{id} | Get a category details
-*BrevoRuby::EcommerceApi* | [**get_product_info**](docs/EcommerceApi.md#get_product_info) | **GET** /products/{id} | Get a product's details
-*BrevoRuby::EcommerceApi* | [**get_products**](docs/EcommerceApi.md#get_products) | **GET** /products | Return all your products
-*BrevoRuby::EmailCampaignsApi* | [**create_email_campaign**](docs/EmailCampaignsApi.md#create_email_campaign) | **POST** /emailCampaigns | Create an email campaign
-*BrevoRuby::EmailCampaignsApi* | [**delete_email_campaign**](docs/EmailCampaignsApi.md#delete_email_campaign) | **DELETE** /emailCampaigns/{campaignId} | Delete an email campaign
-*BrevoRuby::EmailCampaignsApi* | [**email_export_recipients**](docs/EmailCampaignsApi.md#email_export_recipients) | **POST** /emailCampaigns/{campaignId}/exportRecipients | Export the recipients of an email campaign
-*BrevoRuby::EmailCampaignsApi* | [**get_ab_test_campaign_result**](docs/EmailCampaignsApi.md#get_ab_test_campaign_result) | **GET** /emailCampaigns/{campaignId}/abTestCampaignResult | Get an A/B test email campaign results
-*BrevoRuby::EmailCampaignsApi* | [**get_email_campaign**](docs/EmailCampaignsApi.md#get_email_campaign) | **GET** /emailCampaigns/{campaignId} | Get an email campaign report
-*BrevoRuby::EmailCampaignsApi* | [**get_email_campaigns**](docs/EmailCampaignsApi.md#get_email_campaigns) | **GET** /emailCampaigns | Return all your created email campaigns
-*BrevoRuby::EmailCampaignsApi* | [**get_shared_template_url**](docs/EmailCampaignsApi.md#get_shared_template_url) | **GET** /emailCampaigns/{campaignId}/sharedUrl | Get a shared template url
-*BrevoRuby::EmailCampaignsApi* | [**send_email_campaign_now**](docs/EmailCampaignsApi.md#send_email_campaign_now) | **POST** /emailCampaigns/{campaignId}/sendNow | Send an email campaign immediately, based on campaignId
-*BrevoRuby::EmailCampaignsApi* | [**send_report**](docs/EmailCampaignsApi.md#send_report) | **POST** /emailCampaigns/{campaignId}/sendReport | Send the report of a campaign
-*BrevoRuby::EmailCampaignsApi* | [**send_test_email**](docs/EmailCampaignsApi.md#send_test_email) | **POST** /emailCampaigns/{campaignId}/sendTest | Send an email campaign to your test list
-*BrevoRuby::EmailCampaignsApi* | [**update_campaign_status**](docs/EmailCampaignsApi.md#update_campaign_status) | **PUT** /emailCampaigns/{campaignId}/status | Update an email campaign status
-*BrevoRuby::EmailCampaignsApi* | [**update_email_campaign**](docs/EmailCampaignsApi.md#update_email_campaign) | **PUT** /emailCampaigns/{campaignId} | Update an email campaign
-*BrevoRuby::EmailCampaignsApi* | [**upload_image_to_gallery**](docs/EmailCampaignsApi.md#upload_image_to_gallery) | **POST** /emailCampaigns/images | Upload an image to your account's image gallery
-*BrevoRuby::ExternalFeedsApi* | [**create_external_feed**](docs/ExternalFeedsApi.md#create_external_feed) | **POST** /feeds | Create an external feed
-*BrevoRuby::ExternalFeedsApi* | [**delete_external_feed**](docs/ExternalFeedsApi.md#delete_external_feed) | **DELETE** /feeds/{uuid} | Delete an external feed
-*BrevoRuby::ExternalFeedsApi* | [**get_all_external_feeds**](docs/ExternalFeedsApi.md#get_all_external_feeds) | **GET** /feeds | Fetch all external feeds
-*BrevoRuby::ExternalFeedsApi* | [**get_external_feed_by_uuid**](docs/ExternalFeedsApi.md#get_external_feed_by_uuid) | **GET** /feeds/{uuid} | Get an external feed by UUID
-*BrevoRuby::ExternalFeedsApi* | [**update_external_feed**](docs/ExternalFeedsApi.md#update_external_feed) | **PUT** /feeds/{uuid} | Update an external feed
-*BrevoRuby::FilesApi* | [**crm_files_get**](docs/FilesApi.md#crm_files_get) | **GET** /crm/files | Get all files
-*BrevoRuby::FilesApi* | [**crm_files_id_data_get**](docs/FilesApi.md#crm_files_id_data_get) | **GET** /crm/files/{id}/data | Get file details
-*BrevoRuby::FilesApi* | [**crm_files_id_delete**](docs/FilesApi.md#crm_files_id_delete) | **DELETE** /crm/files/{id} | Delete a file
-*BrevoRuby::FilesApi* | [**crm_files_id_get**](docs/FilesApi.md#crm_files_id_get) | **GET** /crm/files/{id} | Download a file
-*BrevoRuby::FilesApi* | [**crm_files_post**](docs/FilesApi.md#crm_files_post) | **POST** /crm/files | Upload a file
-*BrevoRuby::InboundParsingApi* | [**get_inbound_email_attachment**](docs/InboundParsingApi.md#get_inbound_email_attachment) | **GET** /inbound/attachments/{downloadToken} | Retrieve inbound attachment with download token.
-*BrevoRuby::InboundParsingApi* | [**get_inbound_email_events**](docs/InboundParsingApi.md#get_inbound_email_events) | **GET** /inbound/events | Get the list of all the events for the received emails.
-*BrevoRuby::InboundParsingApi* | [**get_inbound_email_events_by_uuid**](docs/InboundParsingApi.md#get_inbound_email_events_by_uuid) | **GET** /inbound/events/{uuid} | Fetch all events history for one particular received email.
-*BrevoRuby::MasterAccountApi* | [**corporate_master_account_get**](docs/MasterAccountApi.md#corporate_master_account_get) | **GET** /corporate/masterAccount | Get the details of requested master account
-*BrevoRuby::MasterAccountApi* | [**corporate_sub_account_get**](docs/MasterAccountApi.md#corporate_sub_account_get) | **GET** /corporate/subAccount | Get the list of all the sub-accounts of the master account.
-*BrevoRuby::MasterAccountApi* | [**corporate_sub_account_id_delete**](docs/MasterAccountApi.md#corporate_sub_account_id_delete) | **DELETE** /corporate/subAccount/{id} | Delete a sub-account
-*BrevoRuby::MasterAccountApi* | [**corporate_sub_account_id_get**](docs/MasterAccountApi.md#corporate_sub_account_id_get) | **GET** /corporate/subAccount/{id} | Get sub-account details
-*BrevoRuby::MasterAccountApi* | [**corporate_sub_account_id_plan_put**](docs/MasterAccountApi.md#corporate_sub_account_id_plan_put) | **PUT** /corporate/subAccount/{id}/plan | Update sub-account plan
-*BrevoRuby::MasterAccountApi* | [**corporate_sub_account_key_post**](docs/MasterAccountApi.md#corporate_sub_account_key_post) | **POST** /corporate/subAccount/key | Create an API key for a sub-account
-*BrevoRuby::MasterAccountApi* | [**corporate_sub_account_post**](docs/MasterAccountApi.md#corporate_sub_account_post) | **POST** /corporate/subAccount | Create a new sub-account under a master account.
-*BrevoRuby::MasterAccountApi* | [**corporate_sub_account_sso_token_post**](docs/MasterAccountApi.md#corporate_sub_account_sso_token_post) | **POST** /corporate/subAccount/ssoToken | Generate SSO token to access Brevo
-*BrevoRuby::MasterAccountApi* | [**get_account_activity**](docs/MasterAccountApi.md#get_account_activity) | **GET** /organization/activities | Get user activity logs
-*BrevoRuby::NotesApi* | [**crm_notes_get**](docs/NotesApi.md#crm_notes_get) | **GET** /crm/notes | Get all notes
-*BrevoRuby::NotesApi* | [**crm_notes_id_delete**](docs/NotesApi.md#crm_notes_id_delete) | **DELETE** /crm/notes/{id} | Delete a note
-*BrevoRuby::NotesApi* | [**crm_notes_id_get**](docs/NotesApi.md#crm_notes_id_get) | **GET** /crm/notes/{id} | Get a note
-*BrevoRuby::NotesApi* | [**crm_notes_id_patch**](docs/NotesApi.md#crm_notes_id_patch) | **PATCH** /crm/notes/{id} | Update a note
-*BrevoRuby::NotesApi* | [**crm_notes_post**](docs/NotesApi.md#crm_notes_post) | **POST** /crm/notes | Create a note
-*BrevoRuby::ProcessApi* | [**get_process**](docs/ProcessApi.md#get_process) | **GET** /processes/{processId} | Return the informations for a process
-*BrevoRuby::ProcessApi* | [**get_processes**](docs/ProcessApi.md#get_processes) | **GET** /processes | Return all the processes for your account
-*BrevoRuby::ResellerApi* | [**add_credits**](docs/ResellerApi.md#add_credits) | **POST** /reseller/children/{childIdentifier}/credits/add | Add Email and/or SMS credits to a specific child account
-*BrevoRuby::ResellerApi* | [**associate_ip_to_child**](docs/ResellerApi.md#associate_ip_to_child) | **POST** /reseller/children/{childIdentifier}/ips/associate | Associate a dedicated IP to the child
-*BrevoRuby::ResellerApi* | [**create_child_domain**](docs/ResellerApi.md#create_child_domain) | **POST** /reseller/children/{childIdentifier}/domains | Create a domain for a child account
-*BrevoRuby::ResellerApi* | [**create_reseller_child**](docs/ResellerApi.md#create_reseller_child) | **POST** /reseller/children | Creates a reseller child
-*BrevoRuby::ResellerApi* | [**delete_child_domain**](docs/ResellerApi.md#delete_child_domain) | **DELETE** /reseller/children/{childIdentifier}/domains/{domainName} | Delete the sender domain of the reseller child based on the childIdentifier and domainName passed
-*BrevoRuby::ResellerApi* | [**delete_reseller_child**](docs/ResellerApi.md#delete_reseller_child) | **DELETE** /reseller/children/{childIdentifier} | Delete a single reseller child based on the child identifier supplied
-*BrevoRuby::ResellerApi* | [**dissociate_ip_from_child**](docs/ResellerApi.md#dissociate_ip_from_child) | **POST** /reseller/children/{childIdentifier}/ips/dissociate | Dissociate a dedicated IP to the child
-*BrevoRuby::ResellerApi* | [**get_child_account_creation_status**](docs/ResellerApi.md#get_child_account_creation_status) | **GET** /reseller/children/{childIdentifier}/accountCreationStatus | Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the identifier supplied
-*BrevoRuby::ResellerApi* | [**get_child_domains**](docs/ResellerApi.md#get_child_domains) | **GET** /reseller/children/{childIdentifier}/domains | Get all sender domains for a specific child account
-*BrevoRuby::ResellerApi* | [**get_child_info**](docs/ResellerApi.md#get_child_info) | **GET** /reseller/children/{childIdentifier} | Get a child account's details
-*BrevoRuby::ResellerApi* | [**get_reseller_childs**](docs/ResellerApi.md#get_reseller_childs) | **GET** /reseller/children | Get the list of all children accounts
-*BrevoRuby::ResellerApi* | [**get_sso_token**](docs/ResellerApi.md#get_sso_token) | **GET** /reseller/children/{childIdentifier}/auth | Get session token to access Brevo (SSO)
-*BrevoRuby::ResellerApi* | [**remove_credits**](docs/ResellerApi.md#remove_credits) | **POST** /reseller/children/{childIdentifier}/credits/remove | Remove Email and/or SMS credits from a specific child account
-*BrevoRuby::ResellerApi* | [**update_child_account_status**](docs/ResellerApi.md#update_child_account_status) | **PUT** /reseller/children/{childIdentifier}/accountStatus | Update info of reseller's child account status based on the childIdentifier supplied
-*BrevoRuby::ResellerApi* | [**update_child_domain**](docs/ResellerApi.md#update_child_domain) | **PUT** /reseller/children/{childIdentifier}/domains/{domainName} | Update the sender domain of reseller's child based on the childIdentifier and domainName passed
-*BrevoRuby::ResellerApi* | [**update_reseller_child**](docs/ResellerApi.md#update_reseller_child) | **PUT** /reseller/children/{childIdentifier} | Update info of reseller's child based on the child identifier supplied
-*BrevoRuby::SMSCampaignsApi* | [**create_sms_campaign**](docs/SMSCampaignsApi.md#create_sms_campaign) | **POST** /smsCampaigns | Creates an SMS campaign
-*BrevoRuby::SMSCampaignsApi* | [**delete_sms_campaign**](docs/SMSCampaignsApi.md#delete_sms_campaign) | **DELETE** /smsCampaigns/{campaignId} | Delete an SMS campaign
-*BrevoRuby::SMSCampaignsApi* | [**get_sms_campaign**](docs/SMSCampaignsApi.md#get_sms_campaign) | **GET** /smsCampaigns/{campaignId} | Get an SMS campaign
-*BrevoRuby::SMSCampaignsApi* | [**get_sms_campaigns**](docs/SMSCampaignsApi.md#get_sms_campaigns) | **GET** /smsCampaigns | Returns the information for all your created SMS campaigns
-*BrevoRuby::SMSCampaignsApi* | [**request_sms_recipient_export**](docs/SMSCampaignsApi.md#request_sms_recipient_export) | **POST** /smsCampaigns/{campaignId}/exportRecipients | Export an SMS campaign's recipients
-*BrevoRuby::SMSCampaignsApi* | [**send_sms_campaign_now**](docs/SMSCampaignsApi.md#send_sms_campaign_now) | **POST** /smsCampaigns/{campaignId}/sendNow | Send your SMS campaign immediately
-*BrevoRuby::SMSCampaignsApi* | [**send_sms_report**](docs/SMSCampaignsApi.md#send_sms_report) | **POST** /smsCampaigns/{campaignId}/sendReport | Send an SMS campaign's report
-*BrevoRuby::SMSCampaignsApi* | [**send_test_sms**](docs/SMSCampaignsApi.md#send_test_sms) | **POST** /smsCampaigns/{campaignId}/sendTest | Send a test SMS campaign
-*BrevoRuby::SMSCampaignsApi* | [**update_sms_campaign**](docs/SMSCampaignsApi.md#update_sms_campaign) | **PUT** /smsCampaigns/{campaignId} | Update an SMS campaign
-*BrevoRuby::SMSCampaignsApi* | [**update_sms_campaign_status**](docs/SMSCampaignsApi.md#update_sms_campaign_status) | **PUT** /smsCampaigns/{campaignId}/status | Update a campaign's status
-*BrevoRuby::SendersApi* | [**create_sender**](docs/SendersApi.md#create_sender) | **POST** /senders | Create a new sender
-*BrevoRuby::SendersApi* | [**delete_sender**](docs/SendersApi.md#delete_sender) | **DELETE** /senders/{senderId} | Delete a sender
-*BrevoRuby::SendersApi* | [**get_ips**](docs/SendersApi.md#get_ips) | **GET** /senders/ips | Get all the dedicated IPs for your account
-*BrevoRuby::SendersApi* | [**get_ips_from_sender**](docs/SendersApi.md#get_ips_from_sender) | **GET** /senders/{senderId}/ips | Get all the dedicated IPs for a sender
-*BrevoRuby::SendersApi* | [**get_senders**](docs/SendersApi.md#get_senders) | **GET** /senders | Get the list of all your senders
-*BrevoRuby::SendersApi* | [**update_sender**](docs/SendersApi.md#update_sender) | **PUT** /senders/{senderId} | Update a sender
-*BrevoRuby::SendersApi* | [**validate_sender_by_otp**](docs/SendersApi.md#validate_sender_by_otp) | **PUT** /senders/{senderId}/validate | Update a sender
-*BrevoRuby::TasksApi* | [**crm_tasks_get**](docs/TasksApi.md#crm_tasks_get) | **GET** /crm/tasks | Get all tasks
-*BrevoRuby::TasksApi* | [**crm_tasks_id_delete**](docs/TasksApi.md#crm_tasks_id_delete) | **DELETE** /crm/tasks/{id} | Delete a task
-*BrevoRuby::TasksApi* | [**crm_tasks_id_get**](docs/TasksApi.md#crm_tasks_id_get) | **GET** /crm/tasks/{id} | Get a task
-*BrevoRuby::TasksApi* | [**crm_tasks_id_patch**](docs/TasksApi.md#crm_tasks_id_patch) | **PATCH** /crm/tasks/{id} | Update a task
-*BrevoRuby::TasksApi* | [**crm_tasks_post**](docs/TasksApi.md#crm_tasks_post) | **POST** /crm/tasks | Create a task
-*BrevoRuby::TasksApi* | [**crm_tasktypes_get**](docs/TasksApi.md#crm_tasktypes_get) | **GET** /crm/tasktypes | Get all task types
-*BrevoRuby::TransactionalEmailsApi* | [**block_new_domain**](docs/TransactionalEmailsApi.md#block_new_domain) | **POST** /smtp/blockedDomains | Add a new domain to the list of blocked domains
-*BrevoRuby::TransactionalEmailsApi* | [**create_smtp_template**](docs/TransactionalEmailsApi.md#create_smtp_template) | **POST** /smtp/templates | Create an email template
-*BrevoRuby::TransactionalEmailsApi* | [**delete_blocked_domain**](docs/TransactionalEmailsApi.md#delete_blocked_domain) | **DELETE** /smtp/blockedDomains/{domain} | Unblock an existing domain from the list of blocked domains
-*BrevoRuby::TransactionalEmailsApi* | [**delete_hardbounces**](docs/TransactionalEmailsApi.md#delete_hardbounces) | **POST** /smtp/deleteHardbounces | Delete hardbounces
-*BrevoRuby::TransactionalEmailsApi* | [**delete_scheduled_email_by_id**](docs/TransactionalEmailsApi.md#delete_scheduled_email_by_id) | **DELETE** /smtp/email/{identifier} | Delete scheduled emails by batchId or messageId
-*BrevoRuby::TransactionalEmailsApi* | [**delete_smtp_template**](docs/TransactionalEmailsApi.md#delete_smtp_template) | **DELETE** /smtp/templates/{templateId} | Delete an inactive email template
-*BrevoRuby::TransactionalEmailsApi* | [**get_aggregated_smtp_report**](docs/TransactionalEmailsApi.md#get_aggregated_smtp_report) | **GET** /smtp/statistics/aggregatedReport | Get your transactional email activity aggregated over a period of time
-*BrevoRuby::TransactionalEmailsApi* | [**get_blocked_domains**](docs/TransactionalEmailsApi.md#get_blocked_domains) | **GET** /smtp/blockedDomains | Get the list of blocked domains
-*BrevoRuby::TransactionalEmailsApi* | [**get_email_event_report**](docs/TransactionalEmailsApi.md#get_email_event_report) | **GET** /smtp/statistics/events | Get all your transactional email activity (unaggregated events)
-*BrevoRuby::TransactionalEmailsApi* | [**get_scheduled_email_by_batch_id**](docs/TransactionalEmailsApi.md#get_scheduled_email_by_batch_id) | **GET** /smtp/emailStatus/{batchId} | Fetch scheduled emails by batchId
-*BrevoRuby::TransactionalEmailsApi* | [**get_scheduled_email_by_message_id**](docs/TransactionalEmailsApi.md#get_scheduled_email_by_message_id) | **GET** /smtp/emailStatus/{messageId} | Fetch scheduled email by messageId
-*BrevoRuby::TransactionalEmailsApi* | [**get_smtp_report**](docs/TransactionalEmailsApi.md#get_smtp_report) | **GET** /smtp/statistics/reports | Get your transactional email activity aggregated per day
-*BrevoRuby::TransactionalEmailsApi* | [**get_smtp_template**](docs/TransactionalEmailsApi.md#get_smtp_template) | **GET** /smtp/templates/{templateId} | Returns the template information
-*BrevoRuby::TransactionalEmailsApi* | [**get_smtp_templates**](docs/TransactionalEmailsApi.md#get_smtp_templates) | **GET** /smtp/templates | Get the list of email templates
-*BrevoRuby::TransactionalEmailsApi* | [**get_transac_blocked_contacts**](docs/TransactionalEmailsApi.md#get_transac_blocked_contacts) | **GET** /smtp/blockedContacts | Get the list of blocked or unsubscribed transactional contacts
-*BrevoRuby::TransactionalEmailsApi* | [**get_transac_email_content**](docs/TransactionalEmailsApi.md#get_transac_email_content) | **GET** /smtp/emails/{uuid} | Get the personalized content of a sent transactional email
-*BrevoRuby::TransactionalEmailsApi* | [**get_transac_emails_list**](docs/TransactionalEmailsApi.md#get_transac_emails_list) | **GET** /smtp/emails | Get the list of transactional emails on the basis of allowed filters
-*BrevoRuby::TransactionalEmailsApi* | [**send_test_template**](docs/TransactionalEmailsApi.md#send_test_template) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
-*BrevoRuby::TransactionalEmailsApi* | [**send_transac_email**](docs/TransactionalEmailsApi.md#send_transac_email) | **POST** /smtp/email | Send a transactional email
-*BrevoRuby::TransactionalEmailsApi* | [**smtp_blocked_contacts_email_delete**](docs/TransactionalEmailsApi.md#smtp_blocked_contacts_email_delete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
-*BrevoRuby::TransactionalEmailsApi* | [**smtp_log_message_id_delete**](docs/TransactionalEmailsApi.md#smtp_log_message_id_delete) | **DELETE** /smtp/log/{messageId} | Delete an SMTP transactional log
-*BrevoRuby::TransactionalEmailsApi* | [**update_smtp_template**](docs/TransactionalEmailsApi.md#update_smtp_template) | **PUT** /smtp/templates/{templateId} | Update an email template
-*BrevoRuby::TransactionalSMSApi* | [**get_sms_events**](docs/TransactionalSMSApi.md#get_sms_events) | **GET** /transactionalSMS/statistics/events | Get all your SMS activity (unaggregated events)
-*BrevoRuby::TransactionalSMSApi* | [**get_transac_aggregated_sms_report**](docs/TransactionalSMSApi.md#get_transac_aggregated_sms_report) | **GET** /transactionalSMS/statistics/aggregatedReport | Get your SMS activity aggregated over a period of time
-*BrevoRuby::TransactionalSMSApi* | [**get_transac_sms_report**](docs/TransactionalSMSApi.md#get_transac_sms_report) | **GET** /transactionalSMS/statistics/reports | Get your SMS activity aggregated per day
-*BrevoRuby::TransactionalSMSApi* | [**send_transac_sms**](docs/TransactionalSMSApi.md#send_transac_sms) | **POST** /transactionalSMS/sms | Send SMS message to a mobile number
-*BrevoRuby::TransactionalWhatsAppApi* | [**get_whatsapp_event_report**](docs/TransactionalWhatsAppApi.md#get_whatsapp_event_report) | **GET** /whatsapp/statistics/events | Get all your WhatsApp activity (unaggregated events)
-*BrevoRuby::TransactionalWhatsAppApi* | [**send_whatsapp_message**](docs/TransactionalWhatsAppApi.md#send_whatsapp_message) | **POST** /whatsapp/sendMessage | Send a WhatsApp message
-*BrevoRuby::UserApi* | [**get_invited_users_list**](docs/UserApi.md#get_invited_users_list) | **GET** /organization/invited/users | Get the list of all your users
-*BrevoRuby::UserApi* | [**get_user_permission**](docs/UserApi.md#get_user_permission) | **GET** /organization/user/{email}/permissions | Check user permission
-*BrevoRuby::WebhooksApi* | [**create_webhook**](docs/WebhooksApi.md#create_webhook) | **POST** /webhooks | Create a webhook
-*BrevoRuby::WebhooksApi* | [**delete_webhook**](docs/WebhooksApi.md#delete_webhook) | **DELETE** /webhooks/{webhookId} | Delete a webhook
-*BrevoRuby::WebhooksApi* | [**export_webhooks_history**](docs/WebhooksApi.md#export_webhooks_history) | **POST** /webhooks/export | Export all transactional events
-*BrevoRuby::WebhooksApi* | [**get_webhook**](docs/WebhooksApi.md#get_webhook) | **GET** /webhooks/{webhookId} | Get a webhook details
-*BrevoRuby::WebhooksApi* | [**get_webhooks**](docs/WebhooksApi.md#get_webhooks) | **GET** /webhooks | Get all webhooks
-*BrevoRuby::WebhooksApi* | [**update_webhook**](docs/WebhooksApi.md#update_webhook) | **PUT** /webhooks/{webhookId} | Update a webhook
-*BrevoRuby::WhatsAppCampaignsApi* | [**create_whats_app_campaign**](docs/WhatsAppCampaignsApi.md#create_whats_app_campaign) | **POST** /whatsappCampaigns | Create and Send a WhatsApp campaign
-*BrevoRuby::WhatsAppCampaignsApi* | [**create_whats_app_template**](docs/WhatsAppCampaignsApi.md#create_whats_app_template) | **POST** /whatsppCampaigns/template | Create a WhatsApp template
-*BrevoRuby::WhatsAppCampaignsApi* | [**delete_whats_app_campaign**](docs/WhatsAppCampaignsApi.md#delete_whats_app_campaign) | **DELETE** /whatsappCampaigns/{campaignId} | Delete a WhatsApp campaign
-*BrevoRuby::WhatsAppCampaignsApi* | [**get_whats_app_campaign**](docs/WhatsAppCampaignsApi.md#get_whats_app_campaign) | **GET** /whatsappCampaigns/{campaignId} | Get a WhatsApp campaign
-*BrevoRuby::WhatsAppCampaignsApi* | [**get_whats_app_campaigns**](docs/WhatsAppCampaignsApi.md#get_whats_app_campaigns) | **GET** /whatsappCampaigns | Return all your created WhatsApp campaigns
-*BrevoRuby::WhatsAppCampaignsApi* | [**get_whats_app_config**](docs/WhatsAppCampaignsApi.md#get_whats_app_config) | **GET** /whatsappCampaigns/config | Get your WhatsApp API account information
-*BrevoRuby::WhatsAppCampaignsApi* | [**get_whats_app_templates**](docs/WhatsAppCampaignsApi.md#get_whats_app_templates) | **GET** /whatsappCampaigns/template-list | Return all your created WhatsApp templates
-*BrevoRuby::WhatsAppCampaignsApi* | [**send_whats_app_template_approval**](docs/WhatsAppCampaignsApi.md#send_whats_app_template_approval) | **POST** /whatsappCampaigns/template/approval/{templateId} | Send your WhatsApp template for approval
-*BrevoRuby::WhatsAppCampaignsApi* | [**update_whats_app_campaign**](docs/WhatsAppCampaignsApi.md#update_whats_app_campaign) | **PUT** /whatsappCampaigns/{campaignId} | Update a WhatsApp campaign
+*Brevo::AccountApi* | [**get_account**](docs/AccountApi.md#get_account) | **GET** /account | Get your account information, plan and credits details
+*Brevo::AccountApi* | [**get_account_activity**](docs/AccountApi.md#get_account_activity) | **GET** /organization/activities | Get user activity logs
+*Brevo::CompaniesApi* | [**companies_attributes_get**](docs/CompaniesApi.md#companies_attributes_get) | **GET** /companies/attributes | Get company attributes
+*Brevo::CompaniesApi* | [**companies_get**](docs/CompaniesApi.md#companies_get) | **GET** /companies | Get all companies
+*Brevo::CompaniesApi* | [**companies_id_delete**](docs/CompaniesApi.md#companies_id_delete) | **DELETE** /companies/{id} | Delete a company
+*Brevo::CompaniesApi* | [**companies_id_get**](docs/CompaniesApi.md#companies_id_get) | **GET** /companies/{id} | Get a company
+*Brevo::CompaniesApi* | [**companies_id_patch**](docs/CompaniesApi.md#companies_id_patch) | **PATCH** /companies/{id} | Update a company
+*Brevo::CompaniesApi* | [**companies_link_unlink_id_patch**](docs/CompaniesApi.md#companies_link_unlink_id_patch) | **PATCH** /companies/link-unlink/{id} | Link and Unlink company with contacts and deals
+*Brevo::CompaniesApi* | [**companies_post**](docs/CompaniesApi.md#companies_post) | **POST** /companies | Create a company
+*Brevo::ContactsApi* | [**add_contact_to_list**](docs/ContactsApi.md#add_contact_to_list) | **POST** /contacts/lists/{listId}/contacts/add | Add existing contacts to a list
+*Brevo::ContactsApi* | [**create_attribute**](docs/ContactsApi.md#create_attribute) | **POST** /contacts/attributes/{attributeCategory}/{attributeName} | Create contact attribute
+*Brevo::ContactsApi* | [**create_contact**](docs/ContactsApi.md#create_contact) | **POST** /contacts | Create a contact
+*Brevo::ContactsApi* | [**create_doi_contact**](docs/ContactsApi.md#create_doi_contact) | **POST** /contacts/doubleOptinConfirmation | Create Contact via DOI (Double-Opt-In) Flow
+*Brevo::ContactsApi* | [**create_folder**](docs/ContactsApi.md#create_folder) | **POST** /contacts/folders | Create a folder
+*Brevo::ContactsApi* | [**create_list**](docs/ContactsApi.md#create_list) | **POST** /contacts/lists | Create a list
+*Brevo::ContactsApi* | [**delete_attribute**](docs/ContactsApi.md#delete_attribute) | **DELETE** /contacts/attributes/{attributeCategory}/{attributeName} | Delete an attribute
+*Brevo::ContactsApi* | [**delete_contact**](docs/ContactsApi.md#delete_contact) | **DELETE** /contacts/{identifier} | Delete a contact
+*Brevo::ContactsApi* | [**delete_folder**](docs/ContactsApi.md#delete_folder) | **DELETE** /contacts/folders/{folderId} | Delete a folder (and all its lists)
+*Brevo::ContactsApi* | [**delete_list**](docs/ContactsApi.md#delete_list) | **DELETE** /contacts/lists/{listId} | Delete a list
+*Brevo::ContactsApi* | [**get_attributes**](docs/ContactsApi.md#get_attributes) | **GET** /contacts/attributes | List all attributes
+*Brevo::ContactsApi* | [**get_contact_info**](docs/ContactsApi.md#get_contact_info) | **GET** /contacts/{identifier} | Get a contact's details
+*Brevo::ContactsApi* | [**get_contact_stats**](docs/ContactsApi.md#get_contact_stats) | **GET** /contacts/{identifier}/campaignStats | Get email campaigns' statistics for a contact
+*Brevo::ContactsApi* | [**get_contacts**](docs/ContactsApi.md#get_contacts) | **GET** /contacts | Get all the contacts
+*Brevo::ContactsApi* | [**get_contacts_from_list**](docs/ContactsApi.md#get_contacts_from_list) | **GET** /contacts/lists/{listId}/contacts | Get contacts in a list
+*Brevo::ContactsApi* | [**get_folder**](docs/ContactsApi.md#get_folder) | **GET** /contacts/folders/{folderId} | Returns a folder's details
+*Brevo::ContactsApi* | [**get_folder_lists**](docs/ContactsApi.md#get_folder_lists) | **GET** /contacts/folders/{folderId}/lists | Get lists in a folder
+*Brevo::ContactsApi* | [**get_folders**](docs/ContactsApi.md#get_folders) | **GET** /contacts/folders | Get all folders
+*Brevo::ContactsApi* | [**get_list**](docs/ContactsApi.md#get_list) | **GET** /contacts/lists/{listId} | Get a list's details
+*Brevo::ContactsApi* | [**get_lists**](docs/ContactsApi.md#get_lists) | **GET** /contacts/lists | Get all the lists
+*Brevo::ContactsApi* | [**get_segments**](docs/ContactsApi.md#get_segments) | **GET** /contacts/segments | Get all the Segments
+*Brevo::ContactsApi* | [**import_contacts**](docs/ContactsApi.md#import_contacts) | **POST** /contacts/import | Import contacts
+*Brevo::ContactsApi* | [**remove_contact_from_list**](docs/ContactsApi.md#remove_contact_from_list) | **POST** /contacts/lists/{listId}/contacts/remove | Delete a contact from a list
+*Brevo::ContactsApi* | [**request_contact_export**](docs/ContactsApi.md#request_contact_export) | **POST** /contacts/export | Export contacts
+*Brevo::ContactsApi* | [**update_attribute**](docs/ContactsApi.md#update_attribute) | **PUT** /contacts/attributes/{attributeCategory}/{attributeName} | Update contact attribute
+*Brevo::ContactsApi* | [**update_batch_contacts**](docs/ContactsApi.md#update_batch_contacts) | **POST** /contacts/batch | Update multiple contacts
+*Brevo::ContactsApi* | [**update_contact**](docs/ContactsApi.md#update_contact) | **PUT** /contacts/{identifier} | Update a contact
+*Brevo::ContactsApi* | [**update_folder**](docs/ContactsApi.md#update_folder) | **PUT** /contacts/folders/{folderId} | Update a folder
+*Brevo::ContactsApi* | [**update_list**](docs/ContactsApi.md#update_list) | **PUT** /contacts/lists/{listId} | Update a list
+*Brevo::ConversationsApi* | [**conversations_agent_online_ping_post**](docs/ConversationsApi.md#conversations_agent_online_ping_post) | **POST** /conversations/agentOnlinePing | Sets agent’s status to online for 2-3 minutes
+*Brevo::ConversationsApi* | [**conversations_messages_id_delete**](docs/ConversationsApi.md#conversations_messages_id_delete) | **DELETE** /conversations/messages/{id} | Delete a message sent by an agent
+*Brevo::ConversationsApi* | [**conversations_messages_id_get**](docs/ConversationsApi.md#conversations_messages_id_get) | **GET** /conversations/messages/{id} | Get a message
+*Brevo::ConversationsApi* | [**conversations_messages_id_put**](docs/ConversationsApi.md#conversations_messages_id_put) | **PUT** /conversations/messages/{id} | Update a message sent by an agent
+*Brevo::ConversationsApi* | [**conversations_messages_post**](docs/ConversationsApi.md#conversations_messages_post) | **POST** /conversations/messages | Send a message as an agent
+*Brevo::ConversationsApi* | [**conversations_pushed_messages_id_delete**](docs/ConversationsApi.md#conversations_pushed_messages_id_delete) | **DELETE** /conversations/pushedMessages/{id} | Delete an automated message
+*Brevo::ConversationsApi* | [**conversations_pushed_messages_id_get**](docs/ConversationsApi.md#conversations_pushed_messages_id_get) | **GET** /conversations/pushedMessages/{id} | Get an automated message
+*Brevo::ConversationsApi* | [**conversations_pushed_messages_id_put**](docs/ConversationsApi.md#conversations_pushed_messages_id_put) | **PUT** /conversations/pushedMessages/{id} | Update an automated message
+*Brevo::ConversationsApi* | [**conversations_pushed_messages_post**](docs/ConversationsApi.md#conversations_pushed_messages_post) | **POST** /conversations/pushedMessages | Send an automated message to a visitor
+*Brevo::CouponsApi* | [**create_coupon_collection**](docs/CouponsApi.md#create_coupon_collection) | **POST** /couponCollections | Create а coupon collection
+*Brevo::CouponsApi* | [**create_coupons**](docs/CouponsApi.md#create_coupons) | **POST** /coupons | Create coupons for a coupon collection
+*Brevo::CouponsApi* | [**get_coupon_collection**](docs/CouponsApi.md#get_coupon_collection) | **GET** /couponCollections/{id} | Get a coupon collection by id
+*Brevo::CouponsApi* | [**get_coupon_collections**](docs/CouponsApi.md#get_coupon_collections) | **GET** /couponCollections | Get all your coupon collections
+*Brevo::CouponsApi* | [**update_coupon_collection**](docs/CouponsApi.md#update_coupon_collection) | **PATCH** /couponCollections/{id} | Update a coupon collection by id
+*Brevo::DealsApi* | [**crm_attributes_deals_get**](docs/DealsApi.md#crm_attributes_deals_get) | **GET** /crm/attributes/deals | Get deal attributes
+*Brevo::DealsApi* | [**crm_deals_get**](docs/DealsApi.md#crm_deals_get) | **GET** /crm/deals | Get all deals
+*Brevo::DealsApi* | [**crm_deals_id_delete**](docs/DealsApi.md#crm_deals_id_delete) | **DELETE** /crm/deals/{id} | Delete a deal
+*Brevo::DealsApi* | [**crm_deals_id_get**](docs/DealsApi.md#crm_deals_id_get) | **GET** /crm/deals/{id} | Get a deal
+*Brevo::DealsApi* | [**crm_deals_id_patch**](docs/DealsApi.md#crm_deals_id_patch) | **PATCH** /crm/deals/{id} | Update a deal
+*Brevo::DealsApi* | [**crm_deals_link_unlink_id_patch**](docs/DealsApi.md#crm_deals_link_unlink_id_patch) | **PATCH** /crm/deals/link-unlink/{id} | Link and Unlink a deal with contacts and companies
+*Brevo::DealsApi* | [**crm_deals_post**](docs/DealsApi.md#crm_deals_post) | **POST** /crm/deals | Create a deal
+*Brevo::DealsApi* | [**crm_pipeline_details_all_get**](docs/DealsApi.md#crm_pipeline_details_all_get) | **GET** /crm/pipeline/details/all | Get all pipelines
+*Brevo::DealsApi* | [**crm_pipeline_details_get**](docs/DealsApi.md#crm_pipeline_details_get) | **GET** /crm/pipeline/details | Get pipeline stages
+*Brevo::DealsApi* | [**crm_pipeline_details_pipeline_id_get**](docs/DealsApi.md#crm_pipeline_details_pipeline_id_get) | **GET** /crm/pipeline/details/{pipelineID} | Get a pipeline
+*Brevo::DomainsApi* | [**authenticate_domain**](docs/DomainsApi.md#authenticate_domain) | **PUT** /senders/domains/{domainName}/authenticate | Authenticate a domain
+*Brevo::DomainsApi* | [**create_domain**](docs/DomainsApi.md#create_domain) | **POST** /senders/domains | Create a new domain
+*Brevo::DomainsApi* | [**delete_domain**](docs/DomainsApi.md#delete_domain) | **DELETE** /senders/domains/{domainName} | Delete a domain
+*Brevo::DomainsApi* | [**get_domain_configuration**](docs/DomainsApi.md#get_domain_configuration) | **GET** /senders/domains/{domainName} | Validate domain configuration
+*Brevo::DomainsApi* | [**get_domains**](docs/DomainsApi.md#get_domains) | **GET** /senders/domains | Get the list of all your domains
+*Brevo::EcommerceApi* | [**create_batch_order**](docs/EcommerceApi.md#create_batch_order) | **POST** /orders/status/batch | Create orders in batch
+*Brevo::EcommerceApi* | [**create_order**](docs/EcommerceApi.md#create_order) | **POST** /orders/status | Managing the status of the order
+*Brevo::EcommerceApi* | [**create_update_batch_category**](docs/EcommerceApi.md#create_update_batch_category) | **POST** /categories/batch | Create categories in batch
+*Brevo::EcommerceApi* | [**create_update_batch_products**](docs/EcommerceApi.md#create_update_batch_products) | **POST** /products/batch | Create products in batch
+*Brevo::EcommerceApi* | [**create_update_category**](docs/EcommerceApi.md#create_update_category) | **POST** /categories | Create/Update a category
+*Brevo::EcommerceApi* | [**create_update_product**](docs/EcommerceApi.md#create_update_product) | **POST** /products | Create/Update a product
+*Brevo::EcommerceApi* | [**ecommerce_activate_post**](docs/EcommerceApi.md#ecommerce_activate_post) | **POST** /ecommerce/activate | Activate the eCommerce app
+*Brevo::EcommerceApi* | [**get_categories**](docs/EcommerceApi.md#get_categories) | **GET** /categories | Return all your categories
+*Brevo::EcommerceApi* | [**get_category_info**](docs/EcommerceApi.md#get_category_info) | **GET** /categories/{id} | Get a category details
+*Brevo::EcommerceApi* | [**get_product_info**](docs/EcommerceApi.md#get_product_info) | **GET** /products/{id} | Get a product's details
+*Brevo::EcommerceApi* | [**get_products**](docs/EcommerceApi.md#get_products) | **GET** /products | Return all your products
+*Brevo::EmailCampaignsApi* | [**create_email_campaign**](docs/EmailCampaignsApi.md#create_email_campaign) | **POST** /emailCampaigns | Create an email campaign
+*Brevo::EmailCampaignsApi* | [**delete_email_campaign**](docs/EmailCampaignsApi.md#delete_email_campaign) | **DELETE** /emailCampaigns/{campaignId} | Delete an email campaign
+*Brevo::EmailCampaignsApi* | [**email_export_recipients**](docs/EmailCampaignsApi.md#email_export_recipients) | **POST** /emailCampaigns/{campaignId}/exportRecipients | Export the recipients of an email campaign
+*Brevo::EmailCampaignsApi* | [**get_ab_test_campaign_result**](docs/EmailCampaignsApi.md#get_ab_test_campaign_result) | **GET** /emailCampaigns/{campaignId}/abTestCampaignResult | Get an A/B test email campaign results
+*Brevo::EmailCampaignsApi* | [**get_email_campaign**](docs/EmailCampaignsApi.md#get_email_campaign) | **GET** /emailCampaigns/{campaignId} | Get an email campaign report
+*Brevo::EmailCampaignsApi* | [**get_email_campaigns**](docs/EmailCampaignsApi.md#get_email_campaigns) | **GET** /emailCampaigns | Return all your created email campaigns
+*Brevo::EmailCampaignsApi* | [**get_shared_template_url**](docs/EmailCampaignsApi.md#get_shared_template_url) | **GET** /emailCampaigns/{campaignId}/sharedUrl | Get a shared template url
+*Brevo::EmailCampaignsApi* | [**send_email_campaign_now**](docs/EmailCampaignsApi.md#send_email_campaign_now) | **POST** /emailCampaigns/{campaignId}/sendNow | Send an email campaign immediately, based on campaignId
+*Brevo::EmailCampaignsApi* | [**send_report**](docs/EmailCampaignsApi.md#send_report) | **POST** /emailCampaigns/{campaignId}/sendReport | Send the report of a campaign
+*Brevo::EmailCampaignsApi* | [**send_test_email**](docs/EmailCampaignsApi.md#send_test_email) | **POST** /emailCampaigns/{campaignId}/sendTest | Send an email campaign to your test list
+*Brevo::EmailCampaignsApi* | [**update_campaign_status**](docs/EmailCampaignsApi.md#update_campaign_status) | **PUT** /emailCampaigns/{campaignId}/status | Update an email campaign status
+*Brevo::EmailCampaignsApi* | [**update_email_campaign**](docs/EmailCampaignsApi.md#update_email_campaign) | **PUT** /emailCampaigns/{campaignId} | Update an email campaign
+*Brevo::EmailCampaignsApi* | [**upload_image_to_gallery**](docs/EmailCampaignsApi.md#upload_image_to_gallery) | **POST** /emailCampaigns/images | Upload an image to your account's image gallery
+*Brevo::ExternalFeedsApi* | [**create_external_feed**](docs/ExternalFeedsApi.md#create_external_feed) | **POST** /feeds | Create an external feed
+*Brevo::ExternalFeedsApi* | [**delete_external_feed**](docs/ExternalFeedsApi.md#delete_external_feed) | **DELETE** /feeds/{uuid} | Delete an external feed
+*Brevo::ExternalFeedsApi* | [**get_all_external_feeds**](docs/ExternalFeedsApi.md#get_all_external_feeds) | **GET** /feeds | Fetch all external feeds
+*Brevo::ExternalFeedsApi* | [**get_external_feed_by_uuid**](docs/ExternalFeedsApi.md#get_external_feed_by_uuid) | **GET** /feeds/{uuid} | Get an external feed by UUID
+*Brevo::ExternalFeedsApi* | [**update_external_feed**](docs/ExternalFeedsApi.md#update_external_feed) | **PUT** /feeds/{uuid} | Update an external feed
+*Brevo::FilesApi* | [**crm_files_get**](docs/FilesApi.md#crm_files_get) | **GET** /crm/files | Get all files
+*Brevo::FilesApi* | [**crm_files_id_data_get**](docs/FilesApi.md#crm_files_id_data_get) | **GET** /crm/files/{id}/data | Get file details
+*Brevo::FilesApi* | [**crm_files_id_delete**](docs/FilesApi.md#crm_files_id_delete) | **DELETE** /crm/files/{id} | Delete a file
+*Brevo::FilesApi* | [**crm_files_id_get**](docs/FilesApi.md#crm_files_id_get) | **GET** /crm/files/{id} | Download a file
+*Brevo::FilesApi* | [**crm_files_post**](docs/FilesApi.md#crm_files_post) | **POST** /crm/files | Upload a file
+*Brevo::InboundParsingApi* | [**get_inbound_email_attachment**](docs/InboundParsingApi.md#get_inbound_email_attachment) | **GET** /inbound/attachments/{downloadToken} | Retrieve inbound attachment with download token.
+*Brevo::InboundParsingApi* | [**get_inbound_email_events**](docs/InboundParsingApi.md#get_inbound_email_events) | **GET** /inbound/events | Get the list of all the events for the received emails.
+*Brevo::InboundParsingApi* | [**get_inbound_email_events_by_uuid**](docs/InboundParsingApi.md#get_inbound_email_events_by_uuid) | **GET** /inbound/events/{uuid} | Fetch all events history for one particular received email.
+*Brevo::MasterAccountApi* | [**corporate_master_account_get**](docs/MasterAccountApi.md#corporate_master_account_get) | **GET** /corporate/masterAccount | Get the details of requested master account
+*Brevo::MasterAccountApi* | [**corporate_sub_account_get**](docs/MasterAccountApi.md#corporate_sub_account_get) | **GET** /corporate/subAccount | Get the list of all the sub-accounts of the master account.
+*Brevo::MasterAccountApi* | [**corporate_sub_account_id_applications_toggle_put**](docs/MasterAccountApi.md#corporate_sub_account_id_applications_toggle_put) | **PUT** /corporate/subAccount/{id}/applications/toggle | Enable/disable sub-account application(s)
+*Brevo::MasterAccountApi* | [**corporate_sub_account_id_delete**](docs/MasterAccountApi.md#corporate_sub_account_id_delete) | **DELETE** /corporate/subAccount/{id} | Delete a sub-account
+*Brevo::MasterAccountApi* | [**corporate_sub_account_id_get**](docs/MasterAccountApi.md#corporate_sub_account_id_get) | **GET** /corporate/subAccount/{id} | Get sub-account details
+*Brevo::MasterAccountApi* | [**corporate_sub_account_id_plan_put**](docs/MasterAccountApi.md#corporate_sub_account_id_plan_put) | **PUT** /corporate/subAccount/{id}/plan | Update sub-account plan
+*Brevo::MasterAccountApi* | [**corporate_sub_account_key_post**](docs/MasterAccountApi.md#corporate_sub_account_key_post) | **POST** /corporate/subAccount/key | Create an API key for a sub-account
+*Brevo::MasterAccountApi* | [**corporate_sub_account_post**](docs/MasterAccountApi.md#corporate_sub_account_post) | **POST** /corporate/subAccount | Create a new sub-account under a master account.
+*Brevo::MasterAccountApi* | [**corporate_sub_account_sso_token_post**](docs/MasterAccountApi.md#corporate_sub_account_sso_token_post) | **POST** /corporate/subAccount/ssoToken | Generate SSO token to access Brevo
+*Brevo::MasterAccountApi* | [**get_account_activity**](docs/MasterAccountApi.md#get_account_activity) | **GET** /organization/activities | Get user activity logs
+*Brevo::NotesApi* | [**crm_notes_get**](docs/NotesApi.md#crm_notes_get) | **GET** /crm/notes | Get all notes
+*Brevo::NotesApi* | [**crm_notes_id_delete**](docs/NotesApi.md#crm_notes_id_delete) | **DELETE** /crm/notes/{id} | Delete a note
+*Brevo::NotesApi* | [**crm_notes_id_get**](docs/NotesApi.md#crm_notes_id_get) | **GET** /crm/notes/{id} | Get a note
+*Brevo::NotesApi* | [**crm_notes_id_patch**](docs/NotesApi.md#crm_notes_id_patch) | **PATCH** /crm/notes/{id} | Update a note
+*Brevo::NotesApi* | [**crm_notes_post**](docs/NotesApi.md#crm_notes_post) | **POST** /crm/notes | Create a note
+*Brevo::ProcessApi* | [**get_process**](docs/ProcessApi.md#get_process) | **GET** /processes/{processId} | Return the informations for a process
+*Brevo::ProcessApi* | [**get_processes**](docs/ProcessApi.md#get_processes) | **GET** /processes | Return all the processes for your account
+*Brevo::ResellerApi* | [**add_credits**](docs/ResellerApi.md#add_credits) | **POST** /reseller/children/{childIdentifier}/credits/add | Add Email and/or SMS credits to a specific child account
+*Brevo::ResellerApi* | [**associate_ip_to_child**](docs/ResellerApi.md#associate_ip_to_child) | **POST** /reseller/children/{childIdentifier}/ips/associate | Associate a dedicated IP to the child
+*Brevo::ResellerApi* | [**create_child_domain**](docs/ResellerApi.md#create_child_domain) | **POST** /reseller/children/{childIdentifier}/domains | Create a domain for a child account
+*Brevo::ResellerApi* | [**create_reseller_child**](docs/ResellerApi.md#create_reseller_child) | **POST** /reseller/children | Creates a reseller child
+*Brevo::ResellerApi* | [**delete_child_domain**](docs/ResellerApi.md#delete_child_domain) | **DELETE** /reseller/children/{childIdentifier}/domains/{domainName} | Delete the sender domain of the reseller child based on the childIdentifier and domainName passed
+*Brevo::ResellerApi* | [**delete_reseller_child**](docs/ResellerApi.md#delete_reseller_child) | **DELETE** /reseller/children/{childIdentifier} | Delete a single reseller child based on the child identifier supplied
+*Brevo::ResellerApi* | [**dissociate_ip_from_child**](docs/ResellerApi.md#dissociate_ip_from_child) | **POST** /reseller/children/{childIdentifier}/ips/dissociate | Dissociate a dedicated IP to the child
+*Brevo::ResellerApi* | [**get_child_account_creation_status**](docs/ResellerApi.md#get_child_account_creation_status) | **GET** /reseller/children/{childIdentifier}/accountCreationStatus | Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the identifier supplied
+*Brevo::ResellerApi* | [**get_child_domains**](docs/ResellerApi.md#get_child_domains) | **GET** /reseller/children/{childIdentifier}/domains | Get all sender domains for a specific child account
+*Brevo::ResellerApi* | [**get_child_info**](docs/ResellerApi.md#get_child_info) | **GET** /reseller/children/{childIdentifier} | Get a child account's details
+*Brevo::ResellerApi* | [**get_reseller_childs**](docs/ResellerApi.md#get_reseller_childs) | **GET** /reseller/children | Get the list of all children accounts
+*Brevo::ResellerApi* | [**get_sso_token**](docs/ResellerApi.md#get_sso_token) | **GET** /reseller/children/{childIdentifier}/auth | Get session token to access Brevo (SSO)
+*Brevo::ResellerApi* | [**remove_credits**](docs/ResellerApi.md#remove_credits) | **POST** /reseller/children/{childIdentifier}/credits/remove | Remove Email and/or SMS credits from a specific child account
+*Brevo::ResellerApi* | [**update_child_account_status**](docs/ResellerApi.md#update_child_account_status) | **PUT** /reseller/children/{childIdentifier}/accountStatus | Update info of reseller's child account status based on the childIdentifier supplied
+*Brevo::ResellerApi* | [**update_child_domain**](docs/ResellerApi.md#update_child_domain) | **PUT** /reseller/children/{childIdentifier}/domains/{domainName} | Update the sender domain of reseller's child based on the childIdentifier and domainName passed
+*Brevo::ResellerApi* | [**update_reseller_child**](docs/ResellerApi.md#update_reseller_child) | **PUT** /reseller/children/{childIdentifier} | Update info of reseller's child based on the child identifier supplied
+*Brevo::SMSCampaignsApi* | [**create_sms_campaign**](docs/SMSCampaignsApi.md#create_sms_campaign) | **POST** /smsCampaigns | Creates an SMS campaign
+*Brevo::SMSCampaignsApi* | [**delete_sms_campaign**](docs/SMSCampaignsApi.md#delete_sms_campaign) | **DELETE** /smsCampaigns/{campaignId} | Delete an SMS campaign
+*Brevo::SMSCampaignsApi* | [**get_sms_campaign**](docs/SMSCampaignsApi.md#get_sms_campaign) | **GET** /smsCampaigns/{campaignId} | Get an SMS campaign
+*Brevo::SMSCampaignsApi* | [**get_sms_campaigns**](docs/SMSCampaignsApi.md#get_sms_campaigns) | **GET** /smsCampaigns | Returns the information for all your created SMS campaigns
+*Brevo::SMSCampaignsApi* | [**request_sms_recipient_export**](docs/SMSCampaignsApi.md#request_sms_recipient_export) | **POST** /smsCampaigns/{campaignId}/exportRecipients | Export an SMS campaign's recipients
+*Brevo::SMSCampaignsApi* | [**send_sms_campaign_now**](docs/SMSCampaignsApi.md#send_sms_campaign_now) | **POST** /smsCampaigns/{campaignId}/sendNow | Send your SMS campaign immediately
+*Brevo::SMSCampaignsApi* | [**send_sms_report**](docs/SMSCampaignsApi.md#send_sms_report) | **POST** /smsCampaigns/{campaignId}/sendReport | Send an SMS campaign's report
+*Brevo::SMSCampaignsApi* | [**send_test_sms**](docs/SMSCampaignsApi.md#send_test_sms) | **POST** /smsCampaigns/{campaignId}/sendTest | Send a test SMS campaign
+*Brevo::SMSCampaignsApi* | [**update_sms_campaign**](docs/SMSCampaignsApi.md#update_sms_campaign) | **PUT** /smsCampaigns/{campaignId} | Update an SMS campaign
+*Brevo::SMSCampaignsApi* | [**update_sms_campaign_status**](docs/SMSCampaignsApi.md#update_sms_campaign_status) | **PUT** /smsCampaigns/{campaignId}/status | Update a campaign's status
+*Brevo::SendersApi* | [**create_sender**](docs/SendersApi.md#create_sender) | **POST** /senders | Create a new sender
+*Brevo::SendersApi* | [**delete_sender**](docs/SendersApi.md#delete_sender) | **DELETE** /senders/{senderId} | Delete a sender
+*Brevo::SendersApi* | [**get_ips**](docs/SendersApi.md#get_ips) | **GET** /senders/ips | Get all the dedicated IPs for your account
+*Brevo::SendersApi* | [**get_ips_from_sender**](docs/SendersApi.md#get_ips_from_sender) | **GET** /senders/{senderId}/ips | Get all the dedicated IPs for a sender
+*Brevo::SendersApi* | [**get_senders**](docs/SendersApi.md#get_senders) | **GET** /senders | Get the list of all your senders
+*Brevo::SendersApi* | [**update_sender**](docs/SendersApi.md#update_sender) | **PUT** /senders/{senderId} | Update a sender
+*Brevo::SendersApi* | [**validate_sender_by_otp**](docs/SendersApi.md#validate_sender_by_otp) | **PUT** /senders/{senderId}/validate | Update a sender
+*Brevo::TasksApi* | [**crm_tasks_get**](docs/TasksApi.md#crm_tasks_get) | **GET** /crm/tasks | Get all tasks
+*Brevo::TasksApi* | [**crm_tasks_id_delete**](docs/TasksApi.md#crm_tasks_id_delete) | **DELETE** /crm/tasks/{id} | Delete a task
+*Brevo::TasksApi* | [**crm_tasks_id_get**](docs/TasksApi.md#crm_tasks_id_get) | **GET** /crm/tasks/{id} | Get a task
+*Brevo::TasksApi* | [**crm_tasks_id_patch**](docs/TasksApi.md#crm_tasks_id_patch) | **PATCH** /crm/tasks/{id} | Update a task
+*Brevo::TasksApi* | [**crm_tasks_post**](docs/TasksApi.md#crm_tasks_post) | **POST** /crm/tasks | Create a task
+*Brevo::TasksApi* | [**crm_tasktypes_get**](docs/TasksApi.md#crm_tasktypes_get) | **GET** /crm/tasktypes | Get all task types
+*Brevo::TransactionalEmailsApi* | [**block_new_domain**](docs/TransactionalEmailsApi.md#block_new_domain) | **POST** /smtp/blockedDomains | Add a new domain to the list of blocked domains
+*Brevo::TransactionalEmailsApi* | [**create_smtp_template**](docs/TransactionalEmailsApi.md#create_smtp_template) | **POST** /smtp/templates | Create an email template
+*Brevo::TransactionalEmailsApi* | [**delete_blocked_domain**](docs/TransactionalEmailsApi.md#delete_blocked_domain) | **DELETE** /smtp/blockedDomains/{domain} | Unblock an existing domain from the list of blocked domains
+*Brevo::TransactionalEmailsApi* | [**delete_hardbounces**](docs/TransactionalEmailsApi.md#delete_hardbounces) | **POST** /smtp/deleteHardbounces | Delete hardbounces
+*Brevo::TransactionalEmailsApi* | [**delete_scheduled_email_by_id**](docs/TransactionalEmailsApi.md#delete_scheduled_email_by_id) | **DELETE** /smtp/email/{identifier} | Delete scheduled emails by batchId or messageId
+*Brevo::TransactionalEmailsApi* | [**delete_smtp_template**](docs/TransactionalEmailsApi.md#delete_smtp_template) | **DELETE** /smtp/templates/{templateId} | Delete an inactive email template
+*Brevo::TransactionalEmailsApi* | [**get_aggregated_smtp_report**](docs/TransactionalEmailsApi.md#get_aggregated_smtp_report) | **GET** /smtp/statistics/aggregatedReport | Get your transactional email activity aggregated over a period of time
+*Brevo::TransactionalEmailsApi* | [**get_blocked_domains**](docs/TransactionalEmailsApi.md#get_blocked_domains) | **GET** /smtp/blockedDomains | Get the list of blocked domains
+*Brevo::TransactionalEmailsApi* | [**get_email_event_report**](docs/TransactionalEmailsApi.md#get_email_event_report) | **GET** /smtp/statistics/events | Get all your transactional email activity (unaggregated events)
+*Brevo::TransactionalEmailsApi* | [**get_scheduled_email_by_batch_id**](docs/TransactionalEmailsApi.md#get_scheduled_email_by_batch_id) | **GET** /smtp/emailStatus/{batchId} | Fetch scheduled emails by batchId
+*Brevo::TransactionalEmailsApi* | [**get_scheduled_email_by_message_id**](docs/TransactionalEmailsApi.md#get_scheduled_email_by_message_id) | **GET** /smtp/emailStatus/{messageId} | Fetch scheduled email by messageId
+*Brevo::TransactionalEmailsApi* | [**get_smtp_report**](docs/TransactionalEmailsApi.md#get_smtp_report) | **GET** /smtp/statistics/reports | Get your transactional email activity aggregated per day
+*Brevo::TransactionalEmailsApi* | [**get_smtp_template**](docs/TransactionalEmailsApi.md#get_smtp_template) | **GET** /smtp/templates/{templateId} | Returns the template information
+*Brevo::TransactionalEmailsApi* | [**get_smtp_templates**](docs/TransactionalEmailsApi.md#get_smtp_templates) | **GET** /smtp/templates | Get the list of email templates
+*Brevo::TransactionalEmailsApi* | [**get_transac_blocked_contacts**](docs/TransactionalEmailsApi.md#get_transac_blocked_contacts) | **GET** /smtp/blockedContacts | Get the list of blocked or unsubscribed transactional contacts
+*Brevo::TransactionalEmailsApi* | [**get_transac_email_content**](docs/TransactionalEmailsApi.md#get_transac_email_content) | **GET** /smtp/emails/{uuid} | Get the personalized content of a sent transactional email
+*Brevo::TransactionalEmailsApi* | [**get_transac_emails_list**](docs/TransactionalEmailsApi.md#get_transac_emails_list) | **GET** /smtp/emails | Get the list of transactional emails on the basis of allowed filters
+*Brevo::TransactionalEmailsApi* | [**send_test_template**](docs/TransactionalEmailsApi.md#send_test_template) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
+*Brevo::TransactionalEmailsApi* | [**send_transac_email**](docs/TransactionalEmailsApi.md#send_transac_email) | **POST** /smtp/email | Send a transactional email
+*Brevo::TransactionalEmailsApi* | [**smtp_blocked_contacts_email_delete**](docs/TransactionalEmailsApi.md#smtp_blocked_contacts_email_delete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
+*Brevo::TransactionalEmailsApi* | [**smtp_log_message_id_delete**](docs/TransactionalEmailsApi.md#smtp_log_message_id_delete) | **DELETE** /smtp/log/{messageId} | Delete an SMTP transactional log
+*Brevo::TransactionalEmailsApi* | [**update_smtp_template**](docs/TransactionalEmailsApi.md#update_smtp_template) | **PUT** /smtp/templates/{templateId} | Update an email template
+*Brevo::TransactionalSMSApi* | [**get_sms_events**](docs/TransactionalSMSApi.md#get_sms_events) | **GET** /transactionalSMS/statistics/events | Get all your SMS activity (unaggregated events)
+*Brevo::TransactionalSMSApi* | [**get_transac_aggregated_sms_report**](docs/TransactionalSMSApi.md#get_transac_aggregated_sms_report) | **GET** /transactionalSMS/statistics/aggregatedReport | Get your SMS activity aggregated over a period of time
+*Brevo::TransactionalSMSApi* | [**get_transac_sms_report**](docs/TransactionalSMSApi.md#get_transac_sms_report) | **GET** /transactionalSMS/statistics/reports | Get your SMS activity aggregated per day
+*Brevo::TransactionalSMSApi* | [**send_transac_sms**](docs/TransactionalSMSApi.md#send_transac_sms) | **POST** /transactionalSMS/sms | Send SMS message to a mobile number
+*Brevo::TransactionalWhatsAppApi* | [**get_whatsapp_event_report**](docs/TransactionalWhatsAppApi.md#get_whatsapp_event_report) | **GET** /whatsapp/statistics/events | Get all your WhatsApp activity (unaggregated events)
+*Brevo::TransactionalWhatsAppApi* | [**send_whatsapp_message**](docs/TransactionalWhatsAppApi.md#send_whatsapp_message) | **POST** /whatsapp/sendMessage | Send a WhatsApp message
+*Brevo::UserApi* | [**get_invited_users_list**](docs/UserApi.md#get_invited_users_list) | **GET** /organization/invited/users | Get the list of all your users
+*Brevo::UserApi* | [**get_user_permission**](docs/UserApi.md#get_user_permission) | **GET** /organization/user/{email}/permissions | Check user permission
+*Brevo::WebhooksApi* | [**create_webhook**](docs/WebhooksApi.md#create_webhook) | **POST** /webhooks | Create a webhook
+*Brevo::WebhooksApi* | [**delete_webhook**](docs/WebhooksApi.md#delete_webhook) | **DELETE** /webhooks/{webhookId} | Delete a webhook
+*Brevo::WebhooksApi* | [**export_webhooks_history**](docs/WebhooksApi.md#export_webhooks_history) | **POST** /webhooks/export | Export all transactional events
+*Brevo::WebhooksApi* | [**get_webhook**](docs/WebhooksApi.md#get_webhook) | **GET** /webhooks/{webhookId} | Get a webhook details
+*Brevo::WebhooksApi* | [**get_webhooks**](docs/WebhooksApi.md#get_webhooks) | **GET** /webhooks | Get all webhooks
+*Brevo::WebhooksApi* | [**update_webhook**](docs/WebhooksApi.md#update_webhook) | **PUT** /webhooks/{webhookId} | Update a webhook
+*Brevo::WhatsAppCampaignsApi* | [**create_whats_app_campaign**](docs/WhatsAppCampaignsApi.md#create_whats_app_campaign) | **POST** /whatsappCampaigns | Create and Send a WhatsApp campaign
+*Brevo::WhatsAppCampaignsApi* | [**create_whats_app_template**](docs/WhatsAppCampaignsApi.md#create_whats_app_template) | **POST** /whatsppCampaigns/template | Create a WhatsApp template
+*Brevo::WhatsAppCampaignsApi* | [**delete_whats_app_campaign**](docs/WhatsAppCampaignsApi.md#delete_whats_app_campaign) | **DELETE** /whatsappCampaigns/{campaignId} | Delete a WhatsApp campaign
+*Brevo::WhatsAppCampaignsApi* | [**get_whats_app_campaign**](docs/WhatsAppCampaignsApi.md#get_whats_app_campaign) | **GET** /whatsappCampaigns/{campaignId} | Get a WhatsApp campaign
+*Brevo::WhatsAppCampaignsApi* | [**get_whats_app_campaigns**](docs/WhatsAppCampaignsApi.md#get_whats_app_campaigns) | **GET** /whatsappCampaigns | Return all your created WhatsApp campaigns
+*Brevo::WhatsAppCampaignsApi* | [**get_whats_app_config**](docs/WhatsAppCampaignsApi.md#get_whats_app_config) | **GET** /whatsappCampaigns/config | Get your WhatsApp API account information
+*Brevo::WhatsAppCampaignsApi* | [**get_whats_app_templates**](docs/WhatsAppCampaignsApi.md#get_whats_app_templates) | **GET** /whatsappCampaigns/template-list | Return all your created WhatsApp templates
+*Brevo::WhatsAppCampaignsApi* | [**send_whats_app_template_approval**](docs/WhatsAppCampaignsApi.md#send_whats_app_template_approval) | **POST** /whatsappCampaigns/template/approval/{templateId} | Send your WhatsApp template for approval
+*Brevo::WhatsAppCampaignsApi* | [**update_whats_app_campaign**](docs/WhatsAppCampaignsApi.md#update_whats_app_campaign) | **PUT** /whatsappCampaigns/{campaignId} | Update a WhatsApp campaign
 
 
 ## Documentation for Models
 
- - [BrevoRuby::AbTestCampaignResult](docs/AbTestCampaignResult.md)
- - [BrevoRuby::AbTestCampaignResultClickedLinks](docs/AbTestCampaignResultClickedLinks.md)
- - [BrevoRuby::AbTestCampaignResultStatistics](docs/AbTestCampaignResultStatistics.md)
- - [BrevoRuby::AbTestVersionClicks](docs/AbTestVersionClicks.md)
- - [BrevoRuby::AbTestVersionClicksInner](docs/AbTestVersionClicksInner.md)
- - [BrevoRuby::AbTestVersionStats](docs/AbTestVersionStats.md)
- - [BrevoRuby::AddChildDomain](docs/AddChildDomain.md)
- - [BrevoRuby::AddContactToList](docs/AddContactToList.md)
- - [BrevoRuby::AddCredits](docs/AddCredits.md)
- - [BrevoRuby::AuthenticateDomainModel](docs/AuthenticateDomainModel.md)
- - [BrevoRuby::BlockDomain](docs/BlockDomain.md)
- - [BrevoRuby::Body](docs/Body.md)
- - [BrevoRuby::Body1](docs/Body1.md)
- - [BrevoRuby::Body10](docs/Body10.md)
- - [BrevoRuby::Body11](docs/Body11.md)
- - [BrevoRuby::Body12](docs/Body12.md)
- - [BrevoRuby::Body2](docs/Body2.md)
- - [BrevoRuby::Body3](docs/Body3.md)
- - [BrevoRuby::Body4](docs/Body4.md)
- - [BrevoRuby::Body5](docs/Body5.md)
- - [BrevoRuby::Body6](docs/Body6.md)
- - [BrevoRuby::Body7](docs/Body7.md)
- - [BrevoRuby::Body8](docs/Body8.md)
- - [BrevoRuby::Body9](docs/Body9.md)
- - [BrevoRuby::BodyVariablesItems](docs/BodyVariablesItems.md)
- - [BrevoRuby::CompaniesList](docs/CompaniesList.md)
- - [BrevoRuby::Company](docs/Company.md)
- - [BrevoRuby::CompanyAttributes](docs/CompanyAttributes.md)
- - [BrevoRuby::CompanyAttributesInner](docs/CompanyAttributesInner.md)
- - [BrevoRuby::ComponentItems](docs/ComponentItems.md)
- - [BrevoRuby::ConversationsMessage](docs/ConversationsMessage.md)
- - [BrevoRuby::ConversationsMessageFile](docs/ConversationsMessageFile.md)
- - [BrevoRuby::ConversationsMessageFileImageInfo](docs/ConversationsMessageFileImageInfo.md)
- - [BrevoRuby::CreateApiKeyRequest](docs/CreateApiKeyRequest.md)
- - [BrevoRuby::CreateApiKeyResponse](docs/CreateApiKeyResponse.md)
- - [BrevoRuby::CreateAttribute](docs/CreateAttribute.md)
- - [BrevoRuby::CreateAttributeEnumeration](docs/CreateAttributeEnumeration.md)
- - [BrevoRuby::CreateCategoryModel](docs/CreateCategoryModel.md)
- - [BrevoRuby::CreateChild](docs/CreateChild.md)
- - [BrevoRuby::CreateContact](docs/CreateContact.md)
- - [BrevoRuby::CreateCouponCollection](docs/CreateCouponCollection.md)
- - [BrevoRuby::CreateCoupons](docs/CreateCoupons.md)
- - [BrevoRuby::CreateDoiContact](docs/CreateDoiContact.md)
- - [BrevoRuby::CreateDomain](docs/CreateDomain.md)
- - [BrevoRuby::CreateDomainModel](docs/CreateDomainModel.md)
- - [BrevoRuby::CreateDomainModelDnsRecords](docs/CreateDomainModelDnsRecords.md)
- - [BrevoRuby::CreateDomainModelDnsRecordsDkimRecord](docs/CreateDomainModelDnsRecordsDkimRecord.md)
- - [BrevoRuby::CreateEmailCampaign](docs/CreateEmailCampaign.md)
- - [BrevoRuby::CreateEmailCampaignRecipients](docs/CreateEmailCampaignRecipients.md)
- - [BrevoRuby::CreateEmailCampaignSender](docs/CreateEmailCampaignSender.md)
- - [BrevoRuby::CreateExternalFeed](docs/CreateExternalFeed.md)
- - [BrevoRuby::CreateList](docs/CreateList.md)
- - [BrevoRuby::CreateModel](docs/CreateModel.md)
- - [BrevoRuby::CreateProductModel](docs/CreateProductModel.md)
- - [BrevoRuby::CreateReseller](docs/CreateReseller.md)
- - [BrevoRuby::CreateSender](docs/CreateSender.md)
- - [BrevoRuby::CreateSenderIps](docs/CreateSenderIps.md)
- - [BrevoRuby::CreateSenderModel](docs/CreateSenderModel.md)
- - [BrevoRuby::CreateSmsCampaign](docs/CreateSmsCampaign.md)
- - [BrevoRuby::CreateSmsCampaignRecipients](docs/CreateSmsCampaignRecipients.md)
- - [BrevoRuby::CreateSmtpEmail](docs/CreateSmtpEmail.md)
- - [BrevoRuby::CreateSmtpTemplate](docs/CreateSmtpTemplate.md)
- - [BrevoRuby::CreateSmtpTemplateSender](docs/CreateSmtpTemplateSender.md)
- - [BrevoRuby::CreateSubAccount](docs/CreateSubAccount.md)
- - [BrevoRuby::CreateSubAccountResponse](docs/CreateSubAccountResponse.md)
- - [BrevoRuby::CreateUpdateBatchCategory](docs/CreateUpdateBatchCategory.md)
- - [BrevoRuby::CreateUpdateBatchCategoryModel](docs/CreateUpdateBatchCategoryModel.md)
- - [BrevoRuby::CreateUpdateBatchProducts](docs/CreateUpdateBatchProducts.md)
- - [BrevoRuby::CreateUpdateBatchProductsModel](docs/CreateUpdateBatchProductsModel.md)
- - [BrevoRuby::CreateUpdateCategories](docs/CreateUpdateCategories.md)
- - [BrevoRuby::CreateUpdateCategory](docs/CreateUpdateCategory.md)
- - [BrevoRuby::CreateUpdateContactModel](docs/CreateUpdateContactModel.md)
- - [BrevoRuby::CreateUpdateFolder](docs/CreateUpdateFolder.md)
- - [BrevoRuby::CreateUpdateProduct](docs/CreateUpdateProduct.md)
- - [BrevoRuby::CreateUpdateProducts](docs/CreateUpdateProducts.md)
- - [BrevoRuby::CreateWebhook](docs/CreateWebhook.md)
- - [BrevoRuby::CreateWhatsAppCampaign](docs/CreateWhatsAppCampaign.md)
- - [BrevoRuby::CreateWhatsAppCampaignRecipients](docs/CreateWhatsAppCampaignRecipients.md)
- - [BrevoRuby::CreateWhatsAppTemplate](docs/CreateWhatsAppTemplate.md)
- - [BrevoRuby::CreatedBatchId](docs/CreatedBatchId.md)
- - [BrevoRuby::CreatedProcessId](docs/CreatedProcessId.md)
- - [BrevoRuby::Deal](docs/Deal.md)
- - [BrevoRuby::DealAttributes](docs/DealAttributes.md)
- - [BrevoRuby::DealAttributesInner](docs/DealAttributesInner.md)
- - [BrevoRuby::DealsList](docs/DealsList.md)
- - [BrevoRuby::DeleteHardbounces](docs/DeleteHardbounces.md)
- - [BrevoRuby::EmailExportRecipients](docs/EmailExportRecipients.md)
- - [BrevoRuby::ErrorModel](docs/ErrorModel.md)
- - [BrevoRuby::ExportWebhooksHistory](docs/ExportWebhooksHistory.md)
- - [BrevoRuby::FileData](docs/FileData.md)
- - [BrevoRuby::FileDownloadableLink](docs/FileDownloadableLink.md)
- - [BrevoRuby::FileList](docs/FileList.md)
- - [BrevoRuby::GetAccount](docs/GetAccount.md)
- - [BrevoRuby::GetAccountActivity](docs/GetAccountActivity.md)
- - [BrevoRuby::GetAccountActivityLogs](docs/GetAccountActivityLogs.md)
- - [BrevoRuby::GetAccountMarketingAutomation](docs/GetAccountMarketingAutomation.md)
- - [BrevoRuby::GetAccountPlan](docs/GetAccountPlan.md)
- - [BrevoRuby::GetAccountRelay](docs/GetAccountRelay.md)
- - [BrevoRuby::GetAccountRelayData](docs/GetAccountRelayData.md)
- - [BrevoRuby::GetAggregatedReport](docs/GetAggregatedReport.md)
- - [BrevoRuby::GetAllExternalFeeds](docs/GetAllExternalFeeds.md)
- - [BrevoRuby::GetAllExternalFeedsFeeds](docs/GetAllExternalFeedsFeeds.md)
- - [BrevoRuby::GetAttributes](docs/GetAttributes.md)
- - [BrevoRuby::GetAttributesAttributes](docs/GetAttributesAttributes.md)
- - [BrevoRuby::GetAttributesEnumeration](docs/GetAttributesEnumeration.md)
- - [BrevoRuby::GetBlockedDomains](docs/GetBlockedDomains.md)
- - [BrevoRuby::GetCampaignOverview](docs/GetCampaignOverview.md)
- - [BrevoRuby::GetCampaignRecipients](docs/GetCampaignRecipients.md)
- - [BrevoRuby::GetCampaignStats](docs/GetCampaignStats.md)
- - [BrevoRuby::GetCategories](docs/GetCategories.md)
- - [BrevoRuby::GetCategoryDetails](docs/GetCategoryDetails.md)
- - [BrevoRuby::GetChildAccountCreationStatus](docs/GetChildAccountCreationStatus.md)
- - [BrevoRuby::GetChildDomain](docs/GetChildDomain.md)
- - [BrevoRuby::GetChildDomains](docs/GetChildDomains.md)
- - [BrevoRuby::GetChildInfo](docs/GetChildInfo.md)
- - [BrevoRuby::GetChildInfoApiKeys](docs/GetChildInfoApiKeys.md)
- - [BrevoRuby::GetChildInfoApiKeysV2](docs/GetChildInfoApiKeysV2.md)
- - [BrevoRuby::GetChildInfoApiKeysV3](docs/GetChildInfoApiKeysV3.md)
- - [BrevoRuby::GetChildInfoCredits](docs/GetChildInfoCredits.md)
- - [BrevoRuby::GetChildInfoStatistics](docs/GetChildInfoStatistics.md)
- - [BrevoRuby::GetChildrenList](docs/GetChildrenList.md)
- - [BrevoRuby::GetClient](docs/GetClient.md)
- - [BrevoRuby::GetContactCampaignStats](docs/GetContactCampaignStats.md)
- - [BrevoRuby::GetContactCampaignStatsClicked](docs/GetContactCampaignStatsClicked.md)
- - [BrevoRuby::GetContactCampaignStatsOpened](docs/GetContactCampaignStatsOpened.md)
- - [BrevoRuby::GetContactCampaignStatsTransacAttributes](docs/GetContactCampaignStatsTransacAttributes.md)
- - [BrevoRuby::GetContactCampaignStatsUnsubscriptions](docs/GetContactCampaignStatsUnsubscriptions.md)
- - [BrevoRuby::GetContactDetails](docs/GetContactDetails.md)
- - [BrevoRuby::GetContacts](docs/GetContacts.md)
- - [BrevoRuby::GetCouponCollection](docs/GetCouponCollection.md)
- - [BrevoRuby::GetDeviceBrowserStats](docs/GetDeviceBrowserStats.md)
- - [BrevoRuby::GetDomainConfigurationModel](docs/GetDomainConfigurationModel.md)
- - [BrevoRuby::GetDomainsList](docs/GetDomainsList.md)
- - [BrevoRuby::GetDomainsListDomains](docs/GetDomainsListDomains.md)
- - [BrevoRuby::GetEmailCampaign](docs/GetEmailCampaign.md)
- - [BrevoRuby::GetEmailCampaigns](docs/GetEmailCampaigns.md)
- - [BrevoRuby::GetEmailEventReport](docs/GetEmailEventReport.md)
- - [BrevoRuby::GetEmailEventReportEvents](docs/GetEmailEventReportEvents.md)
- - [BrevoRuby::GetExtendedCampaignOverview](docs/GetExtendedCampaignOverview.md)
- - [BrevoRuby::GetExtendedCampaignOverviewSender](docs/GetExtendedCampaignOverviewSender.md)
- - [BrevoRuby::GetExtendedCampaignStats](docs/GetExtendedCampaignStats.md)
- - [BrevoRuby::GetExtendedCampaignStatsGlobalStats](docs/GetExtendedCampaignStatsGlobalStats.md)
- - [BrevoRuby::GetExtendedClient](docs/GetExtendedClient.md)
- - [BrevoRuby::GetExtendedClientAddress](docs/GetExtendedClientAddress.md)
- - [BrevoRuby::GetExtendedContactDetails](docs/GetExtendedContactDetails.md)
- - [BrevoRuby::GetExtendedContactDetailsStatistics](docs/GetExtendedContactDetailsStatistics.md)
- - [BrevoRuby::GetExtendedContactDetailsStatisticsClicked](docs/GetExtendedContactDetailsStatisticsClicked.md)
- - [BrevoRuby::GetExtendedContactDetailsStatisticsDelivered](docs/GetExtendedContactDetailsStatisticsDelivered.md)
- - [BrevoRuby::GetExtendedContactDetailsStatisticsLinks](docs/GetExtendedContactDetailsStatisticsLinks.md)
- - [BrevoRuby::GetExtendedContactDetailsStatisticsMessagesSent](docs/GetExtendedContactDetailsStatisticsMessagesSent.md)
- - [BrevoRuby::GetExtendedContactDetailsStatisticsOpened](docs/GetExtendedContactDetailsStatisticsOpened.md)
- - [BrevoRuby::GetExtendedContactDetailsStatisticsUnsubscriptions](docs/GetExtendedContactDetailsStatisticsUnsubscriptions.md)
- - [BrevoRuby::GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription](docs/GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription.md)
- - [BrevoRuby::GetExtendedContactDetailsStatisticsUnsubscriptionsUserUnsubscription](docs/GetExtendedContactDetailsStatisticsUnsubscriptionsUserUnsubscription.md)
- - [BrevoRuby::GetExtendedList](docs/GetExtendedList.md)
- - [BrevoRuby::GetExtendedListCampaignStats](docs/GetExtendedListCampaignStats.md)
- - [BrevoRuby::GetExternalFeedByUUID](docs/GetExternalFeedByUUID.md)
- - [BrevoRuby::GetExternalFeedByUUIDHeaders](docs/GetExternalFeedByUUIDHeaders.md)
- - [BrevoRuby::GetFolder](docs/GetFolder.md)
- - [BrevoRuby::GetFolderLists](docs/GetFolderLists.md)
- - [BrevoRuby::GetFolders](docs/GetFolders.md)
- - [BrevoRuby::GetInboundEmailEvents](docs/GetInboundEmailEvents.md)
- - [BrevoRuby::GetInboundEmailEventsByUuid](docs/GetInboundEmailEventsByUuid.md)
- - [BrevoRuby::GetInboundEmailEventsByUuidAttachments](docs/GetInboundEmailEventsByUuidAttachments.md)
- - [BrevoRuby::GetInboundEmailEventsByUuidLogs](docs/GetInboundEmailEventsByUuidLogs.md)
- - [BrevoRuby::GetInboundEmailEventsEvents](docs/GetInboundEmailEventsEvents.md)
- - [BrevoRuby::GetInvitedUsersList](docs/GetInvitedUsersList.md)
- - [BrevoRuby::GetInvitedUsersListFeatureAccess](docs/GetInvitedUsersListFeatureAccess.md)
- - [BrevoRuby::GetInvitedUsersListUsers](docs/GetInvitedUsersListUsers.md)
- - [BrevoRuby::GetIp](docs/GetIp.md)
- - [BrevoRuby::GetIpFromSender](docs/GetIpFromSender.md)
- - [BrevoRuby::GetIps](docs/GetIps.md)
- - [BrevoRuby::GetIpsFromSender](docs/GetIpsFromSender.md)
- - [BrevoRuby::GetList](docs/GetList.md)
- - [BrevoRuby::GetLists](docs/GetLists.md)
- - [BrevoRuby::GetProcess](docs/GetProcess.md)
- - [BrevoRuby::GetProcesses](docs/GetProcesses.md)
- - [BrevoRuby::GetProductDetails](docs/GetProductDetails.md)
- - [BrevoRuby::GetProducts](docs/GetProducts.md)
- - [BrevoRuby::GetReports](docs/GetReports.md)
- - [BrevoRuby::GetReportsReports](docs/GetReportsReports.md)
- - [BrevoRuby::GetScheduledEmailByBatchId](docs/GetScheduledEmailByBatchId.md)
- - [BrevoRuby::GetScheduledEmailByBatchIdBatches](docs/GetScheduledEmailByBatchIdBatches.md)
- - [BrevoRuby::GetScheduledEmailByMessageId](docs/GetScheduledEmailByMessageId.md)
- - [BrevoRuby::GetSegments](docs/GetSegments.md)
- - [BrevoRuby::GetSegmentsSegments](docs/GetSegmentsSegments.md)
- - [BrevoRuby::GetSendersList](docs/GetSendersList.md)
- - [BrevoRuby::GetSendersListIps](docs/GetSendersListIps.md)
- - [BrevoRuby::GetSendersListSenders](docs/GetSendersListSenders.md)
- - [BrevoRuby::GetSharedTemplateUrl](docs/GetSharedTemplateUrl.md)
- - [BrevoRuby::GetSmsCampaign](docs/GetSmsCampaign.md)
- - [BrevoRuby::GetSmsCampaignOverview](docs/GetSmsCampaignOverview.md)
- - [BrevoRuby::GetSmsCampaignRecipients](docs/GetSmsCampaignRecipients.md)
- - [BrevoRuby::GetSmsCampaignStats](docs/GetSmsCampaignStats.md)
- - [BrevoRuby::GetSmsCampaigns](docs/GetSmsCampaigns.md)
- - [BrevoRuby::GetSmsEventReport](docs/GetSmsEventReport.md)
- - [BrevoRuby::GetSmsEventReportEvents](docs/GetSmsEventReportEvents.md)
- - [BrevoRuby::GetSmtpTemplateOverview](docs/GetSmtpTemplateOverview.md)
- - [BrevoRuby::GetSmtpTemplateOverviewSender](docs/GetSmtpTemplateOverviewSender.md)
- - [BrevoRuby::GetSmtpTemplates](docs/GetSmtpTemplates.md)
- - [BrevoRuby::GetSsoToken](docs/GetSsoToken.md)
- - [BrevoRuby::GetStatsByBrowser](docs/GetStatsByBrowser.md)
- - [BrevoRuby::GetStatsByDevice](docs/GetStatsByDevice.md)
- - [BrevoRuby::GetStatsByDomain](docs/GetStatsByDomain.md)
- - [BrevoRuby::GetTransacAggregatedSmsReport](docs/GetTransacAggregatedSmsReport.md)
- - [BrevoRuby::GetTransacBlockedContacts](docs/GetTransacBlockedContacts.md)
- - [BrevoRuby::GetTransacBlockedContactsContacts](docs/GetTransacBlockedContactsContacts.md)
- - [BrevoRuby::GetTransacBlockedContactsReason](docs/GetTransacBlockedContactsReason.md)
- - [BrevoRuby::GetTransacEmailContent](docs/GetTransacEmailContent.md)
- - [BrevoRuby::GetTransacEmailContentEvents](docs/GetTransacEmailContentEvents.md)
- - [BrevoRuby::GetTransacEmailsList](docs/GetTransacEmailsList.md)
- - [BrevoRuby::GetTransacEmailsListTransactionalEmails](docs/GetTransacEmailsListTransactionalEmails.md)
- - [BrevoRuby::GetTransacSmsReport](docs/GetTransacSmsReport.md)
- - [BrevoRuby::GetTransacSmsReportReports](docs/GetTransacSmsReportReports.md)
- - [BrevoRuby::GetUserPermission](docs/GetUserPermission.md)
- - [BrevoRuby::GetUserPermissionPrivileges](docs/GetUserPermissionPrivileges.md)
- - [BrevoRuby::GetWATemplates](docs/GetWATemplates.md)
- - [BrevoRuby::GetWATemplatesTemplates](docs/GetWATemplatesTemplates.md)
- - [BrevoRuby::GetWebhook](docs/GetWebhook.md)
- - [BrevoRuby::GetWebhooks](docs/GetWebhooks.md)
- - [BrevoRuby::GetWhatsAppConfig](docs/GetWhatsAppConfig.md)
- - [BrevoRuby::GetWhatsappCampaignOverview](docs/GetWhatsappCampaignOverview.md)
- - [BrevoRuby::GetWhatsappCampaigns](docs/GetWhatsappCampaigns.md)
- - [BrevoRuby::GetWhatsappCampaignsCampaigns](docs/GetWhatsappCampaignsCampaigns.md)
- - [BrevoRuby::GetWhatsappEventReport](docs/GetWhatsappEventReport.md)
- - [BrevoRuby::GetWhatsappEventReportEvents](docs/GetWhatsappEventReportEvents.md)
- - [BrevoRuby::InlineResponse200](docs/InlineResponse200.md)
- - [BrevoRuby::InlineResponse2001](docs/InlineResponse2001.md)
- - [BrevoRuby::InlineResponse201](docs/InlineResponse201.md)
- - [BrevoRuby::InlineResponse2011](docs/InlineResponse2011.md)
- - [BrevoRuby::InlineResponse2012](docs/InlineResponse2012.md)
- - [BrevoRuby::InlineResponse2013](docs/InlineResponse2013.md)
- - [BrevoRuby::InlineResponse2014](docs/InlineResponse2014.md)
- - [BrevoRuby::ManageIp](docs/ManageIp.md)
- - [BrevoRuby::MasterDetailsResponse](docs/MasterDetailsResponse.md)
- - [BrevoRuby::MasterDetailsResponseBillingInfo](docs/MasterDetailsResponseBillingInfo.md)
- - [BrevoRuby::MasterDetailsResponseBillingInfoAddress](docs/MasterDetailsResponseBillingInfoAddress.md)
- - [BrevoRuby::MasterDetailsResponseBillingInfoName](docs/MasterDetailsResponseBillingInfoName.md)
- - [BrevoRuby::MasterDetailsResponsePlanInfo](docs/MasterDetailsResponsePlanInfo.md)
- - [BrevoRuby::MasterDetailsResponsePlanInfoFeatures](docs/MasterDetailsResponsePlanInfoFeatures.md)
- - [BrevoRuby::Note](docs/Note.md)
- - [BrevoRuby::NoteData](docs/NoteData.md)
- - [BrevoRuby::NoteId](docs/NoteId.md)
- - [BrevoRuby::NoteList](docs/NoteList.md)
- - [BrevoRuby::Order](docs/Order.md)
- - [BrevoRuby::OrderBatch](docs/OrderBatch.md)
- - [BrevoRuby::OrderBilling](docs/OrderBilling.md)
- - [BrevoRuby::OrderProducts](docs/OrderProducts.md)
- - [BrevoRuby::Otp](docs/Otp.md)
- - [BrevoRuby::Pipeline](docs/Pipeline.md)
- - [BrevoRuby::PipelineStage](docs/PipelineStage.md)
- - [BrevoRuby::Pipelines](docs/Pipelines.md)
- - [BrevoRuby::PostContactInfo](docs/PostContactInfo.md)
- - [BrevoRuby::PostContactInfoContacts](docs/PostContactInfoContacts.md)
- - [BrevoRuby::PostSendFailed](docs/PostSendFailed.md)
- - [BrevoRuby::PostSendSmsTestFailed](docs/PostSendSmsTestFailed.md)
- - [BrevoRuby::RemainingCreditModel](docs/RemainingCreditModel.md)
- - [BrevoRuby::RemainingCreditModelChild](docs/RemainingCreditModelChild.md)
- - [BrevoRuby::RemainingCreditModelReseller](docs/RemainingCreditModelReseller.md)
- - [BrevoRuby::RemoveContactFromList](docs/RemoveContactFromList.md)
- - [BrevoRuby::RemoveCredits](docs/RemoveCredits.md)
- - [BrevoRuby::RequestContactExport](docs/RequestContactExport.md)
- - [BrevoRuby::RequestContactExportCustomContactFilter](docs/RequestContactExportCustomContactFilter.md)
- - [BrevoRuby::RequestContactImport](docs/RequestContactImport.md)
- - [BrevoRuby::RequestContactImportNewList](docs/RequestContactImportNewList.md)
- - [BrevoRuby::RequestSmsRecipientExport](docs/RequestSmsRecipientExport.md)
- - [BrevoRuby::ScheduleSmtpEmail](docs/ScheduleSmtpEmail.md)
- - [BrevoRuby::SendReport](docs/SendReport.md)
- - [BrevoRuby::SendReportEmail](docs/SendReportEmail.md)
- - [BrevoRuby::SendSms](docs/SendSms.md)
- - [BrevoRuby::SendSmtpEmail](docs/SendSmtpEmail.md)
- - [BrevoRuby::SendSmtpEmailAttachment](docs/SendSmtpEmailAttachment.md)
- - [BrevoRuby::SendSmtpEmailBcc](docs/SendSmtpEmailBcc.md)
- - [BrevoRuby::SendSmtpEmailCc](docs/SendSmtpEmailCc.md)
- - [BrevoRuby::SendSmtpEmailMessageVersions](docs/SendSmtpEmailMessageVersions.md)
- - [BrevoRuby::SendSmtpEmailReplyTo](docs/SendSmtpEmailReplyTo.md)
- - [BrevoRuby::SendSmtpEmailReplyTo1](docs/SendSmtpEmailReplyTo1.md)
- - [BrevoRuby::SendSmtpEmailSender](docs/SendSmtpEmailSender.md)
- - [BrevoRuby::SendSmtpEmailTo](docs/SendSmtpEmailTo.md)
- - [BrevoRuby::SendSmtpEmailTo1](docs/SendSmtpEmailTo1.md)
- - [BrevoRuby::SendTestEmail](docs/SendTestEmail.md)
- - [BrevoRuby::SendTestSms](docs/SendTestSms.md)
- - [BrevoRuby::SendTransacSms](docs/SendTransacSms.md)
- - [BrevoRuby::SendWhatsappMessage](docs/SendWhatsappMessage.md)
- - [BrevoRuby::SsoTokenRequest](docs/SsoTokenRequest.md)
- - [BrevoRuby::SubAccountDetailsResponse](docs/SubAccountDetailsResponse.md)
- - [BrevoRuby::SubAccountDetailsResponsePlanInfo](docs/SubAccountDetailsResponsePlanInfo.md)
- - [BrevoRuby::SubAccountDetailsResponsePlanInfoCredits](docs/SubAccountDetailsResponsePlanInfoCredits.md)
- - [BrevoRuby::SubAccountDetailsResponsePlanInfoCreditsEmails](docs/SubAccountDetailsResponsePlanInfoCreditsEmails.md)
- - [BrevoRuby::SubAccountDetailsResponsePlanInfoFeatures](docs/SubAccountDetailsResponsePlanInfoFeatures.md)
- - [BrevoRuby::SubAccountDetailsResponsePlanInfoFeaturesInbox](docs/SubAccountDetailsResponsePlanInfoFeaturesInbox.md)
- - [BrevoRuby::SubAccountDetailsResponsePlanInfoFeaturesLandingPage](docs/SubAccountDetailsResponsePlanInfoFeaturesLandingPage.md)
- - [BrevoRuby::SubAccountDetailsResponsePlanInfoFeaturesUsers](docs/SubAccountDetailsResponsePlanInfoFeaturesUsers.md)
- - [BrevoRuby::SubAccountUpdatePlanRequest](docs/SubAccountUpdatePlanRequest.md)
- - [BrevoRuby::SubAccountUpdatePlanRequestCredits](docs/SubAccountUpdatePlanRequestCredits.md)
- - [BrevoRuby::SubAccountUpdatePlanRequestFeatures](docs/SubAccountUpdatePlanRequestFeatures.md)
- - [BrevoRuby::SubAccountsResponse](docs/SubAccountsResponse.md)
- - [BrevoRuby::SubAccountsResponseSubAccounts](docs/SubAccountsResponseSubAccounts.md)
- - [BrevoRuby::Task](docs/Task.md)
- - [BrevoRuby::TaskList](docs/TaskList.md)
- - [BrevoRuby::TaskReminder](docs/TaskReminder.md)
- - [BrevoRuby::TaskTypes](docs/TaskTypes.md)
- - [BrevoRuby::UpdateAttribute](docs/UpdateAttribute.md)
- - [BrevoRuby::UpdateAttributeEnumeration](docs/UpdateAttributeEnumeration.md)
- - [BrevoRuby::UpdateBatchContacts](docs/UpdateBatchContacts.md)
- - [BrevoRuby::UpdateBatchContactsContacts](docs/UpdateBatchContactsContacts.md)
- - [BrevoRuby::UpdateBatchContactsModel](docs/UpdateBatchContactsModel.md)
- - [BrevoRuby::UpdateCampaignStatus](docs/UpdateCampaignStatus.md)
- - [BrevoRuby::UpdateChild](docs/UpdateChild.md)
- - [BrevoRuby::UpdateChildAccountStatus](docs/UpdateChildAccountStatus.md)
- - [BrevoRuby::UpdateChildDomain](docs/UpdateChildDomain.md)
- - [BrevoRuby::UpdateContact](docs/UpdateContact.md)
- - [BrevoRuby::UpdateCouponCollection](docs/UpdateCouponCollection.md)
- - [BrevoRuby::UpdateEmailCampaign](docs/UpdateEmailCampaign.md)
- - [BrevoRuby::UpdateEmailCampaignRecipients](docs/UpdateEmailCampaignRecipients.md)
- - [BrevoRuby::UpdateEmailCampaignSender](docs/UpdateEmailCampaignSender.md)
- - [BrevoRuby::UpdateExternalFeed](docs/UpdateExternalFeed.md)
- - [BrevoRuby::UpdateList](docs/UpdateList.md)
- - [BrevoRuby::UpdateSender](docs/UpdateSender.md)
- - [BrevoRuby::UpdateSmsCampaign](docs/UpdateSmsCampaign.md)
- - [BrevoRuby::UpdateSmtpTemplate](docs/UpdateSmtpTemplate.md)
- - [BrevoRuby::UpdateSmtpTemplateSender](docs/UpdateSmtpTemplateSender.md)
- - [BrevoRuby::UpdateWebhook](docs/UpdateWebhook.md)
- - [BrevoRuby::UpdateWhatsAppCampaign](docs/UpdateWhatsAppCampaign.md)
- - [BrevoRuby::UploadImageModel](docs/UploadImageModel.md)
- - [BrevoRuby::UploadImageToGallery](docs/UploadImageToGallery.md)
- - [BrevoRuby::VariablesItems](docs/VariablesItems.md)
- - [BrevoRuby::WhatsappCampStats](docs/WhatsappCampStats.md)
- - [BrevoRuby::WhatsappCampTemplate](docs/WhatsappCampTemplate.md)
+ - [Brevo::AbTestCampaignResult](docs/AbTestCampaignResult.md)
+ - [Brevo::AbTestCampaignResultClickedLinks](docs/AbTestCampaignResultClickedLinks.md)
+ - [Brevo::AbTestCampaignResultStatistics](docs/AbTestCampaignResultStatistics.md)
+ - [Brevo::AbTestVersionClicks](docs/AbTestVersionClicks.md)
+ - [Brevo::AbTestVersionClicksInner](docs/AbTestVersionClicksInner.md)
+ - [Brevo::AbTestVersionStats](docs/AbTestVersionStats.md)
+ - [Brevo::AddChildDomain](docs/AddChildDomain.md)
+ - [Brevo::AddContactToList](docs/AddContactToList.md)
+ - [Brevo::AddCredits](docs/AddCredits.md)
+ - [Brevo::AuthenticateDomainModel](docs/AuthenticateDomainModel.md)
+ - [Brevo::BlockDomain](docs/BlockDomain.md)
+ - [Brevo::Body](docs/Body.md)
+ - [Brevo::Body1](docs/Body1.md)
+ - [Brevo::Body10](docs/Body10.md)
+ - [Brevo::Body11](docs/Body11.md)
+ - [Brevo::Body12](docs/Body12.md)
+ - [Brevo::Body2](docs/Body2.md)
+ - [Brevo::Body3](docs/Body3.md)
+ - [Brevo::Body4](docs/Body4.md)
+ - [Brevo::Body5](docs/Body5.md)
+ - [Brevo::Body6](docs/Body6.md)
+ - [Brevo::Body7](docs/Body7.md)
+ - [Brevo::Body8](docs/Body8.md)
+ - [Brevo::Body9](docs/Body9.md)
+ - [Brevo::BodyVariablesItems](docs/BodyVariablesItems.md)
+ - [Brevo::CompaniesList](docs/CompaniesList.md)
+ - [Brevo::Company](docs/Company.md)
+ - [Brevo::CompanyAttributes](docs/CompanyAttributes.md)
+ - [Brevo::CompanyAttributesInner](docs/CompanyAttributesInner.md)
+ - [Brevo::ComponentItems](docs/ComponentItems.md)
+ - [Brevo::ConversationsMessage](docs/ConversationsMessage.md)
+ - [Brevo::ConversationsMessageFile](docs/ConversationsMessageFile.md)
+ - [Brevo::ConversationsMessageFileImageInfo](docs/ConversationsMessageFileImageInfo.md)
+ - [Brevo::CreateApiKeyRequest](docs/CreateApiKeyRequest.md)
+ - [Brevo::CreateApiKeyResponse](docs/CreateApiKeyResponse.md)
+ - [Brevo::CreateAttribute](docs/CreateAttribute.md)
+ - [Brevo::CreateAttributeEnumeration](docs/CreateAttributeEnumeration.md)
+ - [Brevo::CreateCategoryModel](docs/CreateCategoryModel.md)
+ - [Brevo::CreateChild](docs/CreateChild.md)
+ - [Brevo::CreateContact](docs/CreateContact.md)
+ - [Brevo::CreateCouponCollection](docs/CreateCouponCollection.md)
+ - [Brevo::CreateCoupons](docs/CreateCoupons.md)
+ - [Brevo::CreateDoiContact](docs/CreateDoiContact.md)
+ - [Brevo::CreateDomain](docs/CreateDomain.md)
+ - [Brevo::CreateDomainModel](docs/CreateDomainModel.md)
+ - [Brevo::CreateDomainModelDnsRecords](docs/CreateDomainModelDnsRecords.md)
+ - [Brevo::CreateDomainModelDnsRecordsDkimRecord](docs/CreateDomainModelDnsRecordsDkimRecord.md)
+ - [Brevo::CreateEmailCampaign](docs/CreateEmailCampaign.md)
+ - [Brevo::CreateEmailCampaignRecipients](docs/CreateEmailCampaignRecipients.md)
+ - [Brevo::CreateEmailCampaignSender](docs/CreateEmailCampaignSender.md)
+ - [Brevo::CreateExternalFeed](docs/CreateExternalFeed.md)
+ - [Brevo::CreateList](docs/CreateList.md)
+ - [Brevo::CreateModel](docs/CreateModel.md)
+ - [Brevo::CreateProductModel](docs/CreateProductModel.md)
+ - [Brevo::CreateReseller](docs/CreateReseller.md)
+ - [Brevo::CreateSender](docs/CreateSender.md)
+ - [Brevo::CreateSenderIps](docs/CreateSenderIps.md)
+ - [Brevo::CreateSenderModel](docs/CreateSenderModel.md)
+ - [Brevo::CreateSmsCampaign](docs/CreateSmsCampaign.md)
+ - [Brevo::CreateSmsCampaignRecipients](docs/CreateSmsCampaignRecipients.md)
+ - [Brevo::CreateSmtpEmail](docs/CreateSmtpEmail.md)
+ - [Brevo::CreateSmtpTemplate](docs/CreateSmtpTemplate.md)
+ - [Brevo::CreateSmtpTemplateSender](docs/CreateSmtpTemplateSender.md)
+ - [Brevo::CreateSubAccount](docs/CreateSubAccount.md)
+ - [Brevo::CreateSubAccountResponse](docs/CreateSubAccountResponse.md)
+ - [Brevo::CreateUpdateBatchCategory](docs/CreateUpdateBatchCategory.md)
+ - [Brevo::CreateUpdateBatchCategoryModel](docs/CreateUpdateBatchCategoryModel.md)
+ - [Brevo::CreateUpdateBatchProducts](docs/CreateUpdateBatchProducts.md)
+ - [Brevo::CreateUpdateBatchProductsModel](docs/CreateUpdateBatchProductsModel.md)
+ - [Brevo::CreateUpdateCategories](docs/CreateUpdateCategories.md)
+ - [Brevo::CreateUpdateCategory](docs/CreateUpdateCategory.md)
+ - [Brevo::CreateUpdateContactModel](docs/CreateUpdateContactModel.md)
+ - [Brevo::CreateUpdateFolder](docs/CreateUpdateFolder.md)
+ - [Brevo::CreateUpdateProduct](docs/CreateUpdateProduct.md)
+ - [Brevo::CreateUpdateProducts](docs/CreateUpdateProducts.md)
+ - [Brevo::CreateWebhook](docs/CreateWebhook.md)
+ - [Brevo::CreateWhatsAppCampaign](docs/CreateWhatsAppCampaign.md)
+ - [Brevo::CreateWhatsAppCampaignRecipients](docs/CreateWhatsAppCampaignRecipients.md)
+ - [Brevo::CreateWhatsAppTemplate](docs/CreateWhatsAppTemplate.md)
+ - [Brevo::CreatedBatchId](docs/CreatedBatchId.md)
+ - [Brevo::CreatedProcessId](docs/CreatedProcessId.md)
+ - [Brevo::Deal](docs/Deal.md)
+ - [Brevo::DealAttributes](docs/DealAttributes.md)
+ - [Brevo::DealAttributesInner](docs/DealAttributesInner.md)
+ - [Brevo::DealsList](docs/DealsList.md)
+ - [Brevo::DeleteHardbounces](docs/DeleteHardbounces.md)
+ - [Brevo::EmailExportRecipients](docs/EmailExportRecipients.md)
+ - [Brevo::ErrorModel](docs/ErrorModel.md)
+ - [Brevo::ExportWebhooksHistory](docs/ExportWebhooksHistory.md)
+ - [Brevo::FileData](docs/FileData.md)
+ - [Brevo::FileDownloadableLink](docs/FileDownloadableLink.md)
+ - [Brevo::FileList](docs/FileList.md)
+ - [Brevo::GetAccount](docs/GetAccount.md)
+ - [Brevo::GetAccountActivity](docs/GetAccountActivity.md)
+ - [Brevo::GetAccountActivityLogs](docs/GetAccountActivityLogs.md)
+ - [Brevo::GetAccountMarketingAutomation](docs/GetAccountMarketingAutomation.md)
+ - [Brevo::GetAccountPlan](docs/GetAccountPlan.md)
+ - [Brevo::GetAccountRelay](docs/GetAccountRelay.md)
+ - [Brevo::GetAccountRelayData](docs/GetAccountRelayData.md)
+ - [Brevo::GetAggregatedReport](docs/GetAggregatedReport.md)
+ - [Brevo::GetAllExternalFeeds](docs/GetAllExternalFeeds.md)
+ - [Brevo::GetAllExternalFeedsFeeds](docs/GetAllExternalFeedsFeeds.md)
+ - [Brevo::GetAttributes](docs/GetAttributes.md)
+ - [Brevo::GetAttributesAttributes](docs/GetAttributesAttributes.md)
+ - [Brevo::GetAttributesEnumeration](docs/GetAttributesEnumeration.md)
+ - [Brevo::GetBlockedDomains](docs/GetBlockedDomains.md)
+ - [Brevo::GetCampaignOverview](docs/GetCampaignOverview.md)
+ - [Brevo::GetCampaignRecipients](docs/GetCampaignRecipients.md)
+ - [Brevo::GetCampaignStats](docs/GetCampaignStats.md)
+ - [Brevo::GetCategories](docs/GetCategories.md)
+ - [Brevo::GetCategoryDetails](docs/GetCategoryDetails.md)
+ - [Brevo::GetChildAccountCreationStatus](docs/GetChildAccountCreationStatus.md)
+ - [Brevo::GetChildDomain](docs/GetChildDomain.md)
+ - [Brevo::GetChildDomains](docs/GetChildDomains.md)
+ - [Brevo::GetChildInfo](docs/GetChildInfo.md)
+ - [Brevo::GetChildInfoApiKeys](docs/GetChildInfoApiKeys.md)
+ - [Brevo::GetChildInfoApiKeysV2](docs/GetChildInfoApiKeysV2.md)
+ - [Brevo::GetChildInfoApiKeysV3](docs/GetChildInfoApiKeysV3.md)
+ - [Brevo::GetChildInfoCredits](docs/GetChildInfoCredits.md)
+ - [Brevo::GetChildInfoStatistics](docs/GetChildInfoStatistics.md)
+ - [Brevo::GetChildrenList](docs/GetChildrenList.md)
+ - [Brevo::GetClient](docs/GetClient.md)
+ - [Brevo::GetContactCampaignStats](docs/GetContactCampaignStats.md)
+ - [Brevo::GetContactCampaignStatsClicked](docs/GetContactCampaignStatsClicked.md)
+ - [Brevo::GetContactCampaignStatsOpened](docs/GetContactCampaignStatsOpened.md)
+ - [Brevo::GetContactCampaignStatsTransacAttributes](docs/GetContactCampaignStatsTransacAttributes.md)
+ - [Brevo::GetContactCampaignStatsUnsubscriptions](docs/GetContactCampaignStatsUnsubscriptions.md)
+ - [Brevo::GetContactDetails](docs/GetContactDetails.md)
+ - [Brevo::GetContacts](docs/GetContacts.md)
+ - [Brevo::GetCouponCollection](docs/GetCouponCollection.md)
+ - [Brevo::GetDeviceBrowserStats](docs/GetDeviceBrowserStats.md)
+ - [Brevo::GetDomainConfigurationModel](docs/GetDomainConfigurationModel.md)
+ - [Brevo::GetDomainsList](docs/GetDomainsList.md)
+ - [Brevo::GetDomainsListDomains](docs/GetDomainsListDomains.md)
+ - [Brevo::GetEmailCampaign](docs/GetEmailCampaign.md)
+ - [Brevo::GetEmailCampaigns](docs/GetEmailCampaigns.md)
+ - [Brevo::GetEmailEventReport](docs/GetEmailEventReport.md)
+ - [Brevo::GetEmailEventReportEvents](docs/GetEmailEventReportEvents.md)
+ - [Brevo::GetExtendedCampaignOverview](docs/GetExtendedCampaignOverview.md)
+ - [Brevo::GetExtendedCampaignOverviewSender](docs/GetExtendedCampaignOverviewSender.md)
+ - [Brevo::GetExtendedCampaignStats](docs/GetExtendedCampaignStats.md)
+ - [Brevo::GetExtendedCampaignStatsGlobalStats](docs/GetExtendedCampaignStatsGlobalStats.md)
+ - [Brevo::GetExtendedClient](docs/GetExtendedClient.md)
+ - [Brevo::GetExtendedClientAddress](docs/GetExtendedClientAddress.md)
+ - [Brevo::GetExtendedContactDetails](docs/GetExtendedContactDetails.md)
+ - [Brevo::GetExtendedContactDetailsStatistics](docs/GetExtendedContactDetailsStatistics.md)
+ - [Brevo::GetExtendedContactDetailsStatisticsClicked](docs/GetExtendedContactDetailsStatisticsClicked.md)
+ - [Brevo::GetExtendedContactDetailsStatisticsDelivered](docs/GetExtendedContactDetailsStatisticsDelivered.md)
+ - [Brevo::GetExtendedContactDetailsStatisticsLinks](docs/GetExtendedContactDetailsStatisticsLinks.md)
+ - [Brevo::GetExtendedContactDetailsStatisticsMessagesSent](docs/GetExtendedContactDetailsStatisticsMessagesSent.md)
+ - [Brevo::GetExtendedContactDetailsStatisticsOpened](docs/GetExtendedContactDetailsStatisticsOpened.md)
+ - [Brevo::GetExtendedContactDetailsStatisticsUnsubscriptions](docs/GetExtendedContactDetailsStatisticsUnsubscriptions.md)
+ - [Brevo::GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription](docs/GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription.md)
+ - [Brevo::GetExtendedContactDetailsStatisticsUnsubscriptionsUserUnsubscription](docs/GetExtendedContactDetailsStatisticsUnsubscriptionsUserUnsubscription.md)
+ - [Brevo::GetExtendedList](docs/GetExtendedList.md)
+ - [Brevo::GetExtendedListCampaignStats](docs/GetExtendedListCampaignStats.md)
+ - [Brevo::GetExternalFeedByUUID](docs/GetExternalFeedByUUID.md)
+ - [Brevo::GetExternalFeedByUUIDHeaders](docs/GetExternalFeedByUUIDHeaders.md)
+ - [Brevo::GetFolder](docs/GetFolder.md)
+ - [Brevo::GetFolderLists](docs/GetFolderLists.md)
+ - [Brevo::GetFolders](docs/GetFolders.md)
+ - [Brevo::GetInboundEmailEvents](docs/GetInboundEmailEvents.md)
+ - [Brevo::GetInboundEmailEventsByUuid](docs/GetInboundEmailEventsByUuid.md)
+ - [Brevo::GetInboundEmailEventsByUuidAttachments](docs/GetInboundEmailEventsByUuidAttachments.md)
+ - [Brevo::GetInboundEmailEventsByUuidLogs](docs/GetInboundEmailEventsByUuidLogs.md)
+ - [Brevo::GetInboundEmailEventsEvents](docs/GetInboundEmailEventsEvents.md)
+ - [Brevo::GetInvitedUsersList](docs/GetInvitedUsersList.md)
+ - [Brevo::GetInvitedUsersListFeatureAccess](docs/GetInvitedUsersListFeatureAccess.md)
+ - [Brevo::GetInvitedUsersListUsers](docs/GetInvitedUsersListUsers.md)
+ - [Brevo::GetIp](docs/GetIp.md)
+ - [Brevo::GetIpFromSender](docs/GetIpFromSender.md)
+ - [Brevo::GetIps](docs/GetIps.md)
+ - [Brevo::GetIpsFromSender](docs/GetIpsFromSender.md)
+ - [Brevo::GetList](docs/GetList.md)
+ - [Brevo::GetLists](docs/GetLists.md)
+ - [Brevo::GetProcess](docs/GetProcess.md)
+ - [Brevo::GetProcesses](docs/GetProcesses.md)
+ - [Brevo::GetProductDetails](docs/GetProductDetails.md)
+ - [Brevo::GetProducts](docs/GetProducts.md)
+ - [Brevo::GetReports](docs/GetReports.md)
+ - [Brevo::GetReportsReports](docs/GetReportsReports.md)
+ - [Brevo::GetScheduledEmailByBatchId](docs/GetScheduledEmailByBatchId.md)
+ - [Brevo::GetScheduledEmailByBatchIdBatches](docs/GetScheduledEmailByBatchIdBatches.md)
+ - [Brevo::GetScheduledEmailByMessageId](docs/GetScheduledEmailByMessageId.md)
+ - [Brevo::GetSegments](docs/GetSegments.md)
+ - [Brevo::GetSegmentsSegments](docs/GetSegmentsSegments.md)
+ - [Brevo::GetSendersList](docs/GetSendersList.md)
+ - [Brevo::GetSendersListIps](docs/GetSendersListIps.md)
+ - [Brevo::GetSendersListSenders](docs/GetSendersListSenders.md)
+ - [Brevo::GetSharedTemplateUrl](docs/GetSharedTemplateUrl.md)
+ - [Brevo::GetSmsCampaign](docs/GetSmsCampaign.md)
+ - [Brevo::GetSmsCampaignOverview](docs/GetSmsCampaignOverview.md)
+ - [Brevo::GetSmsCampaignRecipients](docs/GetSmsCampaignRecipients.md)
+ - [Brevo::GetSmsCampaignStats](docs/GetSmsCampaignStats.md)
+ - [Brevo::GetSmsCampaigns](docs/GetSmsCampaigns.md)
+ - [Brevo::GetSmsEventReport](docs/GetSmsEventReport.md)
+ - [Brevo::GetSmsEventReportEvents](docs/GetSmsEventReportEvents.md)
+ - [Brevo::GetSmtpTemplateOverview](docs/GetSmtpTemplateOverview.md)
+ - [Brevo::GetSmtpTemplateOverviewSender](docs/GetSmtpTemplateOverviewSender.md)
+ - [Brevo::GetSmtpTemplates](docs/GetSmtpTemplates.md)
+ - [Brevo::GetSsoToken](docs/GetSsoToken.md)
+ - [Brevo::GetStatsByBrowser](docs/GetStatsByBrowser.md)
+ - [Brevo::GetStatsByDevice](docs/GetStatsByDevice.md)
+ - [Brevo::GetStatsByDomain](docs/GetStatsByDomain.md)
+ - [Brevo::GetTransacAggregatedSmsReport](docs/GetTransacAggregatedSmsReport.md)
+ - [Brevo::GetTransacBlockedContacts](docs/GetTransacBlockedContacts.md)
+ - [Brevo::GetTransacBlockedContactsContacts](docs/GetTransacBlockedContactsContacts.md)
+ - [Brevo::GetTransacBlockedContactsReason](docs/GetTransacBlockedContactsReason.md)
+ - [Brevo::GetTransacEmailContent](docs/GetTransacEmailContent.md)
+ - [Brevo::GetTransacEmailContentEvents](docs/GetTransacEmailContentEvents.md)
+ - [Brevo::GetTransacEmailsList](docs/GetTransacEmailsList.md)
+ - [Brevo::GetTransacEmailsListTransactionalEmails](docs/GetTransacEmailsListTransactionalEmails.md)
+ - [Brevo::GetTransacSmsReport](docs/GetTransacSmsReport.md)
+ - [Brevo::GetTransacSmsReportReports](docs/GetTransacSmsReportReports.md)
+ - [Brevo::GetUserPermission](docs/GetUserPermission.md)
+ - [Brevo::GetUserPermissionPrivileges](docs/GetUserPermissionPrivileges.md)
+ - [Brevo::GetWATemplates](docs/GetWATemplates.md)
+ - [Brevo::GetWATemplatesTemplates](docs/GetWATemplatesTemplates.md)
+ - [Brevo::GetWebhook](docs/GetWebhook.md)
+ - [Brevo::GetWebhooks](docs/GetWebhooks.md)
+ - [Brevo::GetWhatsAppConfig](docs/GetWhatsAppConfig.md)
+ - [Brevo::GetWhatsappCampaignOverview](docs/GetWhatsappCampaignOverview.md)
+ - [Brevo::GetWhatsappCampaigns](docs/GetWhatsappCampaigns.md)
+ - [Brevo::GetWhatsappCampaignsCampaigns](docs/GetWhatsappCampaignsCampaigns.md)
+ - [Brevo::GetWhatsappEventReport](docs/GetWhatsappEventReport.md)
+ - [Brevo::GetWhatsappEventReportEvents](docs/GetWhatsappEventReportEvents.md)
+ - [Brevo::InlineResponse200](docs/InlineResponse200.md)
+ - [Brevo::InlineResponse2001](docs/InlineResponse2001.md)
+ - [Brevo::InlineResponse201](docs/InlineResponse201.md)
+ - [Brevo::InlineResponse2011](docs/InlineResponse2011.md)
+ - [Brevo::InlineResponse2012](docs/InlineResponse2012.md)
+ - [Brevo::InlineResponse2013](docs/InlineResponse2013.md)
+ - [Brevo::InlineResponse2014](docs/InlineResponse2014.md)
+ - [Brevo::ManageIp](docs/ManageIp.md)
+ - [Brevo::MasterDetailsResponse](docs/MasterDetailsResponse.md)
+ - [Brevo::MasterDetailsResponseBillingInfo](docs/MasterDetailsResponseBillingInfo.md)
+ - [Brevo::MasterDetailsResponseBillingInfoAddress](docs/MasterDetailsResponseBillingInfoAddress.md)
+ - [Brevo::MasterDetailsResponseBillingInfoName](docs/MasterDetailsResponseBillingInfoName.md)
+ - [Brevo::MasterDetailsResponsePlanInfo](docs/MasterDetailsResponsePlanInfo.md)
+ - [Brevo::MasterDetailsResponsePlanInfoFeatures](docs/MasterDetailsResponsePlanInfoFeatures.md)
+ - [Brevo::Note](docs/Note.md)
+ - [Brevo::NoteData](docs/NoteData.md)
+ - [Brevo::NoteId](docs/NoteId.md)
+ - [Brevo::NoteList](docs/NoteList.md)
+ - [Brevo::Order](docs/Order.md)
+ - [Brevo::OrderBatch](docs/OrderBatch.md)
+ - [Brevo::OrderBilling](docs/OrderBilling.md)
+ - [Brevo::OrderProducts](docs/OrderProducts.md)
+ - [Brevo::Otp](docs/Otp.md)
+ - [Brevo::Pipeline](docs/Pipeline.md)
+ - [Brevo::PipelineStage](docs/PipelineStage.md)
+ - [Brevo::Pipelines](docs/Pipelines.md)
+ - [Brevo::PostContactInfo](docs/PostContactInfo.md)
+ - [Brevo::PostContactInfoContacts](docs/PostContactInfoContacts.md)
+ - [Brevo::PostSendFailed](docs/PostSendFailed.md)
+ - [Brevo::PostSendSmsTestFailed](docs/PostSendSmsTestFailed.md)
+ - [Brevo::RemainingCreditModel](docs/RemainingCreditModel.md)
+ - [Brevo::RemainingCreditModelChild](docs/RemainingCreditModelChild.md)
+ - [Brevo::RemainingCreditModelReseller](docs/RemainingCreditModelReseller.md)
+ - [Brevo::RemoveContactFromList](docs/RemoveContactFromList.md)
+ - [Brevo::RemoveCredits](docs/RemoveCredits.md)
+ - [Brevo::RequestContactExport](docs/RequestContactExport.md)
+ - [Brevo::RequestContactExportCustomContactFilter](docs/RequestContactExportCustomContactFilter.md)
+ - [Brevo::RequestContactImport](docs/RequestContactImport.md)
+ - [Brevo::RequestContactImportJsonBody](docs/RequestContactImportJsonBody.md)
+ - [Brevo::RequestContactImportNewList](docs/RequestContactImportNewList.md)
+ - [Brevo::RequestSmsRecipientExport](docs/RequestSmsRecipientExport.md)
+ - [Brevo::ScheduleSmtpEmail](docs/ScheduleSmtpEmail.md)
+ - [Brevo::SendReport](docs/SendReport.md)
+ - [Brevo::SendReportEmail](docs/SendReportEmail.md)
+ - [Brevo::SendSms](docs/SendSms.md)
+ - [Brevo::SendSmtpEmail](docs/SendSmtpEmail.md)
+ - [Brevo::SendSmtpEmailAttachment](docs/SendSmtpEmailAttachment.md)
+ - [Brevo::SendSmtpEmailBcc](docs/SendSmtpEmailBcc.md)
+ - [Brevo::SendSmtpEmailCc](docs/SendSmtpEmailCc.md)
+ - [Brevo::SendSmtpEmailMessageVersions](docs/SendSmtpEmailMessageVersions.md)
+ - [Brevo::SendSmtpEmailReplyTo](docs/SendSmtpEmailReplyTo.md)
+ - [Brevo::SendSmtpEmailReplyTo1](docs/SendSmtpEmailReplyTo1.md)
+ - [Brevo::SendSmtpEmailSender](docs/SendSmtpEmailSender.md)
+ - [Brevo::SendSmtpEmailTo](docs/SendSmtpEmailTo.md)
+ - [Brevo::SendSmtpEmailTo1](docs/SendSmtpEmailTo1.md)
+ - [Brevo::SendTestEmail](docs/SendTestEmail.md)
+ - [Brevo::SendTestSms](docs/SendTestSms.md)
+ - [Brevo::SendTransacSms](docs/SendTransacSms.md)
+ - [Brevo::SendWhatsappMessage](docs/SendWhatsappMessage.md)
+ - [Brevo::SsoTokenRequest](docs/SsoTokenRequest.md)
+ - [Brevo::SubAccountAppsToggleRequest](docs/SubAccountAppsToggleRequest.md)
+ - [Brevo::SubAccountDetailsResponse](docs/SubAccountDetailsResponse.md)
+ - [Brevo::SubAccountDetailsResponsePlanInfo](docs/SubAccountDetailsResponsePlanInfo.md)
+ - [Brevo::SubAccountDetailsResponsePlanInfoCredits](docs/SubAccountDetailsResponsePlanInfoCredits.md)
+ - [Brevo::SubAccountDetailsResponsePlanInfoCreditsEmails](docs/SubAccountDetailsResponsePlanInfoCreditsEmails.md)
+ - [Brevo::SubAccountDetailsResponsePlanInfoFeatures](docs/SubAccountDetailsResponsePlanInfoFeatures.md)
+ - [Brevo::SubAccountDetailsResponsePlanInfoFeaturesInbox](docs/SubAccountDetailsResponsePlanInfoFeaturesInbox.md)
+ - [Brevo::SubAccountDetailsResponsePlanInfoFeaturesLandingPage](docs/SubAccountDetailsResponsePlanInfoFeaturesLandingPage.md)
+ - [Brevo::SubAccountDetailsResponsePlanInfoFeaturesUsers](docs/SubAccountDetailsResponsePlanInfoFeaturesUsers.md)
+ - [Brevo::SubAccountUpdatePlanRequest](docs/SubAccountUpdatePlanRequest.md)
+ - [Brevo::SubAccountUpdatePlanRequestCredits](docs/SubAccountUpdatePlanRequestCredits.md)
+ - [Brevo::SubAccountUpdatePlanRequestFeatures](docs/SubAccountUpdatePlanRequestFeatures.md)
+ - [Brevo::SubAccountsResponse](docs/SubAccountsResponse.md)
+ - [Brevo::SubAccountsResponseSubAccounts](docs/SubAccountsResponseSubAccounts.md)
+ - [Brevo::Task](docs/Task.md)
+ - [Brevo::TaskList](docs/TaskList.md)
+ - [Brevo::TaskReminder](docs/TaskReminder.md)
+ - [Brevo::TaskTypes](docs/TaskTypes.md)
+ - [Brevo::UpdateAttribute](docs/UpdateAttribute.md)
+ - [Brevo::UpdateAttributeEnumeration](docs/UpdateAttributeEnumeration.md)
+ - [Brevo::UpdateBatchContacts](docs/UpdateBatchContacts.md)
+ - [Brevo::UpdateBatchContactsContacts](docs/UpdateBatchContactsContacts.md)
+ - [Brevo::UpdateBatchContactsModel](docs/UpdateBatchContactsModel.md)
+ - [Brevo::UpdateCampaignStatus](docs/UpdateCampaignStatus.md)
+ - [Brevo::UpdateChild](docs/UpdateChild.md)
+ - [Brevo::UpdateChildAccountStatus](docs/UpdateChildAccountStatus.md)
+ - [Brevo::UpdateChildDomain](docs/UpdateChildDomain.md)
+ - [Brevo::UpdateContact](docs/UpdateContact.md)
+ - [Brevo::UpdateCouponCollection](docs/UpdateCouponCollection.md)
+ - [Brevo::UpdateEmailCampaign](docs/UpdateEmailCampaign.md)
+ - [Brevo::UpdateEmailCampaignRecipients](docs/UpdateEmailCampaignRecipients.md)
+ - [Brevo::UpdateEmailCampaignSender](docs/UpdateEmailCampaignSender.md)
+ - [Brevo::UpdateExternalFeed](docs/UpdateExternalFeed.md)
+ - [Brevo::UpdateList](docs/UpdateList.md)
+ - [Brevo::UpdateSender](docs/UpdateSender.md)
+ - [Brevo::UpdateSmsCampaign](docs/UpdateSmsCampaign.md)
+ - [Brevo::UpdateSmtpTemplate](docs/UpdateSmtpTemplate.md)
+ - [Brevo::UpdateSmtpTemplateSender](docs/UpdateSmtpTemplateSender.md)
+ - [Brevo::UpdateWebhook](docs/UpdateWebhook.md)
+ - [Brevo::UpdateWhatsAppCampaign](docs/UpdateWhatsAppCampaign.md)
+ - [Brevo::UploadImageModel](docs/UploadImageModel.md)
+ - [Brevo::UploadImageToGallery](docs/UploadImageToGallery.md)
+ - [Brevo::VariablesItems](docs/VariablesItems.md)
+ - [Brevo::WhatsappCampStats](docs/WhatsappCampStats.md)
+ - [Brevo::WhatsappCampTemplate](docs/WhatsappCampTemplate.md)
 
 
 ## Documentation for Authorization

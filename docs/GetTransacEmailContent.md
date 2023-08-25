@@ -1,4 +1,4 @@
-# BrevoRuby::GetTransacEmailContent
+# Brevo::GetTransacEmailContent
 
 ## Properties
 Name | Type | Description | Notes

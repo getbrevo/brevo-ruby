@@ -1,4 +1,4 @@
-# BrevoRuby::GetAggregatedReport
+# Brevo::GetAggregatedReport
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::GetAccount
+# Brevo::GetAccount
 
 ## Properties
 Name | Type | Description | Notes

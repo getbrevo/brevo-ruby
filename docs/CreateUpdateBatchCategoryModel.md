@@ -1,4 +1,4 @@
-# BrevoRuby::CreateUpdateBatchCategoryModel
+# Brevo::CreateUpdateBatchCategoryModel
 
 ## Properties
 Name | Type | Description | Notes

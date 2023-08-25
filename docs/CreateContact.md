@@ -1,4 +1,4 @@
-# BrevoRuby::CreateContact
+# Brevo::CreateContact
 
 ## Properties
 Name | Type | Description | Notes

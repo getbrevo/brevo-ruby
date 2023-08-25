@@ -1,4 +1,4 @@
-# BrevoRuby::GetBlockedDomains
+# Brevo::GetBlockedDomains
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::PipelineStage
+# Brevo::PipelineStage
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoRuby::GetWATemplates
+# Brevo::GetWATemplates
 
 ## Properties
 Name | Type | Description | Notes

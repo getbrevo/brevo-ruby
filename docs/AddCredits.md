@@ -1,4 +1,4 @@
-# BrevoRuby::AddCredits
+# Brevo::AddCredits
 
 ## Properties
 Name | Type | Description | Notes

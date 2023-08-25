@@ -1,4 +1,4 @@
-# BrevoRuby::GetCampaignRecipients
+# Brevo::GetCampaignRecipients
 
 ## Properties
 Name | Type | Description | Notes

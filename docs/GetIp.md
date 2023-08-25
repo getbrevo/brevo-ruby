@@ -1,4 +1,4 @@
-# BrevoRuby::GetIp
+# Brevo::GetIp
 
 ## Properties
 Name | Type | Description | Notes

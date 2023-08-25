@@ -1,4 +1,4 @@
-# BrevoRuby::CreateUpdateCategory
+# Brevo::CreateUpdateCategory
 
 ## Properties
 Name | Type | Description | Notes

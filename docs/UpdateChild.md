@@ -1,4 +1,4 @@
-# BrevoRuby::UpdateChild
+# Brevo::UpdateChild
 
 ## Properties
 Name | Type | Description | Notes

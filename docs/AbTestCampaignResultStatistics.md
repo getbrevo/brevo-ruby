@@ -1,4 +1,4 @@
-# BrevoRuby::AbTestCampaignResultStatistics
+# Brevo::AbTestCampaignResultStatistics
 
 ## Properties
 Name | Type | Description | Notes

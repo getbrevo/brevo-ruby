@@ -1,4 +1,4 @@
-# BrevoRuby::UploadImageToGallery
+# Brevo::UploadImageToGallery
 
 ## Properties
 Name | Type | Description | Notes

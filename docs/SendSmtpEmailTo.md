@@ -1,4 +1,4 @@
-# BrevoRuby::SendSmtpEmailTo
+# Brevo::SendSmtpEmailTo
 
 ## Properties
 Name | Type | Description | Notes

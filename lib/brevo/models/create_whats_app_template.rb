@@ -32,6 +32,9 @@ module Brevo
     # Text content of the header in the template.  **Maximum allowed characters are 45** **Use this field to add text content in template header and if mediaUrl is empty** 
     attr_accessor :header_text
 
+    # source of the template
+    attr_accessor :source
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -62,7 +65,8 @@ module Brevo
         :'category' => :'category',
         :'media_url' => :'mediaUrl',
         :'body_text' => :'bodyText',
-        :'header_text' => :'headerText'
+        :'header_text' => :'headerText',
+        :'source' => :'source'
       }
     end
 
@@ -74,7 +78,8 @@ module Brevo
         :'category' => :'String',
         :'media_url' => :'String',
         :'body_text' => :'String',
-        :'header_text' => :'String'
+        :'header_text' => :'String',
+        :'source' => :'String'
       }
     end
 
@@ -109,6 +114,10 @@ module Brevo
       if attributes.has_key?(:'headerText')
         self.header_text = attributes[:'headerText']
       end
+
+      if attributes.has_key?(:'source')
+        self.source = attributes[:'source']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -140,20 +149,32 @@ module Brevo
       return false if @name.nil?
       return false if @language.nil?
       return false if @category.nil?
-      category_validator = EnumAttributeValidator.new('String', ['MARKETING', 'TRANSACTIONAL'])
+      category_validator = EnumAttributeValidator.new('String', ['MARKETING', 'UTILITY'])
       return false unless category_validator.valid?(@category)
       return false if @body_text.nil?
+      source_validator = EnumAttributeValidator.new('String', ['Automation', 'Conversations'])
+      return false unless source_validator.valid?(@source)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] category Object to be assigned
     def category=(category)
-      validator = EnumAttributeValidator.new('String', ['MARKETING', 'TRANSACTIONAL'])
+      validator = EnumAttributeValidator.new('String', ['MARKETING', 'UTILITY'])
       unless validator.valid?(category)
         fail ArgumentError, 'invalid value for "category", must be one of #{validator.allowable_values}.'
       end
       @category = category
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] source Object to be assigned
+    def source=(source)
+      validator = EnumAttributeValidator.new('String', ['Automation', 'Conversations'])
+      unless validator.valid?(source)
+        fail ArgumentError, 'invalid value for "source", must be one of #{validator.allowable_values}.'
+      end
+      @source = source
     end
 
     # Checks equality by comparing each attribute.
@@ -166,7 +187,8 @@ module Brevo
           category == o.category &&
           media_url == o.media_url &&
           body_text == o.body_text &&
-          header_text == o.header_text
+          header_text == o.header_text &&
+          source == o.source
     end
 
     # @see the `==` method
@@ -178,7 +200,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, language, category, media_url, body_text, header_text].hash
+      [name, language, category, media_url, body_text, header_text, source].hash
     end
 
     # Builds the object from hash

@@ -13,22 +13,20 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module Brevo
-  # Created company id
   class InlineResponse200
-    # Unique company id
-    attr_accessor :id
+    attr_accessor :message
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id'
+        :'message' => :'message'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String'
+        :'message' => :'String'
       }
     end
 
@@ -40,8 +38,8 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.has_key?(:'message')
+        self.message = attributes[:'message']
       end
     end
 
@@ -49,17 +47,12 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @id.nil?
       true
     end
 
@@ -68,7 +61,7 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id
+          message == o.message
     end
 
     # @see the `==` method
@@ -80,7 +73,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id].hash
+      [message].hash
     end
 
     # Builds the object from hash

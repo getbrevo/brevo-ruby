@@ -14,35 +14,20 @@ require 'date'
 
 module Brevo
   class Body2
-    # Contact ids for contacts to be linked with company
-    attr_accessor :link_contact_ids
-
-    # Contact ids for contacts to be unlinked from company
-    attr_accessor :unlink_contact_ids
-
-    # Deals ids for deals to be linked with company
-    attr_accessor :link_deals_ids
-
-    # Deals ids for deals to be unlinked from company
-    attr_accessor :unlink_deals_ids
+    # List of sub-account ids
+    attr_accessor :sub_account_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'link_contact_ids' => :'linkContactIds',
-        :'unlink_contact_ids' => :'unlinkContactIds',
-        :'link_deals_ids' => :'linkDealsIds',
-        :'unlink_deals_ids' => :'unlinkDealsIds'
+        :'sub_account_ids' => :'subAccountIds'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'link_contact_ids' => :'Array<Integer>',
-        :'unlink_contact_ids' => :'Array<Integer>',
-        :'link_deals_ids' => :'Array<String>',
-        :'unlink_deals_ids' => :'Array<String>'
+        :'sub_account_ids' => :'Array<Integer>'
       }
     end
 
@@ -54,27 +39,9 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'linkContactIds')
-        if (value = attributes[:'linkContactIds']).is_a?(Array)
-          self.link_contact_ids = value
-        end
-      end
-
-      if attributes.has_key?(:'unlinkContactIds')
-        if (value = attributes[:'unlinkContactIds']).is_a?(Array)
-          self.unlink_contact_ids = value
-        end
-      end
-
-      if attributes.has_key?(:'linkDealsIds')
-        if (value = attributes[:'linkDealsIds']).is_a?(Array)
-          self.link_deals_ids = value
-        end
-      end
-
-      if attributes.has_key?(:'unlinkDealsIds')
-        if (value = attributes[:'unlinkDealsIds']).is_a?(Array)
-          self.unlink_deals_ids = value
+      if attributes.has_key?(:'subAccountIds')
+        if (value = attributes[:'subAccountIds']).is_a?(Array)
+          self.sub_account_ids = value
         end
       end
     end
@@ -83,12 +50,17 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @sub_account_ids.nil?
+        invalid_properties.push('invalid value for "sub_account_ids", sub_account_ids cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @sub_account_ids.nil?
       true
     end
 
@@ -97,10 +69,7 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          link_contact_ids == o.link_contact_ids &&
-          unlink_contact_ids == o.unlink_contact_ids &&
-          link_deals_ids == o.link_deals_ids &&
-          unlink_deals_ids == o.unlink_deals_ids
+          sub_account_ids == o.sub_account_ids
     end
 
     # @see the `==` method
@@ -112,7 +81,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [link_contact_ids, unlink_contact_ids, link_deals_ids, unlink_deals_ids].hash
+      [sub_account_ids].hash
     end
 
     # Builds the object from hash

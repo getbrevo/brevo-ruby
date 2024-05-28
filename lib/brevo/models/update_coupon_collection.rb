@@ -17,17 +17,32 @@ module Brevo
     # A default coupon to be used in case there are no coupons left
     attr_accessor :default_coupon
 
+    # Specify an expiration date for the coupon collection in RFC3339 format. Use null to remove the expiration date.
+    attr_accessor :expiration_date
+
+    # Send a notification alert (email) when the remaining days until the expiration date are equal or fall bellow this number. Use null to disable alerts.
+    attr_accessor :remaining_days_alert
+
+    # Send a notification alert (email) when the remaining coupons count is equal or fall bellow this number. Use null to disable alerts.
+    attr_accessor :remaining_coupons_alert
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'default_coupon' => :'defaultCoupon'
+        :'default_coupon' => :'defaultCoupon',
+        :'expiration_date' => :'expirationDate',
+        :'remaining_days_alert' => :'remainingDaysAlert',
+        :'remaining_coupons_alert' => :'remainingCouponsAlert'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'default_coupon' => :'String'
+        :'default_coupon' => :'String',
+        :'expiration_date' => :'DateTime',
+        :'remaining_days_alert' => :'Integer',
+        :'remaining_coupons_alert' => :'Integer'
       }
     end
 
@@ -42,23 +57,30 @@ module Brevo
       if attributes.has_key?(:'defaultCoupon')
         self.default_coupon = attributes[:'defaultCoupon']
       end
+
+      if attributes.has_key?(:'expirationDate')
+        self.expiration_date = attributes[:'expirationDate']
+      end
+
+      if attributes.has_key?(:'remainingDaysAlert')
+        self.remaining_days_alert = attributes[:'remainingDaysAlert']
+      end
+
+      if attributes.has_key?(:'remainingCouponsAlert')
+        self.remaining_coupons_alert = attributes[:'remainingCouponsAlert']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @default_coupon.nil?
-        invalid_properties.push('invalid value for "default_coupon", default_coupon cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @default_coupon.nil?
       true
     end
 
@@ -67,7 +89,10 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          default_coupon == o.default_coupon
+          default_coupon == o.default_coupon &&
+          expiration_date == o.expiration_date &&
+          remaining_days_alert == o.remaining_days_alert &&
+          remaining_coupons_alert == o.remaining_coupons_alert
     end
 
     # @see the `==` method
@@ -79,7 +104,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [default_coupon].hash
+      [default_coupon, expiration_date, remaining_days_alert, remaining_coupons_alert].hash
     end
 
     # Builds the object from hash

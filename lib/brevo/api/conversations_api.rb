@@ -191,7 +191,7 @@ module Brevo
     # Only agents’ messages can be edited.
     # @param id ID of the message
     # @param [Hash] opts the optional parameters
-    # @option opts [Body9] :body 
+    # @option opts [Body12] :body 
     # @return [ConversationsMessage]
     def conversations_messages_id_put(id, opts = {})
       data, _status_code, _headers = conversations_messages_id_put_with_http_info(id, opts)
@@ -202,7 +202,7 @@ module Brevo
     # Only agents’ messages can be edited.
     # @param id ID of the message
     # @param [Hash] opts the optional parameters
-    # @option opts [Body9] :body 
+    # @option opts [Body12] :body 
     # @return [Array<(ConversationsMessage, Fixnum, Hash)>] ConversationsMessage data, response status code and response headers
     def conversations_messages_id_put_with_http_info(id, opts = {})
       if @api_client.config.debugging

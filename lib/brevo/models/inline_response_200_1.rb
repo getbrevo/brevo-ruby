@@ -14,21 +14,17 @@ require 'date'
 
 module Brevo
   class InlineResponse2001
-    # The id of the collection
+    # Unique id of the group
     attr_accessor :id
 
-    # The name of the collection
-    attr_accessor :name
-
-    # The default coupon of the collection
-    attr_accessor :default_coupon
+    # The name of the group of sub-accounts
+    attr_accessor :group_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'name' => :'name',
-        :'default_coupon' => :'defaultCoupon'
+        :'group_name' => :'groupName'
       }
     end
 
@@ -36,8 +32,7 @@ module Brevo
     def self.swagger_types
       {
         :'id' => :'String',
-        :'name' => :'String',
-        :'default_coupon' => :'String'
+        :'group_name' => :'String'
       }
     end
 
@@ -53,12 +48,8 @@ module Brevo
         self.id = attributes[:'id']
       end
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'defaultCoupon')
-        self.default_coupon = attributes[:'defaultCoupon']
+      if attributes.has_key?(:'groupName')
+        self.group_name = attributes[:'groupName']
       end
     end
 
@@ -66,27 +57,12 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @default_coupon.nil?
-        invalid_properties.push('invalid value for "default_coupon", default_coupon cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @id.nil?
-      return false if @name.nil?
-      return false if @default_coupon.nil?
       true
     end
 
@@ -96,8 +72,7 @@ module Brevo
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          name == o.name &&
-          default_coupon == o.default_coupon
+          group_name == o.group_name
     end
 
     # @see the `==` method
@@ -109,7 +84,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, default_coupon].hash
+      [id, group_name].hash
     end
 
     # Builds the object from hash

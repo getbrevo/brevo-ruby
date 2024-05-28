@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_coupon_collection**
-> InlineResponse2012 create_coupon_collection(create_coupon_collection)
+> InlineResponse2013 create_coupon_collection(create_coupon_collection)
 
 Create а coupon collection
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2012**](InlineResponse2012.md)
+[**InlineResponse2013**](InlineResponse2013.md)
 
 ### Authorization
 
@@ -208,7 +208,8 @@ api_instance = Brevo::CouponsApi.new
 opts = { 
   limit: 50, # Integer | Number of documents returned per page
   offset: 0, # Integer | Index of the first document on the page
-  sort: 'desc' # String | Sort the results by creation time in ascending/descending order
+  sort: 'desc', # String | Sort the results by creation time in ascending/descending order
+  sort_by: nil # Object | The field used to sort coupon collections
 }
 
 begin
@@ -227,6 +228,7 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| Number of documents returned per page | [optional] [default to 50]
  **offset** | **Integer**| Index of the first document on the page | [optional] [default to 0]
  **sort** | **String**| Sort the results by creation time in ascending/descending order | [optional] [default to desc]
+ **sort_by** | [**Object**](.md)| The field used to sort coupon collections | [optional] 
 
 ### Return type
 
@@ -244,7 +246,7 @@ Name | Type | Description  | Notes
 
 
 # **update_coupon_collection**
-> InlineResponse2001 update_coupon_collection(id, update_coupon_collection)
+> InlineResponse2003 update_coupon_collection(id, opts)
 
 Update a coupon collection by id
 
@@ -269,12 +271,13 @@ api_instance = Brevo::CouponsApi.new
 
 id = 'id_example' # String | Id of the collection to update
 
-update_coupon_collection = Brevo::UpdateCouponCollection.new # UpdateCouponCollection | Values to update the coupon collection
-
+opts = { 
+  update_coupon_collection: Brevo::UpdateCouponCollection.new # UpdateCouponCollection | Values to update the coupon collection
+}
 
 begin
   #Update a coupon collection by id
-  result = api_instance.update_coupon_collection(id, update_coupon_collection)
+  result = api_instance.update_coupon_collection(id, opts)
   p result
 rescue Brevo::ApiError => e
   puts "Exception when calling CouponsApi->update_coupon_collection: #{e}"
@@ -286,11 +289,11 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Id of the collection to update | 
- **update_coupon_collection** | [**UpdateCouponCollection**](UpdateCouponCollection.md)| Values to update the coupon collection | 
+ **update_coupon_collection** | [**UpdateCouponCollection**](UpdateCouponCollection.md)| Values to update the coupon collection | [optional] 
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 

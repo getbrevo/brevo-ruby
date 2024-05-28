@@ -15,7 +15,7 @@ require 'date'
 module Brevo
   # List of enable/disable applications on the sub-account
   class SubAccountAppsToggleRequest
-    # Set this field to enable or disable Inbox on the sub-account
+    # Set this field to enable or disable Inbox on the sub-account / Not applicable on ENTv2
     attr_accessor :inbox
 
     # Set this field to enable or disable Whatsapp campaigns on the sub-account

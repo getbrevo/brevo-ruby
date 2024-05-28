@@ -13,9 +13,7 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module Brevo
-  # Created deal id
   class InlineResponse201
-    # Unique deal id
     attr_accessor :id
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -49,17 +47,12 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @id.nil?
       true
     end
 

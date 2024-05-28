@@ -41,7 +41,7 @@ end
 
 api_instance = Brevo::ConversationsApi.new
 
-body = Brevo::Body12.new # Body12 | Agent fields.
+body = Brevo::Body15.new # Body15 | Agent fields.
 
 
 begin
@@ -56,7 +56,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body12**](Body12.md)| Agent fields. | 
+ **body** | [**Body15**](Body15.md)| Agent fields. | 
 
 ### Return type
 
@@ -217,7 +217,7 @@ api_instance = Brevo::ConversationsApi.new
 id = 'id_example' # String | ID of the message
 
 opts = { 
-  body: Brevo::Body9.new # Body9 | 
+  body: Brevo::Body12.new # Body12 | 
 }
 
 begin
@@ -234,7 +234,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| ID of the message | 
- **body** | [**Body9**](Body9.md)|  | [optional] 
+ **body** | [**Body12**](Body12.md)|  | [optional] 
 
 ### Return type
 
@@ -275,7 +275,7 @@ end
 
 api_instance = Brevo::ConversationsApi.new
 
-body = Brevo::Body8.new # Body8 | Message fields.
+body = Brevo::Body11.new # Body11 | Message fields.
 
 
 begin
@@ -291,7 +291,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body8**](Body8.md)| Message fields. | 
+ **body** | [**Body11**](Body11.md)| Message fields. | 
 
 ### Return type
 
@@ -447,7 +447,7 @@ api_instance = Brevo::ConversationsApi.new
 
 id = 'id_example' # String | ID of the message
 
-body = Brevo::Body11.new # Body11 | 
+body = Brevo::Body14.new # Body14 | 
 
 
 begin
@@ -464,7 +464,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| ID of the message | 
- **body** | [**Body11**](Body11.md)|  | 
+ **body** | [**Body14**](Body14.md)|  | 
 
 ### Return type
 
@@ -507,7 +507,7 @@ end
 
 api_instance = Brevo::ConversationsApi.new
 
-body = Brevo::Body10.new # Body10 | 
+body = Brevo::Body13.new # Body13 | 
 
 
 begin
@@ -523,7 +523,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body10**](Body10.md)|  | 
+ **body** | [**Body13**](Body13.md)|  | 
 
 ### Return type
 

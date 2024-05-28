@@ -56,10 +56,20 @@ describe 'ExportWebhooksHistory' do
     end
   end
 
+  describe 'test attribute "type"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["transactional", "marketing"])
+      # validator.allowable_values.each do |value|
+      #   expect { @instance.type = value }.not_to raise_error
+      # end
+    end
+  end
+
   describe 'test attribute "event"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["invalid_parameter", "missing_parameter", "hardBounce", "softBounce", "delivered"", "spam", "request", "opened", "click", "invalid", "deferred", "blocked", "unsubscribed", "error", "uniqueOpened", "loadedByProxy", "allEvents"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["invalid_parameter", "missing_parameter", "hardBounce", "softBounce", "delivered", "spam", "request", "opened", "click", "invalid", "deferred", "blocked", "unsubscribed", "error", "uniqueOpened", "loadedByProxy", "allEvents"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.event = value }.not_to raise_error
       # end

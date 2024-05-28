@@ -279,8 +279,7 @@ api_instance = Brevo::EmailCampaignsApi.new
 campaign_id = 789 # Integer | Id of the campaign
 
 opts = { 
-  statistics: 'statistics_example', # String | Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.
-  utm_value: 'utm_value_example' # String | Get email campaign report on the basis of custom UTM Value.**You can use either campaignId or utmValue to fetch campaign report.To use utmValue filter pass campaignId as empty.**
+  statistics: 'statistics_example' # String | Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.
 }
 
 begin
@@ -298,7 +297,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **campaign_id** | **Integer**| Id of the campaign | 
  **statistics** | **String**| Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. | [optional] 
- **utm_value** | **String**| Get email campaign report on the basis of custom UTM Value.**You can use either campaignId or utmValue to fetch campaign report.To use utmValue filter pass campaignId as empty.** | [optional] 
 
 ### Return type
 

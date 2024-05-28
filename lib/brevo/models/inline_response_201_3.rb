@@ -14,20 +14,20 @@ require 'date'
 
 module Brevo
   class InlineResponse2013
-    # messageId of sent message
-    attr_accessor :message_id
+    # The id of the created collection
+    attr_accessor :id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'message_id' => :'messageId'
+        :'id' => :'id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'message_id' => :'String'
+        :'id' => :'String'
       }
     end
 
@@ -39,8 +39,8 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'messageId')
-        self.message_id = attributes[:'messageId']
+      if attributes.has_key?(:'id')
+        self.id = attributes[:'id']
       end
     end
 
@@ -48,8 +48,8 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @message_id.nil?
-        invalid_properties.push('invalid value for "message_id", message_id cannot be nil.')
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
       invalid_properties
@@ -58,7 +58,7 @@ module Brevo
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @message_id.nil?
+      return false if @id.nil?
       true
     end
 
@@ -67,7 +67,7 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          message_id == o.message_id
+          id == o.id
     end
 
     # @see the `==` method
@@ -79,7 +79,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [message_id].hash
+      [id].hash
     end
 
     # Builds the object from hash

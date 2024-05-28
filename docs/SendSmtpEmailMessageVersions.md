@@ -9,5 +9,7 @@ Name | Type | Description | Notes
 **cc** | [**Array&lt;SendSmtpEmailCc&gt;**](SendSmtpEmailCc.md) | List of email addresses and names (optional) of the recipients in cc | [optional] 
 **reply_to** | [**SendSmtpEmailReplyTo1**](SendSmtpEmailReplyTo1.md) |  | [optional] 
 **subject** | **String** | Custom subject specific to message version  | [optional] 
+**html_content** | **String** | HTML body of the message. **Mandatory if &#39;templateId&#39; is not passed, ignored if &#39;templateId&#39; is passed**  | [optional] 
+**text_content** | **String** | Plain Text body of the message. **Ignored if &#39;templateId&#39; is passed**  | [optional] 
 
 

@@ -34,6 +34,9 @@ module Brevo
     # To blacklist all the contacts for email
     attr_accessor :email_blacklist
 
+    # To disable email notification
+    attr_accessor :disable_notification
+
     # To blacklist all the contacts for sms
     attr_accessor :sms_blacklist
 
@@ -53,6 +56,7 @@ module Brevo
         :'notify_url' => :'notifyUrl',
         :'new_list' => :'newList',
         :'email_blacklist' => :'emailBlacklist',
+        :'disable_notification' => :'disableNotification',
         :'sms_blacklist' => :'smsBlacklist',
         :'update_existing_contacts' => :'updateExistingContacts',
         :'empty_contacts_attributes' => :'emptyContactsAttributes'
@@ -69,6 +73,7 @@ module Brevo
         :'notify_url' => :'String',
         :'new_list' => :'RequestContactImportNewList',
         :'email_blacklist' => :'BOOLEAN',
+        :'disable_notification' => :'BOOLEAN',
         :'sms_blacklist' => :'BOOLEAN',
         :'update_existing_contacts' => :'BOOLEAN',
         :'empty_contacts_attributes' => :'BOOLEAN'
@@ -117,6 +122,12 @@ module Brevo
         self.email_blacklist = false
       end
 
+      if attributes.has_key?(:'disableNotification')
+        self.disable_notification = attributes[:'disableNotification']
+      else
+        self.disable_notification = false
+      end
+
       if attributes.has_key?(:'smsBlacklist')
         self.sms_blacklist = attributes[:'smsBlacklist']
       else
@@ -161,6 +172,7 @@ module Brevo
           notify_url == o.notify_url &&
           new_list == o.new_list &&
           email_blacklist == o.email_blacklist &&
+          disable_notification == o.disable_notification &&
           sms_blacklist == o.sms_blacklist &&
           update_existing_contacts == o.update_existing_contacts &&
           empty_contacts_attributes == o.empty_contacts_attributes
@@ -175,7 +187,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_url, file_body, json_body, list_ids, notify_url, new_list, email_blacklist, sms_blacklist, update_existing_contacts, empty_contacts_attributes].hash
+      [file_url, file_body, json_body, list_ids, notify_url, new_list, email_blacklist, disable_notification, sms_blacklist, update_existing_contacts, empty_contacts_attributes].hash
     end
 
     # Builds the object from hash

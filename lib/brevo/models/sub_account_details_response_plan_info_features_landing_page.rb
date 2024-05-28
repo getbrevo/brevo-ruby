@@ -13,7 +13,7 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module Brevo
-  # Landing page details
+  # Landing page details / Not available on ENTv2
   class SubAccountDetailsResponsePlanInfoFeaturesLandingPage
     # Quantity of landing pages provided
     attr_accessor :quantity

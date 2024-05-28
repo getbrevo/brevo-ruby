@@ -56,7 +56,7 @@ describe 'TransactionalWhatsAppApi' do
   # This endpoint is used to send a WhatsApp message. &lt;br/&gt;(**The first message you send using the API must contain a Template ID. You must create a template on WhatsApp on the Brevo platform to fetch the Template ID.**)
   # @param send_whatsapp_message Values to send WhatsApp message
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2013]
+  # @return [InlineResponse2014]
   describe 'send_whatsapp_message test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

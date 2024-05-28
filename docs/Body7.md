@@ -3,15 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Name of task | [optional] 
-**duration** | **Integer** | Duration of task in milliseconds [1 minute &#x3D; 60000 ms] | [optional] 
-**task_type_id** | **String** | Id for type of task e.g Call / Email / Meeting etc. | [optional] 
-**date** | **DateTime** | Task date/time | [optional] 
-**notes** | **String** | Notes added to a task | [optional] 
-**done** | **BOOLEAN** | Task marked as done | [optional] 
-**assign_to_id** | **String** | User id to whom task is assigned | [optional] 
-**contacts_ids** | **Array&lt;Integer&gt;** | Contact ids for contacts linked to this task | [optional] 
-**deals_ids** | **Array&lt;String&gt;** | Deal ids for deals a task is linked to | [optional] 
-**companies_ids** | **Array&lt;String&gt;** | Companies ids for companies a task is linked to | [optional] 
+**name** | **String** | Name of deal | [optional] 
+**attributes** | **Object** | Attributes for deal update  To assign owner of a Deal you can send attributes.deal_owner and utilize the account email or ID.  If you wish to update the pipeline of a deal you need to provide the &#x60;pipeline&#x60; and the &#x60;deal_stage&#x60;.  Pipeline and deal_stage are ids you can fetch using this endpoint &#x60;/crm/pipeline/details/{pipelineID}&#x60;  | [optional] 
 
 

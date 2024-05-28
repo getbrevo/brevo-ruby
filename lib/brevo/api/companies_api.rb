@@ -366,7 +366,7 @@ module Brevo
     # Create a company
     # @param body Company create data.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse200]
+    # @return [InlineResponse2002]
     def companies_post(body, opts = {})
       data, _status_code, _headers = companies_post_with_http_info(body, opts)
       data
@@ -375,7 +375,7 @@ module Brevo
     # Create a company
     # @param body Company create data.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
+    # @return [Array<(InlineResponse2002, Fixnum, Hash)>] InlineResponse2002 data, response status code and response headers
     def companies_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CompaniesApi.companies_post ...'
@@ -409,7 +409,7 @@ module Brevo
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse200')
+        :return_type => 'InlineResponse2002')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CompaniesApi#companies_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

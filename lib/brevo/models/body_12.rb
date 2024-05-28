@@ -14,35 +14,20 @@ require 'date'
 
 module Brevo
   class Body12
-    # agent ID. It can be found on agent’s page or received <a href=\"https://developers.brevo.com/docs/conversations-webhooks\">from a webhook</a>. Alternatively, you can use `agentEmail` + `agentName` + `receivedFrom` instead (all 3 fields required).
-    attr_accessor :agent_id
-
-    # mark your messages to distinguish messages created by you from the others.
-    attr_accessor :received_from
-
-    # agent email. When sending online pings from a standalone system, it’s hard to maintain a 1-to-1 relationship between the users of both systems. In this case, an agent can be specified by their email address. If there’s no agent with the specified email address in your Brevo organization, a dummy agent will be created automatically.
-    attr_accessor :agent_email
-
-    # agent name.
-    attr_accessor :agent_name
+    # edited message text
+    attr_accessor :text
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'agent_id' => :'agentId',
-        :'received_from' => :'receivedFrom',
-        :'agent_email' => :'agentEmail',
-        :'agent_name' => :'agentName'
+        :'text' => :'text'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'agent_id' => :'String',
-        :'received_from' => :'String',
-        :'agent_email' => :'String',
-        :'agent_name' => :'String'
+        :'text' => :'String'
       }
     end
 
@@ -54,20 +39,8 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'agentId')
-        self.agent_id = attributes[:'agentId']
-      end
-
-      if attributes.has_key?(:'receivedFrom')
-        self.received_from = attributes[:'receivedFrom']
-      end
-
-      if attributes.has_key?(:'agentEmail')
-        self.agent_email = attributes[:'agentEmail']
-      end
-
-      if attributes.has_key?(:'agentName')
-        self.agent_name = attributes[:'agentName']
+      if attributes.has_key?(:'text')
+        self.text = attributes[:'text']
       end
     end
 
@@ -75,12 +48,17 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @text.nil?
+        invalid_properties.push('invalid value for "text", text cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @text.nil?
       true
     end
 
@@ -89,10 +67,7 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          agent_id == o.agent_id &&
-          received_from == o.received_from &&
-          agent_email == o.agent_email &&
-          agent_name == o.agent_name
+          text == o.text
     end
 
     # @see the `==` method
@@ -104,7 +79,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [agent_id, received_from, agent_email, agent_name].hash
+      [text].hash
     end
 
     # Builds the object from hash

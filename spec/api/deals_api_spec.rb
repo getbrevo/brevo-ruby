@@ -45,7 +45,7 @@ describe 'DealsApi' do
   # unit tests for crm_deals_get
   # Get all deals
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :filters_attributes_deal_name Filter by attributes. If you have filter for owner on your side please send it as &#x60;filters[attributes.deal_owner]&#x60;.\&quot;
+  # @option opts [String] :filters_attributes_deal_name Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering.
   # @option opts [String] :filters_linked_companies_ids Filter by linked companies ids
   # @option opts [String] :filters_linked_contacts_ids Filter by linked companies ids
   # @option opts [Integer] :offset Index of the first document of the page
@@ -109,7 +109,7 @@ describe 'DealsApi' do
   # Create a deal
   # @param body Deal create data.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse201]
+  # @return [InlineResponse2011]
   describe 'crm_deals_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

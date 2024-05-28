@@ -3,8 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Name of company | 
-**attributes** | **Object** | Attributes for company creation | [optional] 
-**country_code** | **Integer** | Country code if phone_number is passed in attributes. | [optional] 
+**group_name** | **String** | The name of the group of sub-accounts | 
+**sub_account_ids** | **Array&lt;Integer&gt;** | Pass the list of sub-account Ids to be included in the group | [optional] 
 
 

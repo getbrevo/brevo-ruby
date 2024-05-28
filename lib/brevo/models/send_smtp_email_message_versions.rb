@@ -31,6 +31,12 @@ module Brevo
     # Custom subject specific to message version 
     attr_accessor :subject
 
+    # HTML body of the message. **Mandatory if 'templateId' is not passed, ignored if 'templateId' is passed** 
+    attr_accessor :html_content
+
+    # Plain Text body of the message. **Ignored if 'templateId' is passed** 
+    attr_accessor :text_content
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -39,7 +45,9 @@ module Brevo
         :'bcc' => :'bcc',
         :'cc' => :'cc',
         :'reply_to' => :'replyTo',
-        :'subject' => :'subject'
+        :'subject' => :'subject',
+        :'html_content' => :'htmlContent',
+        :'text_content' => :'textContent'
       }
     end
 
@@ -51,7 +59,9 @@ module Brevo
         :'bcc' => :'Array<SendSmtpEmailBcc>',
         :'cc' => :'Array<SendSmtpEmailCc>',
         :'reply_to' => :'SendSmtpEmailReplyTo1',
-        :'subject' => :'String'
+        :'subject' => :'String',
+        :'html_content' => :'String',
+        :'text_content' => :'String'
       }
     end
 
@@ -94,6 +104,14 @@ module Brevo
       if attributes.has_key?(:'subject')
         self.subject = attributes[:'subject']
       end
+
+      if attributes.has_key?(:'htmlContent')
+        self.html_content = attributes[:'htmlContent']
+      end
+
+      if attributes.has_key?(:'textContent')
+        self.text_content = attributes[:'textContent']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -124,7 +142,9 @@ module Brevo
           bcc == o.bcc &&
           cc == o.cc &&
           reply_to == o.reply_to &&
-          subject == o.subject
+          subject == o.subject &&
+          html_content == o.html_content &&
+          text_content == o.text_content
     end
 
     # @see the `==` method
@@ -136,7 +156,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [to, params, bcc, cc, reply_to, subject].hash
+      [to, params, bcc, cc, reply_to, subject, html_content, text_content].hash
     end
 
     # Builds the object from hash

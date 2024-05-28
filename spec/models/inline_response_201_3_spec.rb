@@ -32,7 +32,7 @@ describe 'InlineResponse2013' do
       expect(@instance).to be_instance_of(Brevo::InlineResponse2013)
     end
   end
-  describe 'test attribute "message_id"' do
+  describe 'test attribute "id"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

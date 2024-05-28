@@ -23,8 +23,14 @@ module Brevo
     # Quantity provided in the plan
     attr_accessor :quantity
 
+    # Quantity with overages provided in the plan (only applicable on ENTv2)
+    attr_accessor :quantity_with_overages
+
     # Quantity consumed by master
     attr_accessor :used
+
+    # Quantity consumed by sub-organizations over the admin plan limit (only applicable on ENTv2)
+    attr_accessor :used_overages
 
     # Quantity remaining in the plan
     attr_accessor :remaining
@@ -35,7 +41,9 @@ module Brevo
         :'name' => :'name',
         :'unit_value' => :'unitValue',
         :'quantity' => :'quantity',
+        :'quantity_with_overages' => :'quantityWithOverages',
         :'used' => :'used',
+        :'used_overages' => :'usedOverages',
         :'remaining' => :'remaining'
       }
     end
@@ -46,7 +54,9 @@ module Brevo
         :'name' => :'String',
         :'unit_value' => :'String',
         :'quantity' => :'Integer',
+        :'quantity_with_overages' => :'Integer',
         :'used' => :'Integer',
+        :'used_overages' => :'Integer',
         :'remaining' => :'Integer'
       }
     end
@@ -71,8 +81,16 @@ module Brevo
         self.quantity = attributes[:'quantity']
       end
 
+      if attributes.has_key?(:'quantityWithOverages')
+        self.quantity_with_overages = attributes[:'quantityWithOverages']
+      end
+
       if attributes.has_key?(:'used')
         self.used = attributes[:'used']
+      end
+
+      if attributes.has_key?(:'usedOverages')
+        self.used_overages = attributes[:'usedOverages']
       end
 
       if attributes.has_key?(:'remaining')
@@ -101,7 +119,9 @@ module Brevo
           name == o.name &&
           unit_value == o.unit_value &&
           quantity == o.quantity &&
+          quantity_with_overages == o.quantity_with_overages &&
           used == o.used &&
+          used_overages == o.used_overages &&
           remaining == o.remaining
     end
 
@@ -114,7 +134,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, unit_value, quantity, used, remaining].hash
+      [name, unit_value, quantity, quantity_with_overages, used, used_overages, remaining].hash
     end
 
     # Builds the object from hash

@@ -34,7 +34,7 @@ module Brevo
     # @option opts [String] :filter_type Filter by task type (ID)
     # @option opts [String] :filter_status Filter by task status
     # @option opts [String] :filter_date Filter by date
-    # @option opts [String] :filter_assign_to Filter by assignTo id
+    # @option opts [String] :filter_assign_to Filter by the \&quot;assignTo\&quot; ID. You can utilize account emails for the \&quot;assignTo\&quot; attribute.
     # @option opts [String] :filter_contacts Filter by contact ids
     # @option opts [String] :filter_deals Filter by deals ids
     # @option opts [String] :filter_companies Filter by companies ids
@@ -55,7 +55,7 @@ module Brevo
     # @option opts [String] :filter_type Filter by task type (ID)
     # @option opts [String] :filter_status Filter by task status
     # @option opts [String] :filter_date Filter by date
-    # @option opts [String] :filter_assign_to Filter by assignTo id
+    # @option opts [String] :filter_assign_to Filter by the \&quot;assignTo\&quot; ID. You can utilize account emails for the \&quot;assignTo\&quot; attribute.
     # @option opts [String] :filter_contacts Filter by contact ids
     # @option opts [String] :filter_deals Filter by deals ids
     # @option opts [String] :filter_companies Filter by companies ids
@@ -286,7 +286,7 @@ module Brevo
     # Create a task
     # @param body Task name.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2011]
+    # @return [InlineResponse2012]
     def crm_tasks_post(body, opts = {})
       data, _status_code, _headers = crm_tasks_post_with_http_info(body, opts)
       data
@@ -295,7 +295,7 @@ module Brevo
     # Create a task
     # @param body Task name.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2011, Fixnum, Hash)>] InlineResponse2011 data, response status code and response headers
+    # @return [Array<(InlineResponse2012, Fixnum, Hash)>] InlineResponse2012 data, response status code and response headers
     def crm_tasks_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TasksApi.crm_tasks_post ...'
@@ -329,7 +329,7 @@ module Brevo
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse2011')
+        :return_type => 'InlineResponse2012')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TasksApi#crm_tasks_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

@@ -32,12 +32,86 @@ describe 'MasterAccountApi' do
     end
   end
 
+  # unit tests for corporate_group_id_delete
+  # Delete a group
+  # This endpoint allows you to delete a group of sub-organizations. When a group is deleted, the sub-organizations are no longer part of this group. The users associated with the group are no longer associated with the group once deleted.
+  # @param id Id of the group
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'corporate_group_id_delete test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_group_id_get
+  # GET a group details
+  # This endpoint allows you to retrieve a specific group’s information such as the list of sub-organizations and the user associated with the group.
+  # @param id Id of the group of sub-organization
+  # @param [Hash] opts the optional parameters
+  # @return [CorporateGroupDetailsResponse]
+  describe 'corporate_group_id_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_group_id_put
+  # Update a group of sub-accounts
+  # This endpoint allows you to update a group of sub-accounts
+  # @param id Id of the group
+  # @param body Group details to be updated.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'corporate_group_id_put test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_group_post
+  # Create a new group of sub-accounts
+  # This endpoint allows to create a group of sub-accounts
+  # @param body Group details to be created.
+  # @param [Hash] opts the optional parameters
+  # @return [InlineResponse201]
+  describe 'corporate_group_post test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_group_unlink_group_id_sub_accounts_put
+  # Delete sub-account from group
+  # This endpoint allows you to remove a sub-organization from a group.
+  # @param group_id Id of the group
+  # @param body List of sub-account ids
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'corporate_group_unlink_group_id_sub_accounts_put test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for corporate_master_account_get
   # Get the details of requested master account
   # This endpoint will provide the details of the master account.
   # @param [Hash] opts the optional parameters
   # @return [MasterDetailsResponse]
   describe 'corporate_master_account_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_sso_token_post
+  # Generate SSO token to access admin account
+  # This endpoint generates an SSO token to authenticate and access the admin account using the endpoint https://account-app.brevo.com/account/login/corporate/sso/[token], where [token] will be replaced by the actual token.
+  # @param sso_token_request_corporate User email of admin account
+  # @param [Hash] opts the optional parameters
+  # @return [GetSsoToken]
+  describe 'corporate_sso_token_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -130,12 +204,37 @@ describe 'MasterAccountApi' do
   end
 
   # unit tests for corporate_sub_account_sso_token_post
-  # Generate SSO token to access Brevo
+  # Generate SSO token to access sub-account
   # This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.brevo.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
   # @param sso_token_request Values to generate SSO token for sub-account
   # @param [Hash] opts the optional parameters
   # @return [GetSsoToken]
   describe 'corporate_sub_account_sso_token_post test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_user_invitation_action_email_put
+  # Resend / cancel admin user invitation
+  # This endpoint will allow the user to:  - Resend an admin user invitation - Cancel an admin user invitation 
+  # @param action Action to be performed (cancel / resend)
+  # @param email Email address of the recipient
+  # @param [Hash] opts the optional parameters
+  # @return [InlineResponse200]
+  describe 'corporate_user_invitation_action_email_put test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_user_revoke_email_delete
+  # Revoke an admin user
+  # This endpoint allows to revoke/remove an invited member of your Admin account
+  # @param email Email of the invited user
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'corporate_user_revoke_email_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -150,6 +249,51 @@ describe 'MasterAccountApi' do
   # @option opts [Integer] :offset Index of the first document in the page.
   # @return [GetAccountActivity]
   describe 'get_account_activity test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_corporate_invited_users_list
+  # Get the list of all admin users
+  # This endpoint allows you to list all Admin users of your Admin account
+  # @param [Hash] opts the optional parameters
+  # @return [GetCorporateInvitedUsersList]
+  describe 'get_corporate_invited_users_list test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_corporate_user_permission
+  # Check admin user permissions
+  # @param email Email of the invited user
+  # @param [Hash] opts the optional parameters
+  # @return [GetCorporateUserPermission]
+  describe 'get_corporate_user_permission test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_sub_account_groups
+  # Get the list of groups
+  # This endpoint allows you to list all groups created on your Admin account.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<InlineResponse2001>]
+  describe 'get_sub_account_groups test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for invite_admin_user
+  # Send invitation to an admin user
+  # &#x60;This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - &#x60;my_plan&#x60;:   - \&quot;all\&quot; - &#x60;api&#x60;:   - \&quot;none\&quot; - &#x60;user_management&#x60;:   - \&quot;all\&quot; - &#x60;app_management&#x60; | Not available in ENTv2:   - \&quot;all\&quot;  **Note**: - If &#x60;all_features_access: false&#x60; then only privileges are required otherwise if &#x60;true&#x60; then it&#39;s assumed that all permissions will be there for the invited admin user. 
+  # @param send_invitation Payload to send an invitation
+  # @param [Hash] opts the optional parameters
+  # @return [InviteAdminUser]
+  describe 'invite_admin_user test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

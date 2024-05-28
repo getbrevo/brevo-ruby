@@ -20,7 +20,7 @@ module Brevo
     # Pass your own Id to create a contact.
     attr_accessor :ext_id
 
-    # Pass the set of attributes and their values. The attribute's parameter should be passed in capital letter while creating a contact. These attributes must be present in your Brevo account. For eg. {\"FNAME\":\"Elly\", \"LNAME\":\"Roger\"}
+    # Pass the set of attributes and their values. The attribute's parameter should be passed in capital letter while creating a contact. Values that don't match the attribute type (e.g. text or string in a date attribute) will be ignored.These attributes must be present in your Brevo account. For eg. {\"FNAME\":\"Elly\", \"LNAME\":\"Roger\"}
     attr_accessor :attributes
 
     # Set this field to blacklist the contact for emails (emailBlacklisted = true)

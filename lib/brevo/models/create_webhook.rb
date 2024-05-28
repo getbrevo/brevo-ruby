@@ -29,6 +29,14 @@ module Brevo
     # Inbound domain of webhook, required in case of event type `inbound`
     attr_accessor :domain
 
+    # To send batched webhooks
+    attr_accessor :batched
+
+    attr_accessor :auth
+
+    # Custom headers to be send with webhooks
+    attr_accessor :headers
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -58,7 +66,10 @@ module Brevo
         :'description' => :'description',
         :'events' => :'events',
         :'type' => :'type',
-        :'domain' => :'domain'
+        :'domain' => :'domain',
+        :'batched' => :'batched',
+        :'auth' => :'auth',
+        :'headers' => :'headers'
       }
     end
 
@@ -69,7 +80,10 @@ module Brevo
         :'description' => :'String',
         :'events' => :'Array<String>',
         :'type' => :'String',
-        :'domain' => :'String'
+        :'domain' => :'String',
+        :'batched' => :'BOOLEAN',
+        :'auth' => :'GetWebhookAuth',
+        :'headers' => :'Array<GetWebhookHeaders>'
       }
     end
 
@@ -103,6 +117,20 @@ module Brevo
 
       if attributes.has_key?(:'domain')
         self.domain = attributes[:'domain']
+      end
+
+      if attributes.has_key?(:'batched')
+        self.batched = attributes[:'batched']
+      end
+
+      if attributes.has_key?(:'auth')
+        self.auth = attributes[:'auth']
+      end
+
+      if attributes.has_key?(:'headers')
+        if (value = attributes[:'headers']).is_a?(Array)
+          self.headers = value
+        end
       end
     end
 
@@ -150,7 +178,10 @@ module Brevo
           description == o.description &&
           events == o.events &&
           type == o.type &&
-          domain == o.domain
+          domain == o.domain &&
+          batched == o.batched &&
+          auth == o.auth &&
+          headers == o.headers
     end
 
     # @see the `==` method
@@ -162,7 +193,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [url, description, events, type, domain].hash
+      [url, description, events, type, domain, batched, auth, headers].hash
     end
 
     # Builds the object from hash

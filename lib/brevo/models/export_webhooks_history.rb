@@ -26,6 +26,9 @@ module Brevo
     # Sorting order of records (asc or desc)
     attr_accessor :sort
 
+    # Filter the history based on webhook type
+    attr_accessor :type
+
     # Filter the history for a specific event type
     attr_accessor :event
 
@@ -38,7 +41,7 @@ module Brevo
     # Filter the history for a specific email
     attr_accessor :email
 
-    # Filter the history for a specific message id
+    # Filter the history for a specific message id. Applicable only for transactional webhooks.
     attr_accessor :message_id
 
     class EnumAttributeValidator
@@ -70,6 +73,7 @@ module Brevo
         :'start_date' => :'startDate',
         :'end_date' => :'endDate',
         :'sort' => :'sort',
+        :'type' => :'type',
         :'event' => :'event',
         :'notify_url' => :'notifyURL',
         :'webhook_id' => :'webhookId',
@@ -85,6 +89,7 @@ module Brevo
         :'start_date' => :'String',
         :'end_date' => :'String',
         :'sort' => :'String',
+        :'type' => :'String',
         :'event' => :'String',
         :'notify_url' => :'String',
         :'webhook_id' => :'Integer',
@@ -117,6 +122,10 @@ module Brevo
         self.sort = attributes[:'sort']
       end
 
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
+      end
+
       if attributes.has_key?(:'event')
         self.event = attributes[:'event']
       end
@@ -142,6 +151,10 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      end
+
       if @event.nil?
         invalid_properties.push('invalid value for "event", event cannot be nil.')
       end
@@ -156,17 +169,30 @@ module Brevo
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @type.nil?
+      type_validator = EnumAttributeValidator.new('String', ['transactional', 'marketing'])
+      return false unless type_validator.valid?(@type)
       return false if @event.nil?
-      event_validator = EnumAttributeValidator.new('String', ['invalid_parameter', 'missing_parameter', 'hardBounce', 'softBounce', 'delivered"', 'spam', 'request', 'opened', 'click', 'invalid', 'deferred', 'blocked', 'unsubscribed', 'error', 'uniqueOpened', 'loadedByProxy', 'allEvents'])
+      event_validator = EnumAttributeValidator.new('String', ['invalid_parameter', 'missing_parameter', 'hardBounce', 'softBounce', 'delivered', 'spam', 'request', 'opened', 'click', 'invalid', 'deferred', 'blocked', 'unsubscribed', 'error', 'uniqueOpened', 'loadedByProxy', 'allEvents'])
       return false unless event_validator.valid?(@event)
       return false if @notify_url.nil?
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ['transactional', 'marketing'])
+      unless validator.valid?(type)
+        fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
+      end
+      @type = type
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] event Object to be assigned
     def event=(event)
-      validator = EnumAttributeValidator.new('String', ['invalid_parameter', 'missing_parameter', 'hardBounce', 'softBounce', 'delivered"', 'spam', 'request', 'opened', 'click', 'invalid', 'deferred', 'blocked', 'unsubscribed', 'error', 'uniqueOpened', 'loadedByProxy', 'allEvents'])
+      validator = EnumAttributeValidator.new('String', ['invalid_parameter', 'missing_parameter', 'hardBounce', 'softBounce', 'delivered', 'spam', 'request', 'opened', 'click', 'invalid', 'deferred', 'blocked', 'unsubscribed', 'error', 'uniqueOpened', 'loadedByProxy', 'allEvents'])
       unless validator.valid?(event)
         fail ArgumentError, 'invalid value for "event", must be one of #{validator.allowable_values}.'
       end
@@ -182,6 +208,7 @@ module Brevo
           start_date == o.start_date &&
           end_date == o.end_date &&
           sort == o.sort &&
+          type == o.type &&
           event == o.event &&
           notify_url == o.notify_url &&
           webhook_id == o.webhook_id &&
@@ -198,7 +225,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [days, start_date, end_date, sort, event, notify_url, webhook_id, email, message_id].hash
+      [days, start_date, end_date, sort, type, event, notify_url, webhook_id, email, message_id].hash
     end
 
     # Builds the object from hash

@@ -40,7 +40,7 @@ opts = {
   filter_type: 'filter_type_example', # String | Filter by task type (ID)
   filter_status: 'filter_status_example', # String | Filter by task status
   filter_date: 'filter_date_example', # String | Filter by date
-  filter_assign_to: 'filter_assign_to_example', # String | Filter by assignTo id
+  filter_assign_to: 'filter_assign_to_example', # String | Filter by the \"assignTo\" ID. You can utilize account emails for the \"assignTo\" attribute.
   filter_contacts: 'filter_contacts_example', # String | Filter by contact ids
   filter_deals: 'filter_deals_example', # String | Filter by deals ids
   filter_companies: 'filter_companies_example', # String | Filter by companies ids
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  **filter_type** | **String**| Filter by task type (ID) | [optional] 
  **filter_status** | **String**| Filter by task status | [optional] 
  **filter_date** | **String**| Filter by date | [optional] 
- **filter_assign_to** | **String**| Filter by assignTo id | [optional] 
+ **filter_assign_to** | **String**| Filter by the \&quot;assignTo\&quot; ID. You can utilize account emails for the \&quot;assignTo\&quot; attribute. | [optional] 
  **filter_contacts** | **String**| Filter by contact ids | [optional] 
  **filter_deals** | **String**| Filter by deals ids | [optional] 
  **filter_companies** | **String**| Filter by companies ids | [optional] 
@@ -233,7 +233,7 @@ api_instance = Brevo::TasksApi.new
 
 id = 'id_example' # String | 
 
-body = Brevo::Body7.new # Body7 | Updated task details.
+body = Brevo::Body10.new # Body10 | Updated task details.
 
 
 begin
@@ -249,7 +249,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **body** | [**Body7**](Body7.md)| Updated task details. | 
+ **body** | [**Body10**](Body10.md)| Updated task details. | 
 
 ### Return type
 
@@ -267,7 +267,7 @@ nil (empty response body)
 
 
 # **crm_tasks_post**
-> InlineResponse2011 crm_tasks_post(body)
+> InlineResponse2012 crm_tasks_post(body)
 
 Create a task
 
@@ -290,7 +290,7 @@ end
 
 api_instance = Brevo::TasksApi.new
 
-body = Brevo::Body6.new # Body6 | Task name.
+body = Brevo::Body9.new # Body9 | Task name.
 
 
 begin
@@ -306,11 +306,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body6**](Body6.md)| Task name. | 
+ **body** | [**Body9**](Body9.md)| Task name. | 
 
 ### Return type
 
-[**InlineResponse2011**](InlineResponse2011.md)
+[**InlineResponse2012**](InlineResponse2012.md)
 
 ### Authorization
 

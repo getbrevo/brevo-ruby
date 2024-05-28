@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**send_test_template**](TransactionalEmailsApi.md#send_test_template) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
 [**send_transac_email**](TransactionalEmailsApi.md#send_transac_email) | **POST** /smtp/email | Send a transactional email
 [**smtp_blocked_contacts_email_delete**](TransactionalEmailsApi.md#smtp_blocked_contacts_email_delete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
-[**smtp_log_message_id_delete**](TransactionalEmailsApi.md#smtp_log_message_id_delete) | **DELETE** /smtp/log/{messageId} | Delete an SMTP transactional log
+[**smtp_log_identifier_delete**](TransactionalEmailsApi.md#smtp_log_identifier_delete) | **DELETE** /smtp/log/{identifier} | Delete an SMTP transactional log
 [**update_smtp_template**](TransactionalEmailsApi.md#update_smtp_template) | **PUT** /smtp/templates/{templateId} | Update an email template
 
 
@@ -1273,8 +1273,8 @@ nil (empty response body)
 
 
 
-# **smtp_log_message_id_delete**
-> smtp_log_message_id_delete(message_id)
+# **smtp_log_identifier_delete**
+> smtp_log_identifier_delete(identifier)
 
 Delete an SMTP transactional log
 
@@ -1297,14 +1297,14 @@ end
 
 api_instance = Brevo::TransactionalEmailsApi.new
 
-message_id = 'message_id_example' # String | MessageId of the transactional log to delete
+identifier = 'identifier_example' # String | MessageId or Email of the transactional log(s) to delete
 
 
 begin
   #Delete an SMTP transactional log
-  api_instance.smtp_log_message_id_delete(message_id)
+  api_instance.smtp_log_identifier_delete(identifier)
 rescue Brevo::ApiError => e
-  puts "Exception when calling TransactionalEmailsApi->smtp_log_message_id_delete: #{e}"
+  puts "Exception when calling TransactionalEmailsApi->smtp_log_identifier_delete: #{e}"
 end
 ```
 
@@ -1312,7 +1312,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **message_id** | **String**| MessageId of the transactional log to delete | 
+ **identifier** | **String**| MessageId or Email of the transactional log(s) to delete | 
 
 ### Return type
 

@@ -132,8 +132,8 @@ module Brevo
       end
       return data, status_code, headers
     end
-    # Export all transactional events
-    # This endpoint will submit a request to get the history of webhooks in the CSV file. The link to download that CSV file will send to the webhook link provided in notifyURL of the body payload.
+    # Export all webhook events
+    # This endpoint will submit a request to get the history of webhooks in the CSV file. The link to download the CSV file will be sent to the webhook that was provided in the notifyURL.
     # @param export_webhook_history Values to submit for webhooks history
     # @param [Hash] opts the optional parameters
     # @return [CreatedProcessId]
@@ -142,8 +142,8 @@ module Brevo
       data
     end
 
-    # Export all transactional events
-    # This endpoint will submit a request to get the history of webhooks in the CSV file. The link to download that CSV file will send to the webhook link provided in notifyURL of the body payload.
+    # Export all webhook events
+    # This endpoint will submit a request to get the history of webhooks in the CSV file. The link to download the CSV file will be sent to the webhook that was provided in the notifyURL.
     # @param export_webhook_history Values to submit for webhooks history
     # @param [Hash] opts the optional parameters
     # @return [Array<(CreatedProcessId, Fixnum, Hash)>] CreatedProcessId data, response status code and response headers

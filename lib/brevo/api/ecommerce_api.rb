@@ -390,6 +390,174 @@ module Brevo
       end
       return data, status_code, headers
     end
+    # Get detailed attribution metrics for a single Brevo campaign
+    # @param conversion_source The Brevo campaign type for which data will be retrieved
+    # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def ecommerce_attribution_metrics_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id, opts = {})
+      ecommerce_attribution_metrics_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts)
+      nil
+    end
+
+    # Get detailed attribution metrics for a single Brevo campaign
+    # @param conversion_source The Brevo campaign type for which data will be retrieved
+    # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def ecommerce_attribution_metrics_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EcommerceApi.ecommerce_attribution_metrics_conversion_source_conversion_source_id_get ...'
+      end
+      # verify the required parameter 'conversion_source' is set
+      if @api_client.config.client_side_validation && conversion_source.nil?
+        fail ArgumentError, "Missing the required parameter 'conversion_source' when calling EcommerceApi.ecommerce_attribution_metrics_conversion_source_conversion_source_id_get"
+      end
+      # verify the required parameter 'conversion_source_id' is set
+      if @api_client.config.client_side_validation && conversion_source_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conversion_source_id' when calling EcommerceApi.ecommerce_attribution_metrics_conversion_source_conversion_source_id_get"
+      end
+      # resource path
+      local_var_path = '/ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}'.sub('{' + 'conversionSource' + '}', conversion_source.to_s).sub('{' + 'conversionSourceId' + '}', conversion_source_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EcommerceApi#ecommerce_attribution_metrics_conversion_source_conversion_source_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get attribution metrics for one or more Brevo campaigns
+    # @param [Hash] opts the optional parameters
+    # @option opts [Object] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
+    # @option opts [Object] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
+    # @option opts [Object] :email_campaign_id The email campaign id(s) to get metrics for
+    # @return [nil]
+    def ecommerce_attribution_metrics_get(opts = {})
+      ecommerce_attribution_metrics_get_with_http_info(opts)
+      nil
+    end
+
+    # Get attribution metrics for one or more Brevo campaigns
+    # @param [Hash] opts the optional parameters
+    # @option opts [Object] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
+    # @option opts [Object] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
+    # @option opts [Object] :email_campaign_id The email campaign id(s) to get metrics for
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def ecommerce_attribution_metrics_get_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EcommerceApi.ecommerce_attribution_metrics_get ...'
+      end
+      # resource path
+      local_var_path = '/ecommerce/attribution/metrics'
+
+      # query parameters
+      query_params = {}
+      query_params[:'periodFrom'] = opts[:'period_from'] if !opts[:'period_from'].nil?
+      query_params[:'periodTo'] = opts[:'period_to'] if !opts[:'period_to'].nil?
+      query_params[:'emailCampaignId[]'] = opts[:'email_campaign_id'] if !opts[:'email_campaign_id'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EcommerceApi#ecommerce_attribution_metrics_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get attributed product sales for a single Brevo campaign
+    # @param conversion_source The Brevo campaign type for which data will be retrieved
+    # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def ecommerce_attribution_products_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id, opts = {})
+      ecommerce_attribution_products_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts)
+      nil
+    end
+
+    # Get attributed product sales for a single Brevo campaign
+    # @param conversion_source The Brevo campaign type for which data will be retrieved
+    # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def ecommerce_attribution_products_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EcommerceApi.ecommerce_attribution_products_conversion_source_conversion_source_id_get ...'
+      end
+      # verify the required parameter 'conversion_source' is set
+      if @api_client.config.client_side_validation && conversion_source.nil?
+        fail ArgumentError, "Missing the required parameter 'conversion_source' when calling EcommerceApi.ecommerce_attribution_products_conversion_source_conversion_source_id_get"
+      end
+      # verify the required parameter 'conversion_source_id' is set
+      if @api_client.config.client_side_validation && conversion_source_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conversion_source_id' when calling EcommerceApi.ecommerce_attribution_products_conversion_source_conversion_source_id_get"
+      end
+      # resource path
+      local_var_path = '/ecommerce/attribution/products/{conversionSource}/{conversionSourceId}'.sub('{' + 'conversionSource' + '}', conversion_source.to_s).sub('{' + 'conversionSourceId' + '}', conversion_source_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EcommerceApi#ecommerce_attribution_products_conversion_source_conversion_source_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Return all your categories
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit Number of documents per page (default to 50)
@@ -397,6 +565,8 @@ module Brevo
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (default to desc)
     # @option opts [Array<String>] :ids Filter by category ids
     # @option opts [String] :name Filter by category name
+    # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+    # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
     # @return [GetCategories]
     def get_categories(opts = {})
       data, _status_code, _headers = get_categories_with_http_info(opts)
@@ -410,6 +580,8 @@ module Brevo
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
     # @option opts [Array<String>] :ids Filter by category ids
     # @option opts [String] :name Filter by category name
+    # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+    # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
     # @return [Array<(GetCategories, Fixnum, Hash)>] GetCategories data, response status code and response headers
     def get_categories_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -432,6 +604,8 @@ module Brevo
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'ids'] = @api_client.build_collection_param(opts[:'ids'], :csv) if !opts[:'ids'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'modifiedSince'] = opts[:'modified_since'] if !opts[:'modified_since'].nil?
+      query_params[:'createdSince'] = opts[:'created_since'] if !opts[:'created_since'].nil?
 
       # header parameters
       header_params = {}
@@ -510,6 +684,76 @@ module Brevo
       end
       return data, status_code, headers
     end
+    # Get order details
+    # Get all the orders
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Number of documents per page (default to 50)
+    # @option opts [Integer] :offset Index of the first document in the page (default to 0)
+    # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (default to desc)
+    # @option opts [String] :modified_since Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+    # @option opts [String] :created_since Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+    # @return [GetOrders]
+    def get_orders(opts = {})
+      data, _status_code, _headers = get_orders_with_http_info(opts)
+      data
+    end
+
+    # Get order details
+    # Get all the orders
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Number of documents per page
+    # @option opts [Integer] :offset Index of the first document in the page
+    # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
+    # @option opts [String] :modified_since Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+    # @option opts [String] :created_since Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+    # @return [Array<(GetOrders, Fixnum, Hash)>] GetOrders data, response status code and response headers
+    def get_orders_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EcommerceApi.get_orders ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] > 100
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling EcommerceApi.get_orders, must be smaller than or equal to 100.'
+      end
+
+      if @api_client.config.client_side_validation && opts[:'sort'] && !['asc', 'desc'].include?(opts[:'sort'])
+        fail ArgumentError, 'invalid value for "sort", must be one of asc, desc'
+      end
+      # resource path
+      local_var_path = '/orders'
+
+      # query parameters
+      query_params = {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'modifiedSince'] = opts[:'modified_since'] if !opts[:'modified_since'].nil?
+      query_params[:'createdSince'] = opts[:'created_since'] if !opts[:'created_since'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'GetOrders')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EcommerceApi#get_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get a product's details
     # @param id Product ID
     # @param [Hash] opts the optional parameters
@@ -576,6 +820,8 @@ module Brevo
     # @option opts [Float] :price_eq Price filter for products equals to particular amount
     # @option opts [Float] :price_ne Price filter for products not equals to particular amount
     # @option opts [Array<String>] :categories Filter by category ids
+    # @option opts [String] :modified_since Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+    # @option opts [String] :created_since Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
     # @return [GetProducts]
     def get_products(opts = {})
       data, _status_code, _headers = get_products_with_http_info(opts)
@@ -596,6 +842,8 @@ module Brevo
     # @option opts [Float] :price_eq Price filter for products equals to particular amount
     # @option opts [Float] :price_ne Price filter for products not equals to particular amount
     # @option opts [Array<String>] :categories Filter by category ids
+    # @option opts [String] :modified_since Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+    # @option opts [String] :created_since Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
     # @return [Array<(GetProducts, Fixnum, Hash)>] GetProducts data, response status code and response headers
     def get_products_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -625,6 +873,8 @@ module Brevo
       query_params[:'price[eq]'] = opts[:'price_eq'] if !opts[:'price_eq'].nil?
       query_params[:'price[ne]'] = opts[:'price_ne'] if !opts[:'price_ne'].nil?
       query_params[:'categories'] = @api_client.build_collection_param(opts[:'categories'], :csv) if !opts[:'categories'].nil?
+      query_params[:'modifiedSince'] = opts[:'modified_since'] if !opts[:'modified_since'].nil?
+      query_params[:'createdSince'] = opts[:'created_since'] if !opts[:'created_since'].nil?
 
       # header parameters
       header_params = {}

@@ -388,7 +388,8 @@ opts = {
   end_date: 'end_date_example', # String | **Mandatory if startDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the templates created. **Prefer to pass your timezone in date-time format for accurate result** 
   limit: 50, # Integer | Number of documents per page
   offset: 0, # Integer | Index of the first document in the page
-  sort: 'desc' # String | Sort the results in the ascending/descending order of record modification. Default order is **descending** if `sort` is not passed
+  sort: 'desc', # String | Sort the results in the ascending/descending order of record modification. Default order is **descending** if `sort` is not passed
+  source: 'source_example' # String | source of the template
 }
 
 begin
@@ -409,6 +410,7 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| Number of documents per page | [optional] [default to 50]
  **offset** | **Integer**| Index of the first document in the page | [optional] [default to 0]
  **sort** | **String**| Sort the results in the ascending/descending order of record modification. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
+ **source** | **String**| source of the template | [optional] 
 
 ### Return type
 

@@ -109,6 +109,7 @@ describe 'WhatsAppCampaignsApi' do
   # @option opts [Integer] :limit Number of documents per page
   # @option opts [Integer] :offset Index of the first document in the page
   # @option opts [String] :sort Sort the results in the ascending/descending order of record modification. Default order is **descending** if &#x60;sort&#x60; is not passed
+  # @option opts [String] :source source of the template
   # @return [GetWATemplates]
   describe 'get_whats_app_templates test' do
     it 'should work' do

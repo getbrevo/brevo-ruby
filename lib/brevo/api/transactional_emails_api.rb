@@ -1259,28 +1259,28 @@ module Brevo
       return data, status_code, headers
     end
     # Delete an SMTP transactional log
-    # @param message_id MessageId of the transactional log to delete
+    # @param identifier MessageId or Email of the transactional log(s) to delete
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def smtp_log_message_id_delete(message_id, opts = {})
-      smtp_log_message_id_delete_with_http_info(message_id, opts)
+    def smtp_log_identifier_delete(identifier, opts = {})
+      smtp_log_identifier_delete_with_http_info(identifier, opts)
       nil
     end
 
     # Delete an SMTP transactional log
-    # @param message_id MessageId of the transactional log to delete
+    # @param identifier MessageId or Email of the transactional log(s) to delete
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def smtp_log_message_id_delete_with_http_info(message_id, opts = {})
+    def smtp_log_identifier_delete_with_http_info(identifier, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: TransactionalEmailsApi.smtp_log_message_id_delete ...'
+        @api_client.config.logger.debug 'Calling API: TransactionalEmailsApi.smtp_log_identifier_delete ...'
       end
-      # verify the required parameter 'message_id' is set
-      if @api_client.config.client_side_validation && message_id.nil?
-        fail ArgumentError, "Missing the required parameter 'message_id' when calling TransactionalEmailsApi.smtp_log_message_id_delete"
+      # verify the required parameter 'identifier' is set
+      if @api_client.config.client_side_validation && identifier.nil?
+        fail ArgumentError, "Missing the required parameter 'identifier' when calling TransactionalEmailsApi.smtp_log_identifier_delete"
       end
       # resource path
-      local_var_path = '/smtp/log/{messageId}'.sub('{' + 'messageId' + '}', message_id.to_s)
+      local_var_path = '/smtp/log/{identifier}'.sub('{' + 'identifier' + '}', identifier.to_s)
 
       # query parameters
       query_params = {}
@@ -1305,7 +1305,7 @@ module Brevo
         :body => post_body,
         :auth_names => auth_names)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionalEmailsApi#smtp_log_message_id_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: TransactionalEmailsApi#smtp_log_identifier_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

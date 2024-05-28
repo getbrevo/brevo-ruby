@@ -361,6 +361,7 @@ module Brevo
     # @option opts [Integer] :limit Number of documents per page (default to 50)
     # @option opts [Integer] :offset Index of the first document in the page (default to 0)
     # @option opts [String] :sort Sort the results in the ascending/descending order of record modification. Default order is **descending** if &#x60;sort&#x60; is not passed (default to desc)
+    # @option opts [String] :source source of the template
     # @return [GetWATemplates]
     def get_whats_app_templates(opts = {})
       data, _status_code, _headers = get_whats_app_templates_with_http_info(opts)
@@ -374,6 +375,7 @@ module Brevo
     # @option opts [Integer] :limit Number of documents per page
     # @option opts [Integer] :offset Index of the first document in the page
     # @option opts [String] :sort Sort the results in the ascending/descending order of record modification. Default order is **descending** if &#x60;sort&#x60; is not passed
+    # @option opts [String] :source source of the template
     # @return [Array<(GetWATemplates, Fixnum, Hash)>] GetWATemplates data, response status code and response headers
     def get_whats_app_templates_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -390,6 +392,9 @@ module Brevo
       if @api_client.config.client_side_validation && opts[:'sort'] && !['asc', 'desc'].include?(opts[:'sort'])
         fail ArgumentError, 'invalid value for "sort", must be one of asc, desc'
       end
+      if @api_client.config.client_side_validation && opts[:'source'] && !['Automation', 'Conversations'].include?(opts[:'source'])
+        fail ArgumentError, 'invalid value for "source", must be one of Automation, Conversations'
+      end
       # resource path
       local_var_path = '/whatsappCampaigns/template-list'
 
@@ -400,6 +405,7 @@ module Brevo
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'source'] = opts[:'source'] if !opts[:'source'].nil?
 
       # header parameters
       header_params = {}

@@ -18,10 +18,10 @@ module Brevo
     # Number of multi-users
     attr_accessor :users
 
-    # Number of landing pages
+    # Number of landing pages / Not required on ENTv2
     attr_accessor :landing_page
 
-    # Number of inboxes
+    # Number of inboxes / Not required on ENTv2
     attr_accessor :inbox
 
     # Attribute mapping from ruby-style variable name to JSON key.

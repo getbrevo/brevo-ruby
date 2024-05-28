@@ -33,7 +33,7 @@ module Brevo
     # This endpoint will create an external feed.
     # @param create_external_feed Values to create a feed
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2014]
+    # @return [InlineResponse2015]
     def create_external_feed(create_external_feed, opts = {})
       data, _status_code, _headers = create_external_feed_with_http_info(create_external_feed, opts)
       data
@@ -43,7 +43,7 @@ module Brevo
     # This endpoint will create an external feed.
     # @param create_external_feed Values to create a feed
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2014, Fixnum, Hash)>] InlineResponse2014 data, response status code and response headers
+    # @return [Array<(InlineResponse2015, Fixnum, Hash)>] InlineResponse2015 data, response status code and response headers
     def create_external_feed_with_http_info(create_external_feed, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ExternalFeedsApi.create_external_feed ...'
@@ -77,7 +77,7 @@ module Brevo
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse2014')
+        :return_type => 'InlineResponse2015')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ExternalFeedsApi#create_external_feed\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

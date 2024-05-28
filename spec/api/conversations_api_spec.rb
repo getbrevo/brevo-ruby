@@ -72,7 +72,7 @@ describe 'ConversationsApi' do
   # Only agents’ messages can be edited.
   # @param id ID of the message
   # @param [Hash] opts the optional parameters
-  # @option opts [Body9] :body 
+  # @option opts [Body12] :body 
   # @return [ConversationsMessage]
   describe 'conversations_messages_id_put test' do
     it 'should work' do

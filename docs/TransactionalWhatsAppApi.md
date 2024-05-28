@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 
 # **send_whatsapp_message**
-> InlineResponse2013 send_whatsapp_message(send_whatsapp_message)
+> InlineResponse2014 send_whatsapp_message(send_whatsapp_message)
 
 Send a WhatsApp message
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2013**](InlineResponse2013.md)
+[**InlineResponse2014**](InlineResponse2014.md)
 
 ### Authorization
 

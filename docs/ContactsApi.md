@@ -819,7 +819,9 @@ opts = {
   offset: 0, # Integer | Index of the first document of the page
   modified_since: 'modified_since_example', # String | Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
   created_since: 'created_since_example', # String | Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
-  sort: 'desc' # String | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed
+  sort: 'desc', # String | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed
+  segment_id: 789, # Integer | Id of the segment. **Either listIds or segmentId can be passed.**
+  list_ids: [56] # Array<Integer> | Ids of the list. **Either listIds or segmentId can be passed.**
 }
 
 begin
@@ -840,6 +842,8 @@ Name | Type | Description  | Notes
  **modified_since** | **String**| Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. | [optional] 
  **created_since** | **String**| Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. | [optional] 
  **sort** | **String**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
+ **segment_id** | **Integer**| Id of the segment. **Either listIds or segmentId can be passed.** | [optional] 
+ **list_ids** | [**Array&lt;Integer&gt;**](Integer.md)| Ids of the list. **Either listIds or segmentId can be passed.** | [optional] 
 
 ### Return type
 
@@ -1110,7 +1114,7 @@ Name | Type | Description  | Notes
 
 
 # **get_list**
-> GetExtendedList get_list(list_id)
+> GetExtendedList get_list(list_id, opts)
 
 Get a list's details
 
@@ -1135,10 +1139,14 @@ api_instance = Brevo::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
+opts = { 
+  start_date: 'start_date_example', # String | Mandatory if endDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
+  end_date: 'end_date_example' # String | Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
+}
 
 begin
   #Get a list's details
-  result = api_instance.get_list(list_id)
+  result = api_instance.get_list(list_id, opts)
   p result
 rescue Brevo::ApiError => e
   puts "Exception when calling ContactsApi->get_list: #{e}"
@@ -1150,6 +1158,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **list_id** | **Integer**| Id of the list | 
+ **start_date** | **String**| Mandatory if endDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result | [optional] 
+ **end_date** | **String**| Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result | [optional] 
 
 ### Return type
 
@@ -1297,7 +1307,7 @@ Name | Type | Description  | Notes
 
 Import contacts
 
-It returns the background process ID which on completion calls the notify URL that you have set in the input.
+It returns the background process ID which on completion calls the notify URL that you have set in the input.  **Note**: - Any contact attribute that doesn't exist in your account will be ignored at import end. 
 
 ### Example
 ```ruby

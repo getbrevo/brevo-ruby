@@ -44,13 +44,13 @@ describe 'Body5' do
     end
   end
 
-  describe 'test attribute "link_company_ids"' do
+  describe 'test attribute "link_deals_ids"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "unlink_company_ids"' do
+  describe 'test attribute "unlink_deals_ids"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

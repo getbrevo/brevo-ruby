@@ -191,6 +191,8 @@ describe 'ContactsApi' do
   # @option opts [String] :modified_since Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
   # @option opts [String] :created_since Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
   # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
+  # @option opts [Integer] :segment_id Id of the segment. **Either listIds or segmentId can be passed.**
+  # @option opts [Array<Integer>] :list_ids Ids of the list. **Either listIds or segmentId can be passed.**
   # @return [GetContacts]
   describe 'get_contacts test' do
     it 'should work' do
@@ -255,6 +257,8 @@ describe 'ContactsApi' do
   # Get a list&#39;s details
   # @param list_id Id of the list
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :start_date Mandatory if endDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
+  # @option opts [String] :end_date Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
   # @return [GetExtendedList]
   describe 'get_list test' do
     it 'should work' do
@@ -290,7 +294,7 @@ describe 'ContactsApi' do
 
   # unit tests for import_contacts
   # Import contacts
-  # It returns the background process ID which on completion calls the notify URL that you have set in the input.
+  # It returns the background process ID which on completion calls the notify URL that you have set in the input.  **Note**: - Any contact attribute that doesn&#39;t exist in your account will be ignored at import end. 
   # @param request_contact_import Values to import contacts in Brevo. To know more about the expected format, please have a look at &#x60;&#x60;https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns&#x60;&#x60;
   # @param [Hash] opts the optional parameters
   # @return [CreatedProcessId]

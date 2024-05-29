@@ -111,6 +111,43 @@ describe 'EcommerceApi' do
     end
   end
 
+  # unit tests for ecommerce_attribution_metrics_conversion_source_conversion_source_id_get
+  # Get detailed attribution metrics for a single Brevo campaign
+  # @param conversion_source The Brevo campaign type for which data will be retrieved
+  # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'ecommerce_attribution_metrics_conversion_source_conversion_source_id_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for ecommerce_attribution_metrics_get
+  # Get attribution metrics for one or more Brevo campaigns
+  # @param [Hash] opts the optional parameters
+  # @option opts [Object] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
+  # @option opts [Object] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
+  # @option opts [Object] :email_campaign_id The email campaign id(s) to get metrics for
+  # @return [nil]
+  describe 'ecommerce_attribution_metrics_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for ecommerce_attribution_products_conversion_source_conversion_source_id_get
+  # Get attributed product sales for a single Brevo campaign
+  # @param conversion_source The Brevo campaign type for which data will be retrieved
+  # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'ecommerce_attribution_products_conversion_source_conversion_source_id_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_categories
   # Return all your categories
   # @param [Hash] opts the optional parameters
@@ -119,6 +156,8 @@ describe 'EcommerceApi' do
   # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
   # @option opts [Array<String>] :ids Filter by category ids
   # @option opts [String] :name Filter by category name
+  # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+  # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
   # @return [GetCategories]
   describe 'get_categories test' do
     it 'should work' do
@@ -132,6 +171,22 @@ describe 'EcommerceApi' do
   # @param [Hash] opts the optional parameters
   # @return [GetCategoryDetails]
   describe 'get_category_info test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_orders
+  # Get order details
+  # Get all the orders
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :limit Number of documents per page
+  # @option opts [Integer] :offset Index of the first document in the page
+  # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
+  # @option opts [String] :modified_since Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+  # @option opts [String] :created_since Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+  # @return [GetOrders]
+  describe 'get_orders test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -163,6 +218,8 @@ describe 'EcommerceApi' do
   # @option opts [Float] :price_eq Price filter for products equals to particular amount
   # @option opts [Float] :price_ne Price filter for products not equals to particular amount
   # @option opts [Array<String>] :categories Filter by category ids
+  # @option opts [String] :modified_since Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+  # @option opts [String] :created_since Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
   # @return [GetProducts]
   describe 'get_products test' do
     it 'should work' do

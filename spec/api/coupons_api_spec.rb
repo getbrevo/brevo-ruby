@@ -36,7 +36,7 @@ describe 'CouponsApi' do
   # Create а coupon collection
   # @param create_coupon_collection Values to create a coupon collection
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2012]
+  # @return [InlineResponse2013]
   describe 'create_coupon_collection test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -71,6 +71,7 @@ describe 'CouponsApi' do
   # @option opts [Integer] :limit Number of documents returned per page
   # @option opts [Integer] :offset Index of the first document on the page
   # @option opts [String] :sort Sort the results by creation time in ascending/descending order
+  # @option opts [Object] :sort_by The field used to sort coupon collections
   # @return [GetCouponCollection]
   describe 'get_coupon_collections test' do
     it 'should work' do
@@ -81,9 +82,9 @@ describe 'CouponsApi' do
   # unit tests for update_coupon_collection
   # Update a coupon collection by id
   # @param id Id of the collection to update
-  # @param update_coupon_collection Values to update the coupon collection
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2001]
+  # @option opts [UpdateCouponCollection] :update_coupon_collection Values to update the coupon collection
+  # @return [InlineResponse2003]
   describe 'update_coupon_collection test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

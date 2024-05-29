@@ -19,7 +19,7 @@ module Brevo
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-
+    
     # Set custom user_agent if explicitly passed in api
     # default will still remain Swagger-Codegen/#{VERSION}/ruby
     def setUserAgent(user_agent)
@@ -28,7 +28,286 @@ module Brevo
         @api_client.default_headers['User-Agent'] = @user_agent
       end
     end
-    
+
+    # Delete a group
+    # This endpoint allows you to delete a group of sub-organizations. When a group is deleted, the sub-organizations are no longer part of this group. The users associated with the group are no longer associated with the group once deleted.
+    # @param id Id of the group
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def corporate_group_id_delete(id, opts = {})
+      corporate_group_id_delete_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a group
+    # This endpoint allows you to delete a group of sub-organizations. When a group is deleted, the sub-organizations are no longer part of this group. The users associated with the group are no longer associated with the group once deleted.
+    # @param id Id of the group
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def corporate_group_id_delete_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.corporate_group_id_delete ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling MasterAccountApi.corporate_group_id_delete"
+      end
+      # resource path
+      local_var_path = '/corporate/group/{id}'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#corporate_group_id_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # GET a group details
+    # This endpoint allows you to retrieve a specific group’s information such as the list of sub-organizations and the user associated with the group.
+    # @param id Id of the group of sub-organization
+    # @param [Hash] opts the optional parameters
+    # @return [CorporateGroupDetailsResponse]
+    def corporate_group_id_get(id, opts = {})
+      data, _status_code, _headers = corporate_group_id_get_with_http_info(id, opts)
+      data
+    end
+
+    # GET a group details
+    # This endpoint allows you to retrieve a specific group’s information such as the list of sub-organizations and the user associated with the group.
+    # @param id Id of the group of sub-organization
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CorporateGroupDetailsResponse, Fixnum, Hash)>] CorporateGroupDetailsResponse data, response status code and response headers
+    def corporate_group_id_get_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.corporate_group_id_get ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling MasterAccountApi.corporate_group_id_get"
+      end
+      # resource path
+      local_var_path = '/corporate/group/{id}'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CorporateGroupDetailsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#corporate_group_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update a group of sub-accounts
+    # This endpoint allows you to update a group of sub-accounts
+    # @param id Id of the group
+    # @param body Group details to be updated.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def corporate_group_id_put(id, body, opts = {})
+      corporate_group_id_put_with_http_info(id, body, opts)
+      nil
+    end
+
+    # Update a group of sub-accounts
+    # This endpoint allows you to update a group of sub-accounts
+    # @param id Id of the group
+    # @param body Group details to be updated.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def corporate_group_id_put_with_http_info(id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.corporate_group_id_put ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling MasterAccountApi.corporate_group_id_put"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling MasterAccountApi.corporate_group_id_put"
+      end
+      # resource path
+      local_var_path = '/corporate/group/{id}'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#corporate_group_id_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Create a new group of sub-accounts
+    # This endpoint allows to create a group of sub-accounts
+    # @param body Group details to be created.
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse201]
+    def corporate_group_post(body, opts = {})
+      data, _status_code, _headers = corporate_group_post_with_http_info(body, opts)
+      data
+    end
+
+    # Create a new group of sub-accounts
+    # This endpoint allows to create a group of sub-accounts
+    # @param body Group details to be created.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse201, Fixnum, Hash)>] InlineResponse201 data, response status code and response headers
+    def corporate_group_post_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.corporate_group_post ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling MasterAccountApi.corporate_group_post"
+      end
+      # resource path
+      local_var_path = '/corporate/group'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse201')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#corporate_group_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Delete sub-account from group
+    # This endpoint allows you to remove a sub-organization from a group.
+    # @param group_id Id of the group
+    # @param body List of sub-account ids
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def corporate_group_unlink_group_id_sub_accounts_put(group_id, body, opts = {})
+      corporate_group_unlink_group_id_sub_accounts_put_with_http_info(group_id, body, opts)
+      nil
+    end
+
+    # Delete sub-account from group
+    # This endpoint allows you to remove a sub-organization from a group.
+    # @param group_id Id of the group
+    # @param body List of sub-account ids
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def corporate_group_unlink_group_id_sub_accounts_put_with_http_info(group_id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.corporate_group_unlink_group_id_sub_accounts_put ...'
+      end
+      # verify the required parameter 'group_id' is set
+      if @api_client.config.client_side_validation && group_id.nil?
+        fail ArgumentError, "Missing the required parameter 'group_id' when calling MasterAccountApi.corporate_group_unlink_group_id_sub_accounts_put"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling MasterAccountApi.corporate_group_unlink_group_id_sub_accounts_put"
+      end
+      # resource path
+      local_var_path = '/corporate/group/unlink/{groupId}/subAccounts'.sub('{' + 'groupId' + '}', group_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#corporate_group_unlink_group_id_sub_accounts_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get the details of requested master account
     # This endpoint will provide the details of the master account.
     # @param [Hash] opts the optional parameters
@@ -74,6 +353,60 @@ module Brevo
         :return_type => 'MasterDetailsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MasterAccountApi#corporate_master_account_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Generate SSO token to access admin account
+    # This endpoint generates an SSO token to authenticate and access the admin account using the endpoint https://account-app.brevo.com/account/login/corporate/sso/[token], where [token] will be replaced by the actual token.
+    # @param sso_token_request_corporate User email of admin account
+    # @param [Hash] opts the optional parameters
+    # @return [GetSsoToken]
+    def corporate_sso_token_post(sso_token_request_corporate, opts = {})
+      data, _status_code, _headers = corporate_sso_token_post_with_http_info(sso_token_request_corporate, opts)
+      data
+    end
+
+    # Generate SSO token to access admin account
+    # This endpoint generates an SSO token to authenticate and access the admin account using the endpoint https://account-app.brevo.com/account/login/corporate/sso/[token], where [token] will be replaced by the actual token.
+    # @param sso_token_request_corporate User email of admin account
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetSsoToken, Fixnum, Hash)>] GetSsoToken data, response status code and response headers
+    def corporate_sso_token_post_with_http_info(sso_token_request_corporate, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.corporate_sso_token_post ...'
+      end
+      # verify the required parameter 'sso_token_request_corporate' is set
+      if @api_client.config.client_side_validation && sso_token_request_corporate.nil?
+        fail ArgumentError, "Missing the required parameter 'sso_token_request_corporate' when calling MasterAccountApi.corporate_sso_token_post"
+      end
+      # resource path
+      local_var_path = '/corporate/ssoToken'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(sso_token_request_corporate)
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'GetSsoToken')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#corporate_sso_token_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -470,7 +803,7 @@ module Brevo
       end
       return data, status_code, headers
     end
-    # Generate SSO token to access Brevo
+    # Generate SSO token to access sub-account
     # This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.brevo.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
     # @param sso_token_request Values to generate SSO token for sub-account
     # @param [Hash] opts the optional parameters
@@ -480,7 +813,7 @@ module Brevo
       data
     end
 
-    # Generate SSO token to access Brevo
+    # Generate SSO token to access sub-account
     # This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.brevo.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
     # @param sso_token_request Values to generate SSO token for sub-account
     # @param [Hash] opts the optional parameters
@@ -521,6 +854,119 @@ module Brevo
         :return_type => 'GetSsoToken')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MasterAccountApi#corporate_sub_account_sso_token_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Resend / cancel admin user invitation
+    # This endpoint will allow the user to:  - Resend an admin user invitation - Cancel an admin user invitation 
+    # @param action Action to be performed (cancel / resend)
+    # @param email Email address of the recipient
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse200]
+    def corporate_user_invitation_action_email_put(action, email, opts = {})
+      data, _status_code, _headers = corporate_user_invitation_action_email_put_with_http_info(action, email, opts)
+      data
+    end
+
+    # Resend / cancel admin user invitation
+    # This endpoint will allow the user to:  - Resend an admin user invitation - Cancel an admin user invitation 
+    # @param action Action to be performed (cancel / resend)
+    # @param email Email address of the recipient
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
+    def corporate_user_invitation_action_email_put_with_http_info(action, email, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.corporate_user_invitation_action_email_put ...'
+      end
+      # verify the required parameter 'action' is set
+      if @api_client.config.client_side_validation && action.nil?
+        fail ArgumentError, "Missing the required parameter 'action' when calling MasterAccountApi.corporate_user_invitation_action_email_put"
+      end
+      # verify the required parameter 'email' is set
+      if @api_client.config.client_side_validation && email.nil?
+        fail ArgumentError, "Missing the required parameter 'email' when calling MasterAccountApi.corporate_user_invitation_action_email_put"
+      end
+      # resource path
+      local_var_path = '/corporate/user/invitation/{action}/{email}'.sub('{' + 'action' + '}', action.to_s).sub('{' + 'email' + '}', email.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse200')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#corporate_user_invitation_action_email_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Revoke an admin user
+    # This endpoint allows to revoke/remove an invited member of your Admin account
+    # @param email Email of the invited user
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def corporate_user_revoke_email_delete(email, opts = {})
+      corporate_user_revoke_email_delete_with_http_info(email, opts)
+      nil
+    end
+
+    # Revoke an admin user
+    # This endpoint allows to revoke/remove an invited member of your Admin account
+    # @param email Email of the invited user
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def corporate_user_revoke_email_delete_with_http_info(email, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.corporate_user_revoke_email_delete ...'
+      end
+      # verify the required parameter 'email' is set
+      if @api_client.config.client_side_validation && email.nil?
+        fail ArgumentError, "Missing the required parameter 'email' when calling MasterAccountApi.corporate_user_revoke_email_delete"
+      end
+      # resource path
+      local_var_path = '/corporate/user/revoke/{email}'.sub('{' + 'email' + '}', email.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#corporate_user_revoke_email_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -587,6 +1033,208 @@ module Brevo
         :return_type => 'GetAccountActivity')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MasterAccountApi#get_account_activity\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get the list of all admin users
+    # This endpoint allows you to list all Admin users of your Admin account
+    # @param [Hash] opts the optional parameters
+    # @return [GetCorporateInvitedUsersList]
+    def get_corporate_invited_users_list(opts = {})
+      data, _status_code, _headers = get_corporate_invited_users_list_with_http_info(opts)
+      data
+    end
+
+    # Get the list of all admin users
+    # This endpoint allows you to list all Admin users of your Admin account
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetCorporateInvitedUsersList, Fixnum, Hash)>] GetCorporateInvitedUsersList data, response status code and response headers
+    def get_corporate_invited_users_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.get_corporate_invited_users_list ...'
+      end
+      # resource path
+      local_var_path = '/corporate/invited/users'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'GetCorporateInvitedUsersList')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#get_corporate_invited_users_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Check admin user permissions
+    # @param email Email of the invited user
+    # @param [Hash] opts the optional parameters
+    # @return [GetCorporateUserPermission]
+    def get_corporate_user_permission(email, opts = {})
+      data, _status_code, _headers = get_corporate_user_permission_with_http_info(email, opts)
+      data
+    end
+
+    # Check admin user permissions
+    # @param email Email of the invited user
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetCorporateUserPermission, Fixnum, Hash)>] GetCorporateUserPermission data, response status code and response headers
+    def get_corporate_user_permission_with_http_info(email, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.get_corporate_user_permission ...'
+      end
+      # verify the required parameter 'email' is set
+      if @api_client.config.client_side_validation && email.nil?
+        fail ArgumentError, "Missing the required parameter 'email' when calling MasterAccountApi.get_corporate_user_permission"
+      end
+      # resource path
+      local_var_path = '/corporate/user/{email}/permissions'.sub('{' + 'email' + '}', email.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'GetCorporateUserPermission')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#get_corporate_user_permission\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get the list of groups
+    # This endpoint allows you to list all groups created on your Admin account.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<InlineResponse2001>]
+    def get_sub_account_groups(opts = {})
+      data, _status_code, _headers = get_sub_account_groups_with_http_info(opts)
+      data
+    end
+
+    # Get the list of groups
+    # This endpoint allows you to list all groups created on your Admin account.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<InlineResponse2001>, Fixnum, Hash)>] Array<InlineResponse2001> data, response status code and response headers
+    def get_sub_account_groups_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.get_sub_account_groups ...'
+      end
+      # resource path
+      local_var_path = '/corporate/groups'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<InlineResponse2001>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#get_sub_account_groups\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Send invitation to an admin user
+    # `This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - `my_plan`:   - \"all\" - `api`:   - \"none\" - `user_management`:   - \"all\" - `app_management` | Not available in ENTv2:   - \"all\"  **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it's assumed that all permissions will be there for the invited admin user. 
+    # @param send_invitation Payload to send an invitation
+    # @param [Hash] opts the optional parameters
+    # @return [InviteAdminUser]
+    def invite_admin_user(send_invitation, opts = {})
+      data, _status_code, _headers = invite_admin_user_with_http_info(send_invitation, opts)
+      data
+    end
+
+    # Send invitation to an admin user
+    # &#x60;This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - &#x60;my_plan&#x60;:   - \&quot;all\&quot; - &#x60;api&#x60;:   - \&quot;none\&quot; - &#x60;user_management&#x60;:   - \&quot;all\&quot; - &#x60;app_management&#x60; | Not available in ENTv2:   - \&quot;all\&quot;  **Note**: - If &#x60;all_features_access: false&#x60; then only privileges are required otherwise if &#x60;true&#x60; then it&#39;s assumed that all permissions will be there for the invited admin user. 
+    # @param send_invitation Payload to send an invitation
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InviteAdminUser, Fixnum, Hash)>] InviteAdminUser data, response status code and response headers
+    def invite_admin_user_with_http_info(send_invitation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MasterAccountApi.invite_admin_user ...'
+      end
+      # verify the required parameter 'send_invitation' is set
+      if @api_client.config.client_side_validation && send_invitation.nil?
+        fail ArgumentError, "Missing the required parameter 'send_invitation' when calling MasterAccountApi.invite_admin_user"
+      end
+      # resource path
+      local_var_path = '/corporate/user/invitation/send'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(send_invitation)
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InviteAdminUser')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MasterAccountApi#invite_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

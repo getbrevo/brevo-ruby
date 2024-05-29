@@ -14,30 +14,25 @@ require 'date'
 
 module Brevo
   class Body
-    # Name of company
-    attr_accessor :name
+    # The name of the group of sub-accounts
+    attr_accessor :group_name
 
-    # Attributes for company creation
-    attr_accessor :attributes
-
-    # Country code if phone_number is passed in attributes.
-    attr_accessor :country_code
+    # Pass the list of sub-account Ids to be included in the group
+    attr_accessor :sub_account_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'attributes' => :'attributes',
-        :'country_code' => :'countryCode'
+        :'group_name' => :'groupName',
+        :'sub_account_ids' => :'subAccountIds'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'attributes' => :'Object',
-        :'country_code' => :'Integer'
+        :'group_name' => :'String',
+        :'sub_account_ids' => :'Array<Integer>'
       }
     end
 
@@ -49,16 +44,14 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'groupName')
+        self.group_name = attributes[:'groupName']
       end
 
-      if attributes.has_key?(:'attributes')
-        self.attributes = attributes[:'attributes']
-      end
-
-      if attributes.has_key?(:'countryCode')
-        self.country_code = attributes[:'countryCode']
+      if attributes.has_key?(:'subAccountIds')
+        if (value = attributes[:'subAccountIds']).is_a?(Array)
+          self.sub_account_ids = value
+        end
       end
     end
 
@@ -66,8 +59,8 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @group_name.nil?
+        invalid_properties.push('invalid value for "group_name", group_name cannot be nil.')
       end
 
       invalid_properties
@@ -76,7 +69,7 @@ module Brevo
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
+      return false if @group_name.nil?
       true
     end
 
@@ -85,9 +78,8 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          attributes == o.attributes &&
-          country_code == o.country_code
+          group_name == o.group_name &&
+          sub_account_ids == o.sub_account_ids
     end
 
     # @see the `==` method
@@ -99,7 +91,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, attributes, country_code].hash
+      [group_name, sub_account_ids].hash
     end
 
     # Builds the object from hash

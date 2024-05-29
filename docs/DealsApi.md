@@ -92,7 +92,7 @@ end
 api_instance = Brevo::DealsApi.new
 
 opts = { 
-  filters_attributes_deal_name: 'filters_attributes_deal_name_example', # String | Filter by attributes. If you have filter for owner on your side please send it as `filters[attributes.deal_owner]`.\"
+  filters_attributes_deal_name: 'filters_attributes_deal_name_example', # String | Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering.
   filters_linked_companies_ids: 'filters_linked_companies_ids_example', # String | Filter by linked companies ids
   filters_linked_contacts_ids: 'filters_linked_contacts_ids_example', # String | Filter by linked companies ids
   offset: 789, # Integer | Index of the first document of the page
@@ -114,7 +114,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filters_attributes_deal_name** | **String**| Filter by attributes. If you have filter for owner on your side please send it as &#x60;filters[attributes.deal_owner]&#x60;.\&quot; | [optional] 
+ **filters_attributes_deal_name** | **String**| Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering. | [optional] 
  **filters_linked_companies_ids** | **String**| Filter by linked companies ids | [optional] 
  **filters_linked_contacts_ids** | **String**| Filter by linked companies ids | [optional] 
  **offset** | **Integer**| Index of the first document of the page | [optional] 
@@ -276,7 +276,7 @@ api_instance = Brevo::DealsApi.new
 
 id = 'id_example' # String | 
 
-body = Brevo::Body4.new # Body4 | Updated deal details.
+body = Brevo::Body7.new # Body7 | Updated deal details.
 
 
 begin
@@ -292,7 +292,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **body** | [**Body4**](Body4.md)| Updated deal details. | 
+ **body** | [**Body7**](Body7.md)| Updated deal details. | 
 
 ### Return type
 
@@ -335,7 +335,7 @@ api_instance = Brevo::DealsApi.new
 
 id = 'id_example' # String | 
 
-body = Brevo::Body5.new # Body5 | Linked / Unlinked contacts and companies ids.
+body = Brevo::Body8.new # Body8 | Linked / Unlinked contacts and companies ids.
 
 
 begin
@@ -351,7 +351,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **body** | [**Body5**](Body5.md)| Linked / Unlinked contacts and companies ids. | 
+ **body** | [**Body8**](Body8.md)| Linked / Unlinked contacts and companies ids. | 
 
 ### Return type
 
@@ -369,7 +369,7 @@ nil (empty response body)
 
 
 # **crm_deals_post**
-> InlineResponse201 crm_deals_post(body)
+> InlineResponse2011 crm_deals_post(body)
 
 Create a deal
 
@@ -392,7 +392,7 @@ end
 
 api_instance = Brevo::DealsApi.new
 
-body = Brevo::Body3.new # Body3 | Deal create data.
+body = Brevo::Body6.new # Body6 | Deal create data.
 
 
 begin
@@ -408,11 +408,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body3**](Body3.md)| Deal create data. | 
+ **body** | [**Body6**](Body6.md)| Deal create data. | 
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**InlineResponse2011**](InlineResponse2011.md)
 
 ### Authorization
 

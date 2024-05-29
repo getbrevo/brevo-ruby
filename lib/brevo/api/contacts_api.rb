@@ -746,6 +746,8 @@ module Brevo
     # @option opts [String] :modified_since Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
     # @option opts [String] :created_since Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (default to desc)
+    # @option opts [Integer] :segment_id Id of the segment. **Either listIds or segmentId can be passed.**
+    # @option opts [Array<Integer>] :list_ids Ids of the list. **Either listIds or segmentId can be passed.**
     # @return [GetContacts]
     def get_contacts(opts = {})
       data, _status_code, _headers = get_contacts_with_http_info(opts)
@@ -759,6 +761,8 @@ module Brevo
     # @option opts [String] :modified_since Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
     # @option opts [String] :created_since Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
+    # @option opts [Integer] :segment_id Id of the segment. **Either listIds or segmentId can be passed.**
+    # @option opts [Array<Integer>] :list_ids Ids of the list. **Either listIds or segmentId can be passed.**
     # @return [Array<(GetContacts, Fixnum, Hash)>] GetContacts data, response status code and response headers
     def get_contacts_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -785,6 +789,8 @@ module Brevo
       query_params[:'modifiedSince'] = opts[:'modified_since'] if !opts[:'modified_since'].nil?
       query_params[:'createdSince'] = opts[:'created_since'] if !opts[:'created_since'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'segmentId'] = opts[:'segment_id'] if !opts[:'segment_id'].nil?
+      query_params[:'listIds'] = @api_client.build_collection_param(opts[:'list_ids'], :csv) if !opts[:'list_ids'].nil?
 
       # header parameters
       header_params = {}
@@ -1087,6 +1093,8 @@ module Brevo
     # Get a list's details
     # @param list_id Id of the list
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :start_date Mandatory if endDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
+    # @option opts [String] :end_date Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
     # @return [GetExtendedList]
     def get_list(list_id, opts = {})
       data, _status_code, _headers = get_list_with_http_info(list_id, opts)
@@ -1096,6 +1104,8 @@ module Brevo
     # Get a list&#39;s details
     # @param list_id Id of the list
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :start_date Mandatory if endDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
+    # @option opts [String] :end_date Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
     # @return [Array<(GetExtendedList, Fixnum, Hash)>] GetExtendedList data, response status code and response headers
     def get_list_with_http_info(list_id, opts = {})
       if @api_client.config.debugging
@@ -1110,6 +1120,8 @@ module Brevo
 
       # query parameters
       query_params = {}
+      query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
+      query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
 
       # header parameters
       header_params = {}
@@ -1277,7 +1289,7 @@ module Brevo
       return data, status_code, headers
     end
     # Import contacts
-    # It returns the background process ID which on completion calls the notify URL that you have set in the input.
+    # It returns the background process ID which on completion calls the notify URL that you have set in the input.  **Note**: - Any contact attribute that doesn't exist in your account will be ignored at import end. 
     # @param request_contact_import Values to import contacts in Brevo. To know more about the expected format, please have a look at &#x60;&#x60;https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns&#x60;&#x60;
     # @param [Hash] opts the optional parameters
     # @return [CreatedProcessId]
@@ -1287,7 +1299,7 @@ module Brevo
     end
 
     # Import contacts
-    # It returns the background process ID which on completion calls the notify URL that you have set in the input.
+    # It returns the background process ID which on completion calls the notify URL that you have set in the input.  **Note**: - Any contact attribute that doesn&#39;t exist in your account will be ignored at import end. 
     # @param request_contact_import Values to import contacts in Brevo. To know more about the expected format, please have a look at &#x60;&#x60;https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns&#x60;&#x60;
     # @param [Hash] opts the optional parameters
     # @return [Array<(CreatedProcessId, Fixnum, Hash)>] CreatedProcessId data, response status code and response headers

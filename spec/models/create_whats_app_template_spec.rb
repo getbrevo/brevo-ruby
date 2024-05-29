@@ -47,7 +47,7 @@ describe 'CreateWhatsAppTemplate' do
   describe 'test attribute "category"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["MARKETING", "TRANSACTIONAL"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["MARKETING", "UTILITY"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.category = value }.not_to raise_error
       # end
@@ -69,6 +69,16 @@ describe 'CreateWhatsAppTemplate' do
   describe 'test attribute "header_text"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "source"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["Automation", "Conversations"])
+      # validator.allowable_values.each do |value|
+      #   expect { @instance.source = value }.not_to raise_error
+      # end
     end
   end
 

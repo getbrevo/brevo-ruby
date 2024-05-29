@@ -157,8 +157,12 @@ Class | Method | HTTP request | Description
 *Brevo::EcommerceApi* | [**create_update_category**](docs/EcommerceApi.md#create_update_category) | **POST** /categories | Create/Update a category
 *Brevo::EcommerceApi* | [**create_update_product**](docs/EcommerceApi.md#create_update_product) | **POST** /products | Create/Update a product
 *Brevo::EcommerceApi* | [**ecommerce_activate_post**](docs/EcommerceApi.md#ecommerce_activate_post) | **POST** /ecommerce/activate | Activate the eCommerce app
+*Brevo::EcommerceApi* | [**ecommerce_attribution_metrics_conversion_source_conversion_source_id_get**](docs/EcommerceApi.md#ecommerce_attribution_metrics_conversion_source_conversion_source_id_get) | **GET** /ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId} | Get detailed attribution metrics for a single Brevo campaign
+*Brevo::EcommerceApi* | [**ecommerce_attribution_metrics_get**](docs/EcommerceApi.md#ecommerce_attribution_metrics_get) | **GET** /ecommerce/attribution/metrics | Get attribution metrics for one or more Brevo campaigns
+*Brevo::EcommerceApi* | [**ecommerce_attribution_products_conversion_source_conversion_source_id_get**](docs/EcommerceApi.md#ecommerce_attribution_products_conversion_source_conversion_source_id_get) | **GET** /ecommerce/attribution/products/{conversionSource}/{conversionSourceId} | Get attributed product sales for a single Brevo campaign
 *Brevo::EcommerceApi* | [**get_categories**](docs/EcommerceApi.md#get_categories) | **GET** /categories | Return all your categories
 *Brevo::EcommerceApi* | [**get_category_info**](docs/EcommerceApi.md#get_category_info) | **GET** /categories/{id} | Get a category details
+*Brevo::EcommerceApi* | [**get_orders**](docs/EcommerceApi.md#get_orders) | **GET** /orders | Get order details
 *Brevo::EcommerceApi* | [**get_product_info**](docs/EcommerceApi.md#get_product_info) | **GET** /products/{id} | Get a product's details
 *Brevo::EcommerceApi* | [**get_products**](docs/EcommerceApi.md#get_products) | **GET** /products | Return all your products
 *Brevo::EmailCampaignsApi* | [**create_email_campaign**](docs/EmailCampaignsApi.md#create_email_campaign) | **POST** /emailCampaigns | Create an email campaign
@@ -174,6 +178,7 @@ Class | Method | HTTP request | Description
 *Brevo::EmailCampaignsApi* | [**update_campaign_status**](docs/EmailCampaignsApi.md#update_campaign_status) | **PUT** /emailCampaigns/{campaignId}/status | Update an email campaign status
 *Brevo::EmailCampaignsApi* | [**update_email_campaign**](docs/EmailCampaignsApi.md#update_email_campaign) | **PUT** /emailCampaigns/{campaignId} | Update an email campaign
 *Brevo::EmailCampaignsApi* | [**upload_image_to_gallery**](docs/EmailCampaignsApi.md#upload_image_to_gallery) | **POST** /emailCampaigns/images | Upload an image to your account's image gallery
+*Brevo::EventsApi* | [**create_event**](docs/EventsApi.md#create_event) | **POST** /events | Create an event
 *Brevo::ExternalFeedsApi* | [**create_external_feed**](docs/ExternalFeedsApi.md#create_external_feed) | **POST** /feeds | Create an external feed
 *Brevo::ExternalFeedsApi* | [**delete_external_feed**](docs/ExternalFeedsApi.md#delete_external_feed) | **DELETE** /feeds/{uuid} | Delete an external feed
 *Brevo::ExternalFeedsApi* | [**get_all_external_feeds**](docs/ExternalFeedsApi.md#get_all_external_feeds) | **GET** /feeds | Fetch all external feeds
@@ -187,7 +192,13 @@ Class | Method | HTTP request | Description
 *Brevo::InboundParsingApi* | [**get_inbound_email_attachment**](docs/InboundParsingApi.md#get_inbound_email_attachment) | **GET** /inbound/attachments/{downloadToken} | Retrieve inbound attachment with download token.
 *Brevo::InboundParsingApi* | [**get_inbound_email_events**](docs/InboundParsingApi.md#get_inbound_email_events) | **GET** /inbound/events | Get the list of all the events for the received emails.
 *Brevo::InboundParsingApi* | [**get_inbound_email_events_by_uuid**](docs/InboundParsingApi.md#get_inbound_email_events_by_uuid) | **GET** /inbound/events/{uuid} | Fetch all events history for one particular received email.
+*Brevo::MasterAccountApi* | [**corporate_group_id_delete**](docs/MasterAccountApi.md#corporate_group_id_delete) | **DELETE** /corporate/group/{id} | Delete a group
+*Brevo::MasterAccountApi* | [**corporate_group_id_get**](docs/MasterAccountApi.md#corporate_group_id_get) | **GET** /corporate/group/{id} | GET a group details
+*Brevo::MasterAccountApi* | [**corporate_group_id_put**](docs/MasterAccountApi.md#corporate_group_id_put) | **PUT** /corporate/group/{id} | Update a group of sub-accounts
+*Brevo::MasterAccountApi* | [**corporate_group_post**](docs/MasterAccountApi.md#corporate_group_post) | **POST** /corporate/group | Create a new group of sub-accounts
+*Brevo::MasterAccountApi* | [**corporate_group_unlink_group_id_sub_accounts_put**](docs/MasterAccountApi.md#corporate_group_unlink_group_id_sub_accounts_put) | **PUT** /corporate/group/unlink/{groupId}/subAccounts | Delete sub-account from group
 *Brevo::MasterAccountApi* | [**corporate_master_account_get**](docs/MasterAccountApi.md#corporate_master_account_get) | **GET** /corporate/masterAccount | Get the details of requested master account
+*Brevo::MasterAccountApi* | [**corporate_sso_token_post**](docs/MasterAccountApi.md#corporate_sso_token_post) | **POST** /corporate/ssoToken | Generate SSO token to access admin account
 *Brevo::MasterAccountApi* | [**corporate_sub_account_get**](docs/MasterAccountApi.md#corporate_sub_account_get) | **GET** /corporate/subAccount | Get the list of all the sub-accounts of the master account.
 *Brevo::MasterAccountApi* | [**corporate_sub_account_id_applications_toggle_put**](docs/MasterAccountApi.md#corporate_sub_account_id_applications_toggle_put) | **PUT** /corporate/subAccount/{id}/applications/toggle | Enable/disable sub-account application(s)
 *Brevo::MasterAccountApi* | [**corporate_sub_account_id_delete**](docs/MasterAccountApi.md#corporate_sub_account_id_delete) | **DELETE** /corporate/subAccount/{id} | Delete a sub-account
@@ -195,8 +206,14 @@ Class | Method | HTTP request | Description
 *Brevo::MasterAccountApi* | [**corporate_sub_account_id_plan_put**](docs/MasterAccountApi.md#corporate_sub_account_id_plan_put) | **PUT** /corporate/subAccount/{id}/plan | Update sub-account plan
 *Brevo::MasterAccountApi* | [**corporate_sub_account_key_post**](docs/MasterAccountApi.md#corporate_sub_account_key_post) | **POST** /corporate/subAccount/key | Create an API key for a sub-account
 *Brevo::MasterAccountApi* | [**corporate_sub_account_post**](docs/MasterAccountApi.md#corporate_sub_account_post) | **POST** /corporate/subAccount | Create a new sub-account under a master account.
-*Brevo::MasterAccountApi* | [**corporate_sub_account_sso_token_post**](docs/MasterAccountApi.md#corporate_sub_account_sso_token_post) | **POST** /corporate/subAccount/ssoToken | Generate SSO token to access Brevo
+*Brevo::MasterAccountApi* | [**corporate_sub_account_sso_token_post**](docs/MasterAccountApi.md#corporate_sub_account_sso_token_post) | **POST** /corporate/subAccount/ssoToken | Generate SSO token to access sub-account
+*Brevo::MasterAccountApi* | [**corporate_user_invitation_action_email_put**](docs/MasterAccountApi.md#corporate_user_invitation_action_email_put) | **PUT** /corporate/user/invitation/{action}/{email} | Resend / cancel admin user invitation
+*Brevo::MasterAccountApi* | [**corporate_user_revoke_email_delete**](docs/MasterAccountApi.md#corporate_user_revoke_email_delete) | **DELETE** /corporate/user/revoke/{email} | Revoke an admin user
 *Brevo::MasterAccountApi* | [**get_account_activity**](docs/MasterAccountApi.md#get_account_activity) | **GET** /organization/activities | Get user activity logs
+*Brevo::MasterAccountApi* | [**get_corporate_invited_users_list**](docs/MasterAccountApi.md#get_corporate_invited_users_list) | **GET** /corporate/invited/users | Get the list of all admin users
+*Brevo::MasterAccountApi* | [**get_corporate_user_permission**](docs/MasterAccountApi.md#get_corporate_user_permission) | **GET** /corporate/user/{email}/permissions | Check admin user permissions
+*Brevo::MasterAccountApi* | [**get_sub_account_groups**](docs/MasterAccountApi.md#get_sub_account_groups) | **GET** /corporate/groups | Get the list of groups
+*Brevo::MasterAccountApi* | [**invite_admin_user**](docs/MasterAccountApi.md#invite_admin_user) | **POST** /corporate/user/invitation/send | Send invitation to an admin user
 *Brevo::NotesApi* | [**crm_notes_get**](docs/NotesApi.md#crm_notes_get) | **GET** /crm/notes | Get all notes
 *Brevo::NotesApi* | [**crm_notes_id_delete**](docs/NotesApi.md#crm_notes_id_delete) | **DELETE** /crm/notes/{id} | Delete a note
 *Brevo::NotesApi* | [**crm_notes_id_get**](docs/NotesApi.md#crm_notes_id_get) | **GET** /crm/notes/{id} | Get a note
@@ -263,7 +280,7 @@ Class | Method | HTTP request | Description
 *Brevo::TransactionalEmailsApi* | [**send_test_template**](docs/TransactionalEmailsApi.md#send_test_template) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
 *Brevo::TransactionalEmailsApi* | [**send_transac_email**](docs/TransactionalEmailsApi.md#send_transac_email) | **POST** /smtp/email | Send a transactional email
 *Brevo::TransactionalEmailsApi* | [**smtp_blocked_contacts_email_delete**](docs/TransactionalEmailsApi.md#smtp_blocked_contacts_email_delete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
-*Brevo::TransactionalEmailsApi* | [**smtp_log_message_id_delete**](docs/TransactionalEmailsApi.md#smtp_log_message_id_delete) | **DELETE** /smtp/log/{messageId} | Delete an SMTP transactional log
+*Brevo::TransactionalEmailsApi* | [**smtp_log_identifier_delete**](docs/TransactionalEmailsApi.md#smtp_log_identifier_delete) | **DELETE** /smtp/log/{identifier} | Delete an SMTP transactional log
 *Brevo::TransactionalEmailsApi* | [**update_smtp_template**](docs/TransactionalEmailsApi.md#update_smtp_template) | **PUT** /smtp/templates/{templateId} | Update an email template
 *Brevo::TransactionalSMSApi* | [**get_sms_events**](docs/TransactionalSMSApi.md#get_sms_events) | **GET** /transactionalSMS/statistics/events | Get all your SMS activity (unaggregated events)
 *Brevo::TransactionalSMSApi* | [**get_transac_aggregated_sms_report**](docs/TransactionalSMSApi.md#get_transac_aggregated_sms_report) | **GET** /transactionalSMS/statistics/aggregatedReport | Get your SMS activity aggregated over a period of time
@@ -271,11 +288,15 @@ Class | Method | HTTP request | Description
 *Brevo::TransactionalSMSApi* | [**send_transac_sms**](docs/TransactionalSMSApi.md#send_transac_sms) | **POST** /transactionalSMS/sms | Send SMS message to a mobile number
 *Brevo::TransactionalWhatsAppApi* | [**get_whatsapp_event_report**](docs/TransactionalWhatsAppApi.md#get_whatsapp_event_report) | **GET** /whatsapp/statistics/events | Get all your WhatsApp activity (unaggregated events)
 *Brevo::TransactionalWhatsAppApi* | [**send_whatsapp_message**](docs/TransactionalWhatsAppApi.md#send_whatsapp_message) | **POST** /whatsapp/sendMessage | Send a WhatsApp message
+*Brevo::UserApi* | [**edit_user_permission**](docs/UserApi.md#edit_user_permission) | **POST** /organization/user/update/permissions | Update permission for a user
 *Brevo::UserApi* | [**get_invited_users_list**](docs/UserApi.md#get_invited_users_list) | **GET** /organization/invited/users | Get the list of all your users
 *Brevo::UserApi* | [**get_user_permission**](docs/UserApi.md#get_user_permission) | **GET** /organization/user/{email}/permissions | Check user permission
+*Brevo::UserApi* | [**inviteuser**](docs/UserApi.md#inviteuser) | **POST** /organization/user/invitation/send | Send invitation to user
+*Brevo::UserApi* | [**put_revoke_user_permission**](docs/UserApi.md#put_revoke_user_permission) | **PUT** /organization/user/invitation/revoke/{email} | Revoke user permission
+*Brevo::UserApi* | [**putresendcancelinvitation**](docs/UserApi.md#putresendcancelinvitation) | **PUT** /organization/user/invitation/{action}/{email} | Resend / Cancel invitation
 *Brevo::WebhooksApi* | [**create_webhook**](docs/WebhooksApi.md#create_webhook) | **POST** /webhooks | Create a webhook
 *Brevo::WebhooksApi* | [**delete_webhook**](docs/WebhooksApi.md#delete_webhook) | **DELETE** /webhooks/{webhookId} | Delete a webhook
-*Brevo::WebhooksApi* | [**export_webhooks_history**](docs/WebhooksApi.md#export_webhooks_history) | **POST** /webhooks/export | Export all transactional events
+*Brevo::WebhooksApi* | [**export_webhooks_history**](docs/WebhooksApi.md#export_webhooks_history) | **POST** /webhooks/export | Export all webhook events
 *Brevo::WebhooksApi* | [**get_webhook**](docs/WebhooksApi.md#get_webhook) | **GET** /webhooks/{webhookId} | Get a webhook details
 *Brevo::WebhooksApi* | [**get_webhooks**](docs/WebhooksApi.md#get_webhooks) | **GET** /webhooks | Get all webhooks
 *Brevo::WebhooksApi* | [**update_webhook**](docs/WebhooksApi.md#update_webhook) | **PUT** /webhooks/{webhookId} | Update a webhook
@@ -308,6 +329,9 @@ Class | Method | HTTP request | Description
  - [Brevo::Body10](docs/Body10.md)
  - [Brevo::Body11](docs/Body11.md)
  - [Brevo::Body12](docs/Body12.md)
+ - [Brevo::Body13](docs/Body13.md)
+ - [Brevo::Body14](docs/Body14.md)
+ - [Brevo::Body15](docs/Body15.md)
  - [Brevo::Body2](docs/Body2.md)
  - [Brevo::Body3](docs/Body3.md)
  - [Brevo::Body4](docs/Body4.md)
@@ -325,6 +349,12 @@ Class | Method | HTTP request | Description
  - [Brevo::ConversationsMessage](docs/ConversationsMessage.md)
  - [Brevo::ConversationsMessageFile](docs/ConversationsMessageFile.md)
  - [Brevo::ConversationsMessageFileImageInfo](docs/ConversationsMessageFileImageInfo.md)
+ - [Brevo::ConversionSourceMetrics](docs/ConversionSourceMetrics.md)
+ - [Brevo::ConversionSourceProduct](docs/ConversionSourceProduct.md)
+ - [Brevo::CorporateGroupDetailsResponse](docs/CorporateGroupDetailsResponse.md)
+ - [Brevo::CorporateGroupDetailsResponseGroup](docs/CorporateGroupDetailsResponseGroup.md)
+ - [Brevo::CorporateGroupDetailsResponseSubaccounts](docs/CorporateGroupDetailsResponseSubaccounts.md)
+ - [Brevo::CorporateGroupDetailsResponseUsers](docs/CorporateGroupDetailsResponseUsers.md)
  - [Brevo::CreateApiKeyRequest](docs/CreateApiKeyRequest.md)
  - [Brevo::CreateApiKeyResponse](docs/CreateApiKeyResponse.md)
  - [Brevo::CreateAttribute](docs/CreateAttribute.md)
@@ -380,6 +410,8 @@ Class | Method | HTTP request | Description
  - [Brevo::DeleteHardbounces](docs/DeleteHardbounces.md)
  - [Brevo::EmailExportRecipients](docs/EmailExportRecipients.md)
  - [Brevo::ErrorModel](docs/ErrorModel.md)
+ - [Brevo::Event](docs/Event.md)
+ - [Brevo::EventIdentifiers](docs/EventIdentifiers.md)
  - [Brevo::ExportWebhooksHistory](docs/ExportWebhooksHistory.md)
  - [Brevo::FileData](docs/FileData.md)
  - [Brevo::FileDownloadableLink](docs/FileDownloadableLink.md)
@@ -421,6 +453,13 @@ Class | Method | HTTP request | Description
  - [Brevo::GetContactCampaignStatsUnsubscriptions](docs/GetContactCampaignStatsUnsubscriptions.md)
  - [Brevo::GetContactDetails](docs/GetContactDetails.md)
  - [Brevo::GetContacts](docs/GetContacts.md)
+ - [Brevo::GetCorporateInvitedUsersList](docs/GetCorporateInvitedUsersList.md)
+ - [Brevo::GetCorporateInvitedUsersListFeatureAccess](docs/GetCorporateInvitedUsersListFeatureAccess.md)
+ - [Brevo::GetCorporateInvitedUsersListGroups](docs/GetCorporateInvitedUsersListGroups.md)
+ - [Brevo::GetCorporateInvitedUsersListUsers](docs/GetCorporateInvitedUsersListUsers.md)
+ - [Brevo::GetCorporateUserPermission](docs/GetCorporateUserPermission.md)
+ - [Brevo::GetCorporateUserPermissionFeatureAccess](docs/GetCorporateUserPermissionFeatureAccess.md)
+ - [Brevo::GetCorporateUserPermissionGroups](docs/GetCorporateUserPermissionGroups.md)
  - [Brevo::GetCouponCollection](docs/GetCouponCollection.md)
  - [Brevo::GetDeviceBrowserStats](docs/GetDeviceBrowserStats.md)
  - [Brevo::GetDomainConfigurationModel](docs/GetDomainConfigurationModel.md)
@@ -467,6 +506,7 @@ Class | Method | HTTP request | Description
  - [Brevo::GetIpsFromSender](docs/GetIpsFromSender.md)
  - [Brevo::GetList](docs/GetList.md)
  - [Brevo::GetLists](docs/GetLists.md)
+ - [Brevo::GetOrders](docs/GetOrders.md)
  - [Brevo::GetProcess](docs/GetProcess.md)
  - [Brevo::GetProcesses](docs/GetProcesses.md)
  - [Brevo::GetProductDetails](docs/GetProductDetails.md)
@@ -511,6 +551,8 @@ Class | Method | HTTP request | Description
  - [Brevo::GetWATemplates](docs/GetWATemplates.md)
  - [Brevo::GetWATemplatesTemplates](docs/GetWATemplatesTemplates.md)
  - [Brevo::GetWebhook](docs/GetWebhook.md)
+ - [Brevo::GetWebhookAuth](docs/GetWebhookAuth.md)
+ - [Brevo::GetWebhookHeaders](docs/GetWebhookHeaders.md)
  - [Brevo::GetWebhooks](docs/GetWebhooks.md)
  - [Brevo::GetWhatsAppConfig](docs/GetWhatsAppConfig.md)
  - [Brevo::GetWhatsappCampaignOverview](docs/GetWhatsappCampaignOverview.md)
@@ -520,11 +562,18 @@ Class | Method | HTTP request | Description
  - [Brevo::GetWhatsappEventReportEvents](docs/GetWhatsappEventReportEvents.md)
  - [Brevo::InlineResponse200](docs/InlineResponse200.md)
  - [Brevo::InlineResponse2001](docs/InlineResponse2001.md)
+ - [Brevo::InlineResponse2002](docs/InlineResponse2002.md)
+ - [Brevo::InlineResponse2003](docs/InlineResponse2003.md)
  - [Brevo::InlineResponse201](docs/InlineResponse201.md)
  - [Brevo::InlineResponse2011](docs/InlineResponse2011.md)
  - [Brevo::InlineResponse2012](docs/InlineResponse2012.md)
  - [Brevo::InlineResponse2013](docs/InlineResponse2013.md)
  - [Brevo::InlineResponse2014](docs/InlineResponse2014.md)
+ - [Brevo::InlineResponse2015](docs/InlineResponse2015.md)
+ - [Brevo::InviteAdminUser](docs/InviteAdminUser.md)
+ - [Brevo::InviteAdminUserPrivileges](docs/InviteAdminUserPrivileges.md)
+ - [Brevo::Inviteuser](docs/Inviteuser.md)
+ - [Brevo::InviteuserPrivileges](docs/InviteuserPrivileges.md)
  - [Brevo::ManageIp](docs/ManageIp.md)
  - [Brevo::MasterDetailsResponse](docs/MasterDetailsResponse.md)
  - [Brevo::MasterDetailsResponseBillingInfo](docs/MasterDetailsResponseBillingInfo.md)
@@ -548,6 +597,8 @@ Class | Method | HTTP request | Description
  - [Brevo::PostContactInfoContacts](docs/PostContactInfoContacts.md)
  - [Brevo::PostSendFailed](docs/PostSendFailed.md)
  - [Brevo::PostSendSmsTestFailed](docs/PostSendSmsTestFailed.md)
+ - [Brevo::PutRevokeUserPermission](docs/PutRevokeUserPermission.md)
+ - [Brevo::Putresendcancelinvitation](docs/Putresendcancelinvitation.md)
  - [Brevo::RemainingCreditModel](docs/RemainingCreditModel.md)
  - [Brevo::RemainingCreditModelChild](docs/RemainingCreditModelChild.md)
  - [Brevo::RemainingCreditModelReseller](docs/RemainingCreditModelReseller.md)
@@ -578,6 +629,7 @@ Class | Method | HTTP request | Description
  - [Brevo::SendTransacSms](docs/SendTransacSms.md)
  - [Brevo::SendWhatsappMessage](docs/SendWhatsappMessage.md)
  - [Brevo::SsoTokenRequest](docs/SsoTokenRequest.md)
+ - [Brevo::SsoTokenRequestCorporate](docs/SsoTokenRequestCorporate.md)
  - [Brevo::SubAccountAppsToggleRequest](docs/SubAccountAppsToggleRequest.md)
  - [Brevo::SubAccountDetailsResponse](docs/SubAccountDetailsResponse.md)
  - [Brevo::SubAccountDetailsResponsePlanInfo](docs/SubAccountDetailsResponsePlanInfo.md)

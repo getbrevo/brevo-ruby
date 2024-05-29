@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message_id** | **String** | messageId of sent message | 
+**id** | **String** | The id of the created collection | 
 
 

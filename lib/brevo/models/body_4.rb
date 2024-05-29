@@ -14,17 +14,21 @@ require 'date'
 
 module Brevo
   class Body4
-    # Name of deal
+    # Name of company
     attr_accessor :name
 
-    # Attributes for deal update  If you wish to update the pipeline of a deal you need to provide the `pipeline` and the `deal_stage`.  Pipeline and deal_stage are ids you can fetch using this endpoint `/crm/pipeline/details/{pipelineID}` 
+    # Attributes for company update
     attr_accessor :attributes
+
+    # Country code if phone_number is passed in attributes.
+    attr_accessor :country_code
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'attributes' => :'attributes'
+        :'attributes' => :'attributes',
+        :'country_code' => :'countryCode'
       }
     end
 
@@ -32,7 +36,8 @@ module Brevo
     def self.swagger_types
       {
         :'name' => :'String',
-        :'attributes' => :'Object'
+        :'attributes' => :'Object',
+        :'country_code' => :'Integer'
       }
     end
 
@@ -50,6 +55,10 @@ module Brevo
 
       if attributes.has_key?(:'attributes')
         self.attributes = attributes[:'attributes']
+      end
+
+      if attributes.has_key?(:'countryCode')
+        self.country_code = attributes[:'countryCode']
       end
     end
 
@@ -72,7 +81,8 @@ module Brevo
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          attributes == o.attributes
+          attributes == o.attributes &&
+          country_code == o.country_code
     end
 
     # @see the `==` method
@@ -84,7 +94,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, attributes].hash
+      [name, attributes, country_code].hash
     end
 
     # Builds the object from hash

@@ -14,23 +14,32 @@ require 'date'
 
 module Brevo
   class GetCouponCollection
-    # The id of the collection
+    # The id of the collection.
     attr_accessor :id
 
-    # The name of the collection
+    # The name of the collection.
     attr_accessor :name
 
-    # The default coupon of the collection
+    # The default coupon of the collection.
     attr_accessor :default_coupon
 
-    # Datetime on which the collection was created
+    # Datetime on which the collection was created.
     attr_accessor :created_at
 
-    # Total coupons in the collection
+    # Total number of coupons in the collection.
     attr_accessor :total_coupons
 
-    # Not sent coupons in the collection
+    # Number of coupons that have not been sent yet.
     attr_accessor :remaining_coupons
+
+    # Expiration date for the coupon collection in RFC3339 format.
+    attr_accessor :expiration_date
+
+    # If present, an email notification is going to be sent the defined amount of days before the expiration date.
+    attr_accessor :remaining_days_alert
+
+    # If present, an email notification is going to be sent when the total number of available coupons falls below the defined threshold.
+    attr_accessor :remaining_coupons_alert
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -40,7 +49,10 @@ module Brevo
         :'default_coupon' => :'defaultCoupon',
         :'created_at' => :'createdAt',
         :'total_coupons' => :'totalCoupons',
-        :'remaining_coupons' => :'remainingCoupons'
+        :'remaining_coupons' => :'remainingCoupons',
+        :'expiration_date' => :'expirationDate',
+        :'remaining_days_alert' => :'remainingDaysAlert',
+        :'remaining_coupons_alert' => :'remainingCouponsAlert'
       }
     end
 
@@ -52,7 +64,10 @@ module Brevo
         :'default_coupon' => :'String',
         :'created_at' => :'DateTime',
         :'total_coupons' => :'Integer',
-        :'remaining_coupons' => :'Integer'
+        :'remaining_coupons' => :'Integer',
+        :'expiration_date' => :'DateTime',
+        :'remaining_days_alert' => :'Integer',
+        :'remaining_coupons_alert' => :'Integer'
       }
     end
 
@@ -86,6 +101,18 @@ module Brevo
 
       if attributes.has_key?(:'remainingCoupons')
         self.remaining_coupons = attributes[:'remainingCoupons']
+      end
+
+      if attributes.has_key?(:'expirationDate')
+        self.expiration_date = attributes[:'expirationDate']
+      end
+
+      if attributes.has_key?(:'remainingDaysAlert')
+        self.remaining_days_alert = attributes[:'remainingDaysAlert']
+      end
+
+      if attributes.has_key?(:'remainingCouponsAlert')
+        self.remaining_coupons_alert = attributes[:'remainingCouponsAlert']
       end
     end
 
@@ -142,7 +169,10 @@ module Brevo
           default_coupon == o.default_coupon &&
           created_at == o.created_at &&
           total_coupons == o.total_coupons &&
-          remaining_coupons == o.remaining_coupons
+          remaining_coupons == o.remaining_coupons &&
+          expiration_date == o.expiration_date &&
+          remaining_days_alert == o.remaining_days_alert &&
+          remaining_coupons_alert == o.remaining_coupons_alert
     end
 
     # @see the `==` method
@@ -154,7 +184,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, default_coupon, created_at, total_coupons, remaining_coupons].hash
+      [id, name, default_coupon, created_at, total_coupons, remaining_coupons, expiration_date, remaining_days_alert, remaining_coupons_alert].hash
     end
 
     # Builds the object from hash

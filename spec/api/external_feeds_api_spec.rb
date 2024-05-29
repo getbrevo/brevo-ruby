@@ -37,7 +37,7 @@ describe 'ExternalFeedsApi' do
   # This endpoint will create an external feed.
   # @param create_external_feed Values to create a feed
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2014]
+  # @return [InlineResponse2015]
   describe 'create_external_feed test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

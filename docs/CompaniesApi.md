@@ -273,7 +273,7 @@ api_instance = Brevo::CompaniesApi.new
 
 id = 'id_example' # String | 
 
-body = Brevo::Body1.new # Body1 | Updated company details.
+body = Brevo::Body4.new # Body4 | Updated company details.
 
 
 begin
@@ -290,7 +290,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **body** | [**Body1**](Body1.md)| Updated company details. | 
+ **body** | [**Body4**](Body4.md)| Updated company details. | 
 
 ### Return type
 
@@ -333,7 +333,7 @@ api_instance = Brevo::CompaniesApi.new
 
 id = 'id_example' # String | 
 
-body = Brevo::Body2.new # Body2 | Linked / Unlinked contacts and deals ids.
+body = Brevo::Body5.new # Body5 | Linked / Unlinked contacts and deals ids.
 
 
 begin
@@ -349,7 +349,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **body** | [**Body2**](Body2.md)| Linked / Unlinked contacts and deals ids. | 
+ **body** | [**Body5**](Body5.md)| Linked / Unlinked contacts and deals ids. | 
 
 ### Return type
 
@@ -367,7 +367,7 @@ nil (empty response body)
 
 
 # **companies_post**
-> InlineResponse200 companies_post(body)
+> InlineResponse2002 companies_post(body)
 
 Create a company
 
@@ -390,7 +390,7 @@ end
 
 api_instance = Brevo::CompaniesApi.new
 
-body = Brevo::Body.new # Body | Company create data.
+body = Brevo::Body3.new # Body3 | Company create data.
 
 
 begin
@@ -406,11 +406,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body**](Body.md)| Company create data. | 
+ **body** | [**Body3**](Body3.md)| Company create data. | 
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 

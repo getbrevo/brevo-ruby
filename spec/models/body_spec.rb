@@ -32,19 +32,13 @@ describe 'Body' do
       expect(@instance).to be_instance_of(Brevo::Body)
     end
   end
-  describe 'test attribute "name"' do
+  describe 'test attribute "group_name"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "attributes"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "country_code"' do
+  describe 'test attribute "sub_account_ids"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

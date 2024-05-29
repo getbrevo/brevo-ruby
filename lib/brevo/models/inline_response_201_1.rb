@@ -13,9 +13,9 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module Brevo
-  # Task Details
+  # Created deal id
   class InlineResponse2011
-    # Unique task id
+    # Unique deal id
     attr_accessor :id
 
     # Attribute mapping from ruby-style variable name to JSON key.

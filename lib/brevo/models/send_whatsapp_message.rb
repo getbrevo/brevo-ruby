@@ -23,6 +23,9 @@ module Brevo
     # WhatsApp Number with country code. Example, 85264318721
     attr_accessor :sender_number
 
+    # Pass the set of attributes to customize the template. For example, {\"FNAME\":\"Joe\", \"LNAME\":\"Doe\"}.
+    attr_accessor :params
+
     # List of phone numbers of the contacts
     attr_accessor :contact_numbers
 
@@ -32,6 +35,7 @@ module Brevo
         :'template_id' => :'templateId',
         :'text' => :'text',
         :'sender_number' => :'senderNumber',
+        :'params' => :'params',
         :'contact_numbers' => :'contactNumbers'
       }
     end
@@ -42,6 +46,7 @@ module Brevo
         :'template_id' => :'Integer',
         :'text' => :'String',
         :'sender_number' => :'String',
+        :'params' => :'Object',
         :'contact_numbers' => :'Array<String>'
       }
     end
@@ -64,6 +69,10 @@ module Brevo
 
       if attributes.has_key?(:'senderNumber')
         self.sender_number = attributes[:'senderNumber']
+      end
+
+      if attributes.has_key?(:'params')
+        self.params = attributes[:'params']
       end
 
       if attributes.has_key?(:'contactNumbers')
@@ -104,6 +113,7 @@ module Brevo
           template_id == o.template_id &&
           text == o.text &&
           sender_number == o.sender_number &&
+          params == o.params &&
           contact_numbers == o.contact_numbers
     end
 
@@ -116,7 +126,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [template_id, text, sender_number, contact_numbers].hash
+      [template_id, text, sender_number, params, contact_numbers].hash
     end
 
     # Builds the object from hash

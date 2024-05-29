@@ -74,6 +74,12 @@ describe 'RequestContactImport' do
     end
   end
 
+  describe 'test attribute "disable_notification"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "sms_blacklist"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

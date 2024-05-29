@@ -119,7 +119,7 @@ module Brevo
     # This endpoint is used to send a WhatsApp message. <br/>(**The first message you send using the API must contain a Template ID. You must create a template on WhatsApp on the Brevo platform to fetch the Template ID.**)
     # @param send_whatsapp_message Values to send WhatsApp message
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2013]
+    # @return [InlineResponse2014]
     def send_whatsapp_message(send_whatsapp_message, opts = {})
       data, _status_code, _headers = send_whatsapp_message_with_http_info(send_whatsapp_message, opts)
       data
@@ -129,7 +129,7 @@ module Brevo
     # This endpoint is used to send a WhatsApp message. &lt;br/&gt;(**The first message you send using the API must contain a Template ID. You must create a template on WhatsApp on the Brevo platform to fetch the Template ID.**)
     # @param send_whatsapp_message Values to send WhatsApp message
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2013, Fixnum, Hash)>] InlineResponse2013 data, response status code and response headers
+    # @return [Array<(InlineResponse2014, Fixnum, Hash)>] InlineResponse2014 data, response status code and response headers
     def send_whatsapp_message_with_http_info(send_whatsapp_message, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionalWhatsAppApi.send_whatsapp_message ...'
@@ -163,7 +163,7 @@ module Brevo
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse2013')
+        :return_type => 'InlineResponse2014')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TransactionalWhatsAppApi#send_whatsapp_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

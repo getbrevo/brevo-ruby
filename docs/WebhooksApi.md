@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_webhook**](WebhooksApi.md#create_webhook) | **POST** /webhooks | Create a webhook
 [**delete_webhook**](WebhooksApi.md#delete_webhook) | **DELETE** /webhooks/{webhookId} | Delete a webhook
-[**export_webhooks_history**](WebhooksApi.md#export_webhooks_history) | **POST** /webhooks/export | Export all transactional events
+[**export_webhooks_history**](WebhooksApi.md#export_webhooks_history) | **POST** /webhooks/export | Export all webhook events
 [**get_webhook**](WebhooksApi.md#get_webhook) | **GET** /webhooks/{webhookId} | Get a webhook details
 [**get_webhooks**](WebhooksApi.md#get_webhooks) | **GET** /webhooks | Get all webhooks
 [**update_webhook**](WebhooksApi.md#update_webhook) | **PUT** /webhooks/{webhookId} | Update a webhook
@@ -128,9 +128,9 @@ nil (empty response body)
 # **export_webhooks_history**
 > CreatedProcessId export_webhooks_history(export_webhook_history)
 
-Export all transactional events
+Export all webhook events
 
-This endpoint will submit a request to get the history of webhooks in the CSV file. The link to download that CSV file will send to the webhook link provided in notifyURL of the body payload.
+This endpoint will submit a request to get the history of webhooks in the CSV file. The link to download the CSV file will be sent to the webhook that was provided in the notifyURL.
 
 ### Example
 ```ruby
@@ -155,7 +155,7 @@ export_webhook_history = Brevo::ExportWebhooksHistory.new # ExportWebhooksHistor
 
 
 begin
-  #Export all transactional events
+  #Export all webhook events
   result = api_instance.export_webhooks_history(export_webhook_history)
   p result
 rescue Brevo::ApiError => e

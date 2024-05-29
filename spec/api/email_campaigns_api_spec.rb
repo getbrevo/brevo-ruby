@@ -83,7 +83,6 @@ describe 'EmailCampaignsApi' do
   # @param campaign_id Id of the campaign
   # @param [Hash] opts the optional parameters
   # @option opts [String] :statistics Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.
-  # @option opts [String] :utm_value Get email campaign report on the basis of custom UTM Value.**You can use either campaignId or utmValue to fetch campaign report.To use utmValue filter pass campaignId as empty.**
   # @return [GetEmailCampaign]
   describe 'get_email_campaign test' do
     it 'should work' do

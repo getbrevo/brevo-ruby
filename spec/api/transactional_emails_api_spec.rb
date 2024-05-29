@@ -304,12 +304,12 @@ describe 'TransactionalEmailsApi' do
     end
   end
 
-  # unit tests for smtp_log_message_id_delete
+  # unit tests for smtp_log_identifier_delete
   # Delete an SMTP transactional log
-  # @param message_id MessageId of the transactional log to delete
+  # @param identifier MessageId or Email of the transactional log(s) to delete
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'smtp_log_message_id_delete test' do
+  describe 'smtp_log_identifier_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

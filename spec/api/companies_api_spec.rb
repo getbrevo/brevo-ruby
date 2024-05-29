@@ -109,7 +109,7 @@ describe 'CompaniesApi' do
   # Create a company
   # @param body Company create data.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse200]
+  # @return [InlineResponse2002]
   describe 'companies_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

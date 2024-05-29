@@ -20,11 +20,15 @@ module Brevo
     # Notify Url provided by client to get the status of batch request
     attr_accessor :notify_url
 
+    # Defines wether you want your orders to be considered as live data or as historical data (import of past data, synchronising data). True: orders will not trigger any automation workflows. False: orders will trigger workflows as usual.
+    attr_accessor :historical
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'orders' => :'orders',
-        :'notify_url' => :'notifyUrl'
+        :'notify_url' => :'notifyUrl',
+        :'historical' => :'historical'
       }
     end
 
@@ -32,7 +36,8 @@ module Brevo
     def self.swagger_types
       {
         :'orders' => :'Array<Order>',
-        :'notify_url' => :'String'
+        :'notify_url' => :'String',
+        :'historical' => :'BOOLEAN'
       }
     end
 
@@ -52,6 +57,12 @@ module Brevo
 
       if attributes.has_key?(:'notifyUrl')
         self.notify_url = attributes[:'notifyUrl']
+      end
+
+      if attributes.has_key?(:'historical')
+        self.historical = attributes[:'historical']
+      else
+        self.historical = true
       end
     end
 
@@ -79,7 +90,8 @@ module Brevo
       return true if self.equal?(o)
       self.class == o.class &&
           orders == o.orders &&
-          notify_url == o.notify_url
+          notify_url == o.notify_url &&
+          historical == o.historical
     end
 
     # @see the `==` method
@@ -91,7 +103,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [orders, notify_url].hash
+      [orders, notify_url, historical].hash
     end
 
     # Builds the object from hash

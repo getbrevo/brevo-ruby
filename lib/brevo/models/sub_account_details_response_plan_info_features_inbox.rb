@@ -13,7 +13,7 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module Brevo
-  # Inbox details
+  # Inbox details / Not available on ENTv2
   class SubAccountDetailsResponsePlanInfoFeaturesInbox
     # Quantity of inbox provided
     attr_accessor :quantity

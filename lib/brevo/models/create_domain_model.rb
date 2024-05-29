@@ -20,6 +20,9 @@ module Brevo
     # Domain
     attr_accessor :domain_name
 
+    # Domain Provider
+    attr_accessor :domain_provider
+
     # Success message
     attr_accessor :message
 
@@ -30,6 +33,7 @@ module Brevo
       {
         :'id' => :'id',
         :'domain_name' => :'domain_name',
+        :'domain_provider' => :'domain_provider',
         :'message' => :'message',
         :'dns_records' => :'dns_records'
       }
@@ -40,6 +44,7 @@ module Brevo
       {
         :'id' => :'Integer',
         :'domain_name' => :'String',
+        :'domain_provider' => :'String',
         :'message' => :'String',
         :'dns_records' => :'CreateDomainModelDnsRecords'
       }
@@ -59,6 +64,10 @@ module Brevo
 
       if attributes.has_key?(:'domain_name')
         self.domain_name = attributes[:'domain_name']
+      end
+
+      if attributes.has_key?(:'domain_provider')
+        self.domain_provider = attributes[:'domain_provider']
       end
 
       if attributes.has_key?(:'message')
@@ -95,6 +104,7 @@ module Brevo
       self.class == o.class &&
           id == o.id &&
           domain_name == o.domain_name &&
+          domain_provider == o.domain_provider &&
           message == o.message &&
           dns_records == o.dns_records
     end
@@ -108,7 +118,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, domain_name, message, dns_records].hash
+      [id, domain_name, domain_provider, message, dns_records].hash
     end
 
     # Builds the object from hash

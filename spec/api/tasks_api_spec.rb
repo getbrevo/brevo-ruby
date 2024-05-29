@@ -38,7 +38,7 @@ describe 'TasksApi' do
   # @option opts [String] :filter_type Filter by task type (ID)
   # @option opts [String] :filter_status Filter by task status
   # @option opts [String] :filter_date Filter by date
-  # @option opts [String] :filter_assign_to Filter by assignTo id
+  # @option opts [String] :filter_assign_to Filter by the \&quot;assignTo\&quot; ID. You can utilize account emails for the \&quot;assignTo\&quot; attribute.
   # @option opts [String] :filter_contacts Filter by contact ids
   # @option opts [String] :filter_deals Filter by deals ids
   # @option opts [String] :filter_companies Filter by companies ids
@@ -93,7 +93,7 @@ describe 'TasksApi' do
   # Create a task
   # @param body Task name.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2011]
+  # @return [InlineResponse2012]
   describe 'crm_tasks_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

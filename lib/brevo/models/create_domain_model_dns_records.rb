@@ -18,11 +18,14 @@ module Brevo
 
     attr_accessor :brevo_code
 
+    attr_accessor :dmarc_record
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'dkim_record' => :'dkim_record',
-        :'brevo_code' => :'brevo_code'
+        :'brevo_code' => :'brevo_code',
+        :'dmarc_record' => :'dmarc_record'
       }
     end
 
@@ -30,7 +33,8 @@ module Brevo
     def self.swagger_types
       {
         :'dkim_record' => :'CreateDomainModelDnsRecordsDkimRecord',
-        :'brevo_code' => :'CreateDomainModelDnsRecordsDkimRecord'
+        :'brevo_code' => :'CreateDomainModelDnsRecordsDkimRecord',
+        :'dmarc_record' => :'CreateDomainModelDnsRecordsDkimRecord'
       }
     end
 
@@ -48,6 +52,10 @@ module Brevo
 
       if attributes.has_key?(:'brevo_code')
         self.brevo_code = attributes[:'brevo_code']
+      end
+
+      if attributes.has_key?(:'dmarc_record')
+        self.dmarc_record = attributes[:'dmarc_record']
       end
     end
 
@@ -70,7 +78,8 @@ module Brevo
       return true if self.equal?(o)
       self.class == o.class &&
           dkim_record == o.dkim_record &&
-          brevo_code == o.brevo_code
+          brevo_code == o.brevo_code &&
+          dmarc_record == o.dmarc_record
     end
 
     # @see the `==` method
@@ -82,7 +91,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [dkim_record, brevo_code].hash
+      [dkim_record, brevo_code, dmarc_record].hash
     end
 
     # Builds the object from hash

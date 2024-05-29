@@ -77,7 +77,7 @@ module Brevo
     end
     # Get all deals
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :filters_attributes_deal_name Filter by attributes. If you have filter for owner on your side please send it as &#x60;filters[attributes.deal_owner]&#x60;.\&quot;
+    # @option opts [String] :filters_attributes_deal_name Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering.
     # @option opts [String] :filters_linked_companies_ids Filter by linked companies ids
     # @option opts [String] :filters_linked_contacts_ids Filter by linked companies ids
     # @option opts [Integer] :offset Index of the first document of the page
@@ -92,7 +92,7 @@ module Brevo
 
     # Get all deals
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :filters_attributes_deal_name Filter by attributes. If you have filter for owner on your side please send it as &#x60;filters[attributes.deal_owner]&#x60;.\&quot;
+    # @option opts [String] :filters_attributes_deal_name Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering.
     # @option opts [String] :filters_linked_companies_ids Filter by linked companies ids
     # @option opts [String] :filters_linked_contacts_ids Filter by linked companies ids
     # @option opts [Integer] :offset Index of the first document of the page
@@ -365,7 +365,7 @@ module Brevo
     # Create a deal
     # @param body Deal create data.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse201]
+    # @return [InlineResponse2011]
     def crm_deals_post(body, opts = {})
       data, _status_code, _headers = crm_deals_post_with_http_info(body, opts)
       data
@@ -374,7 +374,7 @@ module Brevo
     # Create a deal
     # @param body Deal create data.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse201, Fixnum, Hash)>] InlineResponse201 data, response status code and response headers
+    # @return [Array<(InlineResponse2011, Fixnum, Hash)>] InlineResponse2011 data, response status code and response headers
     def crm_deals_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.crm_deals_post ...'
@@ -408,7 +408,7 @@ module Brevo
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse201')
+        :return_type => 'InlineResponse2011')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#crm_deals_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

@@ -34,6 +34,14 @@ module Brevo
     # Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)
     attr_accessor :modified_at
 
+    # To send batched webhooks
+    attr_accessor :batched
+
+    attr_accessor :auth
+
+    # Custom headers to be send with webhooks
+    attr_accessor :headers
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -65,7 +73,10 @@ module Brevo
         :'events' => :'events',
         :'type' => :'type',
         :'created_at' => :'createdAt',
-        :'modified_at' => :'modifiedAt'
+        :'modified_at' => :'modifiedAt',
+        :'batched' => :'batched',
+        :'auth' => :'auth',
+        :'headers' => :'headers'
       }
     end
 
@@ -78,7 +89,10 @@ module Brevo
         :'events' => :'Array<String>',
         :'type' => :'String',
         :'created_at' => :'String',
-        :'modified_at' => :'String'
+        :'modified_at' => :'String',
+        :'batched' => :'BOOLEAN',
+        :'auth' => :'GetWebhookAuth',
+        :'headers' => :'Array<GetWebhookHeaders>'
       }
     end
 
@@ -118,6 +132,20 @@ module Brevo
 
       if attributes.has_key?(:'modifiedAt')
         self.modified_at = attributes[:'modifiedAt']
+      end
+
+      if attributes.has_key?(:'batched')
+        self.batched = attributes[:'batched']
+      end
+
+      if attributes.has_key?(:'auth')
+        self.auth = attributes[:'auth']
+      end
+
+      if attributes.has_key?(:'headers')
+        if (value = attributes[:'headers']).is_a?(Array)
+          self.headers = value
+        end
       end
     end
 
@@ -192,7 +220,10 @@ module Brevo
           events == o.events &&
           type == o.type &&
           created_at == o.created_at &&
-          modified_at == o.modified_at
+          modified_at == o.modified_at &&
+          batched == o.batched &&
+          auth == o.auth &&
+          headers == o.headers
     end
 
     # @see the `==` method
@@ -204,7 +235,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [url, id, description, events, type, created_at, modified_at].hash
+      [url, id, description, events, type, created_at, modified_at, batched, auth, headers].hash
     end
 
     # Builds the object from hash

@@ -32,7 +32,7 @@ module Brevo
     # Create а coupon collection
     # @param create_coupon_collection Values to create a coupon collection
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2012]
+    # @return [InlineResponse2013]
     def create_coupon_collection(create_coupon_collection, opts = {})
       data, _status_code, _headers = create_coupon_collection_with_http_info(create_coupon_collection, opts)
       data
@@ -41,7 +41,7 @@ module Brevo
     # Create а coupon collection
     # @param create_coupon_collection Values to create a coupon collection
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2012, Fixnum, Hash)>] InlineResponse2012 data, response status code and response headers
+    # @return [Array<(InlineResponse2013, Fixnum, Hash)>] InlineResponse2013 data, response status code and response headers
     def create_coupon_collection_with_http_info(create_coupon_collection, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CouponsApi.create_coupon_collection ...'
@@ -75,7 +75,7 @@ module Brevo
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse2012')
+        :return_type => 'InlineResponse2013')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CouponsApi#create_coupon_collection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -189,6 +189,7 @@ module Brevo
     # @option opts [Integer] :limit Number of documents returned per page (default to 50)
     # @option opts [Integer] :offset Index of the first document on the page (default to 0)
     # @option opts [String] :sort Sort the results by creation time in ascending/descending order (default to desc)
+    # @option opts [Object] :sort_by The field used to sort coupon collections
     # @return [GetCouponCollection]
     def get_coupon_collections(opts = {})
       data, _status_code, _headers = get_coupon_collections_with_http_info(opts)
@@ -200,6 +201,7 @@ module Brevo
     # @option opts [Integer] :limit Number of documents returned per page
     # @option opts [Integer] :offset Index of the first document on the page
     # @option opts [String] :sort Sort the results by creation time in ascending/descending order
+    # @option opts [Object] :sort_by The field used to sort coupon collections
     # @return [Array<(GetCouponCollection, Fixnum, Hash)>] GetCouponCollection data, response status code and response headers
     def get_coupon_collections_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -228,6 +230,7 @@ module Brevo
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'sortBy'] = opts[:'sort_by'] if !opts[:'sort_by'].nil?
 
       # header parameters
       header_params = {}
@@ -256,30 +259,26 @@ module Brevo
     end
     # Update a coupon collection by id
     # @param id Id of the collection to update
-    # @param update_coupon_collection Values to update the coupon collection
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2001]
-    def update_coupon_collection(id, update_coupon_collection, opts = {})
-      data, _status_code, _headers = update_coupon_collection_with_http_info(id, update_coupon_collection, opts)
+    # @option opts [UpdateCouponCollection] :update_coupon_collection Values to update the coupon collection
+    # @return [InlineResponse2003]
+    def update_coupon_collection(id, opts = {})
+      data, _status_code, _headers = update_coupon_collection_with_http_info(id, opts)
       data
     end
 
     # Update a coupon collection by id
     # @param id Id of the collection to update
-    # @param update_coupon_collection Values to update the coupon collection
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2001, Fixnum, Hash)>] InlineResponse2001 data, response status code and response headers
-    def update_coupon_collection_with_http_info(id, update_coupon_collection, opts = {})
+    # @option opts [UpdateCouponCollection] :update_coupon_collection Values to update the coupon collection
+    # @return [Array<(InlineResponse2003, Fixnum, Hash)>] InlineResponse2003 data, response status code and response headers
+    def update_coupon_collection_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CouponsApi.update_coupon_collection ...'
       end
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling CouponsApi.update_coupon_collection"
-      end
-      # verify the required parameter 'update_coupon_collection' is set
-      if @api_client.config.client_side_validation && update_coupon_collection.nil?
-        fail ArgumentError, "Missing the required parameter 'update_coupon_collection' when calling CouponsApi.update_coupon_collection"
       end
       # resource path
       local_var_path = '/couponCollections/{id}'.sub('{' + 'id' + '}', id.to_s)
@@ -298,7 +297,7 @@ module Brevo
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(update_coupon_collection)
+      post_body = @api_client.object_to_http_body(opts[:'update_coupon_collection'])
       auth_names = ['api-key', 'partner-key']
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path,
         :header_params => header_params,
@@ -306,7 +305,7 @@ module Brevo
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse2001')
+        :return_type => 'InlineResponse2003')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CouponsApi#update_coupon_collection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

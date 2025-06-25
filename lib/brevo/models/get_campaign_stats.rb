@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -62,6 +62,12 @@ module Brevo
     # Total number of non-delivered campaigns for a particular campaign id.
     attr_accessor :return_bounce
 
+    # Percentage of recipients who open the email out of your total number of recipients. Depending on your Campaign settings, they may include Apple MPP opens.
+    attr_accessor :opens_rate
+
+    # Numbers of times your email has been opened automatically through Apple MPP.
+    attr_accessor :apple_mpp_opens
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -80,7 +86,9 @@ module Brevo
         :'unsubscriptions' => :'unsubscriptions',
         :'viewed' => :'viewed',
         :'deferred' => :'deferred',
-        :'return_bounce' => :'returnBounce'
+        :'return_bounce' => :'returnBounce',
+        :'opens_rate' => :'opensRate',
+        :'apple_mpp_opens' => :'appleMppOpens'
       }
     end
 
@@ -102,7 +110,9 @@ module Brevo
         :'unsubscriptions' => :'Integer',
         :'viewed' => :'Integer',
         :'deferred' => :'Integer',
-        :'return_bounce' => :'Integer'
+        :'return_bounce' => :'Integer',
+        :'opens_rate' => :'Float',
+        :'apple_mpp_opens' => :'Integer'
       }
     end
 
@@ -177,6 +187,14 @@ module Brevo
       if attributes.has_key?(:'returnBounce')
         self.return_bounce = attributes[:'returnBounce']
       end
+
+      if attributes.has_key?(:'opensRate')
+        self.opens_rate = attributes[:'opensRate']
+      end
+
+      if attributes.has_key?(:'appleMppOpens')
+        self.apple_mpp_opens = attributes[:'appleMppOpens']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -227,6 +245,14 @@ module Brevo
         invalid_properties.push('invalid value for "viewed", viewed cannot be nil.')
       end
 
+      if @opens_rate.nil?
+        invalid_properties.push('invalid value for "opens_rate", opens_rate cannot be nil.')
+      end
+
+      if @apple_mpp_opens.nil?
+        invalid_properties.push('invalid value for "apple_mpp_opens", apple_mpp_opens cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -244,6 +270,8 @@ module Brevo
       return false if @trackable_views.nil?
       return false if @unsubscriptions.nil?
       return false if @viewed.nil?
+      return false if @opens_rate.nil?
+      return false if @apple_mpp_opens.nil?
       true
     end
 
@@ -267,7 +295,9 @@ module Brevo
           unsubscriptions == o.unsubscriptions &&
           viewed == o.viewed &&
           deferred == o.deferred &&
-          return_bounce == o.return_bounce
+          return_bounce == o.return_bounce &&
+          opens_rate == o.opens_rate &&
+          apple_mpp_opens == o.apple_mpp_opens
     end
 
     # @see the `==` method
@@ -279,7 +309,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [list_id, unique_clicks, clickers, complaints, delivered, sent, soft_bounces, hard_bounces, unique_views, trackable_views, trackable_views_rate, estimated_views, unsubscriptions, viewed, deferred, return_bounce].hash
+      [list_id, unique_clicks, clickers, complaints, delivered, sent, soft_bounces, hard_bounces, unique_views, trackable_views, trackable_views_rate, estimated_views, unsubscriptions, viewed, deferred, return_bounce, opens_rate, apple_mpp_opens].hash
     end
 
     # Builds the object from hash

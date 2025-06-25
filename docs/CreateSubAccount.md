@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **email** | **String** | Email address for the organization | 
 **language** | **String** | Set the language of the sub-account | [optional] 
 **timezone** | **String** | Set the timezone of the sub-account | [optional] 
+**group_ids** | **Array&lt;String&gt;** | Set the group(s) for the sub-account | [optional] 
 
 

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**get_sms_events**](TransactionalSMSApi.md#get_sms_events) | **GET** /transactionalSMS/statistics/events | Get all your SMS activity (unaggregated events)
 [**get_transac_aggregated_sms_report**](TransactionalSMSApi.md#get_transac_aggregated_sms_report) | **GET** /transactionalSMS/statistics/aggregatedReport | Get your SMS activity aggregated over a period of time
 [**get_transac_sms_report**](TransactionalSMSApi.md#get_transac_sms_report) | **GET** /transactionalSMS/statistics/reports | Get your SMS activity aggregated per day
+[**send_async_transactional_sms**](TransactionalSMSApi.md#send_async_transactional_sms) | **POST** /transactionalSMS/send | Send SMS message asynchronously to a mobile number
 [**send_transac_sms**](TransactionalSMSApi.md#send_transac_sms) | **POST** /transactionalSMS/sms | Send SMS message to a mobile number
 
 
@@ -202,6 +203,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetTransacSmsReport**](GetTransacSmsReport.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **send_async_transactional_sms**
+> send_async_transactional_sms
+
+Send SMS message asynchronously to a mobile number
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::TransactionalSMSApi.new
+
+begin
+  #Send SMS message asynchronously to a mobile number
+  api_instance.send_async_transactional_sms
+rescue Brevo::ApiError => e
+  puts "Exception when calling TransactionalSMSApi->send_async_transactional_sms: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

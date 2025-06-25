@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -55,6 +55,18 @@ module Brevo
 
     # It is true if you have chosen to send your campaign at best time, otherwise it is false
     attr_accessor :send_at_best_time
+
+    # utm parameter associated with campaign
+    attr_accessor :utm_campaign_value
+
+    # source of utm parameter
+    attr_accessor :utm_source
+
+    # medium parameter
+    attr_accessor :utm_medium
+
+    # utm id
+    attr_accessor :utm_id
 
     # Retrieved the status of test email sending. (true=Test email has been sent  false=Test email has not been sent)
     attr_accessor :test_sent
@@ -142,6 +154,10 @@ module Brevo
         :'winner_criteria' => :'winnerCriteria',
         :'winner_delay' => :'winnerDelay',
         :'send_at_best_time' => :'sendAtBestTime',
+        :'utm_campaign_value' => :'utmCampaignValue',
+        :'utm_source' => :'utmSource',
+        :'utm_medium' => :'utmMedium',
+        :'utm_id' => :'utmID',
         :'test_sent' => :'testSent',
         :'header' => :'header',
         :'footer' => :'footer',
@@ -178,6 +194,10 @@ module Brevo
         :'winner_criteria' => :'String',
         :'winner_delay' => :'Integer',
         :'send_at_best_time' => :'BOOLEAN',
+        :'utm_campaign_value' => :'String',
+        :'utm_source' => :'String',
+        :'utm_medium' => :'String',
+        :'utm_id' => :'Integer',
         :'test_sent' => :'BOOLEAN',
         :'header' => :'String',
         :'footer' => :'String',
@@ -259,6 +279,22 @@ module Brevo
 
       if attributes.has_key?(:'sendAtBestTime')
         self.send_at_best_time = attributes[:'sendAtBestTime']
+      end
+
+      if attributes.has_key?(:'utmCampaignValue')
+        self.utm_campaign_value = attributes[:'utmCampaignValue']
+      end
+
+      if attributes.has_key?(:'utmSource')
+        self.utm_source = attributes[:'utmSource']
+      end
+
+      if attributes.has_key?(:'utmMedium')
+        self.utm_medium = attributes[:'utmMedium']
+      end
+
+      if attributes.has_key?(:'utmID')
+        self.utm_id = attributes[:'utmID']
       end
 
       if attributes.has_key?(:'testSent')
@@ -442,6 +478,10 @@ module Brevo
           winner_criteria == o.winner_criteria &&
           winner_delay == o.winner_delay &&
           send_at_best_time == o.send_at_best_time &&
+          utm_campaign_value == o.utm_campaign_value &&
+          utm_source == o.utm_source &&
+          utm_medium == o.utm_medium &&
+          utm_id == o.utm_id &&
           test_sent == o.test_sent &&
           header == o.header &&
           footer == o.footer &&
@@ -469,7 +509,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, subject, preview_text, type, status, scheduled_at, ab_testing, subject_a, subject_b, split_rule, winner_criteria, winner_delay, send_at_best_time, test_sent, header, footer, sender, reply_to, to_field, html_content, share_link, tag, created_at, modified_at, inline_image_activation, mirror_active, recurring, sent_date, return_bounce].hash
+      [id, name, subject, preview_text, type, status, scheduled_at, ab_testing, subject_a, subject_b, split_rule, winner_criteria, winner_delay, send_at_best_time, utm_campaign_value, utm_source, utm_medium, utm_id, test_sent, header, footer, sender, reply_to, to_field, html_content, share_link, tag, created_at, modified_at, inline_image_activation, mirror_active, recurring, sent_date, return_bounce].hash
     end
 
     # Builds the object from hash

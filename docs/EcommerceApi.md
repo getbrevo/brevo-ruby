@@ -11,14 +11,16 @@ Method | HTTP request | Description
 [**create_update_category**](EcommerceApi.md#create_update_category) | **POST** /categories | Create/Update a category
 [**create_update_product**](EcommerceApi.md#create_update_product) | **POST** /products | Create/Update a product
 [**ecommerce_activate_post**](EcommerceApi.md#ecommerce_activate_post) | **POST** /ecommerce/activate | Activate the eCommerce app
-[**ecommerce_attribution_metrics_conversion_source_conversion_source_id_get**](EcommerceApi.md#ecommerce_attribution_metrics_conversion_source_conversion_source_id_get) | **GET** /ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId} | Get detailed attribution metrics for a single Brevo campaign
-[**ecommerce_attribution_metrics_get**](EcommerceApi.md#ecommerce_attribution_metrics_get) | **GET** /ecommerce/attribution/metrics | Get attribution metrics for one or more Brevo campaigns
-[**ecommerce_attribution_products_conversion_source_conversion_source_id_get**](EcommerceApi.md#ecommerce_attribution_products_conversion_source_conversion_source_id_get) | **GET** /ecommerce/attribution/products/{conversionSource}/{conversionSourceId} | Get attributed product sales for a single Brevo campaign
+[**ecommerce_attribution_metrics_conversion_source_conversion_source_id_get**](EcommerceApi.md#ecommerce_attribution_metrics_conversion_source_conversion_source_id_get) | **GET** /ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId} | Get detailed attribution metrics for a single Brevo campaign or workflow
+[**ecommerce_attribution_metrics_get**](EcommerceApi.md#ecommerce_attribution_metrics_get) | **GET** /ecommerce/attribution/metrics | Get attribution metrics for one or more Brevo campaigns or workflows
+[**ecommerce_attribution_products_conversion_source_conversion_source_id_get**](EcommerceApi.md#ecommerce_attribution_products_conversion_source_conversion_source_id_get) | **GET** /ecommerce/attribution/products/{conversionSource}/{conversionSourceId} | Get attributed product sales for a single Brevo campaign or workflow
+[**ecommerce_config_display_currency_get**](EcommerceApi.md#ecommerce_config_display_currency_get) | **GET** /ecommerce/config/displayCurrency | Get the ISO 4217 compliant display currency code for your Brevo account
 [**get_categories**](EcommerceApi.md#get_categories) | **GET** /categories | Return all your categories
 [**get_category_info**](EcommerceApi.md#get_category_info) | **GET** /categories/{id} | Get a category details
 [**get_orders**](EcommerceApi.md#get_orders) | **GET** /orders | Get order details
 [**get_product_info**](EcommerceApi.md#get_product_info) | **GET** /products/{id} | Get a product&#39;s details
 [**get_products**](EcommerceApi.md#get_products) | **GET** /products | Return all your products
+[**set_config_display_currency**](EcommerceApi.md#set_config_display_currency) | **POST** /ecommerce/config/displayCurrency | Set the ISO 4217 compliant display currency code for your Brevo account
 
 
 # **create_batch_order**
@@ -418,9 +420,9 @@ nil (empty response body)
 
 
 # **ecommerce_attribution_metrics_conversion_source_conversion_source_id_get**
-> ecommerce_attribution_metrics_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id)
+> InlineResponse2007 ecommerce_attribution_metrics_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id)
 
-Get detailed attribution metrics for a single Brevo campaign
+Get detailed attribution metrics for a single Brevo campaign or workflow
 
 ### Example
 ```ruby
@@ -441,14 +443,15 @@ end
 
 api_instance = Brevo::EcommerceApi.new
 
-conversion_source = nil # Object | The Brevo campaign type for which data will be retrieved
+conversion_source = 'conversion_source_example' # String | The Brevo campaign type or workflow type for which data will be retrieved
 
-conversion_source_id = nil # Object | The Brevo campaign id for which data will be retrieved
+conversion_source_id = 'conversion_source_id_example' # String | The Brevo campaign or automation workflow id for which data will be retrieved
 
 
 begin
-  #Get detailed attribution metrics for a single Brevo campaign
-  api_instance.ecommerce_attribution_metrics_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id)
+  #Get detailed attribution metrics for a single Brevo campaign or workflow
+  result = api_instance.ecommerce_attribution_metrics_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id)
+  p result
 rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->ecommerce_attribution_metrics_conversion_source_conversion_source_id_get: #{e}"
 end
@@ -458,12 +461,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **conversion_source** | [**Object**](.md)| The Brevo campaign type for which data will be retrieved | 
- **conversion_source_id** | [**Object**](.md)| The Brevo campaign id for which data will be retrieved | 
+ **conversion_source** | **String**| The Brevo campaign type or workflow type for which data will be retrieved | 
+ **conversion_source_id** | **String**| The Brevo campaign or automation workflow id for which data will be retrieved | 
 
 ### Return type
 
-nil (empty response body)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -477,9 +480,9 @@ nil (empty response body)
 
 
 # **ecommerce_attribution_metrics_get**
-> ecommerce_attribution_metrics_get(opts)
+> InlineResponse2006 ecommerce_attribution_metrics_get(opts)
 
-Get attribution metrics for one or more Brevo campaigns
+Get attribution metrics for one or more Brevo campaigns or workflows
 
 ### Example
 ```ruby
@@ -501,14 +504,18 @@ end
 api_instance = Brevo::EcommerceApi.new
 
 opts = { 
-  period_from: nil, # Object | When getting metrics for a specific period, define the starting datetime in RFC3339 format
-  period_to: nil, # Object | When getting metrics for a specific period, define the end datetime in RFC3339 format
-  email_campaign_id: nil # Object | The email campaign id(s) to get metrics for
+  period_from: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | When getting metrics for a specific period, define the starting datetime in RFC3339 format
+  period_to: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | When getting metrics for a specific period, define the end datetime in RFC3339 format
+  email_campaign_id: ['email_campaign_id_example'], # Array<String> | The email campaign ID(s) to get metrics for
+  sms_campaign_id: ['sms_campaign_id_example'], # Array<String> | The SMS campaign ID(s) to get metrics for
+  automation_workflow_email_id: ['automation_workflow_email_id_example'], # Array<String> | The automation workflow ID(s) to get email attribution metrics for
+  automation_workflow_sms_id: ['automation_workflow_sms_id_example'] # Array<String> | The automation workflow ID(s) to get SMS attribution metrics for
 }
 
 begin
-  #Get attribution metrics for one or more Brevo campaigns
-  api_instance.ecommerce_attribution_metrics_get(opts)
+  #Get attribution metrics for one or more Brevo campaigns or workflows
+  result = api_instance.ecommerce_attribution_metrics_get(opts)
+  p result
 rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->ecommerce_attribution_metrics_get: #{e}"
 end
@@ -518,13 +525,16 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **period_from** | [**Object**](.md)| When getting metrics for a specific period, define the starting datetime in RFC3339 format | [optional] 
- **period_to** | [**Object**](.md)| When getting metrics for a specific period, define the end datetime in RFC3339 format | [optional] 
- **email_campaign_id** | [**Object**](.md)| The email campaign id(s) to get metrics for | [optional] 
+ **period_from** | **DateTime**| When getting metrics for a specific period, define the starting datetime in RFC3339 format | [optional] 
+ **period_to** | **DateTime**| When getting metrics for a specific period, define the end datetime in RFC3339 format | [optional] 
+ **email_campaign_id** | [**Array&lt;String&gt;**](String.md)| The email campaign ID(s) to get metrics for | [optional] 
+ **sms_campaign_id** | [**Array&lt;String&gt;**](String.md)| The SMS campaign ID(s) to get metrics for | [optional] 
+ **automation_workflow_email_id** | [**Array&lt;String&gt;**](String.md)| The automation workflow ID(s) to get email attribution metrics for | [optional] 
+ **automation_workflow_sms_id** | [**Array&lt;String&gt;**](String.md)| The automation workflow ID(s) to get SMS attribution metrics for | [optional] 
 
 ### Return type
 
-nil (empty response body)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -538,9 +548,9 @@ nil (empty response body)
 
 
 # **ecommerce_attribution_products_conversion_source_conversion_source_id_get**
-> ecommerce_attribution_products_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id)
+> InlineResponse2008 ecommerce_attribution_products_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id)
 
-Get attributed product sales for a single Brevo campaign
+Get attributed product sales for a single Brevo campaign or workflow
 
 ### Example
 ```ruby
@@ -561,14 +571,15 @@ end
 
 api_instance = Brevo::EcommerceApi.new
 
-conversion_source = nil # Object | The Brevo campaign type for which data will be retrieved
+conversion_source = 'conversion_source_example' # String | The Brevo campaign or automation workflow type for which data will be retrieved
 
-conversion_source_id = nil # Object | The Brevo campaign id for which data will be retrieved
+conversion_source_id = 'conversion_source_id_example' # String | The Brevo campaign or automation workflow id for which data will be retrieved
 
 
 begin
-  #Get attributed product sales for a single Brevo campaign
-  api_instance.ecommerce_attribution_products_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id)
+  #Get attributed product sales for a single Brevo campaign or workflow
+  result = api_instance.ecommerce_attribution_products_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id)
+  p result
 rescue Brevo::ApiError => e
   puts "Exception when calling EcommerceApi->ecommerce_attribution_products_conversion_source_conversion_source_id_get: #{e}"
 end
@@ -578,12 +589,63 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **conversion_source** | [**Object**](.md)| The Brevo campaign type for which data will be retrieved | 
- **conversion_source_id** | [**Object**](.md)| The Brevo campaign id for which data will be retrieved | 
+ **conversion_source** | **String**| The Brevo campaign or automation workflow type for which data will be retrieved | 
+ **conversion_source_id** | **String**| The Brevo campaign or automation workflow id for which data will be retrieved | 
 
 ### Return type
 
-nil (empty response body)
+[**InlineResponse2008**](InlineResponse2008.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **ecommerce_config_display_currency_get**
+> InlineResponse2005 ecommerce_config_display_currency_get
+
+Get the ISO 4217 compliant display currency code for your Brevo account
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::EcommerceApi.new
+
+begin
+  #Get the ISO 4217 compliant display currency code for your Brevo account
+  result = api_instance.ecommerce_config_display_currency_get
+  p result
+rescue Brevo::ApiError => e
+  puts "Exception when calling EcommerceApi->ecommerce_config_display_currency_get: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -626,8 +688,8 @@ opts = {
   sort: 'desc', # String | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed
   ids: ['ids_example'], # Array<String> | Filter by category ids
   name: 'name_example', # String | Filter by category name
-  modified_since: 'modified_since_example', # String | Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
-  created_since: 'created_since_example' # String | Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+  modified_since: 'modified_since_example', # String | Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+  created_since: 'created_since_example' # String | Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
 }
 
 begin
@@ -648,8 +710,8 @@ Name | Type | Description  | Notes
  **sort** | **String**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
  **ids** | [**Array&lt;String&gt;**](String.md)| Filter by category ids | [optional] 
  **name** | **String**| Filter by category name | [optional] 
- **modified_since** | **String**| Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**          | [optional] 
- **created_since** | **String**| Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**          | [optional] 
+ **modified_since** | **String**| Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**  | [optional] 
+ **created_since** | **String**| Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**  | [optional] 
 
 ### Return type
 
@@ -920,6 +982,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetProducts**](GetProducts.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **set_config_display_currency**
+> SetConfigDisplayCurrency set_config_display_currency(set_config_display_currency)
+
+Set the ISO 4217 compliant display currency code for your Brevo account
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::EcommerceApi.new
+
+set_config_display_currency = Brevo::SetConfigDisplayCurrency.new # SetConfigDisplayCurrency | set ISO 4217 compliant display currency code payload
+
+
+begin
+  #Set the ISO 4217 compliant display currency code for your Brevo account
+  result = api_instance.set_config_display_currency(set_config_display_currency)
+  p result
+rescue Brevo::ApiError => e
+  puts "Exception when calling EcommerceApi->set_config_display_currency: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **set_config_display_currency** | [**SetConfigDisplayCurrency**](SetConfigDisplayCurrency.md)| set ISO 4217 compliant display currency code payload | 
+
+### Return type
+
+[**SetConfigDisplayCurrency**](SetConfigDisplayCurrency.md)
 
 ### Authorization
 

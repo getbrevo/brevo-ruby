@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -35,7 +35,7 @@ describe 'ContactsApi' do
   # unit tests for add_contact_to_list
   # Add existing contacts to a list
   # @param list_id Id of the list
-  # @param contact_emails Emails addresses OR IDs of the contacts
+  # @param contact_emails Emails addresses OR IDs OR EXT_ID attributes of the contacts
   # @param [Hash] opts the optional parameters
   # @return [PostContactInfo]
   describe 'add_contact_to_list test' do
@@ -59,6 +59,7 @@ describe 'ContactsApi' do
 
   # unit tests for create_contact
   # Create a contact
+  # Creates new contacts on Brevo. Contacts can be created by passing either - &lt;br&gt;&lt;br&gt; 1. email address of the contact (email_id),  &lt;br&gt; 2. phone number of the contact (to be passed as \&quot;SMS\&quot; field in \&quot;attributes\&quot; along with proper country code), For example- {\&quot;SMS\&quot;:\&quot;+91xxxxxxxxxx\&quot;} or {\&quot;SMS\&quot;:\&quot;0091xxxxxxxxxx\&quot;} &lt;br&gt; 3. ext_id &lt;br&gt;
   # @param create_contact Values to create a contact
   # @param [Hash] opts the optional parameters
   # @return [CreateUpdateContactModel]
@@ -115,8 +116,10 @@ describe 'ContactsApi' do
 
   # unit tests for delete_contact
   # Delete a contact
-  # @param identifier Email (urlencoded) OR ID of the contact
+  # There are 2 ways to delete a contact &lt;br&gt;&lt;br&gt; Option 1- https://api.brevo.com/v3/contacts/{identifier} &lt;br&gt;&lt;br&gt; Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType&#x3D;{} &lt;br&gt; &lt;br&gt; Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   &lt;br&gt;&lt;br&gt; Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute.
+  # @param identifier Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded)
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :identifier_type email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
   # @return [nil]
   describe 'delete_contact test' do
     it 'should work' do
@@ -146,6 +149,19 @@ describe 'ContactsApi' do
     end
   end
 
+  # unit tests for delete_multi_attribute_options
+  # Delete a multiple-choice attribute option
+  # @param attribute_type Type of the attribute
+  # @param multiple_choice_attribute Name of the existing multiple-choice attribute
+  # @param multiple_choice_attribute_option Name of the existing multiple-choice attribute option that you want to delete
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'delete_multi_attribute_options test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_attributes
   # List all attributes
   # @param [Hash] opts the optional parameters
@@ -158,9 +174,10 @@ describe 'ContactsApi' do
 
   # unit tests for get_contact_info
   # Get a contact&#39;s details
-  # Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.brevo.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
-  # @param identifier Email (urlencoded) OR ID of the contact OR its SMS attribute value
+  # There are 2 ways to get a contact &lt;br&gt;&lt;br&gt; Option 1- https://api.brevo.com/v3/contacts/{identifier} &lt;br&gt;&lt;br&gt; Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType&#x3D;{} &lt;br&gt; &lt;br&gt; Option 1 only works if identifierType is email_id (for EMAIL), phone_id (for SMS) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL, SMS and ID of the contact.   &lt;br&gt;&lt;br&gt; Option 2 works for all identifierType, use email_id for EMAIL attribute, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute &lt;br&gt;&lt;br&gt;Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats &#x60;&#x60;https://developers.brevo.com/reference/contacts-7#getcontactstats&#x60;&#x60; endpoint with the appropriate date ranges.
+  # @param identifier Email (urlencoded) OR ID of the contact OR its SMS attribute value OR EXT_ID attribute (urlencoded)
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :identifier_type email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
   # @option opts [String] :start_date **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate 
   # @option opts [String] :end_date **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. 
   # @return [GetExtendedContactDetails]
@@ -193,6 +210,7 @@ describe 'ContactsApi' do
   # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
   # @option opts [Integer] :segment_id Id of the segment. **Either listIds or segmentId can be passed.**
   # @option opts [Array<Integer>] :list_ids Ids of the list. **Either listIds or segmentId can be passed.**
+  # @option opts [String] :filter Filter the contacts on the basis of attributes. **Allowed operator: equals. For multiple-choice options, the filter will apply an AND condition between the options. For category attributes, the filter will work with both id and value. (e.g. filter&#x3D;equals(FIRSTNAME,\&quot;Antoine\&quot;), filter&#x3D;equals(B1, true), filter&#x3D;equals(DOB, \&quot;1989-11-23\&quot;), filter&#x3D;equals(GENDER, \&quot;1\&quot;), filter&#x3D;equals(GENDER, \&quot;MALE\&quot;), filter&#x3D;equals(COUNTRY,\&quot;USA, INDIA\&quot;)** 
   # @return [GetContacts]
   describe 'get_contacts test' do
     it 'should work' do
@@ -242,9 +260,9 @@ describe 'ContactsApi' do
 
   # unit tests for get_folders
   # Get all folders
-  # @param limit Number of documents per page
-  # @param offset Index of the first document of the page
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :limit Number of documents per page
+  # @option opts [Integer] :offset Index of the first document of the page
   # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
   # @return [GetFolders]
   describe 'get_folders test' do
@@ -307,7 +325,7 @@ describe 'ContactsApi' do
   # unit tests for remove_contact_from_list
   # Delete a contact from a list
   # @param list_id Id of the list
-  # @param contact_emails Emails addresses OR IDs of the contacts
+  # @param contact_emails Emails addresses OR IDs OR EXT_ID attributes of the contacts
   # @param [Hash] opts the optional parameters
   # @return [PostContactInfo]
   describe 'remove_contact_from_list test' do
@@ -354,9 +372,11 @@ describe 'ContactsApi' do
 
   # unit tests for update_contact
   # Update a contact
-  # @param identifier Email (urlencoded) OR ID of the contact
+  # There are 2 ways to update a contact &lt;br&gt;&lt;br&gt; Option 1- https://api.brevo.com/v3/contacts/{identifier} &lt;br&gt;&lt;br&gt; Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType&#x3D;{} &lt;br&gt; &lt;br&gt; Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   &lt;br&gt;&lt;br&gt; Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
+  # @param identifier Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) OR its SMS attribute value OR its WHATSAPP attribute value OR its LANDLINE attribute value
   # @param update_contact Values to update a contact
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :identifier_type email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
   # @return [nil]
   describe 'update_contact test' do
     it 'should work' do

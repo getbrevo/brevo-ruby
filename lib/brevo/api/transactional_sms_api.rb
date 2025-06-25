@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -66,8 +66,8 @@ module Brevo
         fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling TransactionalSMSApi.get_sms_events, must be smaller than or equal to 100.'
       end
 
-      if @api_client.config.client_side_validation && opts[:'event'] && !['bounces', 'hardBounces', 'softBounces', 'delivered', 'sent', 'accepted', 'unsubscription', 'replies', 'blocked', 'rejected'].include?(opts[:'event'])
-        fail ArgumentError, 'invalid value for "event", must be one of bounces, hardBounces, softBounces, delivered, sent, accepted, unsubscription, replies, blocked, rejected'
+      if @api_client.config.client_side_validation && opts[:'event'] && !['bounces', 'hardBounces', 'softBounces', 'delivered', 'sent', 'accepted', 'unsubscription', 'replies', 'blocked', 'rejected', 'skipped'].include?(opts[:'event'])
+        fail ArgumentError, 'invalid value for "event", must be one of bounces, hardBounces, softBounces, delivered, sent, accepted, unsubscription, replies, blocked, rejected, skipped'
       end
       if @api_client.config.client_side_validation && opts[:'sort'] && !['asc', 'desc'].include?(opts[:'sort'])
         fail ArgumentError, 'invalid value for "sort", must be one of asc, desc'
@@ -231,6 +231,51 @@ module Brevo
         :return_type => 'GetTransacSmsReport')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TransactionalSMSApi#get_transac_sms_report\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Send SMS message asynchronously to a mobile number
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def send_async_transactional_sms(opts = {})
+      send_async_transactional_sms_with_http_info(opts)
+      nil
+    end
+
+    # Send SMS message asynchronously to a mobile number
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def send_async_transactional_sms_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: TransactionalSMSApi.send_async_transactional_sms ...'
+      end
+      # resource path
+      local_var_path = '/transactionalSMS/send'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TransactionalSMSApi#send_async_transactional_sms\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

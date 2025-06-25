@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,7 +14,7 @@ require 'date'
 
 module Brevo
   class RequestContactExport
-    # List of all the attributes that you want to export. These attributes must be present in your contact database. For example, ['fname', 'lname', 'email'].
+    # List of all the attributes that you want to export. These attributes must be present in your contact database. It is required if exportMandatoryAttributes is set false. For example, ['fname', 'lname', 'email'].
     attr_accessor :export_attributes
 
     attr_accessor :custom_contact_filter
@@ -22,12 +22,28 @@ module Brevo
     # Webhook that will be called once the export process is finished. For reference, https://help.brevo.com/hc/en-us/articles/360007666479
     attr_accessor :notify_url
 
+    # To avoid generating the email notification upon contact export, pass **true**
+    attr_accessor :disable_notification
+
+    # To export mandatory attributes like EMAIL, ADDED_TIME, MODIFIED_TIME
+    attr_accessor :export_mandatory_attributes
+
+    # Export subscription status of contacts for email & sms marketting. Pass email_marketing to obtain the marketing email subscription status & sms_marketing to retrieve the marketing SMS status of the contact.
+    attr_accessor :export_subscription_status
+
+    # Export metadata of contacts such as _listIds, ADDED_TIME, MODIFIED_TIME.
+    attr_accessor :export_metadata
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'export_attributes' => :'exportAttributes',
         :'custom_contact_filter' => :'customContactFilter',
-        :'notify_url' => :'notifyUrl'
+        :'notify_url' => :'notifyUrl',
+        :'disable_notification' => :'disableNotification',
+        :'export_mandatory_attributes' => :'exportMandatoryAttributes',
+        :'export_subscription_status' => :'exportSubscriptionStatus',
+        :'export_metadata' => :'exportMetadata'
       }
     end
 
@@ -36,7 +52,11 @@ module Brevo
       {
         :'export_attributes' => :'Array<String>',
         :'custom_contact_filter' => :'RequestContactExportCustomContactFilter',
-        :'notify_url' => :'String'
+        :'notify_url' => :'String',
+        :'disable_notification' => :'BOOLEAN',
+        :'export_mandatory_attributes' => :'BOOLEAN',
+        :'export_subscription_status' => :'Array<String>',
+        :'export_metadata' => :'Array<String>'
       }
     end
 
@@ -60,6 +80,30 @@ module Brevo
 
       if attributes.has_key?(:'notifyUrl')
         self.notify_url = attributes[:'notifyUrl']
+      end
+
+      if attributes.has_key?(:'disableNotification')
+        self.disable_notification = attributes[:'disableNotification']
+      else
+        self.disable_notification = false
+      end
+
+      if attributes.has_key?(:'exportMandatoryAttributes')
+        self.export_mandatory_attributes = attributes[:'exportMandatoryAttributes']
+      else
+        self.export_mandatory_attributes = true
+      end
+
+      if attributes.has_key?(:'exportSubscriptionStatus')
+        if (value = attributes[:'exportSubscriptionStatus']).is_a?(Array)
+          self.export_subscription_status = value
+        end
+      end
+
+      if attributes.has_key?(:'exportMetadata')
+        if (value = attributes[:'exportMetadata']).is_a?(Array)
+          self.export_metadata = value
+        end
       end
     end
 
@@ -88,7 +132,11 @@ module Brevo
       self.class == o.class &&
           export_attributes == o.export_attributes &&
           custom_contact_filter == o.custom_contact_filter &&
-          notify_url == o.notify_url
+          notify_url == o.notify_url &&
+          disable_notification == o.disable_notification &&
+          export_mandatory_attributes == o.export_mandatory_attributes &&
+          export_subscription_status == o.export_subscription_status &&
+          export_metadata == o.export_metadata
     end
 
     # @see the `==` method
@@ -100,7 +148,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [export_attributes, custom_contact_filter, notify_url].hash
+      [export_attributes, custom_contact_filter, notify_url, disable_notification, export_mandatory_attributes, export_subscription_status, export_metadata].hash
     end
 
     # Builds the object from hash

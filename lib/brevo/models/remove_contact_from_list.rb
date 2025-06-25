@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,13 +14,16 @@ require 'date'
 
 module Brevo
   class RemoveContactFromList
-    # Required if 'all' is false. Emails to remove from a list. You can pass a maximum of 150 emails for removal in one request.
+    # Required if 'all' is false and EXT_ID attributes, IDs are not passed. Emails to remove from a list. You can pass a maximum of 150 emails for removal in one request.
     attr_accessor :emails
 
-    # Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
+    # Mandatory if Emails, EXT_ID attributes are not passed, ignored otherwise. Contact IDs to add to a list. You can pass a maximum of 150 Ids for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
     attr_accessor :ids
 
-    # Required if none of 'emails' or 'ids' are passed. Remove all existing contacts from a list.  A process will be created in this scenario. You can fetch the process details to know about the progress
+    # Mandatory if 'all' is false and Emails, IDs are not passed, ignored otherwise. EXT_ID attributes to add to a list. You can pass a maximum of 150 extIds for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
+    attr_accessor :ext_ids
+
+    # Required if none of 'emails', EXT_ID attributes or 'ids' are passed. Remove all existing contacts from a list.  A process will be created in this scenario. You can fetch the process details to know about the progress
     attr_accessor :all
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -28,6 +31,7 @@ module Brevo
       {
         :'emails' => :'emails',
         :'ids' => :'ids',
+        :'ext_ids' => :'extIds',
         :'all' => :'all'
       }
     end
@@ -37,6 +41,7 @@ module Brevo
       {
         :'emails' => :'Array<String>',
         :'ids' => :'Array<Integer>',
+        :'ext_ids' => :'Array<String>',
         :'all' => :'BOOLEAN'
       }
     end
@@ -58,6 +63,12 @@ module Brevo
       if attributes.has_key?(:'ids')
         if (value = attributes[:'ids']).is_a?(Array)
           self.ids = value
+        end
+      end
+
+      if attributes.has_key?(:'extIds')
+        if (value = attributes[:'extIds']).is_a?(Array)
+          self.ext_ids = value
         end
       end
 
@@ -86,6 +97,7 @@ module Brevo
       self.class == o.class &&
           emails == o.emails &&
           ids == o.ids &&
+          ext_ids == o.ext_ids &&
           all == o.all
     end
 
@@ -98,7 +110,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [emails, ids, all].hash
+      [emails, ids, ext_ids, all].hash
     end
 
     # Builds the object from hash

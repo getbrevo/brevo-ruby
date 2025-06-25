@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,17 +14,29 @@ require 'date'
 
 module Brevo
   class Body7
-    # Name of deal
+    # Name of company
     attr_accessor :name
 
-    # Attributes for deal update  To assign owner of a Deal you can send attributes.deal_owner and utilize the account email or ID.  If you wish to update the pipeline of a deal you need to provide the `pipeline` and the `deal_stage`.  Pipeline and deal_stage are ids you can fetch using this endpoint `/crm/pipeline/details/{pipelineID}` 
+    # Attributes for company update
     attr_accessor :attributes
+
+    # Country code if phone_number is passed in attributes.
+    attr_accessor :country_code
+
+    # Warning - Using PATCH on linkedContactIds replaces the list of linked contacts. Omitted IDs will be removed.
+    attr_accessor :linked_contacts_ids
+
+    # Warning - Using PATCH on linkedDealsIds replaces the list of linked contacts. Omitted IDs will be removed.
+    attr_accessor :linked_deals_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'attributes' => :'attributes'
+        :'attributes' => :'attributes',
+        :'country_code' => :'countryCode',
+        :'linked_contacts_ids' => :'linkedContactsIds',
+        :'linked_deals_ids' => :'linkedDealsIds'
       }
     end
 
@@ -32,7 +44,10 @@ module Brevo
     def self.swagger_types
       {
         :'name' => :'String',
-        :'attributes' => :'Object'
+        :'attributes' => :'Object',
+        :'country_code' => :'Integer',
+        :'linked_contacts_ids' => :'Array<Integer>',
+        :'linked_deals_ids' => :'Array<String>'
       }
     end
 
@@ -50,6 +65,22 @@ module Brevo
 
       if attributes.has_key?(:'attributes')
         self.attributes = attributes[:'attributes']
+      end
+
+      if attributes.has_key?(:'countryCode')
+        self.country_code = attributes[:'countryCode']
+      end
+
+      if attributes.has_key?(:'linkedContactsIds')
+        if (value = attributes[:'linkedContactsIds']).is_a?(Array)
+          self.linked_contacts_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'linkedDealsIds')
+        if (value = attributes[:'linkedDealsIds']).is_a?(Array)
+          self.linked_deals_ids = value
+        end
       end
     end
 
@@ -72,7 +103,10 @@ module Brevo
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          attributes == o.attributes
+          attributes == o.attributes &&
+          country_code == o.country_code &&
+          linked_contacts_ids == o.linked_contacts_ids &&
+          linked_deals_ids == o.linked_deals_ids
     end
 
     # @see the `==` method
@@ -84,7 +118,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, attributes].hash
+      [name, attributes, country_code, linked_contacts_ids, linked_deals_ids].hash
     end
 
     # Builds the object from hash

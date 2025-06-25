@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -24,8 +24,11 @@ module Brevo
     # Mandatory if neither actionForContacts nor actionForEmailCampaigns is passed. This will export the contacts on the basis of provided action applied on sms campaigns. * unsubscribed - Fetch the list of all unsubscribed (blacklisted via any means) contacts for all / particular sms campaigns. * hardBounces & softBounces - Fetch the list of hard bounces / soft bounces for all / particular sms campaigns. 
     attr_accessor :action_for_sms_campaigns
 
-    # Mandatory if actionForContacts is passed, ignored otherwise. Id of the list for which the corresponding action shall be applied in the filter.
+    # ID of the list. This is mandatory if actionForContacts is specified and segmentId is not provided. Either segmentId or listId must be included.
     attr_accessor :list_id
+
+    # ID of the segment. This is mandatory if actionForContacts is specified and listId is not provided. Either segmentId or listId must be included. 
+    attr_accessor :segment_id
 
     # Considered only if actionForEmailCampaigns is passed, ignored otherwise. Mandatory if action is one of the following - openers, nonOpeners, clickers, nonClickers, unsubscribed. The id of the email campaign for which the corresponding action shall be applied in the filter.
     attr_accessor :email_campaign_id
@@ -62,6 +65,7 @@ module Brevo
         :'action_for_email_campaigns' => :'actionForEmailCampaigns',
         :'action_for_sms_campaigns' => :'actionForSmsCampaigns',
         :'list_id' => :'listId',
+        :'segment_id' => :'segmentId',
         :'email_campaign_id' => :'emailCampaignId',
         :'sms_campaign_id' => :'smsCampaignId'
       }
@@ -74,6 +78,7 @@ module Brevo
         :'action_for_email_campaigns' => :'String',
         :'action_for_sms_campaigns' => :'String',
         :'list_id' => :'Integer',
+        :'segment_id' => :'Integer',
         :'email_campaign_id' => :'Integer',
         :'sms_campaign_id' => :'Integer'
       }
@@ -101,6 +106,10 @@ module Brevo
 
       if attributes.has_key?(:'listId')
         self.list_id = attributes[:'listId']
+      end
+
+      if attributes.has_key?(:'segmentId')
+        self.segment_id = attributes[:'segmentId']
       end
 
       if attributes.has_key?(:'emailCampaignId')
@@ -170,6 +179,7 @@ module Brevo
           action_for_email_campaigns == o.action_for_email_campaigns &&
           action_for_sms_campaigns == o.action_for_sms_campaigns &&
           list_id == o.list_id &&
+          segment_id == o.segment_id &&
           email_campaign_id == o.email_campaign_id &&
           sms_campaign_id == o.sms_campaign_id
     end
@@ -183,7 +193,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [action_for_contacts, action_for_email_campaigns, action_for_sms_campaigns, list_id, email_campaign_id, sms_campaign_id].hash
+      [action_for_contacts, action_for_email_campaigns, action_for_sms_campaigns, list_id, segment_id, email_campaign_id, sms_campaign_id].hash
     end
 
     # Builds the object from hash

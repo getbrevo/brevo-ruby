@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -25,6 +25,9 @@ module Brevo
 
     # Set the timezone of the sub-account
     attr_accessor :timezone
+
+    # Set the group(s) for the sub-account
+    attr_accessor :group_ids
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -54,7 +57,8 @@ module Brevo
         :'company_name' => :'companyName',
         :'email' => :'email',
         :'language' => :'language',
-        :'timezone' => :'timezone'
+        :'timezone' => :'timezone',
+        :'group_ids' => :'groupIds'
       }
     end
 
@@ -64,7 +68,8 @@ module Brevo
         :'company_name' => :'String',
         :'email' => :'String',
         :'language' => :'String',
-        :'timezone' => :'String'
+        :'timezone' => :'String',
+        :'group_ids' => :'Array<String>'
       }
     end
 
@@ -90,6 +95,12 @@ module Brevo
 
       if attributes.has_key?(:'timezone')
         self.timezone = attributes[:'timezone']
+      end
+
+      if attributes.has_key?(:'groupIds')
+        if (value = attributes[:'groupIds']).is_a?(Array)
+          self.group_ids = value
+        end
       end
     end
 
@@ -136,7 +147,8 @@ module Brevo
           company_name == o.company_name &&
           email == o.email &&
           language == o.language &&
-          timezone == o.timezone
+          timezone == o.timezone &&
+          group_ids == o.group_ids
     end
 
     # @see the `==` method
@@ -148,7 +160,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [company_name, email, language, timezone].hash
+      [company_name, email, language, timezone, group_ids].hash
     end
 
     # Builds the object from hash

@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -38,11 +38,14 @@ module Brevo
     # Number of answered SMS for the date
     attr_accessor :replied
 
-    # Number of accepted for the date
+    # Number of accepted SMS for the date
     attr_accessor :accepted
 
-    # Number of rejected for the date
+    # Number of rejected SMS for the date
     attr_accessor :rejected
+
+    # Number of skipped SMS for the date
+    attr_accessor :skipped
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -56,7 +59,8 @@ module Brevo
         :'unsubscribed' => :'unsubscribed',
         :'replied' => :'replied',
         :'accepted' => :'accepted',
-        :'rejected' => :'rejected'
+        :'rejected' => :'rejected',
+        :'skipped' => :'skipped'
       }
     end
 
@@ -72,7 +76,8 @@ module Brevo
         :'unsubscribed' => :'Integer',
         :'replied' => :'Integer',
         :'accepted' => :'Integer',
-        :'rejected' => :'Integer'
+        :'rejected' => :'Integer',
+        :'skipped' => :'Integer'
       }
     end
 
@@ -123,6 +128,10 @@ module Brevo
       if attributes.has_key?(:'rejected')
         self.rejected = attributes[:'rejected']
       end
+
+      if attributes.has_key?(:'skipped')
+        self.skipped = attributes[:'skipped']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -152,7 +161,8 @@ module Brevo
           unsubscribed == o.unsubscribed &&
           replied == o.replied &&
           accepted == o.accepted &&
-          rejected == o.rejected
+          rejected == o.rejected &&
+          skipped == o.skipped
     end
 
     # @see the `==` method
@@ -164,7 +174,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [date, requests, delivered, hard_bounces, soft_bounces, blocked, unsubscribed, replied, accepted, rejected].hash
+      [date, requests, delivered, hard_bounces, soft_bounces, blocked, unsubscribed, replied, accepted, rejected, skipped].hash
     end
 
     # Builds the object from hash

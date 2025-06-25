@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,69 +14,62 @@ require 'date'
 
 module Brevo
   class Body9
-    # Name of task
-    attr_accessor :name
+    # The label for the attribute (max 50 characters, cannot be empty)
+    attr_accessor :label
 
-    # Duration of task in milliseconds [1 minute = 60000 ms]
-    attr_accessor :duration
+    # The type of attribute (must be one of the defined enums)
+    attr_accessor :attribute_type
 
-    # Id for type of task e.g Call / Email / Meeting etc.
-    attr_accessor :task_type_id
+    # A description of the attribute
+    attr_accessor :description
 
-    # Task due date and time
-    attr_accessor :date
+    # Options for multi-choice or single-select attributes
+    attr_accessor :options_labels
 
-    # Notes added to a task
-    attr_accessor :notes
+    # The type of object the attribute belongs to (prefilled with `companies`or `deal`, mandatory)
+    attr_accessor :object_type
 
-    # Task marked as done
-    attr_accessor :done
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # To assign a task to a user you can use either the account email or ID.
-    attr_accessor :assign_to_id
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # Contact ids for contacts linked to this task
-    attr_accessor :contacts_ids
-
-    # Deal ids for deals a task is linked to
-    attr_accessor :deals_ids
-
-    # Companies ids for companies a task is linked to
-    attr_accessor :companies_ids
-
-    attr_accessor :reminder
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'duration' => :'duration',
-        :'task_type_id' => :'taskTypeId',
-        :'date' => :'date',
-        :'notes' => :'notes',
-        :'done' => :'done',
-        :'assign_to_id' => :'assignToId',
-        :'contacts_ids' => :'contactsIds',
-        :'deals_ids' => :'dealsIds',
-        :'companies_ids' => :'companiesIds',
-        :'reminder' => :'reminder'
+        :'label' => :'label',
+        :'attribute_type' => :'attributeType',
+        :'description' => :'description',
+        :'options_labels' => :'optionsLabels',
+        :'object_type' => :'objectType'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'duration' => :'Integer',
-        :'task_type_id' => :'String',
-        :'date' => :'DateTime',
-        :'notes' => :'String',
-        :'done' => :'BOOLEAN',
-        :'assign_to_id' => :'String',
-        :'contacts_ids' => :'Array<Integer>',
-        :'deals_ids' => :'Array<String>',
-        :'companies_ids' => :'Array<String>',
-        :'reminder' => :'TaskReminder'
+        :'label' => :'String',
+        :'attribute_type' => :'String',
+        :'description' => :'String',
+        :'options_labels' => :'Array<String>',
+        :'object_type' => :'String'
       }
     end
 
@@ -88,54 +81,26 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'label')
+        self.label = attributes[:'label']
       end
 
-      if attributes.has_key?(:'duration')
-        self.duration = attributes[:'duration']
+      if attributes.has_key?(:'attributeType')
+        self.attribute_type = attributes[:'attributeType']
       end
 
-      if attributes.has_key?(:'taskTypeId')
-        self.task_type_id = attributes[:'taskTypeId']
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.has_key?(:'date')
-        self.date = attributes[:'date']
-      end
-
-      if attributes.has_key?(:'notes')
-        self.notes = attributes[:'notes']
-      end
-
-      if attributes.has_key?(:'done')
-        self.done = attributes[:'done']
-      end
-
-      if attributes.has_key?(:'assignToId')
-        self.assign_to_id = attributes[:'assignToId']
-      end
-
-      if attributes.has_key?(:'contactsIds')
-        if (value = attributes[:'contactsIds']).is_a?(Array)
-          self.contacts_ids = value
+      if attributes.has_key?(:'optionsLabels')
+        if (value = attributes[:'optionsLabels']).is_a?(Array)
+          self.options_labels = value
         end
       end
 
-      if attributes.has_key?(:'dealsIds')
-        if (value = attributes[:'dealsIds']).is_a?(Array)
-          self.deals_ids = value
-        end
-      end
-
-      if attributes.has_key?(:'companiesIds')
-        if (value = attributes[:'companiesIds']).is_a?(Array)
-          self.companies_ids = value
-        end
-      end
-
-      if attributes.has_key?(:'reminder')
-        self.reminder = attributes[:'reminder']
+      if attributes.has_key?(:'objectType')
+        self.object_type = attributes[:'objectType']
       end
     end
 
@@ -143,20 +108,16 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @label.nil?
+        invalid_properties.push('invalid value for "label", label cannot be nil.')
       end
 
-      if !@duration.nil? && @duration < 0
-        invalid_properties.push('invalid value for "duration", must be greater than or equal to 0.')
+      if @attribute_type.nil?
+        invalid_properties.push('invalid value for "attribute_type", attribute_type cannot be nil.')
       end
 
-      if @task_type_id.nil?
-        invalid_properties.push('invalid value for "task_type_id", task_type_id cannot be nil.')
-      end
-
-      if @date.nil?
-        invalid_properties.push('invalid value for "date", date cannot be nil.')
+      if @object_type.nil?
+        invalid_properties.push('invalid value for "object_type", object_type cannot be nil.')
       end
 
       invalid_properties
@@ -165,21 +126,34 @@ module Brevo
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if !@duration.nil? && @duration < 0
-      return false if @task_type_id.nil?
-      return false if @date.nil?
+      return false if @label.nil?
+      return false if @attribute_type.nil?
+      attribute_type_validator = EnumAttributeValidator.new('String', ['text', 'user', 'number', 'single-select', 'date', 'boolean', 'multi-choice'])
+      return false unless attribute_type_validator.valid?(@attribute_type)
+      return false if @object_type.nil?
+      object_type_validator = EnumAttributeValidator.new('String', ['companies', 'deals'])
+      return false unless object_type_validator.valid?(@object_type)
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] duration Value to be assigned
-    def duration=(duration)
-      if !duration.nil? && duration < 0
-        fail ArgumentError, 'invalid value for "duration", must be greater than or equal to 0.'
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] attribute_type Object to be assigned
+    def attribute_type=(attribute_type)
+      validator = EnumAttributeValidator.new('String', ['text', 'user', 'number', 'single-select', 'date', 'boolean', 'multi-choice'])
+      unless validator.valid?(attribute_type)
+        fail ArgumentError, 'invalid value for "attribute_type", must be one of #{validator.allowable_values}.'
       end
+      @attribute_type = attribute_type
+    end
 
-      @duration = duration
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] object_type Object to be assigned
+    def object_type=(object_type)
+      validator = EnumAttributeValidator.new('String', ['companies', 'deals'])
+      unless validator.valid?(object_type)
+        fail ArgumentError, 'invalid value for "object_type", must be one of #{validator.allowable_values}.'
+      end
+      @object_type = object_type
     end
 
     # Checks equality by comparing each attribute.
@@ -187,17 +161,11 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          duration == o.duration &&
-          task_type_id == o.task_type_id &&
-          date == o.date &&
-          notes == o.notes &&
-          done == o.done &&
-          assign_to_id == o.assign_to_id &&
-          contacts_ids == o.contacts_ids &&
-          deals_ids == o.deals_ids &&
-          companies_ids == o.companies_ids &&
-          reminder == o.reminder
+          label == o.label &&
+          attribute_type == o.attribute_type &&
+          description == o.description &&
+          options_labels == o.options_labels &&
+          object_type == o.object_type
     end
 
     # @see the `==` method
@@ -209,7 +177,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, duration, task_type_id, date, notes, done, assign_to_id, contacts_ids, deals_ids, companies_ids, reminder].hash
+      [label, attribute_type, description, options_labels, object_type].hash
     end
 
     # Builds the object from hash

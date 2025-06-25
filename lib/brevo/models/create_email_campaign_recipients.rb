@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -24,12 +24,16 @@ module Brevo
     # Mandatory if listIds are not used. Segment ids to send the campaign to.
     attr_accessor :segment_ids
 
+    # Segment ids which have to be excluded from a campaign. 
+    attr_accessor :exclusion_segment_ids
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'exclusion_list_ids' => :'exclusionListIds',
         :'list_ids' => :'listIds',
-        :'segment_ids' => :'segmentIds'
+        :'segment_ids' => :'segmentIds',
+        :'exclusion_segment_ids' => :'exclusionSegmentIds'
       }
     end
 
@@ -38,7 +42,8 @@ module Brevo
       {
         :'exclusion_list_ids' => :'Array<Integer>',
         :'list_ids' => :'Array<Integer>',
-        :'segment_ids' => :'Array<Integer>'
+        :'segment_ids' => :'Array<Integer>',
+        :'exclusion_segment_ids' => :'Array<Integer>'
       }
     end
 
@@ -67,6 +72,12 @@ module Brevo
           self.segment_ids = value
         end
       end
+
+      if attributes.has_key?(:'exclusionSegmentIds')
+        if (value = attributes[:'exclusionSegmentIds']).is_a?(Array)
+          self.exclusion_segment_ids = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,7 +100,8 @@ module Brevo
       self.class == o.class &&
           exclusion_list_ids == o.exclusion_list_ids &&
           list_ids == o.list_ids &&
-          segment_ids == o.segment_ids
+          segment_ids == o.segment_ids &&
+          exclusion_segment_ids == o.exclusion_segment_ids
     end
 
     # @see the `==` method
@@ -101,7 +113,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [exclusion_list_ids, list_ids, segment_ids].hash
+      [exclusion_list_ids, list_ids, segment_ids, exclusion_segment_ids].hash
     end
 
     # Builds the object from hash

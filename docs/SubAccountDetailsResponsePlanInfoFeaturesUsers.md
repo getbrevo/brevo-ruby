@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**quantity** | **Integer** | Quantity of multi-account&#39;s provided | [optional] 
-**remaining** | **Integer** | Available multi-accounts for use | [optional] 
+**quantity** | **Integer** | Quantity of marketing users provided | [optional] 
+**remaining** | **Integer** | Available marketing users for use | [optional] 
 
 

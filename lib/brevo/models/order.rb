@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -29,15 +29,20 @@ module Brevo
     # Total amount of the order, including all shipping expenses, tax and the price of items.
     attr_accessor :amount
 
-    attr_accessor :products
+    # ID of store where the order is placed
+    attr_accessor :store_id
 
-    # Email of the contact, Mandatory if \"phone\" field is not passed in \"billing\" parameter.
-    attr_accessor :email
+    attr_accessor :identifiers
+
+    attr_accessor :products
 
     attr_accessor :billing
 
     # Coupons applied to the order. Stored case insensitive.
     attr_accessor :coupons
+
+    # Meta data of order to store additional detal such as custom message, customer type, source.
+    attr_accessor :meta_info
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -47,10 +52,12 @@ module Brevo
         :'updated_at' => :'updatedAt',
         :'status' => :'status',
         :'amount' => :'amount',
+        :'store_id' => :'storeId',
+        :'identifiers' => :'identifiers',
         :'products' => :'products',
-        :'email' => :'email',
         :'billing' => :'billing',
-        :'coupons' => :'coupons'
+        :'coupons' => :'coupons',
+        :'meta_info' => :'metaInfo'
       }
     end
 
@@ -62,10 +69,12 @@ module Brevo
         :'updated_at' => :'String',
         :'status' => :'String',
         :'amount' => :'Float',
+        :'store_id' => :'String',
+        :'identifiers' => :'OrderIdentifiers',
         :'products' => :'Array<OrderProducts>',
-        :'email' => :'String',
         :'billing' => :'OrderBilling',
-        :'coupons' => :'Array<String>'
+        :'coupons' => :'Array<String>',
+        :'meta_info' => :'Hash<String, Object>'
       }
     end
 
@@ -97,14 +106,18 @@ module Brevo
         self.amount = attributes[:'amount']
       end
 
+      if attributes.has_key?(:'storeId')
+        self.store_id = attributes[:'storeId']
+      end
+
+      if attributes.has_key?(:'identifiers')
+        self.identifiers = attributes[:'identifiers']
+      end
+
       if attributes.has_key?(:'products')
         if (value = attributes[:'products']).is_a?(Array)
           self.products = value
         end
-      end
-
-      if attributes.has_key?(:'email')
-        self.email = attributes[:'email']
       end
 
       if attributes.has_key?(:'billing')
@@ -114,6 +127,12 @@ module Brevo
       if attributes.has_key?(:'coupons')
         if (value = attributes[:'coupons']).is_a?(Array)
           self.coupons = value
+        end
+      end
+
+      if attributes.has_key?(:'metaInfo')
+        if (value = attributes[:'metaInfo']).is_a?(Hash)
+          self.meta_info = value
         end
       end
     end
@@ -171,10 +190,12 @@ module Brevo
           updated_at == o.updated_at &&
           status == o.status &&
           amount == o.amount &&
+          store_id == o.store_id &&
+          identifiers == o.identifiers &&
           products == o.products &&
-          email == o.email &&
           billing == o.billing &&
-          coupons == o.coupons
+          coupons == o.coupons &&
+          meta_info == o.meta_info
     end
 
     # @see the `==` method
@@ -186,7 +207,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, created_at, updated_at, status, amount, products, email, billing, coupons].hash
+      [id, created_at, updated_at, status, amount, store_id, identifiers, products, billing, coupons, meta_info].hash
     end
 
     # Builds the object from hash

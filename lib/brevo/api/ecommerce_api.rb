@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -390,21 +390,21 @@ module Brevo
       end
       return data, status_code, headers
     end
-    # Get detailed attribution metrics for a single Brevo campaign
-    # @param conversion_source The Brevo campaign type for which data will be retrieved
-    # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+    # Get detailed attribution metrics for a single Brevo campaign or workflow
+    # @param conversion_source The Brevo campaign type or workflow type for which data will be retrieved
+    # @param conversion_source_id The Brevo campaign or automation workflow id for which data will be retrieved
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [InlineResponse2007]
     def ecommerce_attribution_metrics_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id, opts = {})
-      ecommerce_attribution_metrics_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts)
-      nil
+      data, _status_code, _headers = ecommerce_attribution_metrics_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts)
+      data
     end
 
-    # Get detailed attribution metrics for a single Brevo campaign
-    # @param conversion_source The Brevo campaign type for which data will be retrieved
-    # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+    # Get detailed attribution metrics for a single Brevo campaign or workflow
+    # @param conversion_source The Brevo campaign type or workflow type for which data will be retrieved
+    # @param conversion_source_id The Brevo campaign or automation workflow id for which data will be retrieved
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(InlineResponse2007, Fixnum, Hash)>] InlineResponse2007 data, response status code and response headers
     def ecommerce_attribution_metrics_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EcommerceApi.ecommerce_attribution_metrics_conversion_source_conversion_source_id_get ...'
@@ -412,6 +412,10 @@ module Brevo
       # verify the required parameter 'conversion_source' is set
       if @api_client.config.client_side_validation && conversion_source.nil?
         fail ArgumentError, "Missing the required parameter 'conversion_source' when calling EcommerceApi.ecommerce_attribution_metrics_conversion_source_conversion_source_id_get"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['email_campaign', 'sms_campaign', 'automation_workflow_email', 'automation_workflow_sms'].include?(conversion_source)
+        fail ArgumentError, "invalid value for 'conversion_source', must be one of email_campaign, sms_campaign, automation_workflow_email, automation_workflow_sms"
       end
       # verify the required parameter 'conversion_source_id' is set
       if @api_client.config.client_side_validation && conversion_source_id.nil?
@@ -441,29 +445,36 @@ module Brevo
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse2007')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EcommerceApi#ecommerce_attribution_metrics_conversion_source_conversion_source_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
-    # Get attribution metrics for one or more Brevo campaigns
+    # Get attribution metrics for one or more Brevo campaigns or workflows
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
-    # @option opts [Object] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
-    # @option opts [Object] :email_campaign_id The email campaign id(s) to get metrics for
-    # @return [nil]
+    # @option opts [DateTime] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
+    # @option opts [DateTime] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
+    # @option opts [Array<String>] :email_campaign_id The email campaign ID(s) to get metrics for
+    # @option opts [Array<String>] :sms_campaign_id The SMS campaign ID(s) to get metrics for
+    # @option opts [Array<String>] :automation_workflow_email_id The automation workflow ID(s) to get email attribution metrics for
+    # @option opts [Array<String>] :automation_workflow_sms_id The automation workflow ID(s) to get SMS attribution metrics for
+    # @return [InlineResponse2006]
     def ecommerce_attribution_metrics_get(opts = {})
-      ecommerce_attribution_metrics_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = ecommerce_attribution_metrics_get_with_http_info(opts)
+      data
     end
 
-    # Get attribution metrics for one or more Brevo campaigns
+    # Get attribution metrics for one or more Brevo campaigns or workflows
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
-    # @option opts [Object] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
-    # @option opts [Object] :email_campaign_id The email campaign id(s) to get metrics for
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @option opts [DateTime] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
+    # @option opts [DateTime] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
+    # @option opts [Array<String>] :email_campaign_id The email campaign ID(s) to get metrics for
+    # @option opts [Array<String>] :sms_campaign_id The SMS campaign ID(s) to get metrics for
+    # @option opts [Array<String>] :automation_workflow_email_id The automation workflow ID(s) to get email attribution metrics for
+    # @option opts [Array<String>] :automation_workflow_sms_id The automation workflow ID(s) to get SMS attribution metrics for
+    # @return [Array<(InlineResponse2006, Fixnum, Hash)>] InlineResponse2006 data, response status code and response headers
     def ecommerce_attribution_metrics_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EcommerceApi.ecommerce_attribution_metrics_get ...'
@@ -475,7 +486,10 @@ module Brevo
       query_params = {}
       query_params[:'periodFrom'] = opts[:'period_from'] if !opts[:'period_from'].nil?
       query_params[:'periodTo'] = opts[:'period_to'] if !opts[:'period_to'].nil?
-      query_params[:'emailCampaignId[]'] = opts[:'email_campaign_id'] if !opts[:'email_campaign_id'].nil?
+      query_params[:'emailCampaignId[]'] = @api_client.build_collection_param(opts[:'email_campaign_id'], :csv) if !opts[:'email_campaign_id'].nil?
+      query_params[:'smsCampaignId[]'] = @api_client.build_collection_param(opts[:'sms_campaign_id'], :csv) if !opts[:'sms_campaign_id'].nil?
+      query_params[:'automationWorkflowEmailId[]'] = @api_client.build_collection_param(opts[:'automation_workflow_email_id'], :csv) if !opts[:'automation_workflow_email_id'].nil?
+      query_params[:'automationWorkflowSmsId[]'] = @api_client.build_collection_param(opts[:'automation_workflow_sms_id'], :csv) if !opts[:'automation_workflow_sms_id'].nil?
 
       # header parameters
       header_params = {}
@@ -495,27 +509,28 @@ module Brevo
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse2006')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EcommerceApi#ecommerce_attribution_metrics_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
-    # Get attributed product sales for a single Brevo campaign
-    # @param conversion_source The Brevo campaign type for which data will be retrieved
-    # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+    # Get attributed product sales for a single Brevo campaign or workflow
+    # @param conversion_source The Brevo campaign or automation workflow type for which data will be retrieved
+    # @param conversion_source_id The Brevo campaign or automation workflow id for which data will be retrieved
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [InlineResponse2008]
     def ecommerce_attribution_products_conversion_source_conversion_source_id_get(conversion_source, conversion_source_id, opts = {})
-      ecommerce_attribution_products_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts)
-      nil
+      data, _status_code, _headers = ecommerce_attribution_products_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts)
+      data
     end
 
-    # Get attributed product sales for a single Brevo campaign
-    # @param conversion_source The Brevo campaign type for which data will be retrieved
-    # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+    # Get attributed product sales for a single Brevo campaign or workflow
+    # @param conversion_source The Brevo campaign or automation workflow type for which data will be retrieved
+    # @param conversion_source_id The Brevo campaign or automation workflow id for which data will be retrieved
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(InlineResponse2008, Fixnum, Hash)>] InlineResponse2008 data, response status code and response headers
     def ecommerce_attribution_products_conversion_source_conversion_source_id_get_with_http_info(conversion_source, conversion_source_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EcommerceApi.ecommerce_attribution_products_conversion_source_conversion_source_id_get ...'
@@ -523,6 +538,10 @@ module Brevo
       # verify the required parameter 'conversion_source' is set
       if @api_client.config.client_side_validation && conversion_source.nil?
         fail ArgumentError, "Missing the required parameter 'conversion_source' when calling EcommerceApi.ecommerce_attribution_products_conversion_source_conversion_source_id_get"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['email_campaign', 'sms_campaign', 'automation_workflow_email', 'automation_workflow_sms'].include?(conversion_source)
+        fail ArgumentError, "invalid value for 'conversion_source', must be one of email_campaign, sms_campaign, automation_workflow_email, automation_workflow_sms"
       end
       # verify the required parameter 'conversion_source_id' is set
       if @api_client.config.client_side_validation && conversion_source_id.nil?
@@ -552,9 +571,56 @@ module Brevo
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse2008')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EcommerceApi#ecommerce_attribution_products_conversion_source_conversion_source_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get the ISO 4217 compliant display currency code for your Brevo account
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse2005]
+    def ecommerce_config_display_currency_get(opts = {})
+      data, _status_code, _headers = ecommerce_config_display_currency_get_with_http_info(opts)
+      data
+    end
+
+    # Get the ISO 4217 compliant display currency code for your Brevo account
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse2005, Fixnum, Hash)>] InlineResponse2005 data, response status code and response headers
+    def ecommerce_config_display_currency_get_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EcommerceApi.ecommerce_config_display_currency_get ...'
+      end
+      # resource path
+      local_var_path = '/ecommerce/config/displayCurrency'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse2005')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EcommerceApi#ecommerce_config_display_currency_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -565,8 +631,8 @@ module Brevo
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (default to desc)
     # @option opts [Array<String>] :ids Filter by category ids
     # @option opts [String] :name Filter by category name
-    # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
-    # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+    # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+    # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
     # @return [GetCategories]
     def get_categories(opts = {})
       data, _status_code, _headers = get_categories_with_http_info(opts)
@@ -580,8 +646,8 @@ module Brevo
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
     # @option opts [Array<String>] :ids Filter by category ids
     # @option opts [String] :name Filter by category name
-    # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
-    # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+    # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+    # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
     # @return [Array<(GetCategories, Fixnum, Hash)>] GetCategories data, response status code and response headers
     def get_categories_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -898,6 +964,58 @@ module Brevo
         :return_type => 'GetProducts')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EcommerceApi#get_products\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Set the ISO 4217 compliant display currency code for your Brevo account
+    # @param set_config_display_currency set ISO 4217 compliant display currency code payload
+    # @param [Hash] opts the optional parameters
+    # @return [SetConfigDisplayCurrency]
+    def set_config_display_currency(set_config_display_currency, opts = {})
+      data, _status_code, _headers = set_config_display_currency_with_http_info(set_config_display_currency, opts)
+      data
+    end
+
+    # Set the ISO 4217 compliant display currency code for your Brevo account
+    # @param set_config_display_currency set ISO 4217 compliant display currency code payload
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SetConfigDisplayCurrency, Fixnum, Hash)>] SetConfigDisplayCurrency data, response status code and response headers
+    def set_config_display_currency_with_http_info(set_config_display_currency, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EcommerceApi.set_config_display_currency ...'
+      end
+      # verify the required parameter 'set_config_display_currency' is set
+      if @api_client.config.client_side_validation && set_config_display_currency.nil?
+        fail ArgumentError, "Missing the required parameter 'set_config_display_currency' when calling EcommerceApi.set_config_display_currency"
+      end
+      # resource path
+      local_var_path = '/ecommerce/config/displayCurrency'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(set_config_display_currency)
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SetConfigDisplayCurrency')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EcommerceApi#set_config_display_currency\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

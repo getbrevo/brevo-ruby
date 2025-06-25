@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -18,18 +18,22 @@ module Brevo
     # Number of multi-users
     attr_accessor :users
 
-    # Number of landing pages / Not required on ENTv2
+    # Number of landing pages
     attr_accessor :landing_page
 
     # Number of inboxes / Not required on ENTv2
     attr_accessor :inbox
+
+    # Number of sales users
+    attr_accessor :sales_users
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'users' => :'users',
         :'landing_page' => :'landingPage',
-        :'inbox' => :'inbox'
+        :'inbox' => :'inbox',
+        :'sales_users' => :'salesUsers'
       }
     end
 
@@ -38,7 +42,8 @@ module Brevo
       {
         :'users' => :'Integer',
         :'landing_page' => :'Integer',
-        :'inbox' => :'Integer'
+        :'inbox' => :'Integer',
+        :'sales_users' => :'Integer'
       }
     end
 
@@ -60,6 +65,10 @@ module Brevo
 
       if attributes.has_key?(:'inbox')
         self.inbox = attributes[:'inbox']
+      end
+
+      if attributes.has_key?(:'salesUsers')
+        self.sales_users = attributes[:'salesUsers']
       end
     end
 
@@ -83,7 +92,8 @@ module Brevo
       self.class == o.class &&
           users == o.users &&
           landing_page == o.landing_page &&
-          inbox == o.inbox
+          inbox == o.inbox &&
+          sales_users == o.sales_users
     end
 
     # @see the `==` method
@@ -95,7 +105,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [users, landing_page, inbox].hash
+      [users, landing_page, inbox, sales_users].hash
     end
 
     # Builds the object from hash

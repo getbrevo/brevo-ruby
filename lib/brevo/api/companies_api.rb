@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -29,57 +29,13 @@ module Brevo
       end
     end
     
-    # Get company attributes
-    # @param [Hash] opts the optional parameters
-    # @return [CompanyAttributes]
-    def companies_attributes_get(opts = {})
-      data, _status_code, _headers = companies_attributes_get_with_http_info(opts)
-      data
-    end
-
-    # Get company attributes
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(CompanyAttributes, Fixnum, Hash)>] CompanyAttributes data, response status code and response headers
-    def companies_attributes_get_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CompaniesApi.companies_attributes_get ...'
-      end
-      # resource path
-      local_var_path = '/companies/attributes'
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['api-key', 'partner-key']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CompanyAttributes')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CompaniesApi#companies_attributes_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
     # Get all companies
     # @param [Hash] opts the optional parameters
     # @option opts [String] :filters Filter by attrbutes. If you have filter for owner on your side please send it as {\&quot;attributes.owner\&quot;:\&quot;5b1a17d914b73d35a76ca0c7\&quot;}
     # @option opts [Integer] :linked_contacts_ids Filter by linked contacts ids
     # @option opts [String] :linked_deals_ids Filter by linked deals ids
+    # @option opts [String] :modified_since Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
+    # @option opts [String] :created_since Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
     # @option opts [Integer] :page Index of the first document of the page
     # @option opts [Integer] :limit Number of documents per page (default to 50)
     # @option opts [String] :sort Sort the results in the ascending/descending order. Default order is **descending** by creation if &#x60;sort&#x60; is not passed
@@ -95,6 +51,8 @@ module Brevo
     # @option opts [String] :filters Filter by attrbutes. If you have filter for owner on your side please send it as {\&quot;attributes.owner\&quot;:\&quot;5b1a17d914b73d35a76ca0c7\&quot;}
     # @option opts [Integer] :linked_contacts_ids Filter by linked contacts ids
     # @option opts [String] :linked_deals_ids Filter by linked deals ids
+    # @option opts [String] :modified_since Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
+    # @option opts [String] :created_since Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
     # @option opts [Integer] :page Index of the first document of the page
     # @option opts [Integer] :limit Number of documents per page
     # @option opts [String] :sort Sort the results in the ascending/descending order. Default order is **descending** by creation if &#x60;sort&#x60; is not passed
@@ -115,6 +73,8 @@ module Brevo
       query_params[:'filters'] = opts[:'filters'] if !opts[:'filters'].nil?
       query_params[:'linkedContactsIds'] = opts[:'linked_contacts_ids'] if !opts[:'linked_contacts_ids'].nil?
       query_params[:'linkedDealsIds'] = opts[:'linked_deals_ids'] if !opts[:'linked_deals_ids'].nil?
+      query_params[:'modifiedSince'] = opts[:'modified_since'] if !opts[:'modified_since'].nil?
+      query_params[:'createdSince'] = opts[:'created_since'] if !opts[:'created_since'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
@@ -306,6 +266,68 @@ module Brevo
       end
       return data, status_code, headers
     end
+    # Import companies(creation and updation)
+    # Import companies from a CSV file with mapping options.
+    # @param file The CSV file to upload.The file should have the first row as the mapping attribute. Some default attribute names are (a) company_id [brevo mongoID to update deals] (b) associated_contact (c) associated_deal (f) any other attribute with internal name 
+    # @param mapping The mapping options in JSON format.   json    {       \&quot;link_entities\&quot;: true, // Determines whether to link related entities during the import process       \&quot;unlink_entities\&quot;: false, //Determines whether to unlink related entities during the import process.       \&quot;update_existing_records\&quot;: true, // Determines whether to update based on company ID or treat every row as create       \&quot;unset_empty_attributes\&quot;: false // Determines whether unset a specific attribute during update if values input is blank       \&quot;use_company_identifier\&quot;: false // Determines whether to use company name as identifier     } 
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse2004]
+    def companies_import_post(file, mapping, opts = {})
+      data, _status_code, _headers = companies_import_post_with_http_info(file, mapping, opts)
+      data
+    end
+
+    # Import companies(creation and updation)
+    # Import companies from a CSV file with mapping options.
+    # @param file The CSV file to upload.The file should have the first row as the mapping attribute. Some default attribute names are (a) company_id [brevo mongoID to update deals] (b) associated_contact (c) associated_deal (f) any other attribute with internal name 
+    # @param mapping The mapping options in JSON format.   json    {       \&quot;link_entities\&quot;: true, // Determines whether to link related entities during the import process       \&quot;unlink_entities\&quot;: false, //Determines whether to unlink related entities during the import process.       \&quot;update_existing_records\&quot;: true, // Determines whether to update based on company ID or treat every row as create       \&quot;unset_empty_attributes\&quot;: false // Determines whether unset a specific attribute during update if values input is blank       \&quot;use_company_identifier\&quot;: false // Determines whether to use company name as identifier     } 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse2004, Fixnum, Hash)>] InlineResponse2004 data, response status code and response headers
+    def companies_import_post_with_http_info(file, mapping, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CompaniesApi.companies_import_post ...'
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling CompaniesApi.companies_import_post"
+      end
+      # verify the required parameter 'mapping' is set
+      if @api_client.config.client_side_validation && mapping.nil?
+        fail ArgumentError, "Missing the required parameter 'mapping' when calling CompaniesApi.companies_import_post"
+      end
+      # resource path
+      local_var_path = '/companies/import'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params['file'] = file
+      form_params['mapping'] = mapping
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse2004')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CompaniesApi#companies_import_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Link and Unlink company with contacts and deals
     # @param id 
     # @param body Linked / Unlinked contacts and deals ids.
@@ -412,6 +434,104 @@ module Brevo
         :return_type => 'InlineResponse2002')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CompaniesApi#companies_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get company attributes
+    # @param [Hash] opts the optional parameters
+    # @return [CompanyAttributes]
+    def crm_attributes_companies_get(opts = {})
+      data, _status_code, _headers = crm_attributes_companies_get_with_http_info(opts)
+      data
+    end
+
+    # Get company attributes
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CompanyAttributes, Fixnum, Hash)>] CompanyAttributes data, response status code and response headers
+    def crm_attributes_companies_get_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CompaniesApi.crm_attributes_companies_get ...'
+      end
+      # resource path
+      local_var_path = '/crm/attributes/companies'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CompanyAttributes')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CompaniesApi#crm_attributes_companies_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Create a deal/company attribute
+    # @param body Attribute creation data for company
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse2003]
+    def crm_attributes_post(body, opts = {})
+      data, _status_code, _headers = crm_attributes_post_with_http_info(body, opts)
+      data
+    end
+
+    # Create a deal/company attribute
+    # @param body Attribute creation data for company
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse2003, Fixnum, Hash)>] InlineResponse2003 data, response status code and response headers
+    def crm_attributes_post_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CompaniesApi.crm_attributes_post ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling CompaniesApi.crm_attributes_post"
+      end
+      # resource path
+      local_var_path = '/crm/attributes'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse2003')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CompaniesApi#crm_attributes_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

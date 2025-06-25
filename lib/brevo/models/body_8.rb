@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,25 +14,25 @@ require 'date'
 
 module Brevo
   class Body8
-    # Contact ids for contacts to be linked with deal
+    # Contact ids for contacts to be linked with company
     attr_accessor :link_contact_ids
 
-    # Contact ids for contacts to be unlinked from deal
+    # Contact ids for contacts to be unlinked from company
     attr_accessor :unlink_contact_ids
 
-    # Company ids to be linked with deal
-    attr_accessor :link_company_ids
+    # Deals ids for deals to be linked with company
+    attr_accessor :link_deals_ids
 
-    # Company ids to be unlinked from deal
-    attr_accessor :unlink_company_ids
+    # Deals ids for deals to be unlinked from company
+    attr_accessor :unlink_deals_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'link_contact_ids' => :'linkContactIds',
         :'unlink_contact_ids' => :'unlinkContactIds',
-        :'link_company_ids' => :'linkCompanyIds',
-        :'unlink_company_ids' => :'unlinkCompanyIds'
+        :'link_deals_ids' => :'linkDealsIds',
+        :'unlink_deals_ids' => :'unlinkDealsIds'
       }
     end
 
@@ -41,8 +41,8 @@ module Brevo
       {
         :'link_contact_ids' => :'Array<Integer>',
         :'unlink_contact_ids' => :'Array<Integer>',
-        :'link_company_ids' => :'Array<String>',
-        :'unlink_company_ids' => :'Array<String>'
+        :'link_deals_ids' => :'Array<String>',
+        :'unlink_deals_ids' => :'Array<String>'
       }
     end
 
@@ -66,15 +66,15 @@ module Brevo
         end
       end
 
-      if attributes.has_key?(:'linkCompanyIds')
-        if (value = attributes[:'linkCompanyIds']).is_a?(Array)
-          self.link_company_ids = value
+      if attributes.has_key?(:'linkDealsIds')
+        if (value = attributes[:'linkDealsIds']).is_a?(Array)
+          self.link_deals_ids = value
         end
       end
 
-      if attributes.has_key?(:'unlinkCompanyIds')
-        if (value = attributes[:'unlinkCompanyIds']).is_a?(Array)
-          self.unlink_company_ids = value
+      if attributes.has_key?(:'unlinkDealsIds')
+        if (value = attributes[:'unlinkDealsIds']).is_a?(Array)
+          self.unlink_deals_ids = value
         end
       end
     end
@@ -99,8 +99,8 @@ module Brevo
       self.class == o.class &&
           link_contact_ids == o.link_contact_ids &&
           unlink_contact_ids == o.unlink_contact_ids &&
-          link_company_ids == o.link_company_ids &&
-          unlink_company_ids == o.unlink_company_ids
+          link_deals_ids == o.link_deals_ids &&
+          unlink_deals_ids == o.unlink_deals_ids
     end
 
     # @see the `==` method
@@ -112,7 +112,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [link_contact_ids, unlink_contact_ids, link_company_ids, unlink_company_ids].hash
+      [link_contact_ids, unlink_contact_ids, link_deals_ids, unlink_deals_ids].hash
     end
 
     # Builds the object from hash

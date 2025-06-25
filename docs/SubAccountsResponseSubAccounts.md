@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **company_name** | **String** | Name of the sub-account company | 
 **active** | **BOOLEAN** | Whether the sub-account is active or not | 
 **created_at** | **Integer** | Timestamp when the sub-account was created | 
+**groups** | [**Array&lt;SubAccountsResponseGroups&gt;**](SubAccountsResponseGroups.md) | Group details | 
 
 

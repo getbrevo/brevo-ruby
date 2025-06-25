@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -189,7 +189,7 @@ module Brevo
     # @option opts [Integer] :limit Number of documents returned per page (default to 50)
     # @option opts [Integer] :offset Index of the first document on the page (default to 0)
     # @option opts [String] :sort Sort the results by creation time in ascending/descending order (default to desc)
-    # @option opts [Object] :sort_by The field used to sort coupon collections
+    # @option opts [String] :sort_by The field used to sort coupon collections (default to createdAt)
     # @return [GetCouponCollection]
     def get_coupon_collections(opts = {})
       data, _status_code, _headers = get_coupon_collections_with_http_info(opts)
@@ -201,7 +201,7 @@ module Brevo
     # @option opts [Integer] :limit Number of documents returned per page
     # @option opts [Integer] :offset Index of the first document on the page
     # @option opts [String] :sort Sort the results by creation time in ascending/descending order
-    # @option opts [Object] :sort_by The field used to sort coupon collections
+    # @option opts [String] :sort_by The field used to sort coupon collections
     # @return [Array<(GetCouponCollection, Fixnum, Hash)>] GetCouponCollection data, response status code and response headers
     def get_coupon_collections_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -221,6 +221,9 @@ module Brevo
 
       if @api_client.config.client_side_validation && opts[:'sort'] && !['asc', 'desc'].include?(opts[:'sort'])
         fail ArgumentError, 'invalid value for "sort", must be one of asc, desc'
+      end
+      if @api_client.config.client_side_validation && opts[:'sort_by'] && !['createdAt', 'remainingCoupons', 'expirationDate'].include?(opts[:'sort_by'])
+        fail ArgumentError, 'invalid value for "sort_by", must be one of createdAt, remainingCoupons, expirationDate'
       end
       # resource path
       local_var_path = '/couponCollections'
@@ -261,7 +264,7 @@ module Brevo
     # @param id Id of the collection to update
     # @param [Hash] opts the optional parameters
     # @option opts [UpdateCouponCollection] :update_coupon_collection Values to update the coupon collection
-    # @return [InlineResponse2003]
+    # @return [InlineResponse2009]
     def update_coupon_collection(id, opts = {})
       data, _status_code, _headers = update_coupon_collection_with_http_info(id, opts)
       data
@@ -271,7 +274,7 @@ module Brevo
     # @param id Id of the collection to update
     # @param [Hash] opts the optional parameters
     # @option opts [UpdateCouponCollection] :update_coupon_collection Values to update the coupon collection
-    # @return [Array<(InlineResponse2003, Fixnum, Hash)>] InlineResponse2003 data, response status code and response headers
+    # @return [Array<(InlineResponse2009, Fixnum, Hash)>] InlineResponse2009 data, response status code and response headers
     def update_coupon_collection_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CouponsApi.update_coupon_collection ...'
@@ -305,7 +308,7 @@ module Brevo
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse2003')
+        :return_type => 'InlineResponse2009')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CouponsApi#update_coupon_collection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

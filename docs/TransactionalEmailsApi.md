@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**get_transac_blocked_contacts**](TransactionalEmailsApi.md#get_transac_blocked_contacts) | **GET** /smtp/blockedContacts | Get the list of blocked or unsubscribed transactional contacts
 [**get_transac_email_content**](TransactionalEmailsApi.md#get_transac_email_content) | **GET** /smtp/emails/{uuid} | Get the personalized content of a sent transactional email
 [**get_transac_emails_list**](TransactionalEmailsApi.md#get_transac_emails_list) | **GET** /smtp/emails | Get the list of transactional emails on the basis of allowed filters
+[**post_preview_smtp_email_templates**](TransactionalEmailsApi.md#post_preview_smtp_email_templates) | **POST** /smtp/template/preview | Generate the rendered preview of transactional template
 [**send_test_template**](TransactionalEmailsApi.md#send_test_template) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
 [**send_transac_email**](TransactionalEmailsApi.md#send_transac_email) | **POST** /smtp/email | Send a transactional email
 [**smtp_blocked_contacts_email_delete**](TransactionalEmailsApi.md#smtp_blocked_contacts_email_delete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
@@ -1101,6 +1102,63 @@ Name | Type | Description  | Notes
 
 
 
+# **post_preview_smtp_email_templates**
+> TemplatePreview post_preview_smtp_email_templates(fetch_template_preview)
+
+Generate the rendered preview of transactional template
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::TransactionalEmailsApi.new
+
+fetch_template_preview = Brevo::FetchTemplatePreview.new # FetchTemplatePreview | Values to fetch Template preview
+
+
+begin
+  #Generate the rendered preview of transactional template
+  result = api_instance.post_preview_smtp_email_templates(fetch_template_preview)
+  p result
+rescue Brevo::ApiError => e
+  puts "Exception when calling TransactionalEmailsApi->post_preview_smtp_email_templates: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fetch_template_preview** | [**FetchTemplatePreview**](FetchTemplatePreview.md)| Values to fetch Template preview | 
+
+### Return type
+
+[**TemplatePreview**](TemplatePreview.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **send_test_template**
 > send_test_template(template_id, send_test_email)
 
@@ -1297,7 +1355,7 @@ end
 
 api_instance = Brevo::TransactionalEmailsApi.new
 
-identifier = 'identifier_example' # String | MessageId or Email of the transactional log(s) to delete
+identifier = 'identifier_example' # String | MessageId of the transactional log(s) to delete
 
 
 begin
@@ -1312,7 +1370,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| MessageId or Email of the transactional log(s) to delete | 
+ **identifier** | **String**| MessageId of the transactional log(s) to delete | 
 
 ### Return type
 

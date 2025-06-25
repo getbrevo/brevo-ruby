@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -27,13 +27,33 @@ module Brevo
     # Apps management accessiblity | Not available in ENTv2
     attr_accessor :apps_management
 
+    # Group creation, modification or deletion accessibility
+    attr_accessor :sub_organization_groups
+
+    # Authorization to create sub-organization in the admin account. If the user creating the sub-organization, belongs to a group, the user must choose a group at the sub-organization creation.
+    attr_accessor :create_sub_organizations
+
+    # Authorization to manage and access sub-organizations in the admin account.
+    attr_accessor :manage_sub_organizations
+
+    # Analytics dashboard accessibility
+    attr_accessor :analytics
+
+    # Security page accessibility
+    attr_accessor :security
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'user_management' => :'user_management',
         :'api_keys' => :'api_keys',
         :'my_plan' => :'my_plan',
-        :'apps_management' => :'apps_management'
+        :'apps_management' => :'apps_management',
+        :'sub_organization_groups' => :'sub_organization_groups',
+        :'create_sub_organizations' => :'create_sub_organizations',
+        :'manage_sub_organizations' => :'manage_sub_organizations',
+        :'analytics' => :'analytics',
+        :'security' => :'security'
       }
     end
 
@@ -43,7 +63,12 @@ module Brevo
         :'user_management' => :'Array<String>',
         :'api_keys' => :'Array<String>',
         :'my_plan' => :'Array<String>',
-        :'apps_management' => :'Array<String>'
+        :'apps_management' => :'Array<String>',
+        :'sub_organization_groups' => :'Array<String>',
+        :'create_sub_organizations' => :'Array<String>',
+        :'manage_sub_organizations' => :'Array<String>',
+        :'analytics' => :'Array<String>',
+        :'security' => :'Array<String>'
       }
     end
 
@@ -78,6 +103,36 @@ module Brevo
           self.apps_management = value
         end
       end
+
+      if attributes.has_key?(:'sub_organization_groups')
+        if (value = attributes[:'sub_organization_groups']).is_a?(Array)
+          self.sub_organization_groups = value
+        end
+      end
+
+      if attributes.has_key?(:'create_sub_organizations')
+        if (value = attributes[:'create_sub_organizations']).is_a?(Array)
+          self.create_sub_organizations = value
+        end
+      end
+
+      if attributes.has_key?(:'manage_sub_organizations')
+        if (value = attributes[:'manage_sub_organizations']).is_a?(Array)
+          self.manage_sub_organizations = value
+        end
+      end
+
+      if attributes.has_key?(:'analytics')
+        if (value = attributes[:'analytics']).is_a?(Array)
+          self.analytics = value
+        end
+      end
+
+      if attributes.has_key?(:'security')
+        if (value = attributes[:'security']).is_a?(Array)
+          self.security = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -101,7 +156,12 @@ module Brevo
           user_management == o.user_management &&
           api_keys == o.api_keys &&
           my_plan == o.my_plan &&
-          apps_management == o.apps_management
+          apps_management == o.apps_management &&
+          sub_organization_groups == o.sub_organization_groups &&
+          create_sub_organizations == o.create_sub_organizations &&
+          manage_sub_organizations == o.manage_sub_organizations &&
+          analytics == o.analytics &&
+          security == o.security
     end
 
     # @see the `==` method
@@ -113,7 +173,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [user_management, api_keys, my_plan, apps_management].hash
+      [user_management, api_keys, my_plan, apps_management, sub_organization_groups, create_sub_organizations, manage_sub_organizations, analytics, security].hash
     end
 
     # Builds the object from hash

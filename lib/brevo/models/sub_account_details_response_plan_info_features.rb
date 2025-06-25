@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -21,12 +21,15 @@ module Brevo
 
     attr_accessor :users
 
+    attr_accessor :sales_users
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'inbox' => :'inbox',
         :'landing_page' => :'landingPage',
-        :'users' => :'users'
+        :'users' => :'users',
+        :'sales_users' => :'salesUsers'
       }
     end
 
@@ -35,7 +38,8 @@ module Brevo
       {
         :'inbox' => :'SubAccountDetailsResponsePlanInfoFeaturesInbox',
         :'landing_page' => :'SubAccountDetailsResponsePlanInfoFeaturesLandingPage',
-        :'users' => :'SubAccountDetailsResponsePlanInfoFeaturesUsers'
+        :'users' => :'SubAccountDetailsResponsePlanInfoFeaturesUsers',
+        :'sales_users' => :'SubAccountDetailsResponsePlanInfoFeaturesSalesUsers'
       }
     end
 
@@ -57,6 +61,10 @@ module Brevo
 
       if attributes.has_key?(:'users')
         self.users = attributes[:'users']
+      end
+
+      if attributes.has_key?(:'salesUsers')
+        self.sales_users = attributes[:'salesUsers']
       end
     end
 
@@ -80,7 +88,8 @@ module Brevo
       self.class == o.class &&
           inbox == o.inbox &&
           landing_page == o.landing_page &&
-          users == o.users
+          users == o.users &&
+          sales_users == o.sales_users
     end
 
     # @see the `==` method
@@ -92,7 +101,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [inbox, landing_page, users].hash
+      [inbox, landing_page, users, sales_users].hash
     end
 
     # Builds the object from hash

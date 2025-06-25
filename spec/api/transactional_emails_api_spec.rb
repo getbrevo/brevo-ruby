@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -270,6 +270,17 @@ describe 'TransactionalEmailsApi' do
     end
   end
 
+  # unit tests for post_preview_smtp_email_templates
+  # Generate the rendered preview of transactional template
+  # @param fetch_template_preview Values to fetch Template preview
+  # @param [Hash] opts the optional parameters
+  # @return [TemplatePreview]
+  describe 'post_preview_smtp_email_templates test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for send_test_template
   # Send a template to your test list
   # @param template_id Id of the template
@@ -306,7 +317,7 @@ describe 'TransactionalEmailsApi' do
 
   # unit tests for smtp_log_identifier_delete
   # Delete an SMTP transactional log
-  # @param identifier MessageId or Email of the transactional log(s) to delete
+  # @param identifier MessageId of the transactional log(s) to delete
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'smtp_log_identifier_delete test' do

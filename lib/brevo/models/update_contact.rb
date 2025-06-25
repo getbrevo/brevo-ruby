@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,7 +14,7 @@ require 'date'
 
 module Brevo
   class UpdateContact
-    # Pass the set of attributes to be updated. These attributes must be present in your account. Values that don't match the attribute type (e.g. text or string in a date attribute) will be ignored.To update existing email address of a contact with the new one please pass EMAIL in attributes. For example, `{ \"EMAIL\":\"newemail@domain.com\", \"FNAME\":\"Ellie\", \"LNAME\":\"Roger\"}`. The attribute's parameter should be passed in capital letter while updating a contact. Keep in mind transactional attributes can be updated the same way as normal attributes. Mobile Number in \"SMS\" field should be passed with proper country code. For example {\"SMS\":\"+91xxxxxxxxxx\"} or {\"SMS\":\"0091xxxxxxxxxx\"}
+    # Pass the set of attributes to be updated. These attributes must be present in your account. Values that don't match the attribute type (e.g. text or string in a date attribute) will be ignored.To update existing email address of a contact with the new one please pass EMAIL in attributes. For example, `{ \"EMAIL\":\"newemail@domain.com\", \"FNAME\":\"Ellie\", \"LNAME\":\"Roger\", \"COUNTRIES\":[\"India\",\"China\"]}`. The attribute's parameter should be passed in capital letter while updating a contact. Keep in mind transactional attributes can be updated the same way as normal attributes. Mobile Number in \"SMS\" field should be passed with proper country code. For example {\"SMS\":\"+91xxxxxxxxxx\"} or {\"SMS\":\"0091xxxxxxxxxx\"}
     attr_accessor :attributes
 
     # Pass your own Id to update ext_id of a contact.
@@ -51,7 +51,7 @@ module Brevo
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'attributes' => :'Object',
+        :'attributes' => :'Hash<String, Object>',
         :'ext_id' => :'String',
         :'email_blacklisted' => :'BOOLEAN',
         :'sms_blacklisted' => :'BOOLEAN',
@@ -70,7 +70,9 @@ module Brevo
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
       if attributes.has_key?(:'attributes')
-        self.attributes = attributes[:'attributes']
+        if (value = attributes[:'attributes']).is_a?(Hash)
+          self.attributes = value
+        end
       end
 
       if attributes.has_key?(:'ext_id')

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Float** |  | 
+**id** | **String** |  | 
 **conversion_source** | **String** |  | 
 **orders_count** | **Float** |  | 
 **revenue** | **Float** |  | 

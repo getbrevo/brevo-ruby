@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -15,20 +15,40 @@ require 'date'
 module Brevo
   # Credit details to update
   class SubAccountUpdatePlanRequestCredits
-    # Number of email credits
+    # Number of email credits | Pass the value -1 for unlimited emails in ENTv2 only
     attr_accessor :email
+
+    # Number of SMS credits | Pass the value -1 for unlimited SMS in ENTv2 only
+    attr_accessor :sms
+
+    # Number of Push credits, possible value is 0 and -1 | available in ENT-v2 only
+    attr_accessor :wp_subscribers
+
+    # Number of externalFeeds credits, possible values are 0 or 1 |available in ENTv2 only
+    attr_accessor :external_feeds
+
+    # Number of whatsapp credits | Pass the value -1 for unlimited whatsapp in ENTv2 only
+    attr_accessor :whatsapp
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'email' => :'email'
+        :'email' => :'email',
+        :'sms' => :'sms',
+        :'wp_subscribers' => :'wpSubscribers',
+        :'external_feeds' => :'externalFeeds',
+        :'whatsapp' => :'whatsapp'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'email' => :'Integer'
+        :'email' => :'Integer',
+        :'sms' => :'Float',
+        :'wp_subscribers' => :'Integer',
+        :'external_feeds' => :'Float',
+        :'whatsapp' => :'Float'
       }
     end
 
@@ -42,6 +62,22 @@ module Brevo
 
       if attributes.has_key?(:'email')
         self.email = attributes[:'email']
+      end
+
+      if attributes.has_key?(:'sms')
+        self.sms = attributes[:'sms']
+      end
+
+      if attributes.has_key?(:'wpSubscribers')
+        self.wp_subscribers = attributes[:'wpSubscribers']
+      end
+
+      if attributes.has_key?(:'externalFeeds')
+        self.external_feeds = attributes[:'externalFeeds']
+      end
+
+      if attributes.has_key?(:'whatsapp')
+        self.whatsapp = attributes[:'whatsapp']
       end
     end
 
@@ -63,7 +99,11 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          email == o.email
+          email == o.email &&
+          sms == o.sms &&
+          wp_subscribers == o.wp_subscribers &&
+          external_feeds == o.external_feeds &&
+          whatsapp == o.whatsapp
     end
 
     # @see the `==` method
@@ -75,7 +115,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [email].hash
+      [email, sms, wp_subscribers, external_feeds, whatsapp].hash
     end
 
     # Builds the object from hash

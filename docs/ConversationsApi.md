@@ -41,7 +41,7 @@ end
 
 api_instance = Brevo::ConversationsApi.new
 
-body = Brevo::Body15.new # Body15 | Agent fields.
+body = Brevo::Body19.new # Body19 | Agent fields.
 
 
 begin
@@ -56,7 +56,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body15**](Body15.md)| Agent fields. | 
+ **body** | [**Body19**](Body19.md)| Agent fields. | 
 
 ### Return type
 
@@ -217,7 +217,7 @@ api_instance = Brevo::ConversationsApi.new
 id = 'id_example' # String | ID of the message
 
 opts = { 
-  body: Brevo::Body12.new # Body12 | 
+  body: Brevo::Body16.new # Body16 | 
 }
 
 begin
@@ -234,7 +234,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| ID of the message | 
- **body** | [**Body12**](Body12.md)|  | [optional] 
+ **body** | [**Body16**](Body16.md)|  | [optional] 
 
 ### Return type
 
@@ -275,7 +275,7 @@ end
 
 api_instance = Brevo::ConversationsApi.new
 
-body = Brevo::Body11.new # Body11 | Message fields.
+body = Brevo::Body15.new # Body15 | Message fields.
 
 
 begin
@@ -291,7 +291,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body11**](Body11.md)| Message fields. | 
+ **body** | [**Body15**](Body15.md)| Message fields. | 
 
 ### Return type
 
@@ -447,7 +447,7 @@ api_instance = Brevo::ConversationsApi.new
 
 id = 'id_example' # String | ID of the message
 
-body = Brevo::Body14.new # Body14 | 
+body = Brevo::Body18.new # Body18 | 
 
 
 begin
@@ -464,7 +464,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| ID of the message | 
- **body** | [**Body14**](Body14.md)|  | 
+ **body** | [**Body18**](Body18.md)|  | 
 
 ### Return type
 
@@ -507,7 +507,7 @@ end
 
 api_instance = Brevo::ConversationsApi.new
 
-body = Brevo::Body13.new # Body13 | 
+body = Brevo::Body17.new # Body17 | 
 
 
 begin
@@ -523,7 +523,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body13**](Body13.md)|  | 
+ **body** | [**Body17**](Body17.md)|  | 
 
 ### Return type
 

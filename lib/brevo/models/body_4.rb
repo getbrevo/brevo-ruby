@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,30 +14,20 @@ require 'date'
 
 module Brevo
   class Body4
-    # Name of company
-    attr_accessor :name
-
-    # Attributes for company update
-    attr_accessor :attributes
-
-    # Country code if phone_number is passed in attributes.
-    attr_accessor :country_code
+    # List of sub-account ids
+    attr_accessor :sub_account_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'attributes' => :'attributes',
-        :'country_code' => :'countryCode'
+        :'sub_account_ids' => :'subAccountIds'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'attributes' => :'Object',
-        :'country_code' => :'Integer'
+        :'sub_account_ids' => :'Array<Integer>'
       }
     end
 
@@ -49,16 +39,10 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'attributes')
-        self.attributes = attributes[:'attributes']
-      end
-
-      if attributes.has_key?(:'countryCode')
-        self.country_code = attributes[:'countryCode']
+      if attributes.has_key?(:'subAccountIds')
+        if (value = attributes[:'subAccountIds']).is_a?(Array)
+          self.sub_account_ids = value
+        end
       end
     end
 
@@ -66,12 +50,17 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @sub_account_ids.nil?
+        invalid_properties.push('invalid value for "sub_account_ids", sub_account_ids cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @sub_account_ids.nil?
       true
     end
 
@@ -80,9 +69,7 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          attributes == o.attributes &&
-          country_code == o.country_code
+          sub_account_ids == o.sub_account_ids
     end
 
     # @see the `==` method
@@ -94,7 +81,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, attributes, country_code].hash
+      [sub_account_ids].hash
     end
 
     # Builds the object from hash

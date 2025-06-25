@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -35,7 +35,7 @@ describe 'InviteuserPrivileges' do
   describe 'test attribute "feature"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["email_campaigns", "sms_campaigns", "contacts", "templates", "workflows", "facebook_ads", "landing_pages", "transactional_emails", "smtp_api", "user_management", "sales_platform", "phone", "conversations", "senders_domains_dedicated_ips", "push_notifications"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["email_campaigns", "sms_campaigns", "contacts", "templates", "workflows", "landing_pages", "transactional_emails", "smtp_api", "user_management", "sales_platform", "phone", "conversations", "senders_domains_dedicated_ips", "push_notifications"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.feature = value }.not_to raise_error
       # end
@@ -45,7 +45,7 @@ describe 'InviteuserPrivileges' do
   describe 'test attribute "permissions"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["create_edit_delete", "send_schedule_suspend", "view", "import", "export", "list_and_attributes", "forms", "activate_deactivate", "activate_deactivate_pause", "settings", "schedule_pause", "all", "logs", "access", "assign", "configure", "manage_owned_deals_tasks_companies", "manage_others_deals_tasks_companies", "reports", "senders_management", "domains_management", "dedicated_ips_management", "send", "smtp", "api_keys", "authorized_ips", "none"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["create_edit_delete", "send_schedule_suspend", "view", "import", "export", "list_and_attributes", "forms", "activate_deactivate", "activate_deactivate_pause", "settings", "schedule_pause", "all", "logs", "access", "assign", "configure", "create_edit_deals", "delete_deals", "manage_others_deals_tasks", "manage_owned_companies", "manage_others_companies", "reports", "senders_management", "domains_management", "dedicated_ips_management", "send", "smtp", "api_keys", "authorized_ips", "none"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.permissions = value }.not_to raise_error
       # end

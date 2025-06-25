@@ -3,7 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sms** | **Integer** | SMS credits remaining on the sub-account | [optional] 
 **emails** | [**SubAccountDetailsResponsePlanInfoCreditsEmails**](SubAccountDetailsResponsePlanInfoCreditsEmails.md) |  | [optional] 
+**sms** | [**SubAccountDetailsResponsePlanInfoCreditsSms**](SubAccountDetailsResponsePlanInfoCreditsSms.md) |  | [optional] 
+**wp_subscribers** | [**SubAccountDetailsResponsePlanInfoCreditsWpSubscribers**](SubAccountDetailsResponsePlanInfoCreditsWpSubscribers.md) |  | [optional] 
+**whatsapp** | [**SubAccountDetailsResponsePlanInfoCreditsWhatsapp**](SubAccountDetailsResponsePlanInfoCreditsWhatsapp.md) |  | [optional] 
+**external_feeds** | [**SubAccountDetailsResponsePlanInfoCreditsExternalFeeds**](SubAccountDetailsResponsePlanInfoCreditsExternalFeeds.md) |  | [optional] 
 
 

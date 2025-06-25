@@ -19,5 +19,7 @@ Name | Type | Description | Notes
 **viewed** | **Integer** | Number of openings for the campaign | 
 **deferred** | **Integer** | Number of deferred emails for the campaign | [optional] 
 **return_bounce** | **Integer** | Total number of non-delivered campaigns for a particular campaign id. | [optional] 
+**opens_rate** | **Float** | Percentage of recipients who open the email out of your total number of recipients. Depending on your Campaign settings, they may include Apple MPP opens. | 
+**apple_mpp_opens** | **Integer** | Numbers of times your email has been opened automatically through Apple MPP. | 
 
 

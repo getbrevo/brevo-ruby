@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -31,7 +31,7 @@ module Brevo
     
     # Add existing contacts to a list
     # @param list_id Id of the list
-    # @param contact_emails Emails addresses OR IDs of the contacts
+    # @param contact_emails Emails addresses OR IDs OR EXT_ID attributes of the contacts
     # @param [Hash] opts the optional parameters
     # @return [PostContactInfo]
     def add_contact_to_list(list_id, contact_emails, opts = {})
@@ -41,7 +41,7 @@ module Brevo
 
     # Add existing contacts to a list
     # @param list_id Id of the list
-    # @param contact_emails Emails addresses OR IDs of the contacts
+    # @param contact_emails Emails addresses OR IDs OR EXT_ID attributes of the contacts
     # @param [Hash] opts the optional parameters
     # @return [Array<(PostContactInfo, Fixnum, Hash)>] PostContactInfo data, response status code and response headers
     def add_contact_to_list_with_http_info(list_id, contact_emails, opts = {})
@@ -155,6 +155,7 @@ module Brevo
       return data, status_code, headers
     end
     # Create a contact
+    # Creates new contacts on Brevo. Contacts can be created by passing either - <br><br> 1. email address of the contact (email_id),  <br> 2. phone number of the contact (to be passed as \"SMS\" field in \"attributes\" along with proper country code), For example- {\"SMS\":\"+91xxxxxxxxxx\"} or {\"SMS\":\"0091xxxxxxxxxx\"} <br> 3. ext_id <br>
     # @param create_contact Values to create a contact
     # @param [Hash] opts the optional parameters
     # @return [CreateUpdateContactModel]
@@ -164,6 +165,7 @@ module Brevo
     end
 
     # Create a contact
+    # Creates new contacts on Brevo. Contacts can be created by passing either - &lt;br&gt;&lt;br&gt; 1. email address of the contact (email_id),  &lt;br&gt; 2. phone number of the contact (to be passed as \&quot;SMS\&quot; field in \&quot;attributes\&quot; along with proper country code), For example- {\&quot;SMS\&quot;:\&quot;+91xxxxxxxxxx\&quot;} or {\&quot;SMS\&quot;:\&quot;0091xxxxxxxxxx\&quot;} &lt;br&gt; 3. ext_id &lt;br&gt;
     # @param create_contact Values to create a contact
     # @param [Hash] opts the optional parameters
     # @return [Array<(CreateUpdateContactModel, Fixnum, Hash)>] CreateUpdateContactModel data, response status code and response headers
@@ -423,8 +425,10 @@ module Brevo
       return data, status_code, headers
     end
     # Delete a contact
-    # @param identifier Email (urlencoded) OR ID of the contact
+    # There are 2 ways to delete a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute.
+    # @param identifier Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :identifier_type email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
     # @return [nil]
     def delete_contact(identifier, opts = {})
       delete_contact_with_http_info(identifier, opts)
@@ -432,8 +436,10 @@ module Brevo
     end
 
     # Delete a contact
-    # @param identifier Email (urlencoded) OR ID of the contact
+    # There are 2 ways to delete a contact &lt;br&gt;&lt;br&gt; Option 1- https://api.brevo.com/v3/contacts/{identifier} &lt;br&gt;&lt;br&gt; Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType&#x3D;{} &lt;br&gt; &lt;br&gt; Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   &lt;br&gt;&lt;br&gt; Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute.
+    # @param identifier Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :identifier_type email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_contact_with_http_info(identifier, opts = {})
       if @api_client.config.debugging
@@ -443,11 +449,15 @@ module Brevo
       if @api_client.config.client_side_validation && identifier.nil?
         fail ArgumentError, "Missing the required parameter 'identifier' when calling ContactsApi.delete_contact"
       end
+      if @api_client.config.client_side_validation && opts[:'identifier_type'] && !['email_id', 'contact_id', 'ext_id', 'phone_id', 'whatsapp_id', 'landline_number_id'].include?(opts[:'identifier_type'])
+        fail ArgumentError, 'invalid value for "identifier_type", must be one of email_id, contact_id, ext_id, phone_id, whatsapp_id, landline_number_id'
+      end
       # resource path
       local_var_path = '/contacts/{identifier}'.sub('{' + 'identifier' + '}', identifier.to_s)
 
       # query parameters
       query_params = {}
+      query_params[:'identifierType'] = opts[:'identifier_type'] if !opts[:'identifier_type'].nil?
 
       # header parameters
       header_params = {}
@@ -575,6 +585,73 @@ module Brevo
       end
       return data, status_code, headers
     end
+    # Delete a multiple-choice attribute option
+    # @param attribute_type Type of the attribute
+    # @param multiple_choice_attribute Name of the existing multiple-choice attribute
+    # @param multiple_choice_attribute_option Name of the existing multiple-choice attribute option that you want to delete
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_multi_attribute_options(attribute_type, multiple_choice_attribute, multiple_choice_attribute_option, opts = {})
+      delete_multi_attribute_options_with_http_info(attribute_type, multiple_choice_attribute, multiple_choice_attribute_option, opts)
+      nil
+    end
+
+    # Delete a multiple-choice attribute option
+    # @param attribute_type Type of the attribute
+    # @param multiple_choice_attribute Name of the existing multiple-choice attribute
+    # @param multiple_choice_attribute_option Name of the existing multiple-choice attribute option that you want to delete
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_multi_attribute_options_with_http_info(attribute_type, multiple_choice_attribute, multiple_choice_attribute_option, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContactsApi.delete_multi_attribute_options ...'
+      end
+      # verify the required parameter 'attribute_type' is set
+      if @api_client.config.client_side_validation && attribute_type.nil?
+        fail ArgumentError, "Missing the required parameter 'attribute_type' when calling ContactsApi.delete_multi_attribute_options"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['multiple-choice'].include?(attribute_type)
+        fail ArgumentError, "invalid value for 'attribute_type', must be one of multiple-choice"
+      end
+      # verify the required parameter 'multiple_choice_attribute' is set
+      if @api_client.config.client_side_validation && multiple_choice_attribute.nil?
+        fail ArgumentError, "Missing the required parameter 'multiple_choice_attribute' when calling ContactsApi.delete_multi_attribute_options"
+      end
+      # verify the required parameter 'multiple_choice_attribute_option' is set
+      if @api_client.config.client_side_validation && multiple_choice_attribute_option.nil?
+        fail ArgumentError, "Missing the required parameter 'multiple_choice_attribute_option' when calling ContactsApi.delete_multi_attribute_options"
+      end
+      # resource path
+      local_var_path = '/contacts/attributes/{attributeType}/{multipleChoiceAttribute}/{multipleChoiceAttributeOption}'.sub('{' + 'attributeType' + '}', attribute_type.to_s).sub('{' + 'multipleChoiceAttribute' + '}', multiple_choice_attribute.to_s).sub('{' + 'multipleChoiceAttributeOption' + '}', multiple_choice_attribute_option.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContactsApi#delete_multi_attribute_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # List all attributes
     # @param [Hash] opts the optional parameters
     # @return [GetAttributes]
@@ -622,9 +699,10 @@ module Brevo
       return data, status_code, headers
     end
     # Get a contact's details
-    # Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.brevo.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
-    # @param identifier Email (urlencoded) OR ID of the contact OR its SMS attribute value
+    # There are 2 ways to get a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL), phone_id (for SMS) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL, SMS and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute <br><br>Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats ``https://developers.brevo.com/reference/contacts-7#getcontactstats`` endpoint with the appropriate date ranges.
+    # @param identifier Email (urlencoded) OR ID of the contact OR its SMS attribute value OR EXT_ID attribute (urlencoded)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :identifier_type email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
     # @option opts [String] :start_date **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate 
     # @option opts [String] :end_date **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. 
     # @return [GetExtendedContactDetails]
@@ -634,9 +712,10 @@ module Brevo
     end
 
     # Get a contact&#39;s details
-    # Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.brevo.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
-    # @param identifier Email (urlencoded) OR ID of the contact OR its SMS attribute value
+    # There are 2 ways to get a contact &lt;br&gt;&lt;br&gt; Option 1- https://api.brevo.com/v3/contacts/{identifier} &lt;br&gt;&lt;br&gt; Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType&#x3D;{} &lt;br&gt; &lt;br&gt; Option 1 only works if identifierType is email_id (for EMAIL), phone_id (for SMS) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL, SMS and ID of the contact.   &lt;br&gt;&lt;br&gt; Option 2 works for all identifierType, use email_id for EMAIL attribute, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute &lt;br&gt;&lt;br&gt;Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats &#x60;&#x60;https://developers.brevo.com/reference/contacts-7#getcontactstats&#x60;&#x60; endpoint with the appropriate date ranges.
+    # @param identifier Email (urlencoded) OR ID of the contact OR its SMS attribute value OR EXT_ID attribute (urlencoded)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :identifier_type email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
     # @option opts [String] :start_date **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate 
     # @option opts [String] :end_date **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. 
     # @return [Array<(GetExtendedContactDetails, Fixnum, Hash)>] GetExtendedContactDetails data, response status code and response headers
@@ -648,11 +727,15 @@ module Brevo
       if @api_client.config.client_side_validation && identifier.nil?
         fail ArgumentError, "Missing the required parameter 'identifier' when calling ContactsApi.get_contact_info"
       end
+      if @api_client.config.client_side_validation && opts[:'identifier_type'] && !['email_id', 'phone_id', 'contact_id', 'ext_id', 'whatsapp_id', 'landline_number_id'].include?(opts[:'identifier_type'])
+        fail ArgumentError, 'invalid value for "identifier_type", must be one of email_id, phone_id, contact_id, ext_id, whatsapp_id, landline_number_id'
+      end
       # resource path
       local_var_path = '/contacts/{identifier}'.sub('{' + 'identifier' + '}', identifier.to_s)
 
       # query parameters
       query_params = {}
+      query_params[:'identifierType'] = opts[:'identifier_type'] if !opts[:'identifier_type'].nil?
       query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
 
@@ -748,6 +831,7 @@ module Brevo
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (default to desc)
     # @option opts [Integer] :segment_id Id of the segment. **Either listIds or segmentId can be passed.**
     # @option opts [Array<Integer>] :list_ids Ids of the list. **Either listIds or segmentId can be passed.**
+    # @option opts [String] :filter Filter the contacts on the basis of attributes. **Allowed operator: equals. For multiple-choice options, the filter will apply an AND condition between the options. For category attributes, the filter will work with both id and value. (e.g. filter&#x3D;equals(FIRSTNAME,\&quot;Antoine\&quot;), filter&#x3D;equals(B1, true), filter&#x3D;equals(DOB, \&quot;1989-11-23\&quot;), filter&#x3D;equals(GENDER, \&quot;1\&quot;), filter&#x3D;equals(GENDER, \&quot;MALE\&quot;), filter&#x3D;equals(COUNTRY,\&quot;USA, INDIA\&quot;)** 
     # @return [GetContacts]
     def get_contacts(opts = {})
       data, _status_code, _headers = get_contacts_with_http_info(opts)
@@ -763,6 +847,7 @@ module Brevo
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
     # @option opts [Integer] :segment_id Id of the segment. **Either listIds or segmentId can be passed.**
     # @option opts [Array<Integer>] :list_ids Ids of the list. **Either listIds or segmentId can be passed.**
+    # @option opts [String] :filter Filter the contacts on the basis of attributes. **Allowed operator: equals. For multiple-choice options, the filter will apply an AND condition between the options. For category attributes, the filter will work with both id and value. (e.g. filter&#x3D;equals(FIRSTNAME,\&quot;Antoine\&quot;), filter&#x3D;equals(B1, true), filter&#x3D;equals(DOB, \&quot;1989-11-23\&quot;), filter&#x3D;equals(GENDER, \&quot;1\&quot;), filter&#x3D;equals(GENDER, \&quot;MALE\&quot;), filter&#x3D;equals(COUNTRY,\&quot;USA, INDIA\&quot;)** 
     # @return [Array<(GetContacts, Fixnum, Hash)>] GetContacts data, response status code and response headers
     def get_contacts_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -791,6 +876,7 @@ module Brevo
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'segmentId'] = opts[:'segment_id'] if !opts[:'segment_id'].nil?
       query_params[:'listIds'] = @api_client.build_collection_param(opts[:'list_ids'], :csv) if !opts[:'list_ids'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
 
       # header parameters
       header_params = {}
@@ -1017,42 +1103,34 @@ module Brevo
       return data, status_code, headers
     end
     # Get all folders
-    # @param limit Number of documents per page
-    # @param offset Index of the first document of the page
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Number of documents per page (default to 10)
+    # @option opts [Integer] :offset Index of the first document of the page (default to 0)
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (default to desc)
     # @return [GetFolders]
-    def get_folders(limit, offset, opts = {})
-      data, _status_code, _headers = get_folders_with_http_info(limit, offset, opts)
+    def get_folders(opts = {})
+      data, _status_code, _headers = get_folders_with_http_info(opts)
       data
     end
 
     # Get all folders
-    # @param limit Number of documents per page
-    # @param offset Index of the first document of the page
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Number of documents per page
+    # @option opts [Integer] :offset Index of the first document of the page
     # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
     # @return [Array<(GetFolders, Fixnum, Hash)>] GetFolders data, response status code and response headers
-    def get_folders_with_http_info(limit, offset, opts = {})
+    def get_folders_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContactsApi.get_folders ...'
       end
-      # verify the required parameter 'limit' is set
-      if @api_client.config.client_side_validation && limit.nil?
-        fail ArgumentError, "Missing the required parameter 'limit' when calling ContactsApi.get_folders"
-      end
-      if @api_client.config.client_side_validation && limit > 50
-        fail ArgumentError, 'invalid value for "limit" when calling ContactsApi.get_folders, must be smaller than or equal to 50.'
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] > 50
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling ContactsApi.get_folders, must be smaller than or equal to 50.'
       end
 
-      if @api_client.config.client_side_validation && limit < 0
-        fail ArgumentError, 'invalid value for "limit" when calling ContactsApi.get_folders, must be greater than or equal to 0.'
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] < 0
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling ContactsApi.get_folders, must be greater than or equal to 0.'
       end
 
-      # verify the required parameter 'offset' is set
-      if @api_client.config.client_side_validation && offset.nil?
-        fail ArgumentError, "Missing the required parameter 'offset' when calling ContactsApi.get_folders"
-      end
       if @api_client.config.client_side_validation && opts[:'sort'] && !['asc', 'desc'].include?(opts[:'sort'])
         fail ArgumentError, 'invalid value for "sort", must be one of asc, desc'
       end
@@ -1061,8 +1139,8 @@ module Brevo
 
       # query parameters
       query_params = {}
-      query_params[:'limit'] = limit
-      query_params[:'offset'] = offset
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
 
       # header parameters
@@ -1344,7 +1422,7 @@ module Brevo
     end
     # Delete a contact from a list
     # @param list_id Id of the list
-    # @param contact_emails Emails addresses OR IDs of the contacts
+    # @param contact_emails Emails addresses OR IDs OR EXT_ID attributes of the contacts
     # @param [Hash] opts the optional parameters
     # @return [PostContactInfo]
     def remove_contact_from_list(list_id, contact_emails, opts = {})
@@ -1354,7 +1432,7 @@ module Brevo
 
     # Delete a contact from a list
     # @param list_id Id of the list
-    # @param contact_emails Emails addresses OR IDs of the contacts
+    # @param contact_emails Emails addresses OR IDs OR EXT_ID attributes of the contacts
     # @param [Hash] opts the optional parameters
     # @return [Array<(PostContactInfo, Fixnum, Hash)>] PostContactInfo data, response status code and response headers
     def remove_contact_from_list_with_http_info(list_id, contact_emails, opts = {})
@@ -1480,8 +1558,8 @@ module Brevo
         fail ArgumentError, "Missing the required parameter 'attribute_category' when calling ContactsApi.update_attribute"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['category', 'calculated', 'global'].include?(attribute_category)
-        fail ArgumentError, "invalid value for 'attribute_category', must be one of category, calculated, global"
+      if @api_client.config.client_side_validation && !['category', 'calculated', 'global', 'normal'].include?(attribute_category)
+        fail ArgumentError, "invalid value for 'attribute_category', must be one of category, calculated, global, normal"
       end
       # verify the required parameter 'attribute_name' is set
       if @api_client.config.client_side_validation && attribute_name.nil?
@@ -1573,9 +1651,11 @@ module Brevo
       return data, status_code, headers
     end
     # Update a contact
-    # @param identifier Email (urlencoded) OR ID of the contact
+    # There are 2 ways to update a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
+    # @param identifier Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) OR its SMS attribute value OR its WHATSAPP attribute value OR its LANDLINE attribute value
     # @param update_contact Values to update a contact
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :identifier_type email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
     # @return [nil]
     def update_contact(identifier, update_contact, opts = {})
       update_contact_with_http_info(identifier, update_contact, opts)
@@ -1583,9 +1663,11 @@ module Brevo
     end
 
     # Update a contact
-    # @param identifier Email (urlencoded) OR ID of the contact
+    # There are 2 ways to update a contact &lt;br&gt;&lt;br&gt; Option 1- https://api.brevo.com/v3/contacts/{identifier} &lt;br&gt;&lt;br&gt; Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType&#x3D;{} &lt;br&gt; &lt;br&gt; Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   &lt;br&gt;&lt;br&gt; Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
+    # @param identifier Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) OR its SMS attribute value OR its WHATSAPP attribute value OR its LANDLINE attribute value
     # @param update_contact Values to update a contact
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :identifier_type email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def update_contact_with_http_info(identifier, update_contact, opts = {})
       if @api_client.config.debugging
@@ -1599,11 +1681,15 @@ module Brevo
       if @api_client.config.client_side_validation && update_contact.nil?
         fail ArgumentError, "Missing the required parameter 'update_contact' when calling ContactsApi.update_contact"
       end
+      if @api_client.config.client_side_validation && opts[:'identifier_type'] && !['email_id', 'contact_id', 'ext_id', 'phone_id', 'whatsapp_id', 'landline_number_id'].include?(opts[:'identifier_type'])
+        fail ArgumentError, 'invalid value for "identifier_type", must be one of email_id, contact_id, ext_id, phone_id, whatsapp_id, landline_number_id'
+      end
       # resource path
       local_var_path = '/contacts/{identifier}'.sub('{' + 'identifier' + '}', identifier.to_s)
 
       # query parameters
       query_params = {}
+      query_params[:'identifierType'] = opts[:'identifier_type'] if !opts[:'identifier_type'].nil?
 
       # header parameters
       header_params = {}

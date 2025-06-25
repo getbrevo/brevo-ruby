@@ -209,7 +209,7 @@ opts = {
   limit: 50, # Integer | Number of documents returned per page
   offset: 0, # Integer | Index of the first document on the page
   sort: 'desc', # String | Sort the results by creation time in ascending/descending order
-  sort_by: nil # Object | The field used to sort coupon collections
+  sort_by: 'createdAt' # String | The field used to sort coupon collections
 }
 
 begin
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| Number of documents returned per page | [optional] [default to 50]
  **offset** | **Integer**| Index of the first document on the page | [optional] [default to 0]
  **sort** | **String**| Sort the results by creation time in ascending/descending order | [optional] [default to desc]
- **sort_by** | [**Object**](.md)| The field used to sort coupon collections | [optional] 
+ **sort_by** | **String**| The field used to sort coupon collections | [optional] [default to createdAt]
 
 ### Return type
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 
 # **update_coupon_collection**
-> InlineResponse2003 update_coupon_collection(id, opts)
+> InlineResponse2009 update_coupon_collection(id, opts)
 
 Update a coupon collection by id
 
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**delete_contact**](ContactsApi.md#delete_contact) | **DELETE** /contacts/{identifier} | Delete a contact
 [**delete_folder**](ContactsApi.md#delete_folder) | **DELETE** /contacts/folders/{folderId} | Delete a folder (and all its lists)
 [**delete_list**](ContactsApi.md#delete_list) | **DELETE** /contacts/lists/{listId} | Delete a list
+[**delete_multi_attribute_options**](ContactsApi.md#delete_multi_attribute_options) | **DELETE** /contacts/attributes/{attributeType}/{multipleChoiceAttribute}/{multipleChoiceAttributeOption} | Delete a multiple-choice attribute option
 [**get_attributes**](ContactsApi.md#get_attributes) | **GET** /contacts/attributes | List all attributes
 [**get_contact_info**](ContactsApi.md#get_contact_info) | **GET** /contacts/{identifier} | Get a contact&#39;s details
 [**get_contact_stats**](ContactsApi.md#get_contact_stats) | **GET** /contacts/{identifier}/campaignStats | Get email campaigns&#39; statistics for a contact
@@ -61,7 +62,7 @@ api_instance = Brevo::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
-contact_emails = Brevo::AddContactToList.new # AddContactToList | Emails addresses OR IDs of the contacts
+contact_emails = Brevo::AddContactToList.new # AddContactToList | Emails addresses OR IDs OR EXT_ID attributes of the contacts
 
 
 begin
@@ -78,7 +79,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **list_id** | **Integer**| Id of the list | 
- **contact_emails** | [**AddContactToList**](AddContactToList.md)| Emails addresses OR IDs of the contacts | 
+ **contact_emails** | [**AddContactToList**](AddContactToList.md)| Emails addresses OR IDs OR EXT_ID attributes of the contacts | 
 
 ### Return type
 
@@ -161,6 +162,8 @@ nil (empty response body)
 > CreateUpdateContactModel create_contact(create_contact)
 
 Create a contact
+
+Creates new contacts on Brevo. Contacts can be created by passing either - <br><br> 1. email address of the contact (email_id),  <br> 2. phone number of the contact (to be passed as \"SMS\" field in \"attributes\" along with proper country code), For example- {\"SMS\":\"+91xxxxxxxxxx\"} or {\"SMS\":\"0091xxxxxxxxxx\"} <br> 3. ext_id <br>
 
 ### Example
 ```ruby
@@ -444,9 +447,11 @@ nil (empty response body)
 
 
 # **delete_contact**
-> delete_contact(identifier)
+> delete_contact(identifier, opts)
 
 Delete a contact
+
+There are 2 ways to delete a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute.
 
 ### Example
 ```ruby
@@ -467,12 +472,15 @@ end
 
 api_instance = Brevo::ContactsApi.new
 
-identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact
+identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded)
 
+opts = { 
+  identifier_type: 'identifier_type_example' # String | email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
+}
 
 begin
   #Delete a contact
-  api_instance.delete_contact(identifier)
+  api_instance.delete_contact(identifier, opts)
 rescue Brevo::ApiError => e
   puts "Exception when calling ContactsApi->delete_contact: #{e}"
 end
@@ -482,7 +490,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| Email (urlencoded) OR ID of the contact | 
+ **identifier** | **String**| Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) | 
+ **identifier_type** | **String**| email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute | [optional] 
 
 ### Return type
 
@@ -611,6 +620,68 @@ nil (empty response body)
 
 
 
+# **delete_multi_attribute_options**
+> delete_multi_attribute_options(attribute_type, multiple_choice_attribute, multiple_choice_attribute_option)
+
+Delete a multiple-choice attribute option
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::ContactsApi.new
+
+attribute_type = 'attribute_type_example' # String | Type of the attribute
+
+multiple_choice_attribute = 'multiple_choice_attribute_example' # String | Name of the existing multiple-choice attribute
+
+multiple_choice_attribute_option = 'multiple_choice_attribute_option_example' # String | Name of the existing multiple-choice attribute option that you want to delete
+
+
+begin
+  #Delete a multiple-choice attribute option
+  api_instance.delete_multi_attribute_options(attribute_type, multiple_choice_attribute, multiple_choice_attribute_option)
+rescue Brevo::ApiError => e
+  puts "Exception when calling ContactsApi->delete_multi_attribute_options: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **attribute_type** | **String**| Type of the attribute | 
+ **multiple_choice_attribute** | **String**| Name of the existing multiple-choice attribute | 
+ **multiple_choice_attribute_option** | **String**| Name of the existing multiple-choice attribute option that you want to delete | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_attributes**
 > GetAttributes get_attributes
 
@@ -667,7 +738,7 @@ This endpoint does not need any parameter.
 
 Get a contact's details
 
-Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.brevo.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
+There are 2 ways to get a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL), phone_id (for SMS) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL, SMS and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute <br><br>Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats ``https://developers.brevo.com/reference/contacts-7#getcontactstats`` endpoint with the appropriate date ranges.
 
 ### Example
 ```ruby
@@ -688,9 +759,10 @@ end
 
 api_instance = Brevo::ContactsApi.new
 
-identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact OR its SMS attribute value
+identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact OR its SMS attribute value OR EXT_ID attribute (urlencoded)
 
 opts = { 
+  identifier_type: 'identifier_type_example', # String | email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
   start_date: 'start_date_example', # String | **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate 
   end_date: 'end_date_example' # String | **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. 
 }
@@ -708,7 +780,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| Email (urlencoded) OR ID of the contact OR its SMS attribute value | 
+ **identifier** | **String**| Email (urlencoded) OR ID of the contact OR its SMS attribute value OR EXT_ID attribute (urlencoded) | 
+ **identifier_type** | **String**| email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute | [optional] 
  **start_date** | **String**| **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  | [optional] 
  **end_date** | **String**| **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  | [optional] 
 
@@ -821,7 +894,8 @@ opts = {
   created_since: 'created_since_example', # String | Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
   sort: 'desc', # String | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed
   segment_id: 789, # Integer | Id of the segment. **Either listIds or segmentId can be passed.**
-  list_ids: [56] # Array<Integer> | Ids of the list. **Either listIds or segmentId can be passed.**
+  list_ids: [56], # Array<Integer> | Ids of the list. **Either listIds or segmentId can be passed.**
+  filter: 'filter_example' # String | Filter the contacts on the basis of attributes. **Allowed operator: equals. For multiple-choice options, the filter will apply an AND condition between the options. For category attributes, the filter will work with both id and value. (e.g. filter=equals(FIRSTNAME,\"Antoine\"), filter=equals(B1, true), filter=equals(DOB, \"1989-11-23\"), filter=equals(GENDER, \"1\"), filter=equals(GENDER, \"MALE\"), filter=equals(COUNTRY,\"USA, INDIA\")** 
 }
 
 begin
@@ -844,6 +918,7 @@ Name | Type | Description  | Notes
  **sort** | **String**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
  **segment_id** | **Integer**| Id of the segment. **Either listIds or segmentId can be passed.** | [optional] 
  **list_ids** | [**Array&lt;Integer&gt;**](Integer.md)| Ids of the list. **Either listIds or segmentId can be passed.** | [optional] 
+ **filter** | **String**| Filter the contacts on the basis of attributes. **Allowed operator: equals. For multiple-choice options, the filter will apply an AND condition between the options. For category attributes, the filter will work with both id and value. (e.g. filter&#x3D;equals(FIRSTNAME,\&quot;Antoine\&quot;), filter&#x3D;equals(B1, true), filter&#x3D;equals(DOB, \&quot;1989-11-23\&quot;), filter&#x3D;equals(GENDER, \&quot;1\&quot;), filter&#x3D;equals(GENDER, \&quot;MALE\&quot;), filter&#x3D;equals(COUNTRY,\&quot;USA, INDIA\&quot;)**  | [optional] 
 
 ### Return type
 
@@ -1050,7 +1125,7 @@ Name | Type | Description  | Notes
 
 
 # **get_folders**
-> GetFolders get_folders(limit, offset, opts)
+> GetFolders get_folders(opts)
 
 Get all folders
 
@@ -1073,17 +1148,15 @@ end
 
 api_instance = Brevo::ContactsApi.new
 
-limit = 10 # Integer | Number of documents per page
-
-offset = 0 # Integer | Index of the first document of the page
-
 opts = { 
+  limit: 10, # Integer | Number of documents per page
+  offset: 0, # Integer | Index of the first document of the page
   sort: 'desc' # String | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed
 }
 
 begin
   #Get all folders
-  result = api_instance.get_folders(limit, offset, opts)
+  result = api_instance.get_folders(opts)
   p result
 rescue Brevo::ApiError => e
   puts "Exception when calling ContactsApi->get_folders: #{e}"
@@ -1094,8 +1167,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **Integer**| Number of documents per page | [default to 10]
- **offset** | **Integer**| Index of the first document of the page | [default to 0]
+ **limit** | **Integer**| Number of documents per page | [optional] [default to 10]
+ **offset** | **Integer**| Index of the first document of the page | [optional] [default to 0]
  **sort** | **String**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
@@ -1387,7 +1460,7 @@ api_instance = Brevo::ContactsApi.new
 
 list_id = 789 # Integer | Id of the list
 
-contact_emails = Brevo::RemoveContactFromList.new # RemoveContactFromList | Emails addresses OR IDs of the contacts
+contact_emails = Brevo::RemoveContactFromList.new # RemoveContactFromList | Emails addresses OR IDs OR EXT_ID attributes of the contacts
 
 
 begin
@@ -1404,7 +1477,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **list_id** | **Integer**| Id of the list | 
- **contact_emails** | [**RemoveContactFromList**](RemoveContactFromList.md)| Emails addresses OR IDs of the contacts | 
+ **contact_emails** | [**RemoveContactFromList**](RemoveContactFromList.md)| Emails addresses OR IDs OR EXT_ID attributes of the contacts | 
 
 ### Return type
 
@@ -1599,9 +1672,11 @@ nil (empty response body)
 
 
 # **update_contact**
-> update_contact(identifier, update_contact)
+> update_contact(identifier, update_contact, opts)
 
 Update a contact
+
+There are 2 ways to update a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
 
 ### Example
 ```ruby
@@ -1622,14 +1697,17 @@ end
 
 api_instance = Brevo::ContactsApi.new
 
-identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact
+identifier = 'identifier_example' # String | Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) OR its SMS attribute value OR its WHATSAPP attribute value OR its LANDLINE attribute value
 
 update_contact = Brevo::UpdateContact.new # UpdateContact | Values to update a contact
 
+opts = { 
+  identifier_type: 'identifier_type_example' # String | email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
+}
 
 begin
   #Update a contact
-  api_instance.update_contact(identifier, update_contact)
+  api_instance.update_contact(identifier, update_contact, opts)
 rescue Brevo::ApiError => e
   puts "Exception when calling ContactsApi->update_contact: #{e}"
 end
@@ -1639,8 +1717,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| Email (urlencoded) OR ID of the contact | 
+ **identifier** | **String**| Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) OR its SMS attribute value OR its WHATSAPP attribute value OR its LANDLINE attribute value | 
  **update_contact** | [**UpdateContact**](UpdateContact.md)| Values to update a contact | 
+ **identifier_type** | **String**| email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute | [optional] 
 
 ### Return type
 

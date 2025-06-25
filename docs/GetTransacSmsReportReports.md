@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **blocked** | **Integer** | Number of blocked contact for the date | [optional] 
 **unsubscribed** | **Integer** | Number of unsubscription for the date | [optional] 
 **replied** | **Integer** | Number of answered SMS for the date | [optional] 
-**accepted** | **Integer** | Number of accepted for the date | [optional] 
-**rejected** | **Integer** | Number of rejected for the date | [optional] 
+**accepted** | **Integer** | Number of accepted SMS for the date | [optional] 
+**rejected** | **Integer** | Number of rejected SMS for the date | [optional] 
+**skipped** | **Integer** | Number of skipped SMS for the date | [optional] 
 
 

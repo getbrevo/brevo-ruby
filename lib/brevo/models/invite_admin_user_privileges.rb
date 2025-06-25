@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -88,7 +88,7 @@ module Brevo
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      feature_validator = EnumAttributeValidator.new('String', ['my_plan', 'api', 'user_management', 'app_management'])
+      feature_validator = EnumAttributeValidator.new('String', ['my_plan', 'api', 'user_management', 'app_management', 'sub_organization_groups', 'create_sub_organizations', 'manage_sub_organizations', 'analytics', 'security'])
       return false unless feature_validator.valid?(@feature)
       true
     end
@@ -96,7 +96,7 @@ module Brevo
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] feature Object to be assigned
     def feature=(feature)
-      validator = EnumAttributeValidator.new('String', ['my_plan', 'api', 'user_management', 'app_management'])
+      validator = EnumAttributeValidator.new('String', ['my_plan', 'api', 'user_management', 'app_management', 'sub_organization_groups', 'create_sub_organizations', 'manage_sub_organizations', 'analytics', 'security'])
       unless validator.valid?(feature)
         fail ArgumentError, 'invalid value for "feature", must be one of #{validator.allowable_values}.'
       end

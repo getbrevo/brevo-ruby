@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -23,6 +23,9 @@ module Brevo
     # Sub-account company name
     attr_accessor :company_name
 
+    # List of group(s) associated with the sub-account
+    attr_accessor :groups
+
     attr_accessor :plan_info
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -31,6 +34,7 @@ module Brevo
         :'name' => :'name',
         :'email' => :'email',
         :'company_name' => :'companyName',
+        :'groups' => :'groups',
         :'plan_info' => :'planInfo'
       }
     end
@@ -41,6 +45,7 @@ module Brevo
         :'name' => :'String',
         :'email' => :'String',
         :'company_name' => :'String',
+        :'groups' => :'Array<SubAccountDetailsResponseGroups>',
         :'plan_info' => :'SubAccountDetailsResponsePlanInfo'
       }
     end
@@ -63,6 +68,12 @@ module Brevo
 
       if attributes.has_key?(:'companyName')
         self.company_name = attributes[:'companyName']
+      end
+
+      if attributes.has_key?(:'groups')
+        if (value = attributes[:'groups']).is_a?(Array)
+          self.groups = value
+        end
       end
 
       if attributes.has_key?(:'planInfo')
@@ -91,6 +102,7 @@ module Brevo
           name == o.name &&
           email == o.email &&
           company_name == o.company_name &&
+          groups == o.groups &&
           plan_info == o.plan_info
     end
 
@@ -103,7 +115,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, email, company_name, plan_info].hash
+      [name, email, company_name, groups, plan_info].hash
     end
 
     # Builds the object from hash

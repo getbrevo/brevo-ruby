@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -23,14 +23,11 @@ module Brevo
     # Remaining credits of the user
     attr_accessor :credits
 
-    # Date of the period from which the plan will start (only available for \"subscription\" and \"reseller\" plan type)
+    # Date of the period from which the plan will start (only available for \"subscription\" plan type)
     attr_accessor :start_date
 
-    # Date of the period from which the plan will end (only available for \"subscription\" and \"reseller\" plan type)
+    # Date of the period from which the plan will end (only available for \"subscription\" plan type)
     attr_accessor :end_date
-
-    # Only in case of reseller account. It implies the total number of child accounts you can add to your account.
-    attr_accessor :user_limit
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -61,8 +58,7 @@ module Brevo
         :'credits_type' => :'creditsType',
         :'credits' => :'credits',
         :'start_date' => :'startDate',
-        :'end_date' => :'endDate',
-        :'user_limit' => :'userLimit'
+        :'end_date' => :'endDate'
       }
     end
 
@@ -73,8 +69,7 @@ module Brevo
         :'credits_type' => :'String',
         :'credits' => :'Float',
         :'start_date' => :'Date',
-        :'end_date' => :'Date',
-        :'user_limit' => :'Integer'
+        :'end_date' => :'Date'
       }
     end
 
@@ -105,10 +100,6 @@ module Brevo
       if attributes.has_key?(:'endDate')
         self.end_date = attributes[:'endDate']
       end
-
-      if attributes.has_key?(:'userLimit')
-        self.user_limit = attributes[:'userLimit']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -134,7 +125,7 @@ module Brevo
     # @return true if the model is valid
     def valid?
       return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ['payAsYouGo', 'free', 'subscription', 'sms', 'reseller'])
+      type_validator = EnumAttributeValidator.new('String', ['payAsYouGo', 'free', 'subscription', 'sms'])
       return false unless type_validator.valid?(@type)
       return false if @credits_type.nil?
       credits_type_validator = EnumAttributeValidator.new('String', ['sendLimit'])
@@ -146,7 +137,7 @@ module Brevo
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ['payAsYouGo', 'free', 'subscription', 'sms', 'reseller'])
+      validator = EnumAttributeValidator.new('String', ['payAsYouGo', 'free', 'subscription', 'sms'])
       unless validator.valid?(type)
         fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
       end
@@ -172,8 +163,7 @@ module Brevo
           credits_type == o.credits_type &&
           credits == o.credits &&
           start_date == o.start_date &&
-          end_date == o.end_date &&
-          user_limit == o.user_limit
+          end_date == o.end_date
     end
 
     # @see the `==` method
@@ -185,7 +175,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, credits_type, credits, start_date, end_date, user_limit].hash
+      [type, credits_type, credits, start_date, end_date].hash
     end
 
     # Builds the object from hash

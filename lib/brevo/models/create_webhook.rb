@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -20,11 +20,14 @@ module Brevo
     # Description of the webhook
     attr_accessor :description
 
-    # - Events triggering the webhook. Possible values for **Transactional** type webhook: #### `sent` OR `request`, `delivered`, `hardBounce`, `softBounce`, `blocked`, `spam`, `invalid`, `deferred`, `click`, `opened`, `uniqueOpened` and `unsubscribed` - Possible values for **Marketing** type webhook: #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`, `unsubscribed`, `listAddition` & `delivered` - Possible values for **Inbound** type webhook: #### `inboundEmailProcessed` 
+    # - Events triggering the webhook. Possible values for **Transactional** type webhook: #### `sent` OR `request`, `delivered`, `hardBounce`, `softBounce`, `blocked`, `spam`, `invalid`, `deferred`, `click`, `opened`, `uniqueOpened` and `unsubscribed` - Possible values for **Marketing** type webhook: #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`, `unsubscribed`, `listAddition` & `delivered` - Possible values for **Inbound** type webhook: #### `inboundEmailProcessed` - Possible values for type **Transactional** and channel **SMS** #### `accepted`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`, `subscribe`,`sent`,`blacklisted`,`skip` - Possible values for type **Marketing**  channel **SMS** #### `sent`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`, `subscribe`,`skip` 
     attr_accessor :events
 
     # Type of the webhook
     attr_accessor :type
+
+    # channel of webhook
+    attr_accessor :channel
 
     # Inbound domain of webhook, required in case of event type `inbound`
     attr_accessor :domain
@@ -66,6 +69,7 @@ module Brevo
         :'description' => :'description',
         :'events' => :'events',
         :'type' => :'type',
+        :'channel' => :'channel',
         :'domain' => :'domain',
         :'batched' => :'batched',
         :'auth' => :'auth',
@@ -80,6 +84,7 @@ module Brevo
         :'description' => :'String',
         :'events' => :'Array<String>',
         :'type' => :'String',
+        :'channel' => :'String',
         :'domain' => :'String',
         :'batched' => :'BOOLEAN',
         :'auth' => :'GetWebhookAuth',
@@ -113,6 +118,12 @@ module Brevo
         self.type = attributes[:'type']
       else
         self.type = 'transactional'
+      end
+
+      if attributes.has_key?(:'channel')
+        self.channel = attributes[:'channel']
+      else
+        self.channel = 'email'
       end
 
       if attributes.has_key?(:'domain')
@@ -156,6 +167,8 @@ module Brevo
       return false if @events.nil?
       type_validator = EnumAttributeValidator.new('String', ['transactional', 'marketing', 'inbound'])
       return false unless type_validator.valid?(@type)
+      channel_validator = EnumAttributeValidator.new('String', ['sms', 'email'])
+      return false unless channel_validator.valid?(@channel)
       true
     end
 
@@ -169,6 +182,16 @@ module Brevo
       @type = type
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] channel Object to be assigned
+    def channel=(channel)
+      validator = EnumAttributeValidator.new('String', ['sms', 'email'])
+      unless validator.valid?(channel)
+        fail ArgumentError, 'invalid value for "channel", must be one of #{validator.allowable_values}.'
+      end
+      @channel = channel
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -178,6 +201,7 @@ module Brevo
           description == o.description &&
           events == o.events &&
           type == o.type &&
+          channel == o.channel &&
           domain == o.domain &&
           batched == o.batched &&
           auth == o.auth &&
@@ -193,7 +217,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [url, description, events, type, domain, batched, auth, headers].hash
+      [url, description, events, type, channel, domain, batched, auth, headers].hash
     end
 
     # Builds the object from hash

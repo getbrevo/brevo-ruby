@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**corporate_group_id_put**](MasterAccountApi.md#corporate_group_id_put) | **PUT** /corporate/group/{id} | Update a group of sub-accounts
 [**corporate_group_post**](MasterAccountApi.md#corporate_group_post) | **POST** /corporate/group | Create a new group of sub-accounts
 [**corporate_group_unlink_group_id_sub_accounts_put**](MasterAccountApi.md#corporate_group_unlink_group_id_sub_accounts_put) | **PUT** /corporate/group/unlink/{groupId}/subAccounts | Delete sub-account from group
+[**corporate_ip_get**](MasterAccountApi.md#corporate_ip_get) | **GET** /corporate/ip | List of all IPs
 [**corporate_master_account_get**](MasterAccountApi.md#corporate_master_account_get) | **GET** /corporate/masterAccount | Get the details of requested master account
 [**corporate_sso_token_post**](MasterAccountApi.md#corporate_sso_token_post) | **POST** /corporate/ssoToken | Generate SSO token to access admin account
 [**corporate_sub_account_get**](MasterAccountApi.md#corporate_sub_account_get) | **GET** /corporate/subAccount | Get the list of all the sub-accounts of the master account.
@@ -16,9 +17,13 @@ Method | HTTP request | Description
 [**corporate_sub_account_id_delete**](MasterAccountApi.md#corporate_sub_account_id_delete) | **DELETE** /corporate/subAccount/{id} | Delete a sub-account
 [**corporate_sub_account_id_get**](MasterAccountApi.md#corporate_sub_account_id_get) | **GET** /corporate/subAccount/{id} | Get sub-account details
 [**corporate_sub_account_id_plan_put**](MasterAccountApi.md#corporate_sub_account_id_plan_put) | **PUT** /corporate/subAccount/{id}/plan | Update sub-account plan
+[**corporate_sub_account_ip_associate_post**](MasterAccountApi.md#corporate_sub_account_ip_associate_post) | **POST** /corporate/subAccount/ip/associate | Associate an IP to sub-accounts
+[**corporate_sub_account_ip_dissociate_put**](MasterAccountApi.md#corporate_sub_account_ip_dissociate_put) | **PUT** /corporate/subAccount/ip/dissociate | Dissociate an IP from sub-accounts
 [**corporate_sub_account_key_post**](MasterAccountApi.md#corporate_sub_account_key_post) | **POST** /corporate/subAccount/key | Create an API key for a sub-account
 [**corporate_sub_account_post**](MasterAccountApi.md#corporate_sub_account_post) | **POST** /corporate/subAccount | Create a new sub-account under a master account.
 [**corporate_sub_account_sso_token_post**](MasterAccountApi.md#corporate_sub_account_sso_token_post) | **POST** /corporate/subAccount/ssoToken | Generate SSO token to access sub-account
+[**corporate_sub_accounts_plan_put**](MasterAccountApi.md#corporate_sub_accounts_plan_put) | **PUT** /corporate/subAccounts/plan | Update sub-accounts plan
+[**corporate_user_email_permissions_put**](MasterAccountApi.md#corporate_user_email_permissions_put) | **PUT** /corporate/user/{email}/permissions | Change admin user permissions
 [**corporate_user_invitation_action_email_put**](MasterAccountApi.md#corporate_user_invitation_action_email_put) | **PUT** /corporate/user/invitation/{action}/{email} | Resend / cancel admin user invitation
 [**corporate_user_revoke_email_delete**](MasterAccountApi.md#corporate_user_revoke_email_delete) | **DELETE** /corporate/user/revoke/{email} | Revoke an admin user
 [**get_account_activity**](MasterAccountApi.md#get_account_activity) | **GET** /organization/activities | Get user activity logs
@@ -173,7 +178,7 @@ api_instance = Brevo::MasterAccountApi.new
 
 id = 'id_example' # String | Id of the group
 
-body = Brevo::Body1.new # Body1 | Group details to be updated.
+body = Brevo::Body3.new # Body3 | Group details to be updated.
 
 
 begin
@@ -189,7 +194,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Id of the group | 
- **body** | [**Body1**](Body1.md)| Group details to be updated. | 
+ **body** | [**Body3**](Body3.md)| Group details to be updated. | 
 
 ### Return type
 
@@ -293,7 +298,7 @@ api_instance = Brevo::MasterAccountApi.new
 
 group_id = 'group_id_example' # String | Id of the group
 
-body = Brevo::Body2.new # Body2 | List of sub-account ids
+body = Brevo::Body4.new # Body4 | List of sub-account ids
 
 
 begin
@@ -309,7 +314,59 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_id** | **String**| Id of the group | 
- **body** | [**Body2**](Body2.md)| List of sub-account ids | 
+ **body** | [**Body4**](Body4.md)| List of sub-account ids | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **corporate_ip_get**
+> corporate_ip_get
+
+List of all IPs
+
+This endpoint allows you to retrieve the list of active IPs on your Admin account
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::MasterAccountApi.new
+
+begin
+  #List of all IPs
+  api_instance.corporate_ip_get
+rescue Brevo::ApiError => e
+  puts "Exception when calling MasterAccountApi->corporate_ip_get: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -681,7 +738,7 @@ Name | Type | Description  | Notes
 
 Update sub-account plan
 
-This endpoint will update the sub-account plan
+This endpoint will update the sub-account plan. On the Corporate solution new version v2, you can set an unlimited number of credits in your sub-organization. Please pass the value “-1\" to set the consumable in unlimited mode.
 
 ### Example
 ```ruby
@@ -721,6 +778,123 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Id of the sub-account organization | 
  **update_plan_details** | [**SubAccountUpdatePlanRequest**](SubAccountUpdatePlanRequest.md)| Values to update a sub-account plan | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **corporate_sub_account_ip_associate_post**
+> Object corporate_sub_account_ip_associate_post(body)
+
+Associate an IP to sub-accounts
+
+This endpoint allows to associate an IP to sub-accounts
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::MasterAccountApi.new
+
+body = Brevo::Body1.new # Body1 | Ip address association details
+
+
+begin
+  #Associate an IP to sub-accounts
+  result = api_instance.corporate_sub_account_ip_associate_post(body)
+  p result
+rescue Brevo::ApiError => e
+  puts "Exception when calling MasterAccountApi->corporate_sub_account_ip_associate_post: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Body1**](Body1.md)| Ip address association details | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **corporate_sub_account_ip_dissociate_put**
+> corporate_sub_account_ip_dissociate_put(body)
+
+Dissociate an IP from sub-accounts
+
+This endpoint allows to dissociate an IP from sub-accounts
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::MasterAccountApi.new
+
+body = Brevo::Body2.new # Body2 | Ip address dissociation details
+
+
+begin
+  #Dissociate an IP from sub-accounts
+  api_instance.corporate_sub_account_ip_dissociate_put(body)
+rescue Brevo::ApiError => e
+  puts "Exception when calling MasterAccountApi->corporate_sub_account_ip_dissociate_put: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Body2**](Body2.md)| Ip address dissociation details | 
 
 ### Return type
 
@@ -914,12 +1088,131 @@ Name | Type | Description  | Notes
 
 
 
+# **corporate_sub_accounts_plan_put**
+> corporate_sub_accounts_plan_put(update_plan_details)
+
+Update sub-accounts plan
+
+This endpoint will update multiple sub-accounts plan. On the Corporate solution new version v2, you can set an unlimited number of credits in your sub-organization. Please pass the value “-1\" to set the consumable in unlimited mode.
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::MasterAccountApi.new
+
+update_plan_details = Brevo::SubAccountsUpdatePlanRequest.new # SubAccountsUpdatePlanRequest | Values to update sub-accounts plan
+
+
+begin
+  #Update sub-accounts plan
+  api_instance.corporate_sub_accounts_plan_put(update_plan_details)
+rescue Brevo::ApiError => e
+  puts "Exception when calling MasterAccountApi->corporate_sub_accounts_plan_put: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **update_plan_details** | [**SubAccountsUpdatePlanRequest**](SubAccountsUpdatePlanRequest.md)| Values to update sub-accounts plan | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **corporate_user_email_permissions_put**
+> corporate_user_email_permissions_put(email, body)
+
+Change admin user permissions
+
+This endpoint will allow you to change the permissions of Admin users of your Admin account
+
+### Example
+```ruby
+# load the gem
+require 'brevo'
+# setup authorization
+Brevo.configure do |config|
+  # Configure API key authorization: api-key
+  config.api_key['api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['api-key'] = 'Bearer'
+
+  # Configure API key authorization: partner-key
+  config.api_key['partner-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['partner-key'] = 'Bearer'
+end
+
+api_instance = Brevo::MasterAccountApi.new
+
+email = 'email_example' # String | Email address of Admin user
+
+body = Brevo::Body5.new # Body5 | Values to update an admin user permissions
+
+
+begin
+  #Change admin user permissions
+  api_instance.corporate_user_email_permissions_put(email, body)
+rescue Brevo::ApiError => e
+  puts "Exception when calling MasterAccountApi->corporate_user_email_permissions_put: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| Email address of Admin user | 
+ **body** | [**Body5**](Body5.md)| Values to update an admin user permissions | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **corporate_user_invitation_action_email_put**
 > InlineResponse200 corporate_user_invitation_action_email_put(action, email)
 
 Resend / cancel admin user invitation
 
-This endpoint will allow the user to:  - Resend an admin user invitation - Cancel an admin user invitation 
+This endpoint will allow the user to: - Resend an admin user invitation - Cancel an admin user invitation 
 
 ### Example
 ```ruby
@@ -1061,6 +1354,7 @@ api_instance = Brevo::MasterAccountApi.new
 opts = { 
   start_date: 'start_date_example', # String | Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search.
   end_date: 'end_date_example', # String | Mandatory if startDate is used. Enter end date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month.
+  email: 'email_example', # String | Enter the user's email address to filter their activity in the account.
   limit: 10, # Integer | Number of documents per page
   offset: 0 # Integer | Index of the first document in the page.
 }
@@ -1080,6 +1374,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **String**| Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search. | [optional] 
  **end_date** | **String**| Mandatory if startDate is used. Enter end date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. | [optional] 
+ **email** | **String**| Enter the user&#39;s email address to filter their activity in the account. | [optional] 
  **limit** | **Integer**| Number of documents per page | [optional] [default to 10]
  **offset** | **Integer**| Index of the first document in the page. | [optional] [default to 0]
 
@@ -1155,6 +1450,8 @@ This endpoint does not need any parameter.
 > GetCorporateUserPermission get_corporate_user_permission(email)
 
 Check admin user permissions
+
+This endpoint will provide the list of admin user permissions
 
 ### Example
 ```ruby
@@ -1266,7 +1563,7 @@ This endpoint does not need any parameter.
 
 Send invitation to an admin user
 
-`This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - `my_plan`:   - \"all\" - `api`:   - \"none\" - `user_management`:   - \"all\" - `app_management` | Not available in ENTv2:   - \"all\"  **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it's assumed that all permissions will be there for the invited admin user. 
+`This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - `my_plan`:   - \"all\" - `api`:   - \"none\" - `user_management`:   - \"all\" - `app_management` | Not available in ENTv2:   - \"all\" - `sub_organization_groups`   - \"create\"   - \"edit_delete\" - `create_sub_organizations`   - \"all\" - `manage_sub_organizations`   - \"all\" - `analytics`   - \"download_data\"   - \"create_alerts\"   - \"my_looks\"   - \"explore_create\" - `security`   - \"all\"  **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it's assumed that all permissions will be there for the invited admin user. 
 
 ### Example
 ```ruby

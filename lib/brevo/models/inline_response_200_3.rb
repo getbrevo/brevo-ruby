@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,30 +14,20 @@ require 'date'
 
 module Brevo
   class InlineResponse2003
-    # The id of the collection
+    # Unique ID of the created attribute
     attr_accessor :id
-
-    # The name of the collection
-    attr_accessor :name
-
-    # The default coupon of the collection
-    attr_accessor :default_coupon
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'default_coupon' => :'defaultCoupon'
+        :'id' => :'id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
-        :'name' => :'String',
-        :'default_coupon' => :'String'
+        :'id' => :'String'
       }
     end
 
@@ -52,14 +42,6 @@ module Brevo
       if attributes.has_key?(:'id')
         self.id = attributes[:'id']
       end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'defaultCoupon')
-        self.default_coupon = attributes[:'defaultCoupon']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -70,10 +52,6 @@ module Brevo
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -81,7 +59,6 @@ module Brevo
     # @return true if the model is valid
     def valid?
       return false if @id.nil?
-      return false if @name.nil?
       true
     end
 
@@ -90,9 +67,7 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          default_coupon == o.default_coupon
+          id == o.id
     end
 
     # @see the `==` method
@@ -104,7 +79,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, default_coupon].hash
+      [id].hash
     end
 
     # Builds the object from hash

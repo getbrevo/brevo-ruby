@@ -17,6 +17,10 @@ Name | Type | Description | Notes
 **winner_criteria** | **String** | Criteria for the winning version. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;true&#x60; | [optional] 
 **winner_delay** | **Integer** | The duration of the test in hours at the end of which the winning version will be sent. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;true&#x60; | [optional] 
 **send_at_best_time** | **BOOLEAN** | It is true if you have chosen to send your campaign at best time, otherwise it is false | [optional] 
+**utm_campaign_value** | **String** | utm parameter associated with campaign | [optional] 
+**utm_source** | **String** | source of utm parameter | [optional] 
+**utm_medium** | **String** | medium parameter | [optional] 
+**utm_id** | **Integer** | utm id | [optional] 
 **test_sent** | **BOOLEAN** | Retrieved the status of test email sending. (true&#x3D;Test email has been sent  false&#x3D;Test email has not been sent) | 
 **header** | **String** | Header of the campaign | 
 **footer** | **String** | Footer of the campaign | 

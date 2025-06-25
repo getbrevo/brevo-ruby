@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -94,6 +94,17 @@ describe 'MasterAccountApi' do
     end
   end
 
+  # unit tests for corporate_ip_get
+  # List of all IPs
+  # This endpoint allows you to retrieve the list of active IPs on your Admin account
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'corporate_ip_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for corporate_master_account_get
   # Get the details of requested master account
   # This endpoint will provide the details of the master account.
@@ -168,12 +179,36 @@ describe 'MasterAccountApi' do
 
   # unit tests for corporate_sub_account_id_plan_put
   # Update sub-account plan
-  # This endpoint will update the sub-account plan
+  # This endpoint will update the sub-account plan. On the Corporate solution new version v2, you can set an unlimited number of credits in your sub-organization. Please pass the value “-1\&quot; to set the consumable in unlimited mode.
   # @param id Id of the sub-account organization
   # @param update_plan_details Values to update a sub-account plan
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'corporate_sub_account_id_plan_put test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_sub_account_ip_associate_post
+  # Associate an IP to sub-accounts
+  # This endpoint allows to associate an IP to sub-accounts
+  # @param body Ip address association details
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'corporate_sub_account_ip_associate_post test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_sub_account_ip_dissociate_put
+  # Dissociate an IP from sub-accounts
+  # This endpoint allows to dissociate an IP from sub-accounts
+  # @param body Ip address dissociation details
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'corporate_sub_account_ip_dissociate_put test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -215,9 +250,34 @@ describe 'MasterAccountApi' do
     end
   end
 
+  # unit tests for corporate_sub_accounts_plan_put
+  # Update sub-accounts plan
+  # This endpoint will update multiple sub-accounts plan. On the Corporate solution new version v2, you can set an unlimited number of credits in your sub-organization. Please pass the value “-1\&quot; to set the consumable in unlimited mode.
+  # @param update_plan_details Values to update sub-accounts plan
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'corporate_sub_accounts_plan_put test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for corporate_user_email_permissions_put
+  # Change admin user permissions
+  # This endpoint will allow you to change the permissions of Admin users of your Admin account
+  # @param email Email address of Admin user
+  # @param body Values to update an admin user permissions
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'corporate_user_email_permissions_put test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for corporate_user_invitation_action_email_put
   # Resend / cancel admin user invitation
-  # This endpoint will allow the user to:  - Resend an admin user invitation - Cancel an admin user invitation 
+  # This endpoint will allow the user to: - Resend an admin user invitation - Cancel an admin user invitation 
   # @param action Action to be performed (cancel / resend)
   # @param email Email address of the recipient
   # @param [Hash] opts the optional parameters
@@ -245,6 +305,7 @@ describe 'MasterAccountApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :start_date Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search.
   # @option opts [String] :end_date Mandatory if startDate is used. Enter end date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month.
+  # @option opts [String] :email Enter the user&#39;s email address to filter their activity in the account.
   # @option opts [Integer] :limit Number of documents per page
   # @option opts [Integer] :offset Index of the first document in the page.
   # @return [GetAccountActivity]
@@ -267,6 +328,7 @@ describe 'MasterAccountApi' do
 
   # unit tests for get_corporate_user_permission
   # Check admin user permissions
+  # This endpoint will provide the list of admin user permissions
   # @param email Email of the invited user
   # @param [Hash] opts the optional parameters
   # @return [GetCorporateUserPermission]
@@ -289,7 +351,7 @@ describe 'MasterAccountApi' do
 
   # unit tests for invite_admin_user
   # Send invitation to an admin user
-  # &#x60;This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - &#x60;my_plan&#x60;:   - \&quot;all\&quot; - &#x60;api&#x60;:   - \&quot;none\&quot; - &#x60;user_management&#x60;:   - \&quot;all\&quot; - &#x60;app_management&#x60; | Not available in ENTv2:   - \&quot;all\&quot;  **Note**: - If &#x60;all_features_access: false&#x60; then only privileges are required otherwise if &#x60;true&#x60; then it&#39;s assumed that all permissions will be there for the invited admin user. 
+  # &#x60;This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - &#x60;my_plan&#x60;:   - \&quot;all\&quot; - &#x60;api&#x60;:   - \&quot;none\&quot; - &#x60;user_management&#x60;:   - \&quot;all\&quot; - &#x60;app_management&#x60; | Not available in ENTv2:   - \&quot;all\&quot; - &#x60;sub_organization_groups&#x60;   - \&quot;create\&quot;   - \&quot;edit_delete\&quot; - &#x60;create_sub_organizations&#x60;   - \&quot;all\&quot; - &#x60;manage_sub_organizations&#x60;   - \&quot;all\&quot; - &#x60;analytics&#x60;   - \&quot;download_data\&quot;   - \&quot;create_alerts\&quot;   - \&quot;my_looks\&quot;   - \&quot;explore_create\&quot; - &#x60;security&#x60;   - \&quot;all\&quot;  **Note**: - If &#x60;all_features_access: false&#x60; then only privileges are required otherwise if &#x60;true&#x60; then it&#39;s assumed that all permissions will be there for the invited admin user. 
   # @param send_invitation Payload to send an invitation
   # @param [Hash] opts the optional parameters
   # @return [InviteAdminUser]

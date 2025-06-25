@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,20 +14,65 @@ require 'date'
 
 module Brevo
   class Body14
-    # edited message text
-    attr_accessor :text
+    # Name of task
+    attr_accessor :name
+
+    # Duration of task in milliseconds [1 minute = 60000 ms]
+    attr_accessor :duration
+
+    # Id for type of task e.g Call / Email / Meeting etc.
+    attr_accessor :task_type_id
+
+    # Task date/time
+    attr_accessor :date
+
+    # Notes added to a task
+    attr_accessor :notes
+
+    # Task marked as done
+    attr_accessor :done
+
+    # To assign a task to a user you can use either the account email or ID.
+    attr_accessor :assign_to_id
+
+    # Contact ids for contacts linked to this task
+    attr_accessor :contacts_ids
+
+    # Deal ids for deals a task is linked to
+    attr_accessor :deals_ids
+
+    # Companies ids for companies a task is linked to
+    attr_accessor :companies_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'text' => :'text'
+        :'name' => :'name',
+        :'duration' => :'duration',
+        :'task_type_id' => :'taskTypeId',
+        :'date' => :'date',
+        :'notes' => :'notes',
+        :'done' => :'done',
+        :'assign_to_id' => :'assignToId',
+        :'contacts_ids' => :'contactsIds',
+        :'deals_ids' => :'dealsIds',
+        :'companies_ids' => :'companiesIds'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'text' => :'String'
+        :'name' => :'String',
+        :'duration' => :'Integer',
+        :'task_type_id' => :'String',
+        :'date' => :'DateTime',
+        :'notes' => :'String',
+        :'done' => :'BOOLEAN',
+        :'assign_to_id' => :'String',
+        :'contacts_ids' => :'Array<Integer>',
+        :'deals_ids' => :'Array<String>',
+        :'companies_ids' => :'Array<String>'
       }
     end
 
@@ -39,8 +84,50 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'text')
-        self.text = attributes[:'text']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'duration')
+        self.duration = attributes[:'duration']
+      end
+
+      if attributes.has_key?(:'taskTypeId')
+        self.task_type_id = attributes[:'taskTypeId']
+      end
+
+      if attributes.has_key?(:'date')
+        self.date = attributes[:'date']
+      end
+
+      if attributes.has_key?(:'notes')
+        self.notes = attributes[:'notes']
+      end
+
+      if attributes.has_key?(:'done')
+        self.done = attributes[:'done']
+      end
+
+      if attributes.has_key?(:'assignToId')
+        self.assign_to_id = attributes[:'assignToId']
+      end
+
+      if attributes.has_key?(:'contactsIds')
+        if (value = attributes[:'contactsIds']).is_a?(Array)
+          self.contacts_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'dealsIds')
+        if (value = attributes[:'dealsIds']).is_a?(Array)
+          self.deals_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'companiesIds')
+        if (value = attributes[:'companiesIds']).is_a?(Array)
+          self.companies_ids = value
+        end
       end
     end
 
@@ -48,17 +135,12 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @text.nil?
-        invalid_properties.push('invalid value for "text", text cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @text.nil?
       true
     end
 
@@ -67,7 +149,16 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          text == o.text
+          name == o.name &&
+          duration == o.duration &&
+          task_type_id == o.task_type_id &&
+          date == o.date &&
+          notes == o.notes &&
+          done == o.done &&
+          assign_to_id == o.assign_to_id &&
+          contacts_ids == o.contacts_ids &&
+          deals_ids == o.deals_ids &&
+          companies_ids == o.companies_ids
     end
 
     # @see the `==` method
@@ -79,7 +170,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [text].hash
+      [name, duration, task_type_id, date, notes, done, assign_to_id, contacts_ids, deals_ids, companies_ids].hash
     end
 
     # Builds the object from hash

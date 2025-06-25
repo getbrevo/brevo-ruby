@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -129,7 +129,7 @@ module Brevo
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_validator = EnumAttributeValidator.new('String', ['bounces', 'hardBounces', 'softBounces', 'delivered', 'sent', 'accepted', 'unsubscription', 'replies', 'blocked', 'rejected'])
+      event_validator = EnumAttributeValidator.new('String', ['bounces', 'hardBounces', 'softBounces', 'delivered', 'sent', 'accepted', 'unsubscription', 'replies', 'blocked', 'rejected', 'skipped'])
       return false unless event_validator.valid?(@event)
       true
     end
@@ -137,7 +137,7 @@ module Brevo
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] event Object to be assigned
     def event=(event)
-      validator = EnumAttributeValidator.new('String', ['bounces', 'hardBounces', 'softBounces', 'delivered', 'sent', 'accepted', 'unsubscription', 'replies', 'blocked', 'rejected'])
+      validator = EnumAttributeValidator.new('String', ['bounces', 'hardBounces', 'softBounces', 'delivered', 'sent', 'accepted', 'unsubscription', 'replies', 'blocked', 'rejected', 'skipped'])
       unless validator.valid?(event)
         fail ArgumentError, 'invalid value for "event", must be one of #{validator.allowable_values}.'
       end

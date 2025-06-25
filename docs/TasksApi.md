@@ -233,7 +233,7 @@ api_instance = Brevo::TasksApi.new
 
 id = 'id_example' # String | 
 
-body = Brevo::Body10.new # Body10 | Updated task details.
+body = Brevo::Body14.new # Body14 | Updated task details.
 
 
 begin
@@ -249,7 +249,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **body** | [**Body10**](Body10.md)| Updated task details. | 
+ **body** | [**Body14**](Body14.md)| Updated task details. | 
 
 ### Return type
 
@@ -290,7 +290,7 @@ end
 
 api_instance = Brevo::TasksApi.new
 
-body = Brevo::Body9.new # Body9 | Task name.
+body = Brevo::Body13.new # Body13 | Task name.
 
 
 begin
@@ -306,7 +306,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body9**](Body9.md)| Task name. | 
+ **body** | [**Body13**](Body13.md)| Task name. | 
 
 ### Return type
 

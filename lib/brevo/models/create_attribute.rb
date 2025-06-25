@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -20,10 +20,13 @@ module Brevo
     # Type of the attribute. Use only if the attribute's category is 'calculated' or 'global'
     attr_accessor :is_recurring
 
-    # List of values and labels that the attribute can take. Use only if the attribute's category is \"category\". For example, [{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]
+    # List of values and labels that the attribute can take. Use only if the attribute's category is \"category\". None of the category options can exceed max 200 characters. For example, [{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]
     attr_accessor :enumeration
 
-    # Type of the attribute. Use only if the attribute's category is 'normal', 'category' or 'transactional' ( type 'boolean' is only available if the category is 'normal' attribute, type 'id' is only available if the category is 'transactional' attribute & type 'category' is only available if the category is 'category' attribute )
+    # List of options you want to add for multiple-choice attribute. **Use only if the attribute's category is \"normal\" and attribute's type is \"multiple-choice\". None of the multicategory options can exceed max 200 characters.** For example: **[\"USA\",\"INDIA\"]** 
+    attr_accessor :multi_category_options
+
+    # Type of the attribute. Use only if the attribute's category is 'normal', 'category' or 'transactional' ( type 'user' and 'multiple-choice' is only available if the category is 'normal' attribute, type 'id' is only available if the category is 'transactional' attribute & type 'category' is only available if the category is 'category' attribute )
     attr_accessor :type
 
     class EnumAttributeValidator
@@ -54,6 +57,7 @@ module Brevo
         :'value' => :'value',
         :'is_recurring' => :'isRecurring',
         :'enumeration' => :'enumeration',
+        :'multi_category_options' => :'multiCategoryOptions',
         :'type' => :'type'
       }
     end
@@ -64,6 +68,7 @@ module Brevo
         :'value' => :'String',
         :'is_recurring' => :'BOOLEAN',
         :'enumeration' => :'Array<CreateAttributeEnumeration>',
+        :'multi_category_options' => :'Array<String>',
         :'type' => :'String'
       }
     end
@@ -90,6 +95,12 @@ module Brevo
         end
       end
 
+      if attributes.has_key?(:'multiCategoryOptions')
+        if (value = attributes[:'multiCategoryOptions']).is_a?(Array)
+          self.multi_category_options = value
+        end
+      end
+
       if attributes.has_key?(:'type')
         self.type = attributes[:'type']
       end
@@ -105,7 +116,7 @@ module Brevo
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ['text', 'date', 'float', 'boolean', 'id', 'category'])
+      type_validator = EnumAttributeValidator.new('String', ['text', 'date', 'float', 'boolean', 'id', 'category', 'multiple-choice'])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -113,7 +124,7 @@ module Brevo
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ['text', 'date', 'float', 'boolean', 'id', 'category'])
+      validator = EnumAttributeValidator.new('String', ['text', 'date', 'float', 'boolean', 'id', 'category', 'multiple-choice'])
       unless validator.valid?(type)
         fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
       end
@@ -128,6 +139,7 @@ module Brevo
           value == o.value &&
           is_recurring == o.is_recurring &&
           enumeration == o.enumeration &&
+          multi_category_options == o.multi_category_options &&
           type == o.type
     end
 
@@ -140,7 +152,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [value, is_recurring, enumeration, type].hash
+      [value, is_recurring, enumeration, multi_category_options, type].hash
     end
 
     # Builds the object from hash

@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -1098,6 +1098,58 @@ module Brevo
       end
       return data, status_code, headers
     end
+    # Generate the rendered preview of transactional template
+    # @param fetch_template_preview Values to fetch Template preview
+    # @param [Hash] opts the optional parameters
+    # @return [TemplatePreview]
+    def post_preview_smtp_email_templates(fetch_template_preview, opts = {})
+      data, _status_code, _headers = post_preview_smtp_email_templates_with_http_info(fetch_template_preview, opts)
+      data
+    end
+
+    # Generate the rendered preview of transactional template
+    # @param fetch_template_preview Values to fetch Template preview
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TemplatePreview, Fixnum, Hash)>] TemplatePreview data, response status code and response headers
+    def post_preview_smtp_email_templates_with_http_info(fetch_template_preview, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: TransactionalEmailsApi.post_preview_smtp_email_templates ...'
+      end
+      # verify the required parameter 'fetch_template_preview' is set
+      if @api_client.config.client_side_validation && fetch_template_preview.nil?
+        fail ArgumentError, "Missing the required parameter 'fetch_template_preview' when calling TransactionalEmailsApi.post_preview_smtp_email_templates"
+      end
+      # resource path
+      local_var_path = '/smtp/template/preview'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(fetch_template_preview)
+      auth_names = ['api-key', 'partner-key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TemplatePreview')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TransactionalEmailsApi#post_preview_smtp_email_templates\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Send a template to your test list
     # @param template_id Id of the template
     # @param send_test_email 
@@ -1259,7 +1311,7 @@ module Brevo
       return data, status_code, headers
     end
     # Delete an SMTP transactional log
-    # @param identifier MessageId or Email of the transactional log(s) to delete
+    # @param identifier MessageId of the transactional log(s) to delete
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def smtp_log_identifier_delete(identifier, opts = {})
@@ -1268,7 +1320,7 @@ module Brevo
     end
 
     # Delete an SMTP transactional log
-    # @param identifier MessageId or Email of the transactional log(s) to delete
+    # @param identifier MessageId of the transactional log(s) to delete
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def smtp_log_identifier_delete_with_http_info(identifier, opts = {})

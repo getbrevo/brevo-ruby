@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -17,14 +17,18 @@ module Brevo
     # Value of the attribute to update. Use only if the attribute's category is 'calculated' or 'global'
     attr_accessor :value
 
-    # List of the values and labels that the attribute can take. Use only if the attribute's category is \"category\". For example, [{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]
+    # List of the values and labels that the attribute can take. Use only if the attribute's category is \"category\". None of the category options can exceed max 200 characters. For example, [{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]
     attr_accessor :enumeration
+
+    # Use this option to add multiple-choice attributes options only if the attribute's category is \"normal\". **This option is specifically designed for updating multiple-choice attributes. None of the multicategory options can exceed max 200 characters **. For example: **[\"USA\",\"INDIA\"]** 
+    attr_accessor :multi_category_options
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'value' => :'value',
-        :'enumeration' => :'enumeration'
+        :'enumeration' => :'enumeration',
+        :'multi_category_options' => :'multiCategoryOptions'
       }
     end
 
@@ -32,7 +36,8 @@ module Brevo
     def self.swagger_types
       {
         :'value' => :'String',
-        :'enumeration' => :'Array<UpdateAttributeEnumeration>'
+        :'enumeration' => :'Array<UpdateAttributeEnumeration>',
+        :'multi_category_options' => :'Array<String>'
       }
     end
 
@@ -51,6 +56,12 @@ module Brevo
       if attributes.has_key?(:'enumeration')
         if (value = attributes[:'enumeration']).is_a?(Array)
           self.enumeration = value
+        end
+      end
+
+      if attributes.has_key?(:'multiCategoryOptions')
+        if (value = attributes[:'multiCategoryOptions']).is_a?(Array)
+          self.multi_category_options = value
         end
       end
     end
@@ -74,7 +85,8 @@ module Brevo
       return true if self.equal?(o)
       self.class == o.class &&
           value == o.value &&
-          enumeration == o.enumeration
+          enumeration == o.enumeration &&
+          multi_category_options == o.multi_category_options
     end
 
     # @see the `==` method
@@ -86,7 +98,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [value, enumeration].hash
+      [value, enumeration, multi_category_options].hash
     end
 
     # Builds the object from hash

@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **url** | **String** | URL to the category | [optional] 
 **update_enabled** | **BOOLEAN** | Facilitate to update the existing category in the same request (updateEnabled &#x3D; true) | [optional] [default to false]
 **deleted_at** | **String** | UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) of the category deleted from the shop&#39;s database | [optional] 
+**is_deleted** | **BOOLEAN** | category deleted from the shop&#39;s database | [optional] 
 
 

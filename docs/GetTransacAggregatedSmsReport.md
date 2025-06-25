@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **blocked** | **Integer** | Number of blocked contact for the timeframe | [optional] 
 **unsubscribed** | **Integer** | Number of unsubscription for the timeframe | [optional] 
 **replied** | **Integer** | Number of answered SMS for the timeframe | [optional] 
-**accepted** | **Integer** | Number of accepted for the timeframe | [optional] 
-**rejected** | **Integer** | Number of rejected for the timeframe | [optional] 
+**accepted** | **Integer** | Number of accepted SMS for the timeframe | [optional] 
+**rejected** | **Integer** | Number of rejected SMS for the timeframe | [optional] 
+**skipped** | **Integer** | Number of skipped SMS for the timeframe | [optional] 
 
 

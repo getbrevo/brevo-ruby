@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,20 +14,35 @@ require 'date'
 
 module Brevo
   class Body12
-    # edited message text
-    attr_accessor :text
+    # Contact ids for contacts to be linked with deal
+    attr_accessor :link_contact_ids
+
+    # Contact ids for contacts to be unlinked from deal
+    attr_accessor :unlink_contact_ids
+
+    # Company ids to be linked with deal
+    attr_accessor :link_company_ids
+
+    # Company ids to be unlinked from deal
+    attr_accessor :unlink_company_ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'text' => :'text'
+        :'link_contact_ids' => :'linkContactIds',
+        :'unlink_contact_ids' => :'unlinkContactIds',
+        :'link_company_ids' => :'linkCompanyIds',
+        :'unlink_company_ids' => :'unlinkCompanyIds'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'text' => :'String'
+        :'link_contact_ids' => :'Array<Integer>',
+        :'unlink_contact_ids' => :'Array<Integer>',
+        :'link_company_ids' => :'Array<String>',
+        :'unlink_company_ids' => :'Array<String>'
       }
     end
 
@@ -39,8 +54,28 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'text')
-        self.text = attributes[:'text']
+      if attributes.has_key?(:'linkContactIds')
+        if (value = attributes[:'linkContactIds']).is_a?(Array)
+          self.link_contact_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'unlinkContactIds')
+        if (value = attributes[:'unlinkContactIds']).is_a?(Array)
+          self.unlink_contact_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'linkCompanyIds')
+        if (value = attributes[:'linkCompanyIds']).is_a?(Array)
+          self.link_company_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'unlinkCompanyIds')
+        if (value = attributes[:'unlinkCompanyIds']).is_a?(Array)
+          self.unlink_company_ids = value
+        end
       end
     end
 
@@ -48,17 +83,12 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @text.nil?
-        invalid_properties.push('invalid value for "text", text cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @text.nil?
       true
     end
 
@@ -67,7 +97,10 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          text == o.text
+          link_contact_ids == o.link_contact_ids &&
+          unlink_contact_ids == o.unlink_contact_ids &&
+          link_company_ids == o.link_company_ids &&
+          unlink_company_ids == o.unlink_company_ids
     end
 
     # @see the `==` method
@@ -79,7 +112,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [text].hash
+      [link_contact_ids, unlink_contact_ids, link_company_ids, unlink_company_ids].hash
     end
 
     # Builds the object from hash

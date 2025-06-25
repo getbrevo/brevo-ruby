@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -26,13 +26,17 @@ module Brevo
     # UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) of the category deleted from the shop's database
     attr_accessor :deleted_at
 
+    # category deleted from the shop's database
+    attr_accessor :is_deleted
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'name' => :'name',
         :'url' => :'url',
-        :'deleted_at' => :'deletedAt'
+        :'deleted_at' => :'deletedAt',
+        :'is_deleted' => :'isDeleted'
       }
     end
 
@@ -42,7 +46,8 @@ module Brevo
         :'id' => :'String',
         :'name' => :'String',
         :'url' => :'String',
-        :'deleted_at' => :'String'
+        :'deleted_at' => :'String',
+        :'is_deleted' => :'BOOLEAN'
       }
     end
 
@@ -68,6 +73,10 @@ module Brevo
 
       if attributes.has_key?(:'deletedAt')
         self.deleted_at = attributes[:'deletedAt']
+      end
+
+      if attributes.has_key?(:'isDeleted')
+        self.is_deleted = attributes[:'isDeleted']
       end
     end
 
@@ -97,7 +106,8 @@ module Brevo
           id == o.id &&
           name == o.name &&
           url == o.url &&
-          deleted_at == o.deleted_at
+          deleted_at == o.deleted_at &&
+          is_deleted == o.is_deleted
     end
 
     # @see the `==` method
@@ -109,7 +119,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, url, deleted_at].hash
+      [id, name, url, deleted_at, is_deleted].hash
     end
 
     # Builds the object from hash

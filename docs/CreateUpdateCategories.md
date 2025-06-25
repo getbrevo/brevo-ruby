@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **name** | **String** | **Mandatory in case of creation**. Name of the Category, as displayed in the shop  | [optional] 
 **url** | **String** | URL to the category | [optional] 
 **deleted_at** | **String** | UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) of the category deleted from the shop&#39;s database | [optional] 
+**is_deleted** | **BOOLEAN** | category deleted from the shop&#39;s database | [optional] 
 
 

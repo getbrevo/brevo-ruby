@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -26,13 +26,17 @@ module Brevo
     # Timestamp when the sub-account was created
     attr_accessor :created_at
 
+    # Group details
+    attr_accessor :groups
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'company_name' => :'companyName',
         :'active' => :'active',
-        :'created_at' => :'createdAt'
+        :'created_at' => :'createdAt',
+        :'groups' => :'groups'
       }
     end
 
@@ -42,7 +46,8 @@ module Brevo
         :'id' => :'Integer',
         :'company_name' => :'String',
         :'active' => :'BOOLEAN',
-        :'created_at' => :'Integer'
+        :'created_at' => :'Integer',
+        :'groups' => :'Array<SubAccountsResponseGroups>'
       }
     end
 
@@ -69,6 +74,12 @@ module Brevo
       if attributes.has_key?(:'createdAt')
         self.created_at = attributes[:'createdAt']
       end
+
+      if attributes.has_key?(:'groups')
+        if (value = attributes[:'groups']).is_a?(Array)
+          self.groups = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,6 +102,10 @@ module Brevo
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
 
+      if @groups.nil?
+        invalid_properties.push('invalid value for "groups", groups cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -101,6 +116,7 @@ module Brevo
       return false if @company_name.nil?
       return false if @active.nil?
       return false if @created_at.nil?
+      return false if @groups.nil?
       true
     end
 
@@ -112,7 +128,8 @@ module Brevo
           id == o.id &&
           company_name == o.company_name &&
           active == o.active &&
-          created_at == o.created_at
+          created_at == o.created_at &&
+          groups == o.groups
     end
 
     # @see the `==` method
@@ -124,7 +141,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, company_name, active, created_at].hash
+      [id, company_name, active, created_at, groups].hash
     end
 
     # Builds the object from hash

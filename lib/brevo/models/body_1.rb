@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -14,25 +14,25 @@ require 'date'
 
 module Brevo
   class Body1
-    # The name of the group of sub-accounts
-    attr_accessor :group_name
+    # IP Address
+    attr_accessor :ip
 
-    # Pass the list of sub-account Ids to be included in the group
-    attr_accessor :sub_account_ids
+    # Pass the list of sub-account Ids to be associated with the IP address
+    attr_accessor :ids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'group_name' => :'groupName',
-        :'sub_account_ids' => :'subAccountIds'
+        :'ip' => :'ip',
+        :'ids' => :'ids'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'group_name' => :'String',
-        :'sub_account_ids' => :'Array<Integer>'
+        :'ip' => :'String',
+        :'ids' => :'Array<Integer>'
       }
     end
 
@@ -44,13 +44,13 @@ module Brevo
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'groupName')
-        self.group_name = attributes[:'groupName']
+      if attributes.has_key?(:'ip')
+        self.ip = attributes[:'ip']
       end
 
-      if attributes.has_key?(:'subAccountIds')
-        if (value = attributes[:'subAccountIds']).is_a?(Array)
-          self.sub_account_ids = value
+      if attributes.has_key?(:'ids')
+        if (value = attributes[:'ids']).is_a?(Array)
+          self.ids = value
         end
       end
     end
@@ -59,8 +59,12 @@ module Brevo
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @group_name.nil?
-        invalid_properties.push('invalid value for "group_name", group_name cannot be nil.')
+      if @ip.nil?
+        invalid_properties.push('invalid value for "ip", ip cannot be nil.')
+      end
+
+      if @ids.nil?
+        invalid_properties.push('invalid value for "ids", ids cannot be nil.')
       end
 
       invalid_properties
@@ -69,7 +73,8 @@ module Brevo
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @group_name.nil?
+      return false if @ip.nil?
+      return false if @ids.nil?
       true
     end
 
@@ -78,8 +83,8 @@ module Brevo
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          group_name == o.group_name &&
-          sub_account_ids == o.sub_account_ids
+          ip == o.ip &&
+          ids == o.ids
     end
 
     # @see the `==` method
@@ -91,7 +96,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [group_name, sub_account_ids].hash
+      [ip, ids].hash
     end
 
     # Builds the object from hash

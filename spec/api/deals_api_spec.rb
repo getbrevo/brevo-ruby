@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -42,12 +42,25 @@ describe 'DealsApi' do
     end
   end
 
+  # unit tests for crm_attributes_post
+  # Create a deal/company attribute
+  # @param body Attribute creation data for company
+  # @param [Hash] opts the optional parameters
+  # @return [InlineResponse2003]
+  describe 'crm_attributes_post test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for crm_deals_get
   # Get all deals
   # @param [Hash] opts the optional parameters
   # @option opts [String] :filters_attributes_deal_name Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering.
   # @option opts [String] :filters_linked_companies_ids Filter by linked companies ids
   # @option opts [String] :filters_linked_contacts_ids Filter by linked companies ids
+  # @option opts [String] :modified_since Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
+  # @option opts [String] :created_since Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
   # @option opts [Integer] :offset Index of the first document of the page
   # @option opts [Integer] :limit Number of documents per page
   # @option opts [String] :sort Sort the results in the ascending/descending order. Default order is **descending** by creation if &#x60;sort&#x60; is not passed
@@ -88,6 +101,19 @@ describe 'DealsApi' do
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'crm_deals_id_patch test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for crm_deals_import_post
+  # Import deals(creation and updation)
+  # Import deals from a CSV file with mapping options.
+  # @param file The CSV file to upload.The file should have the first row as the mapping attribute. Some default attribute names are (a) deal_id [brevo mongoID to update deals] (b) associated_contact (c) associated_company (f) any other attribute with internal name 
+  # @param mapping The mapping options in JSON format.   json    {       \&quot;link_entities\&quot;: true, // Determines whether to link related entities during the import process       \&quot;unlink_entities\&quot;: false, //Determines whether to unlink related entities during the import process.       \&quot;update_existing_records\&quot;: true, // Determines whether to update based on deal ID or treat every row as create       \&quot;unset_empty_attributes\&quot;: false // Determines whether unset a specific attribute during update if values input is blank     } 
+  # @param [Hash] opts the optional parameters
+  # @return [InlineResponse2004]
+  describe 'crm_deals_import_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

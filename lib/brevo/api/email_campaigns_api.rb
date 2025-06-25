@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -302,7 +302,7 @@ module Brevo
     # @param [Hash] opts the optional parameters
     # @option opts [String] :type Filter on the type of the campaigns
     # @option opts [String] :status Filter on the status of the campaign
-    # @option opts [String] :statistics Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.
+    # @option opts [String] :statistics Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.This option only returns data for events occurred in the last 6 months.For older campaigns, it’s advisable to use the **Get Campaign Report** endpoint.
     # @option opts [String] :start_date Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; )
     # @option opts [String] :end_date Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; )
     # @option opts [Integer] :limit Number of documents per page (default to 50)
@@ -319,7 +319,7 @@ module Brevo
     # @param [Hash] opts the optional parameters
     # @option opts [String] :type Filter on the type of the campaigns
     # @option opts [String] :status Filter on the status of the campaign
-    # @option opts [String] :statistics Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.
+    # @option opts [String] :statistics Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.This option only returns data for events occurred in the last 6 months.For older campaigns, it’s advisable to use the **Get Campaign Report** endpoint.
     # @option opts [String] :start_date Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; )
     # @option opts [String] :end_date Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; )
     # @option opts [Integer] :limit Number of documents per page
@@ -334,8 +334,8 @@ module Brevo
       if @api_client.config.client_side_validation && opts[:'type'] && !['classic', 'trigger'].include?(opts[:'type'])
         fail ArgumentError, 'invalid value for "type", must be one of classic, trigger'
       end
-      if @api_client.config.client_side_validation && opts[:'status'] && !['suspended', 'archive', 'sent', 'queued', 'draft', 'inProcess'].include?(opts[:'status'])
-        fail ArgumentError, 'invalid value for "status", must be one of suspended, archive, sent, queued, draft, inProcess'
+      if @api_client.config.client_side_validation && opts[:'status'] && !['suspended', 'archive', 'sent', 'queued', 'draft', 'inProcess', 'inReview'].include?(opts[:'status'])
+        fail ArgumentError, 'invalid value for "status", must be one of suspended, archive, sent, queued, draft, inProcess, inReview'
       end
       if @api_client.config.client_side_validation && opts[:'statistics'] && !['globalStats', 'linksStats', 'statsByDomain'].include?(opts[:'statistics'])
         fail ArgumentError, 'invalid value for "statistics", must be one of globalStats, linksStats, statsByDomain'

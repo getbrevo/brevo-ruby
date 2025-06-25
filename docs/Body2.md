@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sub_account_ids** | **Array&lt;Integer&gt;** | List of sub-account ids | 
+**ip** | **String** | IP Address | 
+**ids** | **Array&lt;Integer&gt;** | Pass the list of sub-account Ids to be dissociated from the IP address | 
 
 

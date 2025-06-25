@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -24,7 +24,10 @@ module Brevo
     # Billing country 2-letter ISO code.
     attr_accessor :country_code
 
-    # Phone number to contact for further details about the order, Mandatory if \"email\" field is not passed.
+    # Billing country name.
+    attr_accessor :country
+
+    # Billing phone number.
     attr_accessor :phone
 
     # Postcode for delivery and billing.
@@ -42,6 +45,7 @@ module Brevo
         :'address' => :'address',
         :'city' => :'city',
         :'country_code' => :'countryCode',
+        :'country' => :'country',
         :'phone' => :'phone',
         :'post_code' => :'postCode',
         :'payment_method' => :'paymentMethod',
@@ -55,6 +59,7 @@ module Brevo
         :'address' => :'String',
         :'city' => :'String',
         :'country_code' => :'String',
+        :'country' => :'String',
         :'phone' => :'String',
         :'post_code' => :'String',
         :'payment_method' => :'String',
@@ -80,6 +85,10 @@ module Brevo
 
       if attributes.has_key?(:'countryCode')
         self.country_code = attributes[:'countryCode']
+      end
+
+      if attributes.has_key?(:'country')
+        self.country = attributes[:'country']
       end
 
       if attributes.has_key?(:'phone')
@@ -120,6 +129,7 @@ module Brevo
           address == o.address &&
           city == o.city &&
           country_code == o.country_code &&
+          country == o.country &&
           phone == o.phone &&
           post_code == o.post_code &&
           payment_method == o.payment_method &&
@@ -135,7 +145,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address, city, country_code, phone, post_code, payment_method, region].hash
+      [address, city, country_code, country, phone, post_code, payment_method, region].hash
     end
 
     # Builds the object from hash

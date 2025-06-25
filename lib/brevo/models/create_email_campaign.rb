@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -105,6 +105,8 @@ module Brevo
     # Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form. If not entered, then the default update profile form will be used.
     attr_accessor :update_form_id
 
+    attr_accessor :email_expiration_date
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -160,7 +162,8 @@ module Brevo
         :'initial_quota' => :'initialQuota',
         :'increase_rate' => :'increaseRate',
         :'unsubscription_page_id' => :'unsubscriptionPageId',
-        :'update_form_id' => :'updateFormId'
+        :'update_form_id' => :'updateFormId',
+        :'email_expiration_date' => :'emailExpirationDate'
       }
     end
 
@@ -197,7 +200,8 @@ module Brevo
         :'initial_quota' => :'Integer',
         :'increase_rate' => :'Integer',
         :'unsubscription_page_id' => :'String',
-        :'update_form_id' => :'String'
+        :'update_form_id' => :'String',
+        :'email_expiration_date' => :'CreateEmailCampaignEmailExpirationDate'
       }
     end
 
@@ -339,6 +343,10 @@ module Brevo
 
       if attributes.has_key?(:'updateFormId')
         self.update_form_id = attributes[:'updateFormId']
+      end
+
+      if attributes.has_key?(:'emailExpirationDate')
+        self.email_expiration_date = attributes[:'emailExpirationDate']
       end
     end
 
@@ -484,7 +492,8 @@ module Brevo
           initial_quota == o.initial_quota &&
           increase_rate == o.increase_rate &&
           unsubscription_page_id == o.unsubscription_page_id &&
-          update_form_id == o.update_form_id
+          update_form_id == o.update_form_id &&
+          email_expiration_date == o.email_expiration_date
     end
 
     # @see the `==` method
@@ -496,7 +505,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tag, sender, name, html_content, html_url, template_id, scheduled_at, subject, preview_text, reply_to, to_field, recipients, attachment_url, inline_image_activation, mirror_active, footer, header, utm_campaign, params, send_at_best_time, ab_testing, subject_a, subject_b, split_rule, winner_criteria, winner_delay, ip_warmup_enable, initial_quota, increase_rate, unsubscription_page_id, update_form_id].hash
+      [tag, sender, name, html_content, html_url, template_id, scheduled_at, subject, preview_text, reply_to, to_field, recipients, attachment_url, inline_image_activation, mirror_active, footer, header, utm_campaign, params, send_at_best_time, ab_testing, subject_a, subject_b, split_rule, winner_criteria, winner_delay, ip_warmup_enable, initial_quota, increase_rate, unsubscription_page_id, update_form_id, email_expiration_date].hash
     end
 
     # Builds the object from hash

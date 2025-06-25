@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -13,19 +13,19 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module Brevo
-  # Identifies the contact associated with the event.
+  # Identifies the contact associated with the event. At least one identifier is required.
   class EventIdentifiers
     # Email Id associated with the event
     attr_accessor :email_id
 
     # SMS associated with the event
-    attr_accessor :sms
+    attr_accessor :phone_id
 
     # whatsapp associated with the event
-    attr_accessor :whatsapp
+    attr_accessor :whatsapp_id
 
     # landline_number associated with the event
-    attr_accessor :landline_number
+    attr_accessor :landline_number_id
 
     # ext_id associated with the event
     attr_accessor :ext_id
@@ -34,9 +34,9 @@ module Brevo
     def self.attribute_map
       {
         :'email_id' => :'email_id',
-        :'sms' => :'sms',
-        :'whatsapp' => :'whatsapp',
-        :'landline_number' => :'landline_number',
+        :'phone_id' => :'phone_id',
+        :'whatsapp_id' => :'whatsapp_id',
+        :'landline_number_id' => :'landline_number_id',
         :'ext_id' => :'ext_id'
       }
     end
@@ -45,9 +45,9 @@ module Brevo
     def self.swagger_types
       {
         :'email_id' => :'String',
-        :'sms' => :'String',
-        :'whatsapp' => :'String',
-        :'landline_number' => :'String',
+        :'phone_id' => :'String',
+        :'whatsapp_id' => :'String',
+        :'landline_number_id' => :'String',
         :'ext_id' => :'String'
       }
     end
@@ -62,32 +62,22 @@ module Brevo
 
       if attributes.has_key?(:'email_id')
         self.email_id = attributes[:'email_id']
-      else
-        self.email_id = 'jane.doe@example.com'
       end
 
-      if attributes.has_key?(:'sms')
-        self.sms = attributes[:'sms']
-      else
-        self.sms = '+91xxxxxxxxxx'
+      if attributes.has_key?(:'phone_id')
+        self.phone_id = attributes[:'phone_id']
       end
 
-      if attributes.has_key?(:'whatsapp')
-        self.whatsapp = attributes[:'whatsapp']
-      else
-        self.whatsapp = '+91xxxxxxxxxx'
+      if attributes.has_key?(:'whatsapp_id')
+        self.whatsapp_id = attributes[:'whatsapp_id']
       end
 
-      if attributes.has_key?(:'landline_number')
-        self.landline_number = attributes[:'landline_number']
-      else
-        self.landline_number = '+91xxxxxxxxxx'
+      if attributes.has_key?(:'landline_number_id')
+        self.landline_number_id = attributes[:'landline_number_id']
       end
 
       if attributes.has_key?(:'ext_id')
         self.ext_id = attributes[:'ext_id']
-      else
-        self.ext_id = 'abc123'
       end
     end
 
@@ -110,9 +100,9 @@ module Brevo
       return true if self.equal?(o)
       self.class == o.class &&
           email_id == o.email_id &&
-          sms == o.sms &&
-          whatsapp == o.whatsapp &&
-          landline_number == o.landline_number &&
+          phone_id == o.phone_id &&
+          whatsapp_id == o.whatsapp_id &&
+          landline_number_id == o.landline_number_id &&
           ext_id == o.ext_id
     end
 
@@ -125,7 +115,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [email_id, sms, whatsapp, landline_number, ext_id].hash
+      [email_id, phone_id, whatsapp_id, landline_number_id, ext_id].hash
     end
 
     # Builds the object from hash

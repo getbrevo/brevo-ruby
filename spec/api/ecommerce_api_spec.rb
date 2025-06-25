@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -112,11 +112,11 @@ describe 'EcommerceApi' do
   end
 
   # unit tests for ecommerce_attribution_metrics_conversion_source_conversion_source_id_get
-  # Get detailed attribution metrics for a single Brevo campaign
-  # @param conversion_source The Brevo campaign type for which data will be retrieved
-  # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+  # Get detailed attribution metrics for a single Brevo campaign or workflow
+  # @param conversion_source The Brevo campaign type or workflow type for which data will be retrieved
+  # @param conversion_source_id The Brevo campaign or automation workflow id for which data will be retrieved
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [InlineResponse2007]
   describe 'ecommerce_attribution_metrics_conversion_source_conversion_source_id_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -124,12 +124,15 @@ describe 'EcommerceApi' do
   end
 
   # unit tests for ecommerce_attribution_metrics_get
-  # Get attribution metrics for one or more Brevo campaigns
+  # Get attribution metrics for one or more Brevo campaigns or workflows
   # @param [Hash] opts the optional parameters
-  # @option opts [Object] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
-  # @option opts [Object] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
-  # @option opts [Object] :email_campaign_id The email campaign id(s) to get metrics for
-  # @return [nil]
+  # @option opts [DateTime] :period_from When getting metrics for a specific period, define the starting datetime in RFC3339 format
+  # @option opts [DateTime] :period_to When getting metrics for a specific period, define the end datetime in RFC3339 format
+  # @option opts [Array<String>] :email_campaign_id The email campaign ID(s) to get metrics for
+  # @option opts [Array<String>] :sms_campaign_id The SMS campaign ID(s) to get metrics for
+  # @option opts [Array<String>] :automation_workflow_email_id The automation workflow ID(s) to get email attribution metrics for
+  # @option opts [Array<String>] :automation_workflow_sms_id The automation workflow ID(s) to get SMS attribution metrics for
+  # @return [InlineResponse2006]
   describe 'ecommerce_attribution_metrics_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -137,12 +140,22 @@ describe 'EcommerceApi' do
   end
 
   # unit tests for ecommerce_attribution_products_conversion_source_conversion_source_id_get
-  # Get attributed product sales for a single Brevo campaign
-  # @param conversion_source The Brevo campaign type for which data will be retrieved
-  # @param conversion_source_id The Brevo campaign id for which data will be retrieved
+  # Get attributed product sales for a single Brevo campaign or workflow
+  # @param conversion_source The Brevo campaign or automation workflow type for which data will be retrieved
+  # @param conversion_source_id The Brevo campaign or automation workflow id for which data will be retrieved
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [InlineResponse2008]
   describe 'ecommerce_attribution_products_conversion_source_conversion_source_id_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for ecommerce_config_display_currency_get
+  # Get the ISO 4217 compliant display currency code for your Brevo account
+  # @param [Hash] opts the optional parameters
+  # @return [InlineResponse2005]
+  describe 'ecommerce_config_display_currency_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -156,8 +169,8 @@ describe 'EcommerceApi' do
   # @option opts [String] :sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
   # @option opts [Array<String>] :ids Filter by category ids
   # @option opts [String] :name Filter by category name
-  # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
-  # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+  # @option opts [String] :modified_since Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+  # @option opts [String] :created_since Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
   # @return [GetCategories]
   describe 'get_categories test' do
     it 'should work' do
@@ -222,6 +235,17 @@ describe 'EcommerceApi' do
   # @option opts [String] :created_since Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
   # @return [GetProducts]
   describe 'get_products test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for set_config_display_currency
+  # Set the ISO 4217 compliant display currency code for your Brevo account
+  # @param set_config_display_currency set ISO 4217 compliant display currency code payload
+  # @param [Hash] opts the optional parameters
+  # @return [SetConfigDisplayCurrency]
+  describe 'set_config_display_currency test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

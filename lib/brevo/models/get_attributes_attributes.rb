@@ -1,7 +1,7 @@
 =begin
 #Brevo API
 
-#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+#Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
 
 OpenAPI spec version: 3.0.0
 Contact: contact@brevo.com
@@ -28,6 +28,9 @@ module Brevo
 
     # Calculated value formula
     attr_accessor :calculated_value
+
+    # Parameter only available for \"multiple-choice\" type attributes.
+    attr_accessor :multi_category_options
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -58,7 +61,8 @@ module Brevo
         :'category' => :'category',
         :'type' => :'type',
         :'enumeration' => :'enumeration',
-        :'calculated_value' => :'calculatedValue'
+        :'calculated_value' => :'calculatedValue',
+        :'multi_category_options' => :'multiCategoryOptions'
       }
     end
 
@@ -69,7 +73,8 @@ module Brevo
         :'category' => :'String',
         :'type' => :'String',
         :'enumeration' => :'Array<GetAttributesEnumeration>',
-        :'calculated_value' => :'String'
+        :'calculated_value' => :'String',
+        :'multi_category_options' => :'Array<String>'
       }
     end
 
@@ -102,6 +107,12 @@ module Brevo
       if attributes.has_key?(:'calculatedValue')
         self.calculated_value = attributes[:'calculatedValue']
       end
+
+      if attributes.has_key?(:'multiCategoryOptions')
+        if (value = attributes[:'multiCategoryOptions']).is_a?(Array)
+          self.multi_category_options = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -126,7 +137,7 @@ module Brevo
       return false if @category.nil?
       category_validator = EnumAttributeValidator.new('String', ['normal', 'transactional', 'category', 'calculated', 'global'])
       return false unless category_validator.valid?(@category)
-      type_validator = EnumAttributeValidator.new('String', ['text', 'date', 'float', 'id', 'boolean'])
+      type_validator = EnumAttributeValidator.new('String', ['text', 'date', 'float', 'id', 'boolean', 'multiple-choice', 'user'])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -144,7 +155,7 @@ module Brevo
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ['text', 'date', 'float', 'id', 'boolean'])
+      validator = EnumAttributeValidator.new('String', ['text', 'date', 'float', 'id', 'boolean', 'multiple-choice', 'user'])
       unless validator.valid?(type)
         fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
       end
@@ -160,7 +171,8 @@ module Brevo
           category == o.category &&
           type == o.type &&
           enumeration == o.enumeration &&
-          calculated_value == o.calculated_value
+          calculated_value == o.calculated_value &&
+          multi_category_options == o.multi_category_options
     end
 
     # @see the `==` method
@@ -172,7 +184,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, category, type, enumeration, calculated_value].hash
+      [name, category, type, enumeration, calculated_value, multi_category_options].hash
     end
 
     # Builds the object from hash

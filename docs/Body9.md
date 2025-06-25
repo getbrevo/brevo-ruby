@@ -3,16 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Name of task | 
-**duration** | **Integer** | Duration of task in milliseconds [1 minute &#x3D; 60000 ms] | [optional] 
-**task_type_id** | **String** | Id for type of task e.g Call / Email / Meeting etc. | 
-**date** | **DateTime** | Task due date and time | 
-**notes** | **String** | Notes added to a task | [optional] 
-**done** | **BOOLEAN** | Task marked as done | [optional] 
-**assign_to_id** | **String** | To assign a task to a user you can use either the account email or ID. | [optional] 
-**contacts_ids** | **Array&lt;Integer&gt;** | Contact ids for contacts linked to this task | [optional] 
-**deals_ids** | **Array&lt;String&gt;** | Deal ids for deals a task is linked to | [optional] 
-**companies_ids** | **Array&lt;String&gt;** | Companies ids for companies a task is linked to | [optional] 
-**reminder** | [**TaskReminder**](TaskReminder.md) |  | [optional] 
+**label** | **String** | The label for the attribute (max 50 characters, cannot be empty) | 
+**attribute_type** | **String** | The type of attribute (must be one of the defined enums) | 
+**description** | **String** | A description of the attribute | [optional] 
+**options_labels** | **Array&lt;String&gt;** | Options for multi-choice or single-select attributes | [optional] 
+**object_type** | **String** | The type of object the attribute belongs to (prefilled with &#x60;companies&#x60;or &#x60;deal&#x60;, mandatory) | 
 
 

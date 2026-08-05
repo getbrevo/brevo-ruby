@@ -20,11 +20,15 @@ module Brevo
     # Name of the recipient in cc. Maximum allowed characters are 70.
     attr_accessor :name
 
+    # Consent of the recipient in cc for open (pixel) and click tracking, resolved by the sender at send time. Considered only if the per-contact pixel tracking consent feature is enabled for your account. Pass `true` if this recipient has consented to open and click tracking, in which case the open pixel and tracked links identify the recipient. Pass `false` to anonymise the open and click events (counted in aggregate statistics only). If it is not passed, the recipient is treated as unknown consent status and the email is still sent (the open and click are anonymised unless your account tracks unknown-consent contacts). A value other than `true`/`false` is rejected. Ignored when the feature is not enabled for your account.
+    attr_accessor :contact_pixel_tracking_consent
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'email' => :'email',
-        :'name' => :'name'
+        :'name' => :'name',
+        :'contact_pixel_tracking_consent' => :'contactPixelTrackingConsent'
       }
     end
 
@@ -32,7 +36,8 @@ module Brevo
     def self.swagger_types
       {
         :'email' => :'String',
-        :'name' => :'String'
+        :'name' => :'String',
+        :'contact_pixel_tracking_consent' => :'BOOLEAN'
       }
     end
 
@@ -50,6 +55,10 @@ module Brevo
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'contactPixelTrackingConsent')
+        self.contact_pixel_tracking_consent = attributes[:'contactPixelTrackingConsent']
       end
     end
 
@@ -77,7 +86,8 @@ module Brevo
       return true if self.equal?(o)
       self.class == o.class &&
           email == o.email &&
-          name == o.name
+          name == o.name &&
+          contact_pixel_tracking_consent == o.contact_pixel_tracking_consent
     end
 
     # @see the `==` method
@@ -89,7 +99,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [email, name].hash
+      [email, name, contact_pixel_tracking_consent].hash
     end
 
     # Builds the object from hash

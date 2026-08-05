@@ -11,5 +11,5 @@ Swagger Codegen version: 2.4.19
 =end
 
 module Brevo
-  VERSION = '4.0.0'
+  VERSION = '4.0.1'
 end

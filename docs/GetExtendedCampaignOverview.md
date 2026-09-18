@@ -17,10 +17,11 @@ Name | Type | Description | Notes
 **winner_criteria** | **String** | Criteria for the winning version. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;true&#x60; | [optional] 
 **winner_delay** | **Integer** | The duration of the test in hours at the end of which the winning version will be sent. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;true&#x60; | [optional] 
 **send_at_best_time** | **BOOLEAN** | It is true if you have chosen to send your campaign at best time, otherwise it is false | [optional] 
-**utm_campaign_value** | **String** | utm parameter associated with campaign | [optional] 
-**utm_source** | **String** | source of utm parameter | [optional] 
-**utm_medium** | **String** | medium parameter | [optional] 
-**utm_id** | **Integer** | utm id | [optional] 
+**utm_campaign_value** | **String** | The utm_campaign value applied to the campaign&#39;s tracking links. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign. | [optional] 
+**utm_source** | **String** | The utm_source value applied to the campaign&#39;s tracking links. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign, or the account default (&#x60;brevo&#x60; or &#x60;sendinblue&#x60;) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign. | [optional] 
+**utm_medium** | **String** | The utm_medium value applied to the campaign&#39;s tracking links. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign, or the default &#x60;email&#x60; if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign. | [optional] 
+**utm_id** | **Integer** | Legacy numeric utm_id value applied to the campaign&#39;s tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign&#39;s ID). For customer-supplied non-numeric values (for example &#x60;promo_042&#x60;), read utm_id_string (wire key &#x60;utmId&#x60;) instead. Kept for backward compatibility. | [optional] 
+**utm_id_string** | **String** | The utm_id value applied to the campaign&#39;s tracking links, returned verbatim as a string. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels. Preferred field for new consumers — covers both numeric IDs and customer-supplied non-numeric strings. (JSON key &#x60;utmId&#x60; — distinct from the legacy &#x60;utmID&#x60;.) | [optional] 
 **test_sent** | **BOOLEAN** | Retrieved the status of test email sending. (true&#x3D;Test email has been sent  false&#x3D;Test email has not been sent) | 
 **header** | **String** | Header of the campaign | 
 **footer** | **String** | Footer of the campaign | 

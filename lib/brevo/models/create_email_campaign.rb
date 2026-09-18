@@ -66,6 +66,15 @@ module Brevo
     # Customize the utm_campaign value. If this field is empty, the campaign name will be used. Only alphanumeric characters and spaces are allowed
     attr_accessor :utm_campaign
 
+    # Customize the utm_source value. When omitted or empty, the utm_source entry from the account's global utm_settings is used if set; otherwise the account default (`brevo` or `sendinblue`) is used.
+    attr_accessor :utm_source
+
+    # Customize the utm_medium value. When omitted or empty, the utm_medium entry from the account's global utm_settings is used if set; otherwise the default `email` is used.
+    attr_accessor :utm_medium
+
+    # Customize the utm_id value. Appears on outgoing tracking links alongside utm_campaign. When omitted or empty, the utm_id entry from the account's global utm_settings is used if enabled; otherwise no utm_id parameter is emitted.
+    attr_accessor :utm_id
+
     # Pass the set of attributes to customize the type classic campaign. For example, {\"FNAME\":\"Joe\", \"LNAME\":\"Doe\"}. Only available if 'type' is 'classic'. It's considered only if campaign is in New Template Language format. The New Template Language is dependent on the values of 'subject', 'htmlContent/htmlUrl', 'sender.name' & 'toField'
     attr_accessor :params
 
@@ -150,6 +159,9 @@ module Brevo
         :'footer' => :'footer',
         :'header' => :'header',
         :'utm_campaign' => :'utmCampaign',
+        :'utm_source' => :'utmSource',
+        :'utm_medium' => :'utmMedium',
+        :'utm_id' => :'utmId',
         :'params' => :'params',
         :'send_at_best_time' => :'sendAtBestTime',
         :'ab_testing' => :'abTesting',
@@ -188,6 +200,9 @@ module Brevo
         :'footer' => :'String',
         :'header' => :'String',
         :'utm_campaign' => :'String',
+        :'utm_source' => :'String',
+        :'utm_medium' => :'String',
+        :'utm_id' => :'String',
         :'params' => :'Object',
         :'send_at_best_time' => :'BOOLEAN',
         :'ab_testing' => :'BOOLEAN',
@@ -285,6 +300,18 @@ module Brevo
 
       if attributes.has_key?(:'utmCampaign')
         self.utm_campaign = attributes[:'utmCampaign']
+      end
+
+      if attributes.has_key?(:'utmSource')
+        self.utm_source = attributes[:'utmSource']
+      end
+
+      if attributes.has_key?(:'utmMedium')
+        self.utm_medium = attributes[:'utmMedium']
+      end
+
+      if attributes.has_key?(:'utmId')
+        self.utm_id = attributes[:'utmId']
       end
 
       if attributes.has_key?(:'params')
@@ -480,6 +507,9 @@ module Brevo
           footer == o.footer &&
           header == o.header &&
           utm_campaign == o.utm_campaign &&
+          utm_source == o.utm_source &&
+          utm_medium == o.utm_medium &&
+          utm_id == o.utm_id &&
           params == o.params &&
           send_at_best_time == o.send_at_best_time &&
           ab_testing == o.ab_testing &&
@@ -505,7 +535,7 @@ module Brevo
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tag, sender, name, html_content, html_url, template_id, scheduled_at, subject, preview_text, reply_to, to_field, recipients, attachment_url, inline_image_activation, mirror_active, footer, header, utm_campaign, params, send_at_best_time, ab_testing, subject_a, subject_b, split_rule, winner_criteria, winner_delay, ip_warmup_enable, initial_quota, increase_rate, unsubscription_page_id, update_form_id, email_expiration_date].hash
+      [tag, sender, name, html_content, html_url, template_id, scheduled_at, subject, preview_text, reply_to, to_field, recipients, attachment_url, inline_image_activation, mirror_active, footer, header, utm_campaign, utm_source, utm_medium, utm_id, params, send_at_best_time, ab_testing, subject_a, subject_b, split_rule, winner_criteria, winner_delay, ip_warmup_enable, initial_quota, increase_rate, unsubscription_page_id, update_form_id, email_expiration_date].hash
     end
 
     # Builds the object from hash
